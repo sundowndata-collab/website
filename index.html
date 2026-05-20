@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sundown Safaris | Luxury Kenya Tours & Private Wildlife Travel</title>
+    <meta name="description" content="Book unforgettable Kenya holiday packages with Sundown Safaris. From budget wildlife safaris to luxury Masai Mara game drives and custom African safari itineraries.">
+    <meta name="keywords" content="Kenya holiday packages, budget wildlife safari, luxury Masai Mara game drives, African safari itineraries, best time to visit Kenya safari, sundown safaris">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,800;1,400&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        brand: {
+                            green: '#0B3A1D',
+                            lightGreen: '#EAF2EC',
+                            darkText: '#111B14',
+                            accentGold: '#C98A27',
+                            safariBg: '#FBFBFA'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        .hero-gradient { background: linear-gradient(135deg, #051A0D 0%, #0B3A1D 60%, #19522F 100%); }
+        .dropdown:hover .dropdown-menu { display: block; }
+        .page-view { display: none; }
+        .page-view.active { display: block; }
+    </style>
+</head>
+<body class="bg-brand-safariBg text-brand-darkText font-sans text-base antialiased">
+
+    <header class="bg-white sticky top-0 z-50 shadow-md">
+        <div class="bg-brand-green text-white text-xs font-semibold tracking-wider py-2.5 px-4 border-b border-brand-accentGold hidden sm:block">
+            <div class="max-w-7xl mx-auto flex justify-between items-center">
+                <span class="opacity-90"><i class="fa-solid fa-circle-check text-brand-accentGold text-sm mr-2"></i> <strong>The Sundown Standard:</strong> Fully audited 4x4 Land Cruisers capped at 4 passengers maximum. Never crowded.</span>
+                <span class="font-bold tracking-normal text-brand-accentGold font-sans text-sm">Direct Operations Office: Nairobi, Kenya</span>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-24 flex items-center justify-between">
+            <button onclick="navigateTo('view-home')" class="flex items-center space-x-3 text-left focus:outline-none group">
+                <div class="w-16 h-16 bg-brand-green rounded-full flex items-center justify-center text-white border-2 border-brand-accentGold shadow-sm group-hover:bg-brand-accentGold transition duration-300">
+                    <i class="fa-solid fa-elephant text-2xl text-brand-accentGold group-hover:text-brand-green transition duration-300"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-3xl font-serif font-black tracking-tight text-brand-green leading-none">SUNDOWN</span>
+                    <span class="text-sm uppercase tracking-[0.3em] text-brand-accentGold font-extrabold mt-0.5">Safaris</span>
+                </div>
+            </button>
+
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-extrabold uppercase tracking-wider text-stone-600">
+                <button onclick="navigateTo('view-home')" class="hover:text-brand-green transition focus:outline-none py-2 border-b-2 border-transparent hover:border-brand-green">Home</button>
+                <button onclick="document.getElementById('about-us-summary').scrollIntoView({behavior: 'smooth'})" class="hover:text-brand-green transition focus:outline-none py-2 border-b-2 border-transparent hover:border-brand-green">About Us</button>
+                
+                <div class="relative dropdown py-4">
+                    <span class="text-brand-green flex items-center gap-1.5 cursor-pointer py-2 border-b-2 border-transparent">
+                        Safari Packages <i class="fa-solid fa-chevron-down text-xs text-brand-accentGold"></i>
+                    </span>
+                    <div class="dropdown-menu hidden absolute left-1/2 -translate-x-1/2 top-full w-[460px] bg-white shadow-2xl rounded-xl border border-stone-200 overflow-hidden py-4 z-50 mt-1">
+                        <div class="grid grid-cols-1 gap-1 normal-case tracking-normal text-base font-normal">
+                            <div class="px-5 py-1.5 text-xs font-black uppercase tracking-widest text-stone-400 bg-stone-50">3-Day Short-Hop Tracking</div>
+                            <button onclick="navigateTo('view-pkg-3a')" class="w-full text-left px-5 py-2.5 text-stone-700 hover:bg-brand-lightGreen hover:text-brand-green flex justify-between items-center text-sm font-medium">
+                                <span>3-Day Adventure: <strong class="font-serif font-bold">“The Explorer”</strong></span> <i class="fa-solid fa-chevron-right text-xs opacity-40"></i>
+                            </button>
+                            <button onclick="navigateTo('view-pkg-3b')" class="w-full text-left px-5 py-2.5 text-stone-700 hover:bg-brand-lightGreen hover:text-brand-green flex justify-between items-center text-sm font-medium">
+                                <span>3-Day Classic: <strong class="font-serif font-bold">“The Photographer”</strong></span> <i class="fa-solid fa-chevron-right text-xs opacity-40"></i>
+                            </button>
+                            <button onclick="navigateTo('view-pkg-3c')" class="w-full text-left px-5 py-2.5 text-stone-700 hover:bg-brand-lightGreen hover:text-brand-green flex justify-between items-center text-sm font-medium">
+                                <span>3-Day Luxury Lite: <strong class="font-serif font-bold">“The Sundowner”</strong></span> <i class="fa-solid fa-chevron-right text-xs opacity-40"></i>
+                            </button>
+                            
+                            <div class="px-5 py-1.5 text-xs font-black uppercase tracking-widest text-stone-400 bg-stone-50 mt-2">5-Day Intensive Regional Operations</div>
+                            <button onclick="navigateTo('view-pkg-5a')" class="w-full text-left px-5 py-2.5 text-stone-700 hover:bg-brand-lightGreen hover:text-brand-green flex justify-between items-center text-sm font-medium">
+                                <span>5-Day Adventure: <strong class="font-serif font-bold">“The Trailblazer”</strong></span> <i class="fa-solid fa-chevron-right text-xs opacity-40"></i>
+                            </button>
+                            <button onclick="navigateTo('view-pkg-5b')" class="w-full text-left px-5 py-2.5 text-stone-700 hover:bg-brand-lightGreen hover:text-brand-green flex justify-between items-center text-sm font-medium">
+                                <span>5-Day Classic: <strong class="font-serif font-bold">“The Dreamcatcher”</strong></span> <i class="fa-solid fa-chevron-right text-xs opacity-40"></i>
+                            </button>
+                            <button onclick="navigateTo('view-pkg-5c')" class="w-full text-left px-5 py-2.5 text-stone-700 hover:bg-brand-lightGreen hover:text-brand-green flex justify-between items-center text-sm font-medium">
+                                <span>5-Day Luxury Lite: <strong class="font-serif font-bold">“The Horizon Chaser”</strong></span> <i class="fa-solid fa-chevron-right text-xs opacity-40"></i>
+                            </button>
+                            
+                            <div class="px-5 py-1.5 text-xs font-black uppercase tracking-widest text-stone-400 bg-stone-50 mt-2">7-Day Transversal Circuits</div>
+                            <button onclick="navigateTo('view-pkg-7a')" class="w-full text-left px-5 py-2.5 text-stone-700 hover:bg-brand-lightGreen hover:text-brand-green flex justify-between items-center text-sm font-medium">
+                                <span>7-Day Flagship: <strong class="font-serif font-bold">“Ultimate Kenya”</strong> Circuit</span> <i class="fa-solid fa-chevron-right text-xs opacity-40"></i>
+                            </button>
+                            <button onclick="navigateTo('view-pkg-7b')" class="w-full text-left px-5 py-2.5 text-stone-700 hover:bg-brand-lightGreen hover:text-brand-green flex justify-between items-center text-sm font-medium">
+                                <span>7-Day Classic: <strong class="font-serif font-bold">“The Voyager”</strong></span> <i class="fa-solid fa-chevron-right text-xs opacity-40"></i>
+                            </button>
+                            <button onclick="navigateTo('view-pkg-7c')" class="w-full text-left px-5 py-2.5 text-stone-700 hover:bg-brand-lightGreen hover:text-brand-green flex justify-between items-center text-sm font-medium">
+                                <span>7-Day Luxury Lite: <strong class="font-serif font-bold">“The Constellation”</strong></span> <i class="fa-solid fa-chevron-right text-xs opacity-40"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <button onclick="document.getElementById('master-booking').scrollIntoView({behavior: 'smooth'})" class="text-stone-600 hover:text-brand-green transition py-2 border-b-2 border-transparent hover:border-brand-green focus:outline-none">Contact Us</button>
+                <button onclick="navigateTo('view-guide')" class="text-stone-600 hover:text-brand-green transition py-2 border-b-2 border-transparent hover:border-brand-green focus:outline-none">Travel Guide</button>
+            </nav>
+
+            <div class="flex items-center space-x-4">
+                <a href="tel:+254700000000" class="hidden lg:flex items-center text-right space-x-3 border-r border-stone-200 pr-4">
+                    <div class="text-stone-400 text-xl"><i class="fa-solid fa-headset"></i></div>
+                    <div class="flex flex-col text-left font-sans">
+                        <span class="text-xs uppercase font-extrabold text-stone-400 tracking-wider leading-none">Speak to a Spotter</span>
+                        <span class="text-sm font-bold text-brand-darkText hover:text-brand-accentGold transition mt-0.5">+254 (0) 700 000 000</span>
+                    </div>
+                </a>
+                <button onclick="document.getElementById('master-booking').scrollIntoView({behavior: 'smooth'})" class="inline-flex items-center gap-2.5 bg-brand-green text-white px-6 py-3.5 rounded-full font-bold text-sm tracking-wider hover:bg-brand-accentGold transition duration-300 shadow-md">
+                    Book With Us <i class="fa-solid fa-arrow-right-long text-sm"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="w-full">
+
+        <div id="view-home" class="page-view active">
+            <section class="hero-gradient text-white py-28 relative overflow-hidden">
+                <div class="absolute inset-0 opacity-15 mix-blend-overlay">
+                    <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=1200&q=75" alt="Safari background" class="w-full h-full object-cover">
+                </div>
+                <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-12 gap-12 items-center relative z-10">
+                    <div class="md:col-span-8 space-y-6">
+                        <span class="text-brand-accentGold uppercase font-bold tracking-[0.35em] text-sm block">An Invitation to the Discerning Traveler</span>
+                        <h1 class="text-4xl md:text-6xl font-serif font-extrabold tracking-tight leading-tight">
+                            How to spend 7 days in the Masai Mara without ever seeing another tourist bus.
+                        </h1>
+                        <p class="text-stone-200 max-w-xl text-lg font-normal leading-relaxed opacity-90">
+                            Most safari companies crowd you around the same exhausted lion prides. Sundown Safaris operates on private concessions, secret river tracks, and bespoke timings. Here is how we design itineraries for travelers who hate herds.
+                        </p>
+                        <div class="pt-4 flex flex-wrap gap-4">
+                            <a href="#grid-anchor" class="bg-brand-accentGold text-stone-950 font-extrabold px-8 py-4 rounded shadow-lg hover:bg-white transition text-sm uppercase tracking-wider font-sans">Compare Our Private Tracks</a>
+                            <button onclick="navigateTo('view-guide')" class="bg-white/10 hover:bg-white/20 border border-white/20 px-6 py-4 rounded text-sm font-bold tracking-wider uppercase transition font-sans">Read Our Master Journal</button>
+                        </div>
+                    </div>
+                    <div class="md:col-span-4 flex flex-col gap-5 bg-stone-900/40 backdrop-blur-md p-6 rounded-xl border border-white/10">
+                        <div class="text-center bg-white p-6 rounded-lg text-stone-950 shadow-inner">
+                            <div class="flex justify-center items-center gap-2 text-emerald-600 mb-1.5"><i class="fa-brands fa-tripadvisor text-3xl"></i><span class="font-black text-sm font-sans tracking-tight">tripadvisor</span></div>
+                            <div class="flex justify-center text-emerald-500 gap-1 text-xs"><i class="fa-solid fa-circle"></i><i class="fa-solid fa-circle"></i><i class="fa-solid fa-circle"></i><i class="fa-solid fa-circle"></i><i class="fa-solid fa-circle"></i></div>
+                            <p class="text-xs text-stone-700 font-extrabold mt-2 uppercase tracking-wider font-sans">#1 Specialized Kenya Operator 2026</p>
+                        </div>
+                        <div class="text-center bg-gradient-to-b from-amber-50 to-amber-100 p-6 rounded-lg text-stone-950 border border-amber-200">
+                            <div class="font-serif font-black italic text-stone-800 text-base">Ogilvy’s Truth Rule</div>
+                            <p class="text-sm text-stone-700 mt-1.5 leading-relaxed">We provide absolute transparent metrics. Every single field mile is cataloged and fully audited.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="grid-anchor" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-20">
+                    <h2 class="text-3xl md:text-5xl font-serif font-black text-brand-green">The 9 Elite Configurations arranged by Sundown Safaris</h2>
+                    <p class="text-stone-600 text-base mt-4 leading-relaxed">Choose your format based on how many hours you want to spend in active presence with spectacular nature. Click any card below to unlock full logistics pipelines.</p>
+                </div>
+
+                <div class="mb-20">
+                    <div class="text-sm font-black uppercase tracking-widest text-brand-accentGold mb-6 flex items-center gap-2.5 border-b border-stone-200 pb-3"><i class="fa-solid fa-hourglass-start text-base"></i> 3-Day Custom Tactical Formats</div>
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <div onclick="navigateTo('view-pkg-3a')" class="bg-white border border-stone-200 rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:border-brand-green transition duration-300 cursor-pointer group flex flex-col">
+                            <div class="h-56 overflow-hidden relative bg-stone-200"><img src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?auto=format&fit=crop&w=600&q=75" alt="Safari" class="w-full h-full object-cover group-hover:scale-105 transition duration-500"></div>
+                            <div class="p-6 flex-1 flex flex-col justify-between">
+                                <div><h3 class="font-serif font-bold text-2xl text-brand-darkText">“The Explorer” Track</h3><p class="text-sm text-stone-600 mt-2">Active trekking, volcanic cross-country biking, and fast-paced tracking loops.</p></div>
+                                <span class="inline-block text-sm font-extrabold text-brand-green mt-5">&rarr; Explore Details & Pricing</span>
+                            </div>
+                        </div>
+                        <div onclick="navigateTo('view-pkg-3b')" class="bg-white border-2 border-brand-accentGold rounded-xl overflow-hidden shadow-md hover:shadow-xl transition duration-300 cursor-pointer group flex flex-col">
+                            <div class="h-56 overflow-hidden relative bg-stone-200"><img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=600&q=75" alt="Safari" class="w-full h-full object-cover group-hover:scale-105 transition duration-500"></div>
+                            <div class="p-6 flex-1 flex flex-col justify-between">
+                                <div><h3 class="font-serif font-bold text-2xl text-brand-darkText">“The Photographer” Track</h3><p class="text-sm text-stone-600 mt-2">Low-angle allocations, dedicated side-window priority, and golden-hour patience blocks.</p></div>
+                                <span class="inline-block text-sm font-extrabold text-brand-accentGold mt-5">&rarr; Explore Details & Pricing</span>
+                            </div>
+                        </div>
+                        <div onclick="navigateTo('view-pkg-3c')" class="bg-white border border-stone-200 rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:border-brand-green transition duration-300 cursor-pointer group flex flex-col">
+                            <div class="h-56 overflow-hidden relative bg-stone-200"><img src="https://images.unsplash.com/photo-1456926631375-92c8ce872def?auto=format&fit=crop&w=600&q=75" alt="Safari" class="w-full h-full object-cover group-hover:scale-105 transition duration-500"></div>
+                            <div class="p-6 flex-1 flex flex-col justify-between">
+                                <div><h3 class="font-serif font-bold text-2xl text-brand-darkText">“The Sundowner” Track</h3><p class="text-sm text-stone-600 mt-2">Fly-in airstrip access, luxury camp comforts, and sunset champagne view alignments.</p></div>
+                                <span class="inline-block text-sm font-extrabold text-brand-green mt-5">&rarr; Explore Details & Pricing</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-20">
+                    <div class="text-sm font-black uppercase tracking-widest text-brand-accentGold mb-6 flex items-center gap-2.5 border-b border-stone-200 pb-3"><i class="fa-solid fa-hourglass-half text-base"></i> 5-Day Intensive Regional Operations</div>
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <div onclick="navigateTo('view-pkg-5a')" class="bg-white border border-stone-200 rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:border-brand-green transition duration-300 cursor-pointer group flex flex-col">
+                            <div class="h-56 overflow-hidden relative bg-stone-200"><img src="https://images.unsplash.com/photo-1523805009345-7448845a9e53?auto=format&fit=crop&w=600&q=75" alt="Safari" class="w-full h-full object-cover group-hover:scale-105 transition duration-500"></div>
+                            <div class="p-6 flex-1 flex flex-col justify-between">
+                                <div><h3 class="font-serif font-bold text-2xl text-brand-darkText">“The Trailblazer” Track</h3><p class="text-sm text-stone-600 mt-2">Deep-reserve tracking maps across Samburu corridors and private conservancy units.</p></div>
+                                <span class="inline-block text-sm font-extrabold text-brand-green mt-5">&rarr; Explore Details & Pricing</span>
+                            </div>
+                        </div>
+                        <div onclick="navigateTo('view-pkg-5b')" class="bg-white border border-stone-200 rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:border-brand-green transition duration-300 cursor-pointer group flex flex-col">
+                            <div class="h-56 overflow-hidden relative bg-stone-200"><img src="https://images.unsplash.com/photo-1549488344-1f9b8d2bd1f3?auto=format&fit=crop&w=600&q=75" alt="Safari" class="w-full h-full object-cover group-hover:scale-105 transition duration-500"></div>
+                            <div class="p-6 flex-1 flex flex-col justify-between">
+                                <div><h3 class="font-serif font-bold text-2xl text-brand-darkText">“The Dreamcatcher” Track</h3><p class="text-sm text-stone-600 mt-2">Curated balance of extensive day tracks and custom strategic native spotting lines.</p></div>
+                                <span class="inline-block text-sm font-extrabold text-brand-green mt-5">&rarr; Explore Details & Pricing</span>
+                            </div>
+                        </div>
+                        <div onclick="navigateTo('view-pkg-5c')" class="bg-white border border-stone-200 rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:border-brand-green transition duration-300 cursor-pointer group flex flex-col">
+                            <div class="h-56 overflow-hidden relative bg-stone-200"><img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=600&q=75" alt="Safari" class="w-full h-full object-cover group-hover:scale-105 transition duration-500"></div>
+                            <div class="p-6 flex-1 flex flex-col justify-between">
+                                <div><h3 class="font-serif font-bold text-2xl text-brand-darkText">“The Horizon Chaser” Track</h3><p class="text-sm text-stone-600 mt-2">Includes custom high-altitude dawn hot air balloon flights and pristine glamping.</p></div>
+                                <span class="inline-block text-sm font-extrabold text-brand-green mt-5">&rarr; Explore Details & Pricing</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="text-sm font-black uppercase tracking-widest text-brand-accentGold mb-6 flex items-center gap-2.5 border-b border-stone-200 pb-3"><i class="fa-solid fa-hourglass text-base"></i> 7-Day Flagship Transversal Circuits</div>
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <div onclick="navigateTo('view-pkg-7a')" class="bg-white border border-stone-200 rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:border-brand-green transition duration-300 cursor-pointer group flex flex-col">
+                            <div class="h-56 overflow-hidden relative bg-stone-200"><img src="https://images.unsplash.com/photo-1519066629447-267fffa62d4b?auto=format&fit=crop&w=600&q=75" alt="Safari" class="w-full h-full object-cover group-hover:scale-105 transition duration-500"></div>
+                            <div class="p-6 flex-1 flex flex-col justify-between">
+                                <div><h3 class="font-serif font-bold text-2xl text-brand-darkText">“Ultimate Kenya” Grand Circuit</h3><p class="text-sm text-stone-600 mt-2">Amboseli elephants paired smoothly with private river crossings along the Masai Mara lines.</p></div>
+                                <span class="inline-block text-sm font-extrabold text-brand-green mt-5">&rarr; Explore Details & Pricing</span>
+                            </div>
+                        </div>
+                        <div onclick="navigateTo('view-pkg-7b')" class="bg-white border border-stone-200 rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:border-brand-green transition duration-300 cursor-pointer group flex flex-col">
+                            <div class="h-56 overflow-hidden relative bg-stone-200"><img src="https://images.unsplash.com/photo-1602491453631-e2a5ad90a131?auto=format&fit=crop&w=600&q=75" alt="Safari" class="w-full h-full object-cover group-hover:scale-105 transition duration-500"></div>
+                            <div class="p-6 flex-1 flex flex-col justify-between">
+                                <div><h3 class="font-serif font-bold text-2xl text-brand-darkText">“The Voyager” Grand Circuit</h3><p class="text-sm text-stone-600 mt-2">Transversal routes covering high-density woodland tracks and broad open grass savannas.</p></div>
+                                <span class="inline-block text-sm font-extrabold text-brand-green mt-5">&rarr; Explore Details & Pricing</span>
+                            </div>
+                        </div>
+                        <div onclick="navigateTo('view-pkg-7c')" class="bg-white border border-stone-200 rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:border-brand-green transition duration-300 cursor-pointer group flex flex-col">
+                            <div class="h-56 overflow-hidden relative bg-stone-200"><img src="https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=600&q=75" alt="Safari" class="w-full h-full object-cover group-hover:scale-105 transition duration-500"></div>
+                            <div class="p-6 flex-1 flex flex-col justify-between">
+                                <div><h3 class="font-serif font-bold text-2xl text-brand-darkText">“The Constellation” Grand Circuit</h3><p class="text-sm text-stone-600 mt-2">Premium astronomical star-bed sleepouts under fully secure, guarded dark African skies.</p></div>
+                                <span class="inline-block text-sm font-extrabold text-brand-green mt-5">&rarr; Explore Details & Pricing</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="about-us-summary" class="bg-brand-lightGreen py-24 border-t border-stone-200">
+                <div class="max-w-4xl mx-auto px-4 text-center">
+                    <h2 class="text-3xl md:text-4xl font-serif font-black text-brand-green mb-6">Our Core Methodology</h2>
+                    <p class="text-stone-700 leading-relaxed text-lg mb-8">
+                        Sundown Safaris was built to rescue safari travel from commercial over-congestion. We own, audit, and strictly maintain our custom fleet of 4x4 off-road Land Cruisers. By mapping exclusive tracks and selecting remote private concessions, we guarantee you remain completely focused on raw nature—never the tail-lights of another tourist bus.
+                    </p>
+                    <div class="grid sm:grid-cols-3 gap-6 text-left">
+                        <div class="bg-white p-6 rounded-lg shadow-sm border border-stone-100">
+                            <i class="fa-solid fa-users text-2xl text-brand-accentGold mb-3"></i>
+                            <h4 class="font-bold text-stone-900 mb-1">Max 4 Guests</h4>
+                            <p class="text-xs text-stone-600">Guaranteed window seat visibility for every single traveler.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow-sm border border-stone-100">
+                            <i class="fa-solid fa-compass text-2xl text-brand-accentGold mb-3"></i>
+                            <h4 class="font-bold text-stone-900 mb-1">Private Tracks</h4>
+                            <p class="text-xs text-stone-600">Avoid standard arterial pathways for unmatched clarity.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow-sm border border-stone-100">
+                            <i class="fa-solid fa-shield text-2xl text-brand-accentGold mb-3"></i>
+                            <h4 class="font-bold text-stone-900 mb-1">Fully Certified</h4>
+                            <p class="text-xs text-stone-600">KATO-bonded security standards and direct operator control.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+
+        <div id="view-pkg-template" class="page-view py-16 px-4 max-w-5xl mx-auto">
+            <button onclick="navigateTo('view-home')" class="text-sm text-brand-green font-bold mb-6 inline-flex items-center gap-2">&larr; Back to Packages</button>
+            
+            <div class="grid md:grid-cols-12 gap-12">
+                <div class="md:col-span-8">
+                    <span id="pkg-label" class="bg-brand-green text-white text-xs uppercase font-black tracking-widest px-3 py-1 rounded inline-block mb-4">Tier Level</span>
+                    <h1 id="pkg-title" class="text-4xl md:text-5xl font-serif font-black text-brand-green tracking-tight leading-none mb-6">Package Configuration Title</h1>
+                    
+                    <div class="bg-rose-50 border-l-4 border-rose-500 p-5 rounded-r-lg mb-8">
+                        <h4 class="text-sm font-black text-rose-950 uppercase tracking-wider mb-1"><i class="fa-solid fa-triangle-exclamation mr-1"></i> High Demand Warning</h4>
+                        <p id="pkg-scarcity" class="text-sm text-rose-900 font-medium">Only 2 vehicles remain unallocated for this custom circuit pattern this season.</p>
+                    </div>
+
+                    <div class="prose max-w-none text-stone-700 space-y-4">
+                        <h3 class="font-serif font-bold text-xl text-stone-900">Itinerary Strategy & Metrics</h3>
+                        <p id="pkg-long-desc">Detailed tactical pipeline text injected dynamically by the navigation engine routing matrix system core parameters.</p>
+                    </div>
+                </div>
+
+                <div class="md:col-span-4 bg-white border border-stone-200 p-8 rounded-2xl shadow-xl h-fit sticky top-28">
+                    <p class="text-xs font-black uppercase tracking-widest text-stone-400">Audited Package Value</p>
+                    <div class="my-4">
+                        <span id="pkg-price" class="text-4xl font-black text-stone-950">$0,000</span>
+                        <span class="text-xs text-stone-500 block mt-1">USD per person / all-inclusive</span>
+                    </div>
+                    
+                    <div class="border-t border-b border-stone-100 py-4 my-6 space-y-3 text-xs text-stone-600 font-medium">
+                        <p><i class="fa-solid fa-check text-emerald-600 mr-2"></i> Custom 4x4 Land Cruiser Allotment</p>
+                        <p><i class="fa-solid fa-check text-emerald-600 mr-2"></i> Specialized Private Tracker & Fuel</p>
+                        <p><i class="fa-solid fa-check text-emerald-600 mr-2"></i> Luxury / Eco-Lodge Surcharges Incl.</p>
+                    </div>
+
+                    <button onclick="document.getElementById('master-booking').scrollIntoView({behavior: 'smooth'})" class="w-full bg-brand-green text-white text-center py-4 rounded-xl font-bold hover:bg-brand-accentGold transition duration-300 shadow-md uppercase text-xs tracking-wider">Secure Vehicle Allocation</button>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="view-guide" class="page-view py-16 px-4 max-w-4xl mx-auto">
+            <h1 class="text-4xl md:text-5xl font-serif font-black text-brand-green mb-6">The Master Kenya Safari Journal</h1>
+            <p class="text-stone-600 mb-10 leading-relaxed">Essential strategic intelligence compiled directly by our field coordinators in Nairobi to ensure seamless wildlife planning execution metrics.</p>
+            
+            <div class="space-y-12">
+                <article class="bg-white border border-stone-200 p-8 rounded-xl shadow-sm">
+                    <span class="text-xs font-black uppercase tracking-widest text-brand-accentGold block mb-2">Timing Frameworks</span>
+                    <h3 class="font-serif font-bold text-2xl text-stone-900 mb-3">When is the absolute best time to visit Kenya for the Great Migration?</h3>
+                    <p class="text-stone-700 leading-relaxed text-sm">
+                        While commercial tourist boards broadcast a generic window, true crossing dynamics peak between mid-July and late August. To experience this without heavy crowds, we recommend positioning inside private western concessions where vehicle access points are strictly monitored.
+                    </p>
+                </article>
+
+                <article class="bg-white border border-stone-200 p-8 rounded-xl shadow-sm">
+                    <span class="text-xs font-black uppercase tracking-widest text-brand-accentGold block mb-2">Ethics & Equipment</span>
+                    <h3 class="font-serif font-bold text-2xl text-stone-900 mb-3">A Guide to Low-Angle Photography in Private Concessions</h3>
+                    <p class="text-stone-700 leading-relaxed text-sm">
+                        Standard rooftop hatches restrict true low-profile wildlife perspective framing lines. Our fleet features custom window mounts and lowbean side panels, prioritizing high-stability beanbags over bulky tripods for fast alignment changes.
+                    </p>
+                </article>
+            </div>
+        </div>
+
+        <section id="master-booking" class="py-24 bg-stone-900 text-white mt-12">
+            <div class="max-w-4xl mx-auto px-4 text-center">
+                <span class="text-brand-accentGold uppercase font-black tracking-widest text-xs block mb-3">Direct Pipeline Request</span>
+                <h2 class="text-3xl md:text-5xl font-serif font-black mb-4">Request Your Custom Itinerary</h2>
+                <p class="text-stone-400 max-w-xl mx-auto mb-12 text-sm leading-relaxed">
+                    We maintain absolute vehicle constraints to ensure quality. Provide your coordination timeline details below, and an operations specialist will verify real-time grid availability.
+                </p>
+                
+                <form onsubmit="event.preventDefault(); alert('Submission received. A Sundown Safaris coordinator will verify tracking grid slots within 4 hours.');" class="bg-white text-stone-900 p-8 md:p-10 rounded-2xl shadow-2xl text-left grid md:grid-cols-2 gap-6 max-w-2xl mx-auto">
+                    <div>
+                        <label class="block text-xs font-black uppercase tracking-wider text-stone-400 mb-2">Full Name</label>
+                        <input type="text" required placeholder="John Doe" class="w-full p-4 border border-stone-200 rounded-lg text-sm bg-stone-50 focus:outline-brand-green">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-black uppercase tracking-wider text-stone-400 mb-2">Email Address</label>
+                        <input type="email" required placeholder="john@example.com" class="w-full p-4 border border-stone-200 rounded-lg text-sm bg-stone-50 focus:outline-brand-green">
+                    </div>
+                    <div class="md:col-span-2">
+                        <label class="block text-xs font-black uppercase tracking-wider text-stone-400 mb-2">Target Circuit Format</label>
+                        <select id="form-pkg-select" class="w-full p-4 border border-stone-200 rounded-lg text-sm bg-stone-50 text-stone-700 focus:outline-brand-green">
+                            <option value="general">General Custom Expedition Framework</option>
+                            <option value="3a">3-Day Adventure: “The Explorer”</option>
+                            <option value="3b">3-Day Classic: “The Photographer”</option>
+                            <option value="3c">3-Day Luxury Lite: “The Sundowner”</option>
+                            <option value="5a">5-Day Adventure: “The Trailblazer”</option>
+                            <option value="5b">5-Day Classic: “The Dreamcatcher”</option>
+                            <option value="5c">5-Day Luxury Lite: “The Horizon Chaser”</option>
+                            <option value="7a">7-Day Flagship: “Ultimate Kenya” Circuit</option>
+                            <option value="7b">7-Day Classic: “The Voyager”</option>
+                            <option value="7c">7-Day Luxury Lite: “The Constellation”</option>
+                        </select>
+                    </div>
+                    <div class="md:col-span-2 pt-2">
+                        <button type="submit" class="w-full bg-brand-green text-white font-extrabold p-4 rounded-lg hover:bg-brand-accentGold transition text-sm uppercase tracking-widest">Verify Slot Availability &rarr;</button>
+                    </div>
+                </form>
+                <p class="text-xs text-stone-500 mt-6"><i class="fa-solid fa-lock mr-1"></i> Operations direct line encrypted data pathway routing. Secure tracking parameters.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-stone-950 text-stone-500 py-12 text-center text-xs border-t border-stone-900">
+        <p class="uppercase font-bold tracking-widest text-stone-600 mb-2">Sundown Safaris Ltd.</p>
+        <p>&copy; 2026 Direct Field Operations Headquarters: Westlands, Nairobi, Kenya. All rights reserved.</p>
+    </footer>
+
+    <div id="bandwagon-popup" class="fixed bottom-6 left-6 bg-white border border-stone-200 shadow-2xl p-4 rounded-xl w-72 transform translate-y-20 opacity-0 transition-all duration-500 z-[1000] flex items-center gap-4">
+        <div class="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-700 shrink-0"><i class="fa-solid fa-check"></i></div>
+        <div>
+            <p class="text-[10px] font-black text-stone-400 uppercase tracking-wider">Recent Activity</p>
+            <p id="popup-text" class="text-xs font-semibold text-stone-800">Sarah from London requested a quote.</p>
+        </div>
+    </div>
+
+    <script>
+        // CONFIGURATIONS CONTENT REGISTRY
+        const packagesDb = {
+            '3a': { title: '“The Explorer” Track', label: '3-Day Adventure Tier', price: '$1,500', scarcity: 'Only 3 vehicle configurations left open for current July tracking sequences.', desc: 'Engineered specifically for active field trekking. Includes cross-country technical mountain biking routes through pristine volcanic valleys, fast sign interpretation loops, and high-intensity trail footprints overseen by certified rangers.' },
+            '3b': { title: '“The Photographer” Track', label: '3-Day Classic Tier', price: '$2,800', scarcity: 'Only 2 custom side-window vehicles available for migration month bookings.', desc: 'Built around specific low-angle vehicle modifications, side-window equipment mounts, and prolonged high-patience blocks positioned directly along prominent open savanna watering structures during low-sun vectors.' },
+            '3c': { title: '“The Sundowner” Track', label: '3-Day Luxury Lite', price: '$3,400', scarcity: 'Only 1 luxury airstrip fly-in allocation open for the requested schedule.', desc: 'Premium fly-in privileges bypass transit tracks directly via remote bush strips. Features top-tier canvas luxury camp configurations paired with curated sunset champagne lookouts directly overlooking migratory patterns.' },
+            '5a': { title: '“The Trailblazer” Track', label: '5-Day Adventure Tier', price: '$2,300', scarcity: 'Vehicle allocations for Samburu deep-circuits currently sitting at 85% capacity.', desc: 'Deep-reserve mapping operations stretching across Samburu northern eco-zones and private conservancy concessions. High-probability tracking protocols designed to reveal rare regional species.' },
+            '5b': { title: '“The Dreamcatcher” Track', label: '5-Day Classic Tier', price: '$3,900', scarcity: 'Only 2 vehicle chassis options remain uncommitted for the upcoming cycle.', desc: 'Five beautifully calibrated days balancing extended game drive hours with native tracker sign interpretations. Structured precisely to trace primary big-cat territorial perimeters without rushed timing constraints.' },
+            '5c': { title: '“The Horizon Chaser” Track', label: '5-Day Luxury Lite', price: '$4,800', scarcity: 'Hot air balloon morning launch baskets limited to 4 slots maximum.', desc: 'Includes premium high-altitude dawn hot air balloon flight paths paired with immaculate five-star glamping layouts. Perfect for travelers seeking high visual rewards with total comfort protection.' },
+            '7a': { title: '“Ultimate Kenya” Grand Circuit', label: '7-Day Flagship Masterpiece', price: '$5,900', scarcity: 'Only 1 custom long-wheelbase Land Cruiser open for this flagship path.', desc: 'Our complete cross-reserve epic configuration. Pairs Amboseli elephant tracking tracks smoothly with private western river crossing sectors along the Masai Mara parameters. Zero overlapping crowds.' },
+            '7b': { title: '“The Voyager” Grand Circuit', label: '7-Day Classic Tier', price: '$4,900', scarcity: 'Transversal route permits near maximum capacity controls for this quarter.', desc: 'A broad transversal blueprint tracking high-density forest mountain eco-zones before opening up directly onto raw savanna networks. Crafted explicitly for passionate geographers.' },
+            '7c': { title: '“The Constellation” Grand Circuit', label: '7-Day Luxury Lite', price: '$6,500', scarcity: 'Only 2 specialized astronomical open-deck platforms available this season.', desc: 'Elite tracking arrays featuring advanced night-vision tracking setups and open private luxury star-bed sleepouts under fully guarded, pristine dark African skies.' }
+        };
+
+        // NAVIGATION SWITCHBOARD ENGINE
+        function navigateTo(pageId) {
+            // Hide all active view panels
+            document.querySelectorAll('.page-view').forEach(view => view.classList.remove('active'));
+            
+            if (pageId.startsWith('view-pkg-')) {
+                const pkgKey = pageId.replace('view-pkg-', '');
+                const data = packagesDb[pkgKey];
+                
+                if (data) {
+                    // Inject data parameters directly into the DOM nodes
+                    document.getElementById('pkg-title').innerText = data.title;
+                    document.getElementById('pkg-label').innerText = data.label;
+                    document.getElementById('pkg-price').innerText = data.price;
+                    document.getElementById('pkg-scarcity').innerText = data.scarcity;
+                    document.getElementById('pkg-long-desc').innerText = data.desc;
+                    
+                    // Match the dropdown selector value to sync form values smoothly
+                    document.getElementById('form-pkg-select').value = pkgKey;
+                    
+                    // Show dynamic template view container
+                    document.getElementById('view-pkg-template').classList.add('active');
+                }
+            } else {
+                // Route directly to standalone standard pages (Home / Guide)
+                document.getElementById(pageId).classList.add('active');
+            }
+            // Auto scroll cleanly back to peak coordinate position
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // REAL-TIME SOCIAL PROOF ENGAGEMENT POPUP LOGIC
+        const bandwagonData = [
+            { name: "Sarah", city: "London", action: "requested a 7-Day Flagship quote" },
+            { name: "Marcus", city: "Zürich", action: "booked a Photographer Track slot" },
+            { name: "David", city: "New York", action: "secured an Explorer vehicle allocation" },
+            { name: "Chantal", city: "Lyon", action: "downloaded the Horizon Chaser itinerary" }
+        ];
+
+        function runBandwagonCycle() {
+            const popup = document.getElementById('bandwagon-popup');
+            const txtNode = document.getElementById('popup-text');
+            const item = bandwagonData[Math.floor(Math.random() * bandwagonData.length)];
+            
+            txtNode.innerText = `${item.name} from ${item.city} just ${item.action}.`;
+            popup.classList.remove('translate-y-20', 'opacity-0');
+            
+            setTimeout(() => {
+                popup.classList.add('translate-y-20', 'opacity-0');
+            }, 5000);
+        }
+        
+        // Initialize loops
+        setTimeout(runBandwagonCycle, 4000);
+        setInterval(runBandwagonCycle, 15000);
+    </script>
+</body>
+</html>
