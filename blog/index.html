@@ -4,40 +4,550 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kenya Safari Travel Guide & Blog | Sundown Safaris</title>
-  <meta name="description" content="Expert Kenya safari guides, Masai Mara tips, wildlife travel advice and itinerary planning from Sundown Safaris — Nairobi's private safari specialists.">
+  <meta name="description" content="Expert Kenya safari guides, Masai Mara tips, wildlife travel advice and itinerary planning from Sundown Safaris.">
   <style>
-    body { font-family: Georgia, serif; max-width: 900px; margin: 0 auto; padding: 20px; background: #0a0a0a; color: #f0ede6; }
-    h1 { font-size: 2.2em; color: #c9a84c; }
-    .subtitle { color: #999; margin-bottom: 40px; }
-    .post-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; }
-    .post-card { border: 1px solid #2a2a2a; border-radius: 8px; overflow: hidden; }
-    .post-card img { width: 100%; height: 180px; object-fit: cover; }
-    .post-card-body { padding: 20px; }
-    .post-card h2 { font-size: 1.1em; color: #c9a84c; margin: 0 0 10px; }
-    .post-card p { font-size: 0.9em; color: #aaa; line-height: 1.6; }
-    .post-card a { color: #c9a84c; text-decoration: none; font-size: 0.9em; }
-    .back { margin-bottom: 30px; } 
-    .back a { color: #c9a84c; text-decoration: none; }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:Georgia,serif;background:#0d0d0d;color:#e8e4dc}
+    nav{background:#0d0d0d;border-bottom:1px solid #1e1e1e;padding:16px 40px;display:flex;justify-content:space-between;align-items:center}
+    .logo{color:#c9a84c;font-size:1.1em;letter-spacing:3px;text-transform:uppercase;text-decoration:none;font-family:sans-serif}
+    .nav-link{color:#999;text-decoration:none;font-family:sans-serif;font-size:0.85em;letter-spacing:1px;margin-left:24px}
+    .nav-link:hover{color:#c9a84c}
+    .hero{padding:60px 40px 40px;max-width:1100px;margin:0 auto}
+    .hero h1{font-size:2.6em;color:#c9a84c;margin-bottom:12px}
+    .hero p{color:#888;font-family:sans-serif;font-size:0.95em}
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:28px;max-width:1100px;margin:0 auto;padding:0 40px 80px}
+    .post-card{background:#141414;border:1px solid #1e1e1e;border-radius:8px;overflow:hidden;transition:border-color 0.2s}
+    .post-card:hover{border-color:#c9a84c}
+    .post-card img{width:100%;height:200px;object-fit:cover;display:block}
+    .card-body{padding:22px}
+    .card-date{color:#555;font-size:0.75em;font-family:sans-serif;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px}
+    .card-body h2{font-size:1.05em;color:#e8e4dc;margin-bottom:10px;line-height:1.4}
+    .card-body h2 a{color:#e8e4dc;text-decoration:none}
+    .card-body h2 a:hover{color:#c9a84c}
+    .card-excerpt{color:#777;font-size:0.85em;line-height:1.6;margin-bottom:14px}
+    .read-more{color:#c9a84c;text-decoration:none;font-family:sans-serif;font-size:0.82em;letter-spacing:1px}
+    footer{border-top:1px solid #1e1e1e;padding:24px 40px;text-align:center;color:#444;font-size:0.8em;font-family:sans-serif}
+    @media(max-width:600px){nav{padding:16px 20px}.hero{padding:40px 20px 24px}.grid{padding:0 20px 60px}}
   </style>
 </head>
 <body>
-  <div class="back"><a href="/">← Back to Sundown Safaris</a></div>
-  <h1>The Sundown Safari Journal</h1>
-  <p class="subtitle">Field intelligence, safari guides, and travel planning from our team in Nairobi.</p>
-
-  <div class="post-grid">
-
-    <!-- PASTE A NEW CARD HERE EACH TIME YOU PUBLISH A POST -->
-
-    <div class="post-card">
-      <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600" alt="Masai Mara safari">
-      <div class="post-card-body">
-        <h2>Best Time to Visit Kenya for the Great Migration</h2>
-        <p>The real crossing windows, private concession timing, and how to avoid the tourist crowds.</p>
-        <a href="/blog/posts/best-time-to-visit-kenya-great-migration.html">Read More →</a>
-      </div>
+  <nav>
+    <a href="/" class="logo">SUNDOWN Safaris</a>
+    <div>
+      <a href="/" class="nav-link">Home</a>
+      <a href="/blog/" class="nav-link">Journal</a>
+      <a href="/#contact" class="nav-link">Contact</a>
     </div>
-
+  </nav>
+  <div class="hero">
+    <h1>The Sundown Safari Journal</h1>
+    <p>Field intelligence, itinerary guides, and wildlife insights from our team in Nairobi.</p>
   </div>
+  <div class="grid">
+    <article class="post-card">
+      <a href="/blog/2-day-masai-mara-safari-from-nairobi.html"><img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&q=80" alt="2-Day Masai Mara Safari from Nairobi"></a>
+      <div class="card-body">
+        <p class="card-date">Jul 21, 2025</p>
+        <h2><a href="/blog/2-day-masai-mara-safari-from-nairobi.html">2-Day Masai Mara Safari from Nairobi</a></h2>
+        <p class="card-excerpt">Planning a short but unforgettable safari? A 2-day Masai Mara safari from Nairobi is one of the most immersive and convenient opti...</p>
+        <a href="/blog/2-day-masai-mara-safari-from-nairobi.html" class="read-more">Read More →</a>
+      </div>
+    </article>
+    <article class="post-card">
+      <a href="/blog/best-time-to-visit-masai-mara.html"><img src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=600&q=80" alt="Best Time to Visit Masai Mara"></a>
+      <div class="card-body">
+        <p class="card-date">Jul 21, 2025</p>
+        <h2><a href="/blog/best-time-to-visit-masai-mara.html">Best Time to Visit Masai Mara</a></h2>
+        <p class="card-excerpt">Timing is everything when it comes to safari. Whether you&#x27;re aiming to witness the Great Migration or avoid the crowds, here&#x27;s a b...</p>
+        <a href="/blog/best-time-to-visit-masai-mara.html" class="read-more">Read More →</a>
+      </div>
+    </article>
+    <article class="post-card">
+      <a href="/blog/family-safaris-in-kenya-kid-friendly-activities-lodges-packing-tips.html"><img src="https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=600&q=80" alt="Family Safaris in Kenya: Kid-Friendly Activities, Lodges &amp; Packing Tips"></a>
+      <div class="card-body">
+        <p class="card-date">Jul 21, 2025</p>
+        <h2><a href="/blog/family-safaris-in-kenya-kid-friendly-activities-lodges-packing-tips.html">Family Safaris in Kenya: Kid-Friendly Activities, Lodges &amp; Packing Tips</a></h2>
+        <p class="card-excerpt">Going on safari with kids is not only possible — it’s magical. Kenya offers an incredible opportunity for children and parents ali...</p>
+        <a href="/blog/family-safaris-in-kenya-kid-friendly-activities-lodges-packing-tips.html" class="read-more">Read More →</a>
+      </div>
+    </article>
+    <article class="post-card">
+      <a href="/blog/luxury-safari-experiences-in-kenya-for-couples-romantic-getaways-in-the-wild.html"><img src="https://images.unsplash.com/photo-1549488344-1f9b8d2bd1f3?w=600&q=80" alt="Luxury Safari Experiences in Kenya for Couples: Romantic Getaways in the Wild"></a>
+      <div class="card-body">
+        <p class="card-date">Jul 21, 2025</p>
+        <h2><a href="/blog/luxury-safari-experiences-in-kenya-for-couples-romantic-getaways-in-the-wild.html">Luxury Safari Experiences in Kenya for Couples: Romantic Getaways in the Wild</a></h2>
+        <p class="card-excerpt">Few travel experiences match the romance of a luxury safari in Kenya. Think champagne breakfasts in the bush, sunset game drives, ...</p>
+        <a href="/blog/luxury-safari-experiences-in-kenya-for-couples-romantic-getaways-in-the-wild.html" class="read-more">Read More →</a>
+      </div>
+    </article>
+    <article class="post-card">
+      <a href="/blog/community-conservancies-how-local-maasai-safaris-enhance-wildlife-culture.html"><img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600&q=80" alt="Community Conservancies: How Local Maasai Safaris Enhance Wildlife &amp; Culture"></a>
+      <div class="card-body">
+        <p class="card-date">Jul 22, 2025</p>
+        <h2><a href="/blog/community-conservancies-how-local-maasai-safaris-enhance-wildlife-culture.html">Community Conservancies: How Local Maasai Safaris Enhance Wildlife &amp; Culture</a></h2>
+        <p class="card-excerpt">Introduction: The New Face of Safari in Kenya Beyond iconic game drives and luxury tents, a quiet revolution is happening in the h...</p>
+        <a href="/blog/community-conservancies-how-local-maasai-safaris-enhance-wildlife-culture.html" class="read-more">Read More →</a>
+      </div>
+    </article>
+    <article class="post-card">
+      <a href="/blog/unique-safari-activities-beyond-game-drives-hikes-canoes-hot-air-balloons.html"><img src="https://images.unsplash.com/photo-1519066629447-267fffa62d4b?w=600&q=80" alt="Unique Safari Activities Beyond Game Drives: Hikes, Canoes &amp; Hot-Air Balloons"></a>
+      <div class="card-body">
+        <p class="card-date">Jul 22, 2025</p>
+        <h2><a href="/blog/unique-safari-activities-beyond-game-drives-hikes-canoes-hot-air-balloons.html">Unique Safari Activities Beyond Game Drives: Hikes, Canoes &amp; Hot-Air Balloons</a></h2>
+        <p class="card-excerpt">Introduction: Safaris Are More Than Game Drives When most people imagine a safari, they think of 4x4 vehicles cruising the savanna...</p>
+        <a href="/blog/unique-safari-activities-beyond-game-drives-hikes-canoes-hot-air-balloons.html" class="read-more">Read More →</a>
+      </div>
+    </article>
+    <article class="post-card">
+      <a href="/blog/a-guide-to-kenyas-private-conservancies-the-future-of-luxury-safaris.html"><img src="https://images.unsplash.com/photo-1602491453631-e2a5ad90a131?w=600&q=80" alt="A Guide to Kenya’s Private Conservancies: The Future of Luxury Safaris"></a>
+      <div class="card-body">
+        <p class="card-date">Jul 22, 2025</p>
+        <h2><a href="/blog/a-guide-to-kenyas-private-conservancies-the-future-of-luxury-safaris.html">A Guide to Kenya’s Private Conservancies: The Future of Luxury Safaris</a></h2>
+        <p class="card-excerpt">Introduction: The Shift from Mass Tourism to Exclusive Experiences In recent years, discerning travelers have begun to shift away ...</p>
+        <a href="/blog/a-guide-to-kenyas-private-conservancies-the-future-of-luxury-safaris.html" class="read-more">Read More →</a>
+      </div>
+    </article>
+    <article class="post-card">
+      <a href="/blog/inside-kenyas-most-unique-safari-lodges-design-comfort-wildlife.html"><img src="https://images.unsplash.com/photo-1456926631375-92c8ce872def?w=600&q=80" alt="Inside Kenya&#x27;s Most Unique Safari Lodges: Design, Comfort &amp; Wildlife"></a>
+      <div class="card-body">
+        <p class="card-date">Jul 22, 2025</p>
+        <h2><a href="/blog/inside-kenyas-most-unique-safari-lodges-design-comfort-wildlife.html">Inside Kenya&#x27;s Most Unique Safari Lodges: Design, Comfort &amp; Wildlife</a></h2>
+        <p class="card-excerpt">Introduction: Where Design Meets the Wild When people imagine a Kenyan safari, it’s often scenes of roaming wildlife, open plains,...</p>
+        <a href="/blog/inside-kenyas-most-unique-safari-lodges-design-comfort-wildlife.html" class="read-more">Read More →</a>
+      </div>
+    </article>
+    <article class="post-card">
+      <a href="/blog/the-great-migration-in-kenya-best-times-where-to-stay.html"><img src="https://images.unsplash.com/photo-1502082553048-f009c37129b9?w=600&q=80" alt="The Great Migration in Kenya: Best Times &amp; Where to Stay"></a>
+      <div class="card-body">
+        <p class="card-date">Jul 22, 2025</p>
+        <h2><a href="/blog/the-great-migration-in-kenya-best-times-where-to-stay.html">The Great Migration in Kenya: Best Times &amp; Where to Stay</a></h2>
+        <p class="card-excerpt">Introduction: Nature&#x27;s Greatest Show on Earth Few wildlife spectacles compare to the Great Migration—a timeless journey of over 1....</p>
+        <a href="/blog/the-great-migration-in-kenya-best-times-where-to-stay.html" class="read-more">Read More →</a>
+      </div>
+    </article>
+    <article class="post-card">
+      <a href="/blog/what-to-pack-for-a-kenyan-safari-the-ultimate-guide-for-first-time-travelers.html"><img src="https://images.unsplash.com/photo-1589308078059-be1415eab4c3?w=600&q=80" alt="What to Pack for a Kenyan Safari: The Ultimate Guide for First-Time Travelers"></a>
+      <div class="card-body">
+        <p class="card-date">Jul 22, 2025</p>
+        <h2><a href="/blog/what-to-pack-for-a-kenyan-safari-the-ultimate-guide-for-first-time-travelers.html">What to Pack for a Kenyan Safari: The Ultimate Guide for First-Time Travelers</a></h2>
+        <p class="card-excerpt">Introduction: Packing Right, Experiencing More Packing for your first Kenyan safari can be overwhelming. What clothes should you w...</p>
+        <a href="/blog/what-to-pack-for-a-kenyan-safari-the-ultimate-guide-for-first-time-travelers.html" class="read-more">Read More →</a>
+      </div>
+    </article>
+    <article class="post-card">
+      <a href="/blog/insider-tips-for-a-safe-and-magical-safari-in-kenya.html"><img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&q=80" alt="Insider Tips for a Safe and Magical Safari in Kenya"></a>
+      <div class="card-body">
+        <p class="card-date">Jul 22, 2025</p>
+        <h2><a href="/blog/insider-tips-for-a-safe-and-magical-safari-in-kenya.html">Insider Tips for a Safe and Magical Safari in Kenya</a></h2>
+        <p class="card-excerpt">Introduction: Navigate Kenya’s Wild Heart Like a Pro Going on safari in Kenya is a once-in-a-lifetime experience. From the vast pl...</p>
+        <a href="/blog/insider-tips-for-a-safe-and-magical-safari-in-kenya.html" class="read-more">Read More →</a>
+      </div>
+    </article>
+    <article class="post-card">
+      <a href="/blog/the-most-stunning-safari-lodges-in-maasai-mara.html"><img src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=600&q=80" alt="The Most Stunning Safari Lodges in Maasai Mara"></a>
+      <div class="card-body">
+        <p class="card-date">Jul 22, 2025</p>
+        <h2><a href="/blog/the-most-stunning-safari-lodges-in-maasai-mara.html">The Most Stunning Safari Lodges in Maasai Mara</a></h2>
+        <p class="card-excerpt">Introduction: Where Luxury Meets the Wild There’s no safari destination quite like the Maasai Mara. Famed for its sprawling plains...</p>
+        <a href="/blog/the-most-stunning-safari-lodges-in-maasai-mara.html" class="read-more">Read More →</a>
+      </div>
+    </article>
+    <article class="post-card">
+      <a href="/blog/a-magical-guide-to-balloon-safaris-over-the-maasai-mara.html"><img src="https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=600&q=80" alt="A Magical Guide to Balloon Safaris Over the Maasai Mara"></a>
+      <div class="card-body">
+        <p class="card-date">Jul 22, 2025</p>
+        <h2><a href="/blog/a-magical-guide-to-balloon-safaris-over-the-maasai-mara.html">A Magical Guide to Balloon Safaris Over the Maasai Mara</a></h2>
+        <p class="card-excerpt">Introduction: See the Savannah from the Sky Imagine drifting silently above golden grasslands as the sun rises and casts a warm gl...</p>
+        <a href="/blog/a-magical-guide-to-balloon-safaris-over-the-maasai-mara.html" class="read-more">Read More →</a>
+      </div>
+    </article>
+    <article class="post-card">
+      <a href="/blog/immersive-cultural-safaris-in-kenya-discover-the-maasai-samburu-and-more.html"><img src="https://images.unsplash.com/photo-1549488344-1f9b8d2bd1f3?w=600&q=80" alt="Immersive Cultural Safaris in Kenya: Discover the Maasai, Samburu, and More"></a>
+      <div class="card-body">
+        <p class="card-date">Jul 24, 2025</p>
+        <h2><a href="/blog/immersive-cultural-safaris-in-kenya-discover-the-maasai-samburu-and-more.html">Immersive Cultural Safaris in Kenya: Discover the Maasai, Samburu, and More</a></h2>
+        <p class="card-excerpt">When you think of Kenya, your mind likely races to lions, elephants, and the Great Migration. But beyond the wild lies another won...</p>
+        <a href="/blog/immersive-cultural-safaris-in-kenya-discover-the-maasai-samburu-and-more.html" class="read-more">Read More →</a>
+      </div>
+    </article>
+    <article class="post-card">
+      <a href="/blog/walking-safaris-in-kenya-step-into-the-wild-on-foot.html"><img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600&q=80" alt="Walking Safaris in Kenya: Step Into the Wild on Foot"></a>
+      <div class="card-body">
+        <p class="card-date">Jul 24, 2025</p>
+        <h2><a href="/blog/walking-safaris-in-kenya-step-into-the-wild-on-foot.html">Walking Safaris in Kenya: Step Into the Wild on Foot</a></h2>
+        <p class="card-excerpt">Most travelers to Kenya think of game drives when they imagine safari. But what if you could ditch the vehicle and walk where lion...</p>
+        <a href="/blog/walking-safaris-in-kenya-step-into-the-wild-on-foot.html" class="read-more">Read More →</a>
+      </div>
+    </article>
+    <article class="post-card">
+      <a href="/blog/luxury-kenya-safari-packing-list-what-to-wear-2025-guide.html"><img src="https://images.unsplash.com/photo-1519066629447-267fffa62d4b?w=600&q=80" alt="Luxury Kenya Safari Packing List: What to Wear (2025 Guide)"></a>
+      <div class="card-body">
+        <p class="card-date">Jul 24, 2025</p>
+        <h2><a href="/blog/luxury-kenya-safari-packing-list-what-to-wear-2025-guide.html">Luxury Kenya Safari Packing List: What to Wear (2025 Guide)</a></h2>
+        <p class="card-excerpt"></p>
+        <a href="/blog/luxury-kenya-safari-packing-list-what-to-wear-2025-guide.html" class="read-more">Read More →</a>
+      </div>
+    </article>
+    <article class="post-card">
+      <a href="/blog/kenyas-most-epic-safari-lodges-where-luxury-meets-the-wild.html"><img src="https://images.unsplash.com/photo-1602491453631-e2a5ad90a131?w=600&q=80" alt="Kenya&#x27;s Most Epic Safari Lodges: Where Luxury Meets the Wild"></a>
+      <div class="card-body">
+        <p class="card-date">Jul 24, 2025</p>
+        <h2><a href="/blog/kenyas-most-epic-safari-lodges-where-luxury-meets-the-wild.html">Kenya&#x27;s Most Epic Safari Lodges: Where Luxury Meets the Wild</a></h2>
+        <p class="card-excerpt">Imagine waking up to the echo of distant lion calls, sipping your morning coffee as elephants stroll by your verandah, and ending ...</p>
+        <a href="/blog/kenyas-most-epic-safari-lodges-where-luxury-meets-the-wild.html" class="read-more">Read More →</a>
+      </div>
+    </article>
+    <article class="post-card">
+      <a href="/blog/kenya-through-the-lens-the-ultimate-guide-to-photographic-safaris.html"><img src="https://images.unsplash.com/photo-1456926631375-92c8ce872def?w=600&q=80" alt="Kenya Through the Lens: The Ultimate Guide to Photographic Safaris"></a>
+      <div class="card-body">
+        <p class="card-date">Jul 24, 2025</p>
+        <h2><a href="/blog/kenya-through-the-lens-the-ultimate-guide-to-photographic-safaris.html">Kenya Through the Lens: The Ultimate Guide to Photographic Safaris</a></h2>
+        <p class="card-excerpt">Where Every Click Tells a Story For those who see the world through a viewfinder, Kenya is a dreamscape of breathtaking moments wa...</p>
+        <a href="/blog/kenya-through-the-lens-the-ultimate-guide-to-photographic-safaris.html" class="read-more">Read More →</a>
+      </div>
+    </article>
+    <article class="post-card">
+      <a href="/blog/luxury-safari-lodges-in-kenya-wild-beauty-meets-ultimate-comfort.html"><img src="https://images.unsplash.com/photo-1502082553048-f009c37129b9?w=600&q=80" alt="Luxury Safari Lodges in Kenya: Wild Beauty Meets Ultimate Comfort"></a>
+      <div class="card-body">
+        <p class="card-date">Jul 24, 2025</p>
+        <h2><a href="/blog/luxury-safari-lodges-in-kenya-wild-beauty-meets-ultimate-comfort.html">Luxury Safari Lodges in Kenya: Wild Beauty Meets Ultimate Comfort</a></h2>
+        <p class="card-excerpt">Welcome to Safari, Redefined If you thought safaris meant roughing it in the wild, think again. Kenya has elevated the safari expe...</p>
+        <a href="/blog/luxury-safari-lodges-in-kenya-wild-beauty-meets-ultimate-comfort.html" class="read-more">Read More →</a>
+      </div>
+    </article>
+    <article class="post-card">
+      <a href="/blog/solo-female-safari-in-kenya-2025-safety-luxury-tips.html"><img src="https://images.unsplash.com/photo-1589308078059-be1415eab4c3?w=600&q=80" alt="Solo Female Safari in Kenya: 2025 Safety &amp; Luxury Tips"></a>
+      <div class="card-body">
+        <p class="card-date">Jul 24, 2025</p>
+        <h2><a href="/blog/solo-female-safari-in-kenya-2025-safety-luxury-tips.html">Solo Female Safari in Kenya: 2025 Safety &amp; Luxury Tips</a></h2>
+        <p class="card-excerpt">The first light of dawn spills across the savanna as your private guide cuts the engine. In the silence, you hear it—the rasping b...</p>
+        <a href="/blog/solo-female-safari-in-kenya-2025-safety-luxury-tips.html" class="read-more">Read More →</a>
+      </div>
+    </article>
+    <article class="post-card">
+      <a href="/blog/kenya-vs-south-africa-safari-2025-luxury-comparison.html"><img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&q=80" alt="Kenya vs. South Africa Safari: 2025 Luxury Comparison"></a>
+      <div class="card-body">
+        <p class="card-date">Jul 24, 2025</p>
+        <h2><a href="/blog/kenya-vs-south-africa-safari-2025-luxury-comparison.html">Kenya vs. South Africa Safari: 2025 Luxury Comparison</a></h2>
+        <p class="card-excerpt">The buffalo’s legs buckle as the lioness clamps down on its throat. Blood sprays the grass—and your Land Cruiser’s windshield. In ...</p>
+        <a href="/blog/kenya-vs-south-africa-safari-2025-luxury-comparison.html" class="read-more">Read More →</a>
+      </div>
+    </article>
+    <article class="post-card">
+      <a href="/blog/wings-over-kenya-the-ultimate-birdwatching-safari-experience.html"><img src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=600&q=80" alt="Wings Over Kenya: The Ultimate Birdwatching Safari Experience"></a>
+      <div class="card-body">
+        <p class="card-date">Jul 24, 2025</p>
+        <h2><a href="/blog/wings-over-kenya-the-ultimate-birdwatching-safari-experience.html">Wings Over Kenya: The Ultimate Birdwatching Safari Experience</a></h2>
+        <p class="card-excerpt">A Symphony of Wings and Song For those who find peace in fluttering wings and thrill in ticking off species lists, Kenya offers a ...</p>
+        <a href="/blog/wings-over-kenya-the-ultimate-birdwatching-safari-experience.html" class="read-more">Read More →</a>
+      </div>
+    </article>
+    <article class="post-card">
+      <a href="/blog/hidden-gems-of-kenya-off-the-beaten-path-safari-adventures.html"><img src="https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=600&q=80" alt="Hidden Gems of Kenya: Off-the-Beaten-Path Safari Adventures"></a>
+      <div class="card-body">
+        <p class="card-date">Jul 24, 2025</p>
+        <h2><a href="/blog/hidden-gems-of-kenya-off-the-beaten-path-safari-adventures.html">Hidden Gems of Kenya: Off-the-Beaten-Path Safari Adventures</a></h2>
+        <p class="card-excerpt">Beyond the Usual Tracks For most travelers, Kenya means the Big Five, the Great Migration, and perhaps a balloon ride over the Maa...</p>
+        <a href="/blog/hidden-gems-of-kenya-off-the-beaten-path-safari-adventures.html" class="read-more">Read More →</a>
+      </div>
+    </article>
+    <article class="post-card">
+      <a href="/blog/magical-nights-in-the-wild-unforgettable-bush-dinners-safari-sleepouts.html"><img src="https://images.unsplash.com/photo-1549488344-1f9b8d2bd1f3?w=600&q=80" alt="Magical Nights in the Wild: Unforgettable Bush Dinners &amp; Safari Sleepouts"></a>
+      <div class="card-body">
+        <p class="card-date">Jul 24, 2025</p>
+        <h2><a href="/blog/magical-nights-in-the-wild-unforgettable-bush-dinners-safari-sleepouts.html">Magical Nights in the Wild: Unforgettable Bush Dinners &amp; Safari Sleepouts</a></h2>
+        <p class="card-excerpt">When the Sun Sets, the Magic Begins The sun dips below the horizon, painting the sky with shades of tangerine and rose. As the las...</p>
+        <a href="/blog/magical-nights-in-the-wild-unforgettable-bush-dinners-safari-sleepouts.html" class="read-more">Read More →</a>
+      </div>
+    </article>
+    <article class="post-card">
+      <a href="/blog/luxury-honeymoon-safaris-in-kenya-romance-in-the-wild.html"><img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600&q=80" alt="Luxury Honeymoon Safaris in Kenya: Romance in the Wild"></a>
+      <div class="card-body">
+        <p class="card-date">Aug 04, 2025</p>
+        <h2><a href="/blog/luxury-honeymoon-safaris-in-kenya-romance-in-the-wild.html">Luxury Honeymoon Safaris in Kenya: Romance in the Wild</a></h2>
+        <p class="card-excerpt">Imagine waking up to the soft golden sunrise casting its glow over the savannah, a symphony of birds serenading your new life toge...</p>
+        <a href="/blog/luxury-honeymoon-safaris-in-kenya-romance-in-the-wild.html" class="read-more">Read More →</a>
+      </div>
+    </article>
+    <article class="post-card">
+      <a href="/blog/the-big-cat-safari-adventure-tracking-lions-leopards-cheetahs-in-kenya.html"><img src="https://images.unsplash.com/photo-1519066629447-267fffa62d4b?w=600&q=80" alt="The Big Cat Safari Adventure: Tracking Lions, Leopards &amp; Cheetahs in Kenya"></a>
+      <div class="card-body">
+        <p class="card-date">Aug 04, 2025</p>
+        <h2><a href="/blog/the-big-cat-safari-adventure-tracking-lions-leopards-cheetahs-in-kenya.html">The Big Cat Safari Adventure: Tracking Lions, Leopards &amp; Cheetahs in Kenya</a></h2>
+        <p class="card-excerpt">Face to Face with Africa&#x27;s Elite Predators There is a thrill that surges through your veins when you lock eyes with a lion in the ...</p>
+        <a href="/blog/the-big-cat-safari-adventure-tracking-lions-leopards-cheetahs-in-kenya.html" class="read-more">Read More →</a>
+      </div>
+    </article>
+    <article class="post-card">
+      <a href="/blog/hidden-kenya-safari-gems-5-luxury-destinations-better-than-the-masai-mara.html"><img src="https://images.unsplash.com/photo-1602491453631-e2a5ad90a131?w=600&q=80" alt="Hidden Kenya Safari Gems: 5 Luxury Destinations Better Than the Masai Mara"></a>
+      <div class="card-body">
+        <p class="card-date">Aug 05, 2025</p>
+        <h2><a href="/blog/hidden-kenya-safari-gems-5-luxury-destinations-better-than-the-masai-mara.html">Hidden Kenya Safari Gems: 5 Luxury Destinations Better Than the Masai Mara</a></h2>
+        <p class="card-excerpt">The wildebeest herds of the Masai Mara are legendary—but what if you could have pristine wilderness, rare wildlife, and five-star ...</p>
+        <a href="/blog/hidden-kenya-safari-gems-5-luxury-destinations-better-than-the-masai-mara.html" class="read-more">Read More →</a>
+      </div>
+    </article>
+    <article class="post-card">
+      <a href="/blog/private-air-safari-kenya-luxury-fly-in-lodges-helicopter-adventures.html"><img src="https://images.unsplash.com/photo-1456926631375-92c8ce872def?w=600&q=80" alt="Private Air Safari Kenya: Luxury Fly-In Lodges &amp; Helicopter Adventures"></a>
+      <div class="card-body">
+        <p class="card-date">Aug 05, 2025</p>
+        <h2><a href="/blog/private-air-safari-kenya-luxury-fly-in-lodges-helicopter-adventures.html">Private Air Safari Kenya: Luxury Fly-In Lodges &amp; Helicopter Adventures</a></h2>
+        <p class="card-excerpt">The Cessna’s wheels lift off the Mara’s dirt airstrip as your guide points below: &quot;That’s the pride we tracked yesterday—see the c...</p>
+        <a href="/blog/private-air-safari-kenya-luxury-fly-in-lodges-helicopter-adventures.html" class="read-more">Read More →</a>
+      </div>
+    </article>
+    <article class="post-card">
+      <a href="/blog/ethical-safari-kenya-how-to-avoid-exploitation-support-real-conservation.html"><img src="https://images.unsplash.com/photo-1502082553048-f009c37129b9?w=600&q=80" alt="Ethical Safari Kenya: How to Avoid Exploitation &amp; Support Real Conservation"></a>
+      <div class="card-body">
+        <p class="card-date">Aug 05, 2025</p>
+        <h2><a href="/blog/ethical-safari-kenya-how-to-avoid-exploitation-support-real-conservation.html">Ethical Safari Kenya: How to Avoid Exploitation &amp; Support Real Conservation</a></h2>
+        <p class="card-excerpt">The lion cub nuzzles against the tourist’s leg—a viral Instagram moment. What the caption won’t say: That cub was taken from its m...</p>
+        <a href="/blog/ethical-safari-kenya-how-to-avoid-exploitation-support-real-conservation.html" class="read-more">Read More →</a>
+      </div>
+    </article>
+    <article class="post-card">
+      <a href="/blog/kenyas-most-expensive-safari-lodges-luxury-worth-splurging-on.html"><img src="https://images.unsplash.com/photo-1589308078059-be1415eab4c3?w=600&q=80" alt="Kenya’s Most Expensive Safari Lodges – Luxury Worth Splurging On"></a>
+      <div class="card-body">
+        <p class="card-date">Aug 05, 2025</p>
+        <h2><a href="/blog/kenyas-most-expensive-safari-lodges-luxury-worth-splurging-on.html">Kenya’s Most Expensive Safari Lodges – Luxury Worth Splurging On</a></h2>
+        <p class="card-excerpt">The Price of Perfection The champagne flute trembled as the Land Cruiser lurched to a halt. My butler, Julius, steadied it without...</p>
+        <a href="/blog/kenyas-most-expensive-safari-lodges-luxury-worth-splurging-on.html" class="read-more">Read More →</a>
+      </div>
+    </article>
+    <article class="post-card">
+      <a href="/blog/safari-for-foodies-culinary-adventures-in-the-kenyan-wild.html"><img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&q=80" alt="Safari for Foodies – Culinary Adventures in the Kenyan Wild"></a>
+      <div class="card-body">
+        <p class="card-date">Aug 05, 2025</p>
+        <h2><a href="/blog/safari-for-foodies-culinary-adventures-in-the-kenyan-wild.html">Safari for Foodies – Culinary Adventures in the Kenyan Wild</a></h2>
+        <p class="card-excerpt">Taste the Wild – Kenya&#x27;s Safari Beyond Wildlife When you think of a Kenyan safari, your mind likely pictures wildlife encounters—m...</p>
+        <a href="/blog/safari-for-foodies-culinary-adventures-in-the-kenyan-wild.html" class="read-more">Read More →</a>
+      </div>
+    </article>
+    <article class="post-card">
+      <a href="/blog/weirdest-kenya-safari-adventures-camel-treks-underwater-wine-more.html"><img src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=600&q=80" alt="Weirdest Kenya Safari Adventures – Camel Treks, Underwater Wine &amp; More"></a>
+      <div class="card-body">
+        <p class="card-date">Aug 05, 2025</p>
+        <h2><a href="/blog/weirdest-kenya-safari-adventures-camel-treks-underwater-wine-more.html">Weirdest Kenya Safari Adventures – Camel Treks, Underwater Wine &amp; More</a></h2>
+        <p class="card-excerpt">When a Land Cruiser Isn’t Wild Enough The camel lurched sideways as the black rhino locked eyes with us. My guide, Ali, whispered:...</p>
+        <a href="/blog/weirdest-kenya-safari-adventures-camel-treks-underwater-wine-more.html" class="read-more">Read More →</a>
+      </div>
+    </article>
+    <article class="post-card">
+      <a href="/blog/i-pointed-my-rifle-then-my-life-changed-forever.html"><img src="https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=600&q=80" alt="I Pointed My Rifle... Then My Life Changed Forever"></a>
+      <div class="card-body">
+        <p class="card-date">Aug 05, 2025</p>
+        <h2><a href="/blog/i-pointed-my-rifle-then-my-life-changed-forever.html">I Pointed My Rifle... Then My Life Changed Forever</a></h2>
+        <p class="card-excerpt">The Ambush Ol Pejeta Conservancy, Kenya – 2009 The rifle stock was slick with sweat. Joseph, then 24, crouched in the acacia thick...</p>
+        <a href="/blog/i-pointed-my-rifle-then-my-life-changed-forever.html" class="read-more">Read More →</a>
+      </div>
+    </article>
+    <article class="post-card">
+      <a href="/blog/wellness-in-the-wild-embrace-nature-with-kenyas-safari-inspired-retreats.html"><img src="https://images.unsplash.com/photo-1549488344-1f9b8d2bd1f3?w=600&q=80" alt="Wellness in the Wild – Embrace Nature with Kenya&#x27;s Safari-Inspired Retreats"></a>
+      <div class="card-body">
+        <p class="card-date">Aug 05, 2025</p>
+        <h2><a href="/blog/wellness-in-the-wild-embrace-nature-with-kenyas-safari-inspired-retreats.html">Wellness in the Wild – Embrace Nature with Kenya&#x27;s Safari-Inspired Retreats</a></h2>
+        <p class="card-excerpt">Healing in the Heart of the Savannah Imagine starting your morning with yoga on a private deck as giraffes graze in the distance, ...</p>
+        <a href="/blog/wellness-in-the-wild-embrace-nature-with-kenyas-safari-inspired-retreats.html" class="read-more">Read More →</a>
+      </div>
+    </article>
+    <article class="post-card">
+      <a href="/blog/why-kenya-is-the-perfect-family-safari-destination.html"><img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600&q=80" alt="Why Kenya is the Perfect Family Safari Destination"></a>
+      <div class="card-body">
+        <p class="card-date">Aug 05, 2025</p>
+        <h2><a href="/blog/why-kenya-is-the-perfect-family-safari-destination.html">Why Kenya is the Perfect Family Safari Destination</a></h2>
+        <p class="card-excerpt">Kenya offers wildlife-packed parks, malaria-free conservancies, and lodges with dedicated kids’ programs—making it ideal for famil...</p>
+        <a href="/blog/why-kenya-is-the-perfect-family-safari-destination.html" class="read-more">Read More →</a>
+      </div>
+    </article>
+    <article class="post-card">
+      <a href="/blog/best-kenya-group-safaris-for-friends-private-lodges-big-adventures-unforgettable-nights.html"><img src="https://images.unsplash.com/photo-1519066629447-267fffa62d4b?w=600&q=80" alt="Best Kenya Group Safaris for Friends – Private Lodges, Big Adventures &amp; Unforgettable Nights"></a>
+      <div class="card-body">
+        <p class="card-date">Aug 05, 2025</p>
+        <h2><a href="/blog/best-kenya-group-safaris-for-friends-private-lodges-big-adventures-unforgettable-nights.html">Best Kenya Group Safaris for Friends – Private Lodges, Big Adventures &amp; Unforgettable Nights</a></h2>
+        <p class="card-excerpt">Why Kenya is the Ultimate Group Safari Destination ✅ Private conservancies = No crowds, just your crew✅ Exclusive-use lodges &amp; vil...</p>
+        <a href="/blog/best-kenya-group-safaris-for-friends-private-lodges-big-adventures-unforgettable-nights.html" class="read-more">Read More →</a>
+      </div>
+    </article>
+    <article class="post-card">
+      <a href="/blog/capturing-the-wild-a-photographers-dream-safari-in-kenya.html"><img src="https://images.unsplash.com/photo-1602491453631-e2a5ad90a131?w=600&q=80" alt="Capturing the Wild: A Photographer&#x27;s Dream Safari in Kenya"></a>
+      <div class="card-body">
+        <p class="card-date">Aug 05, 2025</p>
+        <h2><a href="/blog/capturing-the-wild-a-photographers-dream-safari-in-kenya.html">Capturing the Wild: A Photographer&#x27;s Dream Safari in Kenya</a></h2>
+        <p class="card-excerpt">Where Every Click Tells a Story Kenya is not just a safari destination; it is a living canvas. From golden light spilling over the...</p>
+        <a href="/blog/capturing-the-wild-a-photographers-dream-safari-in-kenya.html" class="read-more">Read More →</a>
+      </div>
+    </article>
+    <article class="post-card">
+      <a href="/blog/thrills-in-the-sky-a-hot-air-balloon-safari-over-the-maasai-mara.html"><img src="https://images.unsplash.com/photo-1456926631375-92c8ce872def?w=600&q=80" alt="Thrills in the Sky: A Hot Air Balloon Safari Over the Maasai Mara"></a>
+      <div class="card-body">
+        <p class="card-date">Aug 05, 2025</p>
+        <h2><a href="/blog/thrills-in-the-sky-a-hot-air-balloon-safari-over-the-maasai-mara.html">Thrills in the Sky: A Hot Air Balloon Safari Over the Maasai Mara</a></h2>
+        <p class="card-excerpt">Float Above the Wild, Witness the Unimaginable Imagine the first light of dawn slicing through the mist, illuminating thousands of...</p>
+        <a href="/blog/thrills-in-the-sky-a-hot-air-balloon-safari-over-the-maasai-mara.html" class="read-more">Read More →</a>
+      </div>
+    </article>
+    <article class="post-card">
+      <a href="/blog/vows-in-the-wild-planning-a-dream-bush-wedding-in-kenya.html"><img src="https://images.unsplash.com/photo-1502082553048-f009c37129b9?w=600&q=80" alt="Vows in the Wild: Planning a Dream Bush Wedding in Kenya"></a>
+      <div class="card-body">
+        <p class="card-date">Aug 05, 2025</p>
+        <h2><a href="/blog/vows-in-the-wild-planning-a-dream-bush-wedding-in-kenya.html">Vows in the Wild: Planning a Dream Bush Wedding in Kenya</a></h2>
+        <p class="card-excerpt">Say “I Do” Where the Wild Things Are What if your wedding aisle was a path through golden savannah grass, your altar a fig tree in...</p>
+        <a href="/blog/vows-in-the-wild-planning-a-dream-bush-wedding-in-kenya.html" class="read-more">Read More →</a>
+      </div>
+    </article>
+    <article class="post-card">
+      <a href="/blog/month-by-month-guide-to-kenyas-great-migration.html"><img src="https://images.unsplash.com/photo-1589308078059-be1415eab4c3?w=600&q=80" alt="Month-by-Month Guide to Kenya’s Great Migration"></a>
+      <div class="card-body">
+        <p class="card-date">Aug 19, 2025</p>
+        <h2><a href="/blog/month-by-month-guide-to-kenyas-great-migration.html">Month-by-Month Guide to Kenya’s Great Migration</a></h2>
+        <p class="card-excerpt">Why the Great Migration is Nature’s Greatest Show Every year, nearly two million wildebeest, zebras, and gazelles thunder across t...</p>
+        <a href="/blog/month-by-month-guide-to-kenyas-great-migration.html" class="read-more">Read More →</a>
+      </div>
+    </article>
+    <article class="post-card">
+      <a href="/blog/kenya-walking-safaris-the-raw-untamed-adventure-you-cant-miss.html"><img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&q=80" alt="Kenya Walking Safaris: The Raw, Untamed Adventure You Can’t Miss"></a>
+      <div class="card-body">
+        <p class="card-date">Aug 19, 2025</p>
+        <h2><a href="/blog/kenya-walking-safaris-the-raw-untamed-adventure-you-cant-miss.html">Kenya Walking Safaris: The Raw, Untamed Adventure You Can’t Miss</a></h2>
+        <p class="card-excerpt">Step Off the Jeep and Into the Wild When most people picture a Kenyan safari, they imagine bouncing across the savannah in a 4x4, ...</p>
+        <a href="/blog/kenya-walking-safaris-the-raw-untamed-adventure-you-cant-miss.html" class="read-more">Read More →</a>
+      </div>
+    </article>
+    <article class="post-card">
+      <a href="/blog/bush-walking-tours-in-kenya-a-thrilling-way-to-explore-the-wild.html"><img src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=600&q=80" alt="Bush Walking Tours in Kenya: A Thrilling Way to Explore the Wild"></a>
+      <div class="card-body">
+        <p class="card-date">Aug 19, 2025</p>
+        <h2><a href="/blog/bush-walking-tours-in-kenya-a-thrilling-way-to-explore-the-wild.html">Bush Walking Tours in Kenya: A Thrilling Way to Explore the Wild</a></h2>
+        <p class="card-excerpt">Walking Into the Heart of Africa There’s something transformative about walking through the African bush. Without the comfort of a...</p>
+        <a href="/blog/bush-walking-tours-in-kenya-a-thrilling-way-to-explore-the-wild.html" class="read-more">Read More →</a>
+      </div>
+    </article>
+    <article class="post-card">
+      <a href="/blog/the-ultimate-packing-guide-for-a-kenyan-safari-what-to-bring-what-to-wear.html"><img src="https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=600&q=80" alt="The Ultimate Packing Guide for a Kenyan Safari: What to Bring &amp; What to Wear"></a>
+      <div class="card-body">
+        <p class="card-date">Aug 19, 2025</p>
+        <h2><a href="/blog/the-ultimate-packing-guide-for-a-kenyan-safari-what-to-bring-what-to-wear.html">The Ultimate Packing Guide for a Kenyan Safari: What to Bring &amp; What to Wear</a></h2>
+        <p class="card-excerpt">A Kenyan safari is not just a holiday—it’s an immersion into wild, untouched landscapes, thrilling wildlife encounters, and cultur...</p>
+        <a href="/blog/the-ultimate-packing-guide-for-a-kenyan-safari-what-to-bring-what-to-wear.html" class="read-more">Read More →</a>
+      </div>
+    </article>
+    <article class="post-card">
+      <a href="/blog/top-tips-for-capturing-stunning-wildlife-photos-on-safari-in-kenya.html"><img src="https://images.unsplash.com/photo-1549488344-1f9b8d2bd1f3?w=600&q=80" alt="Top Tips for Capturing Stunning Wildlife Photos on Safari in Kenya"></a>
+      <div class="card-body">
+        <p class="card-date">Aug 19, 2025</p>
+        <h2><a href="/blog/top-tips-for-capturing-stunning-wildlife-photos-on-safari-in-kenya.html">Top Tips for Capturing Stunning Wildlife Photos on Safari in Kenya</a></h2>
+        <p class="card-excerpt">A safari in Kenya offers the chance to witness some of the planet’s most breathtaking wildlife spectacles. From a lioness stalking...</p>
+        <a href="/blog/top-tips-for-capturing-stunning-wildlife-photos-on-safari-in-kenya.html" class="read-more">Read More →</a>
+      </div>
+    </article>
+    <article class="post-card">
+      <a href="/blog/community-conservancies-how-local-maasai-safaris-enhance-wildlife-culture-2.html"><img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600&q=80" alt="Community Conservancies: How Local Maasai Safaris Enhance Wildlife &amp; Culture"></a>
+      <div class="card-body">
+        <p class="card-date">Aug 20, 2025</p>
+        <h2><a href="/blog/community-conservancies-how-local-maasai-safaris-enhance-wildlife-culture-2.html">Community Conservancies: How Local Maasai Safaris Enhance Wildlife &amp; Culture</a></h2>
+        <p class="card-excerpt">Beyond the Game Drive For many travelers, a safari in Kenya means spotting lions on the golden plains, watching elephants cross ri...</p>
+        <a href="/blog/community-conservancies-how-local-maasai-safaris-enhance-wildlife-culture-2.html" class="read-more">Read More →</a>
+      </div>
+    </article>
+    <article class="post-card">
+      <a href="/blog/beyond-game-drives-unique-safari-activities-in-kenya.html"><img src="https://images.unsplash.com/photo-1519066629447-267fffa62d4b?w=600&q=80" alt="Beyond Game Drives – Unique Safari Activities in Kenya"></a>
+      <div class="card-body">
+        <p class="card-date">Aug 20, 2025</p>
+        <h2><a href="/blog/beyond-game-drives-unique-safari-activities-in-kenya.html">Beyond Game Drives – Unique Safari Activities in Kenya</a></h2>
+        <p class="card-excerpt">Rethinking the Safari When you think “safari,” the image is almost always the same: a 4x4 bouncing across savannah grasslands in s...</p>
+        <a href="/blog/beyond-game-drives-unique-safari-activities-in-kenya.html" class="read-more">Read More →</a>
+      </div>
+    </article>
+    <article class="post-card">
+      <a href="/blog/the-ultimate-safari-planning-guide-best-time-to-visit-kenyas-parks.html"><img src="https://images.unsplash.com/photo-1602491453631-e2a5ad90a131?w=600&q=80" alt="The Ultimate Safari Planning Guide: Best Time to Visit Kenya’s Parks"></a>
+      <div class="card-body">
+        <p class="card-date">Aug 20, 2025</p>
+        <h2><a href="/blog/the-ultimate-safari-planning-guide-best-time-to-visit-kenyas-parks.html">The Ultimate Safari Planning Guide: Best Time to Visit Kenya’s Parks</a></h2>
+        <p class="card-excerpt">Why Timing Matters on Safari A Kenyan safari is one of those once-in-a-lifetime adventures. The thrill of watching lions stalk the...</p>
+        <a href="/blog/the-ultimate-safari-planning-guide-best-time-to-visit-kenyas-parks.html" class="read-more">Read More →</a>
+      </div>
+    </article>
+    <article class="post-card">
+      <a href="/blog/luxury-vs-budget-safaris-in-kenya-which-is-right-for-you.html"><img src="https://images.unsplash.com/photo-1456926631375-92c8ce872def?w=600&q=80" alt="Luxury vs. Budget Safaris in Kenya: Which is Right for You?"></a>
+      <div class="card-body">
+        <p class="card-date">Aug 20, 2025</p>
+        <h2><a href="/blog/luxury-vs-budget-safaris-in-kenya-which-is-right-for-you.html">Luxury vs. Budget Safaris in Kenya: Which is Right for You?</a></h2>
+        <p class="card-excerpt">Two Sides of the Safari Coin Safari in Kenya can mean sipping champagne in a private plunge pool overlooking the savannah—or bounc...</p>
+        <a href="/blog/luxury-vs-budget-safaris-in-kenya-which-is-right-for-you.html" class="read-more">Read More →</a>
+      </div>
+    </article>
+    <article class="post-card">
+      <a href="/blog/kenya-walking-safaris-the-most-immersive-safari-experience.html"><img src="https://images.unsplash.com/photo-1502082553048-f009c37129b9?w=600&q=80" alt="Kenya Walking Safaris: The Most Immersive Safari Experience"></a>
+      <div class="card-body">
+        <p class="card-date">Aug 20, 2025</p>
+        <h2><a href="/blog/kenya-walking-safaris-the-most-immersive-safari-experience.html">Kenya Walking Safaris: The Most Immersive Safari Experience</a></h2>
+        <p class="card-excerpt">Beyond the Game Drive For most travelers, the idea of a safari immediately conjures up images of a sturdy 4x4 bouncing across the ...</p>
+        <a href="/blog/kenya-walking-safaris-the-most-immersive-safari-experience.html" class="read-more">Read More →</a>
+      </div>
+    </article>
+    <article class="post-card">
+      <a href="/blog/safety-tips-for-walking-safaris-in-kenya.html"><img src="https://images.unsplash.com/photo-1589308078059-be1415eab4c3?w=600&q=80" alt="Safety Tips for Walking Safaris in Kenya"></a>
+      <div class="card-body">
+        <p class="card-date">Aug 20, 2025</p>
+        <h2><a href="/blog/safety-tips-for-walking-safaris-in-kenya.html">Safety Tips for Walking Safaris in Kenya</a></h2>
+        <p class="card-excerpt">Safety is Part of the Adventure There is something primal about stepping into the African bush on foot. But unlike watching wildli...</p>
+        <a href="/blog/safety-tips-for-walking-safaris-in-kenya.html" class="read-more">Read More →</a>
+      </div>
+    </article>
+    <article class="post-card">
+      <a href="/blog/safari-footwear-guide-boots-sneakers-or-sandals.html"><img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&q=80" alt="Safari Footwear Guide: Boots, Sneakers, or Sandals?"></a>
+      <div class="card-body">
+        <p class="card-date">Aug 20, 2025</p>
+        <h2><a href="/blog/safari-footwear-guide-boots-sneakers-or-sandals.html">Safari Footwear Guide: Boots, Sneakers, or Sandals?</a></h2>
+        <p class="card-excerpt">When preparing for a safari in Kenya, most travelers focus on packing binoculars, cameras, and safari jackets — but one of the mos...</p>
+        <a href="/blog/safari-footwear-guide-boots-sneakers-or-sandals.html" class="read-more">Read More →</a>
+      </div>
+    </article>
+    <article class="post-card">
+      <a href="/blog/safari-packing-mistakes-what-not-to-wear-on-safari-in-kenya.html"><img src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=600&q=80" alt="Safari Packing Mistakes: What NOT to Wear on Safari in Kenya"></a>
+      <div class="card-body">
+        <p class="card-date">Aug 20, 2025</p>
+        <h2><a href="/blog/safari-packing-mistakes-what-not-to-wear-on-safari-in-kenya.html">Safari Packing Mistakes: What NOT to Wear on Safari in Kenya</a></h2>
+        <p class="card-excerpt">Mistakes to Avoid When Dressing for a Safari A Kenyan safari is the adventure of a lifetime — but wearing the wrong clothes can qu...</p>
+        <a href="/blog/safari-packing-mistakes-what-not-to-wear-on-safari-in-kenya.html" class="read-more">Read More →</a>
+      </div>
+    </article>
+    <article class="post-card">
+      <a href="/blog/kenya-vs-tanzania-wheres-best-to-see-the-great-migration.html"><img src="https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=600&q=80" alt="Kenya vs Tanzania – Where’s Best to See the Great Migration?"></a>
+      <div class="card-body">
+        <p class="card-date">Aug 20, 2025</p>
+        <h2><a href="/blog/kenya-vs-tanzania-wheres-best-to-see-the-great-migration.html">Kenya vs Tanzania – Where’s Best to See the Great Migration?</a></h2>
+        <p class="card-excerpt">One Wonder, Two Countries The Great Migration—over 1.5 million wildebeest, zebras, and gazelles moving across the Serengeti and Ma...</p>
+        <a href="/blog/kenya-vs-tanzania-wheres-best-to-see-the-great-migration.html" class="read-more">Read More →</a>
+      </div>
+    </article>
+    <article class="post-card">
+      <a href="/blog/can-you-book-a-last-minute-migration-safari-in-kenya.html"><img src="https://images.unsplash.com/photo-1549488344-1f9b8d2bd1f3?w=600&q=80" alt="Can You Book a Last-Minute Migration Safari in Kenya?"></a>
+      <div class="card-body">
+        <p class="card-date">Aug 20, 2025</p>
+        <h2><a href="/blog/can-you-book-a-last-minute-migration-safari-in-kenya.html">Can You Book a Last-Minute Migration Safari in Kenya?</a></h2>
+        <p class="card-excerpt">The Myth of “Too Late” You’ve seen the photos of wildebeest river crossings, and now you want in—but it’s already July or August. ...</p>
+        <a href="/blog/can-you-book-a-last-minute-migration-safari-in-kenya.html" class="read-more">Read More →</a>
+      </div>
+    </article>
+    <article class="post-card">
+      <a href="/blog/the-real-cost-of-a-kenyan-safari-budget-vs-luxury-options.html"><img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600&q=80" alt="The Real Cost of a Kenyan Safari: Budget vs Luxury Options"></a>
+      <div class="card-body">
+        <p class="card-date">Aug 26, 2025</p>
+        <h2><a href="/blog/the-real-cost-of-a-kenyan-safari-budget-vs-luxury-options.html">The Real Cost of a Kenyan Safari: Budget vs Luxury Options</a></h2>
+        <p class="card-excerpt">A safari in Kenya is the trip of a lifetime — but how much does it actually cost? Prices can range from as little as $150 per day ...</p>
+        <a href="/blog/the-real-cost-of-a-kenyan-safari-budget-vs-luxury-options.html" class="read-more">Read More →</a>
+      </div>
+    </article>
+    <article class="post-card">
+      <a href="/blog/choosing-the-best-safari-operator-in-kenya-what-to-know.html"><img src="https://images.unsplash.com/photo-1519066629447-267fffa62d4b?w=600&q=80" alt="Choosing the Best Safari Operator in Kenya: What to Know"></a>
+      <div class="card-body">
+        <p class="card-date">Aug 26, 2025</p>
+        <h2><a href="/blog/choosing-the-best-safari-operator-in-kenya-what-to-know.html">Choosing the Best Safari Operator in Kenya: What to Know</a></h2>
+        <p class="card-excerpt">Booking a safari in Kenya is not just about choosing the park or the lodge — it’s about picking the right safari operator. A good ...</p>
+        <a href="/blog/choosing-the-best-safari-operator-in-kenya-what-to-know.html" class="read-more">Read More →</a>
+      </div>
+    </article></div>
+  <footer><p>© 2026 Sundown Safaris Ltd. · Westlands, Nairobi, Kenya</p></footer>
 </body>
 </html>
