@@ -1,0 +1,12 @@
+{
+  "name": "sundown-safaris-website",
+  "version": "1.0.0",
+  "description": "Sundown Safaris - Luxury Kenya Tours & Private Wildlife Travel",
+  "scripts": {
+    "dev": "echo 'Static site - open index.html in browser'",
+    "build": "echo 'No build step required for static site'"
+  },
+  "dependencies": {
+    "@vercel/speed-insights": "^1.1.0"
+  }
+}
