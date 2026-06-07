@@ -807,14 +807,14 @@ function sdfaqToggle(btn){
 
     /* ── Carousel ── */
     .sd-carousel-outer{overflow:hidden;position:relative;width:100%;}
-    .sd-carousel-outer::before,.sd-carousel-outer::after{content:"";position:absolute;top:0;bottom:0;width:120px;z-index:2;pointer-events:none;}
+    .sd-carousel-outer::before,.sd-carousel-outer::after{content:"";position:absolute;top:0;bottom:0;width:80px;z-index:2;pointer-events:none;}
     .sd-carousel-outer::before{left:0;background:linear-gradient(90deg,#060F09 0%,transparent 100%);}
     .sd-carousel-outer::after{right:0;background:linear-gradient(270deg,#060F09 0%,transparent 100%);}
-    .sd-carousel-track{display:flex;align-items:center;width:max-content;animation:sd-scroll 42s linear infinite;}
+    .sd-carousel-track{display:flex;align-items:center;width:max-content;animation:sd-scroll 50s linear infinite;}
     .sd-carousel-track:hover{animation-play-state:paused;}
     @keyframes sd-scroll{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
-    .sd-logo-item{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 64px;border-right:1px solid rgba(201,138,39,0.1);min-width:260px;height:140px;transition:opacity 0.3s;cursor:default;}
-    .sd-logo-item:hover{opacity:0.65;}
+    .sd-logo-item{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 48px;border-right:1px solid rgba(201,138,39,0.15);min-width:220px;height:160px;transition:opacity 0.3s;cursor:default;}
+    .sd-logo-item:hover{opacity:0.7;}
 
     /* ── Cert strip ── */
     .sd-cert-strip{margin-top:48px;padding:0 48px;display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap;}
@@ -850,8 +850,8 @@ function sdfaqToggle(btn){
       .sd-cert-strip{padding:0 20px;gap:16px;}
       .sd-cert-div{display:none;}
       .sd-cert-item span{font-size:11px;}
-      .sd-logo-item{min-width:200px;padding:0 40px;}
-      .sd-carousel-outer::before,.sd-carousel-outer::after{width:60px;}
+      .sd-logo-item{min-width:180px;padding:0 32px;height:140px;}
+      .sd-carousel-outer::before,.sd-carousel-outer::after{width:40px;}
       .sd-trip-grid-4{grid-template-columns:1fr 1fr !important;}
       .sd-trip-grid-4 > div{border-right:none !important;border-bottom:1px solid #e0d8cc;}
       .sd-trip-review-grid{grid-template-columns:1fr !important;}
@@ -1086,3 +1086,4 @@ function sdfaqToggle(btn){
             <line x1="28" y1="24" x2="28" y2="18" stroke="#CC2027" stroke-width="2" stroke-linecap="round"/>
             <line x1="28" y1="66" x2="28" y2="72" stroke="#CC2027" stroke-width="2" stroke-linecap="round"/>
             <line x1="7" y1="45" x2="1" y2="45" stroke="#CC2027" stroke-width="2" stroke-linecap="round"/>
+            <line x1="49" y1="45" x2="55" y2="45" stroke="#CC2027" stroke-width="2" stroke-linecap="round"/>
