@@ -319,15 +319,56 @@ fbq('track', 'PageView');
 
         <!-- HERO -->
         <section class="text-white relative overflow-hidden" style="min-height:90vh;display:flex;align-items:center;">
-            <!-- FULL BLEED HERO IMAGE -->
-            <div class="absolute inset-0">
-                <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=1600&q=80&fm=webp" alt="Masai Mara National Reserve Kenya savanna at golden hour — Sundown Safaris" class="w-full h-full object-cover" fetchpriority="high" loading="eager" decoding="sync" style="object-position:center 40%;">
+
+            <!-- MOBILE FALLBACK IMAGE (shown on mobile where autoplay is blocked) -->
+            <div class="absolute inset-0 block md:hidden">
+                <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=1200&q=80&fm=webp" alt="Masai Mara National Reserve Kenya savanna at golden hour — Sundown Safaris" class="w-full h-full object-cover" fetchpriority="high" loading="eager" decoding="sync" style="object-position:center 40%;">
             </div>
+
+            <!-- DESKTOP VIDEO HERO -->
+            <div class="absolute inset-0 hidden md:block" id="hero-video-wrap">
+                <video
+                    id="hero-video"
+                    autoplay
+                    muted
+                    loop
+                    playsinline
+                    preload="auto"
+                    class="w-full h-full object-cover"
+                    style="object-position:center center;"
+                    poster="https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=1600&q=80&fm=webp"
+                    onended="this.currentTime=0;this.play();"
+                >
+                    <source src="https://res.cloudinary.com/dodvkw5bj/video/upload/so_0,eo_10,q_auto,f_mp4/videoplayback_ame7td.mp4" type="video/mp4">
+                    <source src="https://res.cloudinary.com/dodvkw5bj/video/upload/so_0,eo_10,q_auto,f_webm/videoplayback_ame7td.webm" type="video/webm">
+                    <!-- Fallback if video fails -->
+                    <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=1600&q=80&fm=webp" alt="Masai Mara Kenya safari" class="w-full h-full object-cover">
+                </video>
+            </div>
+
             <!-- DARK OVERLAY for text readability -->
-            <div class="absolute inset-0" style="background:linear-gradient(to right, rgba(5,20,10,0.92) 0%, rgba(5,20,10,0.85) 45%, rgba(5,20,10,0.70) 70%, rgba(5,20,10,0.55) 100%);"></div>
+            <div class="absolute inset-0" style="background:linear-gradient(to right, rgba(5,20,10,0.88) 0%, rgba(5,20,10,0.80) 45%, rgba(5,20,10,0.60) 70%, rgba(5,20,10,0.40) 100%);z-index:1;"></div>
             <!-- BOTTOM FADE -->
-            <div class="absolute bottom-0 left-0 right-0 h-32" style="background:linear-gradient(to bottom, transparent, rgba(5,20,10,0.6));"></div>
-            <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-12 gap-12 items-center relative z-10 py-20 w-full">
+            <div class="absolute bottom-0 left-0 right-0 h-32" style="background:linear-gradient(to bottom, transparent, rgba(5,20,10,0.7));z-index:1;"></div>
+
+            <script>
+            // Ensure video loops precisely between 0 and 10 seconds
+            document.addEventListener('DOMContentLoaded', function() {
+                var v = document.getElementById('hero-video');
+                if (!v) return;
+                v.addEventListener('timeupdate', function() {
+                    if (v.currentTime >= 10) {
+                        v.currentTime = 0;
+                        v.play();
+                    }
+                });
+                // Force play on user interaction if blocked
+                document.addEventListener('click', function() {
+                    if (v.paused) v.play();
+                }, { once: true });
+            });
+            </script>
+            <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-12 gap-12 items-center py-20 w-full" style="position:relative;z-index:2;">
                 <div class="md:col-span-8 space-y-6">
                     <span class="text-brand-accentGold uppercase font-bold tracking-[0.35em] text-sm block">Private Safari · Nairobi, Kenya</span>
                     <h1 class="text-4xl md:text-6xl font-serif font-extrabold tracking-tight leading-tight">
