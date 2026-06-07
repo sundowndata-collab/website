@@ -543,14 +543,24 @@ One Standard: Yours Alone.</h2>
                 .then(function(response) {
                     if (response.ok) {
                         // Send confirmation email to guest via EmailJS
-                        var formData = new FormData(form);
+                        var guestEmail = document.querySelector('#enquiry-form input[name="email"]').value;
+                        var guestName = document.querySelector('#enquiry-form input[name="full_name"]').value;
+                        var travelDates = document.querySelector('#enquiry-form input[name="travel_dates"]').value;
+                        var groupSize = document.querySelector('#enquiry-form select[name="group_size"]').value;
+                        var budgetRange = document.querySelector('#enquiry-form select[name="budget_range"]').value;
+                        var safariPriority = document.querySelector('#enquiry-form select[name="safari_priority"]').value;
+
                         emailjs.send('service_jptsykv', 'template_d0mnaa8', {
-                            to_email:       formData.get('email'),
-                            full_name:      formData.get('full_name'),
-                            travel_dates:   formData.get('travel_dates'),
-                            group_size:     formData.get('group_size'),
-                            budget_range:   formData.get('budget_range'),
-                            safari_priority:formData.get('safari_priority'),
+                            to_email:        guestEmail,
+                            full_name:       guestName,
+                            travel_dates:    travelDates,
+                            group_size:      groupSize,
+                            budget_range:    budgetRange,
+                            safari_priority: safariPriority,
+                        }).then(function() {
+                            console.log('Confirmation email sent');
+                        }).catch(function(err) {
+                            console.log('EmailJS error:', JSON.stringify(err));
                         });
                         form.classList.add('hidden');
                         success.classList.remove('hidden');
