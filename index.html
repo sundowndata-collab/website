@@ -44,7 +44,21 @@ fbq('track', 'PageView');
     <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,800;1,400&display=swap" rel="stylesheet"></noscript>
 
     <!-- Font Awesome — deferred, non-blocking -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" media="print" onload="this.media='all'">
+    <style>
+        /* Flatpickr brand overrides */
+        .flatpickr-calendar { font-family: 'Inter', sans-serif; border-radius: 12px; box-shadow: 0 20px 60px rgba(0,0,0,0.15); border: none; }
+        .flatpickr-day.selected, .flatpickr-day.startRange, .flatpickr-day.endRange { background: #0B3A1D !important; border-color: #0B3A1D !important; }
+        .flatpickr-day.inRange { background: #EAF2EC !important; border-color: #EAF2EC !important; color: #0B3A1D !important; }
+        .flatpickr-day:hover { background: #EAF2EC; color: #0B3A1D; }
+        .flatpickr-months .flatpickr-month { background: #0B3A1D; color: white; border-radius: 12px 12px 0 0; }
+        .flatpickr-current-month .flatpickr-monthDropdown-months { background: #0B3A1D; color: white; }
+        .flatpickr-current-month input.cur-year { color: white; }
+        .flatpickr-weekday { color: #0B3A1D; font-weight: 700; }
+        .flatpickr-months .flatpickr-prev-month, .flatpickr-months .flatpickr-next-month { color: white !important; fill: white !important; }
+        .flatpickr-months .flatpickr-prev-month:hover svg, .flatpickr-months .flatpickr-next-month:hover svg { fill: #C98A27 !important; }
+        .flatpickr-day.selected.startRange + .endRange:not(:nth-child(7n+1)), .flatpickr-day.startRange + .endRange:not(:nth-child(7n+1)), .flatpickr-day.endRange + .endRange:not(:nth-child(7n+1)) { box-shadow: -10px 0 0 #EAF2EC; }
+    </style>
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
 
     <!-- Tailwind CDN — must load synchronously for class-based styling -->
@@ -403,7 +417,7 @@ One Standard: Yours Alone.</h2>
                     <!-- Travel Dates -->
                     <div>
                         <label class="block text-xs font-black uppercase tracking-wider text-stone-400 mb-2">Planned Travel Dates <span class="text-red-400">*</span></label>
-                        <input type="text" name="travel_dates" required placeholder="e.g. October 10–18, 2026" class="w-full p-4 border border-stone-200 rounded-lg text-sm bg-stone-50 focus:outline-none focus:ring-2 focus:ring-brand-green focus:border-transparent transition">
+                        <input type="text" name="travel_dates" id="date-range-picker" required placeholder="Select your travel dates" readonly class="w-full p-4 border border-stone-200 rounded-lg text-sm bg-stone-50 focus:outline-none focus:ring-2 focus:ring-brand-green focus:border-transparent transition cursor-pointer" style="background-image:url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2216%22 height=%2216%22 fill=%22%230B3A1D%22 viewBox=%220 0 16 16%22><path d=%22M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z%22/></svg>');background-repeat:no-repeat;background-position:right 16px center;padding-right:44px;">
                     </div>
 
                     <!-- Group Size -->
@@ -485,7 +499,29 @@ One Standard: Yours Alone.</h2>
             </div>
         </section>
 
-        <!-- FORMSPREE AJAX -->
+        <!-- EMAILJS SDK -->
+        <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+        <script>emailjs.init('IE1I9YeI1vfUb7XTC');</script>
+
+        <!-- FLATPICKR DATE RANGE PICKER -->
+        <script src="https://cdn.jsdelivr.net/npm/flatpickr" defer></script>
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            flatpickr('#date-range-picker', {
+                mode: 'range',
+                minDate: 'today',
+                dateFormat: 'M j, Y',
+                showMonths: 2,
+                disableMobile: false,
+                onChange: function(selectedDates, dateStr) {
+                    if (selectedDates.length === 2) {
+                        var nights = Math.round((selectedDates[1] - selectedDates[0]) / (1000 * 60 * 60 * 24));
+                        document.getElementById('date-range-picker').placeholder = dateStr + ' (' + nights + ' nights)';
+                    }
+                }
+            });
+        });
+        </script>
         <script>
         (function() {
             var form = document.getElementById('enquiry-form');
@@ -506,20 +542,23 @@ One Standard: Yours Alone.</h2>
                 })
                 .then(function(response) {
                     if (response.ok) {
+                        // Send confirmation email to guest via EmailJS
+                        var formData = new FormData(form);
+                        emailjs.send('service_jptsykv', 'template_d0mnaa8', {
+                            to_email:       formData.get('email'),
+                            full_name:      formData.get('full_name'),
+                            travel_dates:   formData.get('travel_dates'),
+                            group_size:     formData.get('group_size'),
+                            budget_range:   formData.get('budget_range'),
+                            safari_priority:formData.get('safari_priority'),
+                        });
                         form.classList.add('hidden');
                         success.classList.remove('hidden');
                         success.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                        // Fire GA4 conversion event
                         if (typeof gtag !== 'undefined') {
-                            gtag('event', 'form_submit', {
-                                event_category: 'enquiry',
-                                event_label: 'safari_enquiry_form'
-                            });
+                            gtag('event', 'form_submit', { event_category: 'enquiry', event_label: 'safari_enquiry_form' });
                         }
-                        // Fire Meta Pixel lead event
-                        if (typeof fbq !== 'undefined') {
-                            fbq('track', 'Lead');
-                        }
+                        if (typeof fbq !== 'undefined') { fbq('track', 'Lead'); }
                     } else {
                         btnText.textContent = 'Something went wrong — try again';
                         submitBtn.disabled = false;
