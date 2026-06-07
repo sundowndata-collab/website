@@ -31,7 +31,7 @@ fbq('track', 'PageView');
     <meta name="keywords" content="Kenya holiday packages, budget wildlife safari, luxury Masai Mara game drives, African safari itineraries, best time to visit Kenya safari, sundown safaris">
     
     <!-- Preload hero image for fast LCP -->
-    <link rel="preload" as="image" href="https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=1200&q=60&fm=webp" fetchpriority="high">
+    <link rel="preload" as="image" href="https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=1600&q=80&fm=webp" fetchpriority="high">
 
     <!-- Preconnect to external origins early -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -167,10 +167,15 @@ fbq('track', 'PageView');
 
         <!-- HERO -->
         <section class="text-white relative overflow-hidden" style="min-height:90vh;display:flex;align-items:center;">
+            <!-- FULL BLEED HERO IMAGE -->
             <div class="absolute inset-0">
-                <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=1600&q=80&fm=webp" alt="Masai Mara National Reserve Kenya savanna at golden hour — Sundown Safaris" class="w-full h-full object-cover" fetchpriority="high" loading="eager" decoding="sync">
+                <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=1600&q=80&fm=webp" alt="Masai Mara National Reserve Kenya savanna at golden hour — Sundown Safaris" class="w-full h-full object-cover" fetchpriority="high" loading="eager" decoding="sync" style="object-position:center 40%;">
             </div>
-            <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-12 gap-12 items-center relative z-10">
+            <!-- DARK OVERLAY for text readability -->
+            <div class="absolute inset-0" style="background:linear-gradient(to right, rgba(5,20,10,0.92) 0%, rgba(5,20,10,0.85) 45%, rgba(5,20,10,0.70) 70%, rgba(5,20,10,0.55) 100%);"></div>
+            <!-- BOTTOM FADE -->
+            <div class="absolute bottom-0 left-0 right-0 h-32" style="background:linear-gradient(to bottom, transparent, rgba(5,20,10,0.6));"></div>
+            <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-12 gap-12 items-center relative z-10 py-32 w-full">
                 <div class="md:col-span-8 space-y-6">
                     <span class="text-brand-accentGold uppercase font-bold tracking-[0.35em] text-sm block">Private Safari · Nairobi, Kenya</span>
                     <h1 class="text-4xl md:text-6xl font-serif font-extrabold tracking-tight leading-tight">
@@ -369,38 +374,164 @@ One Standard: Yours Alone.</h2>
                 <p class="text-stone-400 max-w-xl mx-auto mb-12 text-sm leading-relaxed">
                     No sales script. No pressure. Tell us your dates, who you're travelling with, and what matters most to you. A draft itinerary with real pricing arrives within 24 hours.
                 </p>
-                
-                <form onsubmit="event.preventDefault(); alert('Submission received. A Sundown Safaris coordinator will verify tracking grid slots within 4 hours.');" class="bg-white text-stone-900 p-8 md:p-10 rounded-2xl shadow-2xl text-left grid md:grid-cols-2 gap-6 max-w-2xl mx-auto">
+
+                <!-- SUCCESS MESSAGE -->
+                <div id="form-success" class="hidden bg-brand-green border border-brand-accentGold rounded-2xl p-10 max-w-2xl mx-auto mb-8 text-center">
+                    <div class="text-4xl mb-4">🦁</div>
+                    <h3 class="text-2xl font-serif font-black text-white mb-3">We've received your enquiry.</h3>
+                    <p class="text-stone-300 text-sm leading-relaxed mb-6">A draft itinerary with real pricing will be with you within 24 hours. In the meantime, feel free to message us directly on WhatsApp.</p>
+                    <a href="https://wa.me/254724491210" target="_blank" class="inline-flex items-center gap-2 bg-brand-accentGold text-stone-950 font-extrabold px-8 py-3 rounded-lg text-sm uppercase tracking-wider hover:bg-white transition">
+                        <i class="fa-brands fa-whatsapp text-lg"></i> Chat on WhatsApp
+                    </a>
+                </div>
+
+                <!-- QUALIFYING FORM -->
+                <form id="enquiry-form" action="https://formspree.io/f/mkoajzzv" method="POST" class="bg-white text-stone-900 p-8 md:p-10 rounded-2xl shadow-2xl text-left grid md:grid-cols-2 gap-6 max-w-2xl mx-auto">
+
+                    <!-- Full Name -->
                     <div>
-                        <label class="block text-xs font-black uppercase tracking-wider text-stone-400 mb-2">Full Name</label>
-                        <input type="text" required placeholder="John Doe" class="w-full p-4 border border-stone-200 rounded-lg text-sm bg-stone-50 focus:outline-brand-green">
+                        <label class="block text-xs font-black uppercase tracking-wider text-stone-400 mb-2">Full Name <span class="text-red-400">*</span></label>
+                        <input type="text" name="full_name" required placeholder="e.g. Sarah Johnson" class="w-full p-4 border border-stone-200 rounded-lg text-sm bg-stone-50 focus:outline-none focus:ring-2 focus:ring-brand-green focus:border-transparent transition">
                     </div>
+
+                    <!-- Email -->
                     <div>
-                        <label class="block text-xs font-black uppercase tracking-wider text-stone-400 mb-2">Email Address</label>
-                        <input type="email" required placeholder="john@example.com" class="w-full p-4 border border-stone-200 rounded-lg text-sm bg-stone-50 focus:outline-brand-green">
+                        <label class="block text-xs font-black uppercase tracking-wider text-stone-400 mb-2">Email Address <span class="text-red-400">*</span></label>
+                        <input type="email" name="email" required placeholder="sarah@example.com" class="w-full p-4 border border-stone-200 rounded-lg text-sm bg-stone-50 focus:outline-none focus:ring-2 focus:ring-brand-green focus:border-transparent transition">
                     </div>
-                    <div class="md:col-span-2">
-                        <label class="block text-xs font-black uppercase tracking-wider text-stone-400 mb-2">Which Safari Interests You?</label>
-                        <select class="w-full p-4 border border-stone-200 rounded-lg text-sm bg-stone-50 text-stone-700 focus:outline-brand-green">
-                            <option value="general">Not sure yet — help me choose</option>
-                            <option value="3a">3-Day Adventure: "The Explorer"</option>
-                            <option value="3b">3-Day Classic: "The Photographer"</option>
-                            <option value="3c">3-Day Luxury Lite: "The Sundowner"</option>
-                            <option value="5a">5-Day Adventure: "The Trailblazer"</option>
-                            <option value="5b">5-Day Classic: "The Dreamcatcher"</option>
-                            <option value="5c">5-Day Luxury Lite: "The Horizon Chaser"</option>
-                            <option value="7a">7-Day Flagship: "Ultimate Kenya" Circuit</option>
-                            <option value="7b">7-Day Classic: "The Voyager"</option>
-                            <option value="7c">7-Day Luxury Lite: "The Constellation"</option>
+
+                    <!-- Travel Dates -->
+                    <div>
+                        <label class="block text-xs font-black uppercase tracking-wider text-stone-400 mb-2">Planned Travel Dates <span class="text-red-400">*</span></label>
+                        <input type="text" name="travel_dates" required placeholder="e.g. October 10–18, 2026" class="w-full p-4 border border-stone-200 rounded-lg text-sm bg-stone-50 focus:outline-none focus:ring-2 focus:ring-brand-green focus:border-transparent transition">
+                    </div>
+
+                    <!-- Group Size -->
+                    <div>
+                        <label class="block text-xs font-black uppercase tracking-wider text-stone-400 mb-2">Group Size <span class="text-red-400">*</span></label>
+                        <select name="group_size" required class="w-full p-4 border border-stone-200 rounded-lg text-sm bg-stone-50 text-stone-700 focus:outline-none focus:ring-2 focus:ring-brand-green transition">
+                            <option value="" disabled selected>Select group size</option>
+                            <option value="1">Solo traveller</option>
+                            <option value="2">2 people (couple)</option>
+                            <option value="3">3 people</option>
+                            <option value="4">4 people (max private vehicle)</option>
+                            <option value="5+">5+ people (multiple vehicles)</option>
                         </select>
                     </div>
+
+                    <!-- Budget Range -->
+                    <div>
+                        <label class="block text-xs font-black uppercase tracking-wider text-stone-400 mb-2">Budget Range (per person) <span class="text-red-400">*</span></label>
+                        <select name="budget_range" required class="w-full p-4 border border-stone-200 rounded-lg text-sm bg-stone-50 text-stone-700 focus:outline-none focus:ring-2 focus:ring-brand-green transition">
+                            <option value="" disabled selected>Select budget</option>
+                            <option value="1500-2500">$1,500 – $2,500 (Adventure)</option>
+                            <option value="2500-4000">$2,500 – $4,000 (Classic)</option>
+                            <option value="4000-6000">$4,000 – $6,000 (Luxury Lite)</option>
+                            <option value="6000+">$6,000+ (Full Luxury)</option>
+                            <option value="flexible">Flexible — show me options</option>
+                        </select>
+                    </div>
+
+                    <!-- What Matters Most -->
+                    <div>
+                        <label class="block text-xs font-black uppercase tracking-wider text-stone-400 mb-2">What Matters Most to You? <span class="text-red-400">*</span></label>
+                        <select name="safari_priority" required class="w-full p-4 border border-stone-200 rounded-lg text-sm bg-stone-50 text-stone-700 focus:outline-none focus:ring-2 focus:ring-brand-green transition">
+                            <option value="" disabled selected>Select your priority</option>
+                            <option value="big_cats">Big cats — lion, leopard, cheetah</option>
+                            <option value="photography">Wildlife photography</option>
+                            <option value="migration">The wildebeest migration</option>
+                            <option value="luxury">Luxury experience + comfort</option>
+                            <option value="honeymoon">Honeymoon / romantic trip</option>
+                            <option value="family">Family safari with children</option>
+                            <option value="first_time">First safari — I want everything</option>
+                        </select>
+                    </div>
+
+                    <!-- How Did You Hear -->
+                    <div class="md:col-span-2">
+                        <label class="block text-xs font-black uppercase tracking-wider text-stone-400 mb-2">How Did You Find Us?</label>
+                        <select name="referral_source" class="w-full p-4 border border-stone-200 rounded-lg text-sm bg-stone-50 text-stone-700 focus:outline-none focus:ring-2 focus:ring-brand-green transition">
+                            <option value="" disabled selected>Select source</option>
+                            <option value="google">Google Search</option>
+                            <option value="google_ads">Google Ads</option>
+                            <option value="reddit">Reddit</option>
+                            <option value="instagram">Instagram</option>
+                            <option value="tripadvisor">TripAdvisor</option>
+                            <option value="referral">Friend or family referral</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <!-- Additional Notes -->
+                    <div class="md:col-span-2">
+                        <label class="block text-xs font-black uppercase tracking-wider text-stone-400 mb-2">Anything Else We Should Know?</label>
+                        <textarea name="additional_notes" rows="3" placeholder="e.g. celebrating an anniversary, travelling with elderly parents, specific animals on the bucket list..." class="w-full p-4 border border-stone-200 rounded-lg text-sm bg-stone-50 focus:outline-none focus:ring-2 focus:ring-brand-green focus:border-transparent transition resize-none"></textarea>
+                    </div>
+
+                    <!-- Hidden spam trap -->
+                    <input type="text" name="_gotcha" style="display:none">
+                    <!-- Formspree subject line -->
+                    <input type="hidden" name="_subject" value="New Safari Enquiry — Sundown Safaris">
+
+                    <!-- Submit -->
                     <div class="md:col-span-2 pt-2">
-                        <button type="submit" class="w-full bg-brand-green text-white font-extrabold p-4 rounded-lg hover:bg-brand-accentGold transition text-sm uppercase tracking-widest">Begin the Conversation &rarr;</button>
+                        <button type="submit" id="submit-btn" class="w-full bg-brand-green text-white font-extrabold p-4 rounded-lg hover:bg-brand-accentGold transition text-sm uppercase tracking-widest flex items-center justify-center gap-2">
+                            <span id="btn-text">Begin the Conversation</span>
+                            <i class="fa-solid fa-arrow-right-long text-sm"></i>
+                        </button>
                     </div>
                 </form>
-                <p class="text-xs text-stone-500 mt-6"><i class="fa-solid fa-lock mr-1"></i> Your details are sent directly to our Nairobi operations team. No third parties.</p>
+                <p class="text-xs text-stone-500 mt-6"><i class="fa-solid fa-lock mr-1"></i> Sent directly to our Nairobi operations team. We respond within 2 hours during field hours.</p>
             </div>
         </section>
+
+        <!-- FORMSPREE AJAX -->
+        <script>
+        (function() {
+            var form = document.getElementById('enquiry-form');
+            var success = document.getElementById('form-success');
+            var btnText = document.getElementById('btn-text');
+            var submitBtn = document.getElementById('submit-btn');
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                submitBtn.disabled = true;
+                btnText.textContent = 'Sending...';
+
+                var data = new FormData(form);
+                fetch('https://formspree.io/f/mkoajzzv', {
+                    method: 'POST',
+                    body: data,
+                    headers: { 'Accept': 'application/json' }
+                })
+                .then(function(response) {
+                    if (response.ok) {
+                        form.classList.add('hidden');
+                        success.classList.remove('hidden');
+                        success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        // Fire GA4 conversion event
+                        if (typeof gtag !== 'undefined') {
+                            gtag('event', 'form_submit', {
+                                event_category: 'enquiry',
+                                event_label: 'safari_enquiry_form'
+                            });
+                        }
+                        // Fire Meta Pixel lead event
+                        if (typeof fbq !== 'undefined') {
+                            fbq('track', 'Lead');
+                        }
+                    } else {
+                        btnText.textContent = 'Something went wrong — try again';
+                        submitBtn.disabled = false;
+                    }
+                })
+                .catch(function() {
+                    btnText.textContent = 'Something went wrong — try again';
+                    submitBtn.disabled = false;
+                });
+            });
+        })();
+        </script>
     </main>
 
 <!-- FAQ -->
