@@ -104,11 +104,45 @@ fbq('track', 'PageView');
 <body class="bg-brand-safariBg text-brand-darkText font-sans text-base antialiased">
 
     <header class="bg-white sticky top-0 z-50 shadow-md">
-        <div class="bg-brand-green text-white text-xs font-semibold tracking-wider py-2.5 px-4 border-b border-brand-accentGold hidden sm:block">
-            <div class="max-w-7xl mx-auto flex justify-between items-center">
-                <span class="opacity-90"><i class="fa-solid fa-circle-check text-brand-accentGold text-sm mr-2"></i> <strong>The Sundown Standard:</strong> Fully audited 4x4 Land Cruisers capped at 4 passengers maximum. Never crowded.</span>
-                <span class="font-bold tracking-normal text-brand-accentGold font-sans text-sm">Direct Operations Office: Nairobi, Kenya</span>
+        <div class="bg-brand-green border-b border-brand-accentGold hidden sm:block overflow-hidden" style="height:36px;position:relative;">
+            <!-- Fade edges -->
+            <div style="position:absolute;left:0;top:0;bottom:0;width:80px;background:linear-gradient(to right,#0B3A1D,transparent);z-index:2;"></div>
+            <div style="position:absolute;right:0;top:0;bottom:0;width:80px;background:linear-gradient(to left,#0B3A1D,transparent);z-index:2;"></div>
+            <!-- Scrolling ticker -->
+            <div id="ticker-track" style="display:flex;align-items:center;height:36px;width:max-content;animation:ticker-scroll 40s linear infinite;">
+                <span class="ticker-item"><i class="fa-solid fa-paw text-brand-accentGold mr-2"></i><strong>LIVE NOW:</strong> Wildebeest herds building at Mara River — crossings expected July 15–30</span>
+                <span class="ticker-sep">·</span>
+                <span class="ticker-item"><i class="fa-solid fa-binoculars text-brand-accentGold mr-2"></i><strong>HIGH SEASON ALERT:</strong> Only 2 vehicles available July — book before June 30</span>
+                <span class="ticker-sep">·</span>
+                <span class="ticker-item"><i class="fa-solid fa-moon text-brand-accentGold mr-2"></i><strong>EXCLUSIVE:</strong> Night drives now open on Mara North Conservancy — limited permits</span>
+                <span class="ticker-sep">·</span>
+                <span class="ticker-item"><i class="fa-solid fa-elephant text-brand-accentGold mr-2"></i><strong>JUST SPOTTED:</strong> 3 cheetah brothers tracked daily in Olare Motorogi — best sighting in 2 years</span>
+                <span class="ticker-sep">·</span>
+                <span class="ticker-item"><i class="fa-solid fa-star text-brand-accentGold mr-2"></i><strong>NEW:</strong> Star-bed sleepout dates released for August — 4 nights remaining</span>
+                <span class="ticker-sep">·</span>
+                <span class="ticker-item"><i class="fa-solid fa-certificate text-brand-accentGold mr-2"></i><strong>THE SUNDOWN STANDARD:</strong> Max 4 guests per vehicle. Always. No exceptions.</span>
+                <span class="ticker-sep">·</span>
+                <!-- Duplicate for seamless loop -->
+                <span class="ticker-item"><i class="fa-solid fa-paw text-brand-accentGold mr-2"></i><strong>LIVE NOW:</strong> Wildebeest herds building at Mara River — crossings expected July 15–30</span>
+                <span class="ticker-sep">·</span>
+                <span class="ticker-item"><i class="fa-solid fa-binoculars text-brand-accentGold mr-2"></i><strong>HIGH SEASON ALERT:</strong> Only 2 vehicles available July — book before June 30</span>
+                <span class="ticker-sep">·</span>
+                <span class="ticker-item"><i class="fa-solid fa-moon text-brand-accentGold mr-2"></i><strong>EXCLUSIVE:</strong> Night drives now open on Mara North Conservancy — limited permits</span>
+                <span class="ticker-sep">·</span>
+                <span class="ticker-item"><i class="fa-solid fa-elephant text-brand-accentGold mr-2"></i><strong>JUST SPOTTED:</strong> 3 cheetah brothers tracked daily in Olare Motorogi — best sighting in 2 years</span>
+                <span class="ticker-sep">·</span>
+                <span class="ticker-item"><i class="fa-solid fa-star text-brand-accentGold mr-2"></i><strong>NEW:</strong> Star-bed sleepout dates released for August — 4 nights remaining</span>
+                <span class="ticker-sep">·</span>
+                <span class="ticker-item"><i class="fa-solid fa-certificate text-brand-accentGold mr-2"></i><strong>THE SUNDOWN STANDARD:</strong> Max 4 guests per vehicle. Always. No exceptions.</span>
+                <span class="ticker-sep">·</span>
             </div>
+            <style>
+                .ticker-item{white-space:nowrap;color:white;font-size:12px;font-weight:600;letter-spacing:0.03em;padding:0 24px;font-family:'Inter',sans-serif;}
+                .ticker-item strong{color:#C98A27;}
+                .ticker-sep{color:rgba(201,168,76,0.5);font-size:16px;padding:0 8px;flex-shrink:0;}
+                @keyframes ticker-scroll{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+                #ticker-track:hover{animation-play-state:paused;}
+            </style>
         </div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-24 flex items-center justify-between">
