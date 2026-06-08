@@ -319,52 +319,66 @@
         <!-- HERO -->
         <section class="text-white relative overflow-hidden" style="min-height:90vh;display:flex;align-items:center;">
 
-            <!-- MOBILE FALLBACK IMAGE (shown on mobile where autoplay is blocked) -->
-            <div class="absolute inset-0 block md:hidden">
-                <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=1200&q=75&fm=webp" srcset="https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=480&q=70&fm=webp 480w, https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=800&q=70&fm=webp 800w, https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=1200&q=70&fm=webp 1200w" sizes="100vw" alt="Masai Mara National Reserve Kenya savanna at golden hour — Sundown Safaris" class="w-full h-full object-cover" fetchpriority="high" loading="eager" decoding="sync" width="1200" height="800" style="object-position:center 40%;">
-            </div>
-
-            <!-- DESKTOP VIDEO HERO -->
-            <div class="absolute inset-0 hidden md:block" id="hero-video-wrap">
-                <video
-                    id="hero-video"
-                    autoplay
-                    muted
-                    loop
-                    playsinline
-                    preload="none"
+            <!-- HERO BACKGROUND: picture for mobile, JS-injected video for desktop -->
+            <!-- Mobile: <picture> with correct srcset renders immediately, no video bytes fetched -->
+            <picture id="hero-picture" class="absolute inset-0 w-full h-full" style="z-index:0;">
+                <source
+                    srcset="https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=400&q=60&fm=webp"
+                    media="(max-width: 640px)">
+                <source
+                    srcset="https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=750&q=65&fm=webp"
+                    media="(max-width: 1024px)">
+                <img
+                    src="https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=1100&q=65&fm=webp"
+                    alt="Masai Mara National Reserve Kenya savanna at golden hour — Sundown Safaris"
                     class="w-full h-full object-cover"
-                    style="object-position:center center;filter:brightness(1.25) contrast(1.05) saturate(1.1);"
-                    poster="https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=1920&q=75&fm=webp"
-                >
-                    <source src="https://res.cloudinary.com/dodvkw5bj/video/upload/so_0,eo_60,q_auto,f_mp4,l_text:Arial_1:.,co_rgb:00000000/videoplayback_ame7td.mp4" type="video/mp4">
-                    <source src="https://res.cloudinary.com/dodvkw5bj/video/upload/so_0,eo_60,q_auto,f_webm/videoplayback_ame7td.webm" type="video/webm">
-                    <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=1920&q=75&fm=webp" alt="Masai Mara Kenya safari" class="w-full h-full object-cover" width="1920" height="1080" loading="lazy">
-                    <track kind="captions" src="" label="No captions" default>
-                </video>
-            </div>
+                    style="object-position:center 40%;"
+                    fetchpriority="high"
+                    loading="eager"
+                    decoding="sync"
+                    width="1100"
+                    height="733">
+            </picture>
+
+            <!-- Desktop: video injected via JS only — never downloaded on mobile -->
+            <script>
+            (function(){
+                if (!window.matchMedia('(min-width: 768px)').matches) return;
+                // Only runs on desktop. Inject video element into DOM.
+                var wrap = document.createElement('div');
+                wrap.id = 'hero-video-wrap';
+                wrap.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;z-index:1;';
+                wrap.innerHTML = '<video id="hero-video" autoplay muted loop playsinline preload="none"'
+                    + ' style="width:100%;height:100%;object-fit:cover;object-position:center;filter:brightness(1.25) contrast(1.05) saturate(1.1);"'
+                    + ' poster="https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=1100&q=65&fm=webp">'
+                    + '<source src="https://res.cloudinary.com/dodvkw5bj/video/upload/so_0,eo_60,q_auto,f_mp4,l_text:Arial_1:.,co_rgb:00000000/videoplayback_ame7td.mp4" type="video/mp4">'
+                    + '<source src="https://res.cloudinary.com/dodvkw5bj/video/upload/so_0,eo_60,q_auto,f_webm/videoplayback_ame7td.webm" type="video/webm">'
+                    + '<track kind="captions" src="" label="No captions" default>'
+                    + '</video>';
+                // Insert before the picture element so video sits on top
+                var section = document.currentScript.closest('section') || document.currentScript.parentElement;
+                var picture = section.querySelector('#hero-picture');
+                if (picture) { section.insertBefore(wrap, picture.nextSibling); }
+                else { section.prepend(wrap); }
+                // Video loop handler + resume on click
+                (window.requestIdleCallback || function(cb){setTimeout(cb,100)})(function(){
+                    var v = document.getElementById('hero-video');
+                    if (!v) return;
+                    v.addEventListener('timeupdate', function(){
+                        if (v.currentTime >= 60){ v.currentTime = 0; v.play(); }
+                    });
+                    document.addEventListener('click', function(){
+                        if (v.paused) v.play();
+                    }, { once: true });
+                });
+            })();
+            </script>
 
             <!-- DARK OVERLAY for text readability -->
-            <div class="absolute inset-0" style="background:linear-gradient(to right, rgba(5,20,10,0.80) 0%, rgba(5,20,10,0.65) 45%, rgba(5,20,10,0.40) 70%, rgba(5,20,10,0.20) 100%);z-index:1;"></div>
+            <div class="absolute inset-0" style="background:linear-gradient(to right, rgba(5,20,10,0.80) 0%, rgba(5,20,10,0.65) 45%, rgba(5,20,10,0.40) 70%, rgba(5,20,10,0.20) 100%);z-index:2;"></div>
             <!-- BOTTOM FADE -->
-            <div class="absolute bottom-0 left-0 right-0 h-32" style="background:linear-gradient(to bottom, transparent, rgba(5,20,10,0.6));z-index:1;"></div>
-
-            <script>
-            (window.requestIdleCallback || function(cb){setTimeout(cb,100)})(function(){
-                var v = document.getElementById('hero-video');
-                if (!v) return;
-                v.addEventListener('timeupdate', function() {
-                    if (v.currentTime >= 60) {
-                        v.currentTime = 0;
-                        v.play();
-                    }
-                });
-                document.addEventListener('click', function() {
-                    if (v.paused) v.play();
-                }, { once: true });
-            });
-            </script>
-            <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-12 gap-12 items-center py-20 w-full" style="position:relative;z-index:2;">
+            <div class="absolute bottom-0 left-0 right-0 h-32" style="background:linear-gradient(to bottom, transparent, rgba(5,20,10,0.6));z-index:2;"></div>
+            <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-12 gap-12 items-center py-20 w-full" style="position:relative;z-index:3;">
                 <div class="md:col-span-8 space-y-6">
                     <span class="text-brand-accentGold uppercase font-bold tracking-[0.35em] text-sm block">Private Safari · Nairobi, Kenya</span>
                     <h1 class="text-4xl md:text-6xl font-serif font-extrabold tracking-tight leading-tight">
