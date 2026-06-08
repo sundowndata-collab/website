@@ -58,6 +58,8 @@ window.addEventListener('load',function(){
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
     <link rel="dns-prefetch" href="https://randomuser.me">
     <link rel="dns-prefetch" href="https://res.cloudinary.com">
     <link rel="preconnect" href="https://res.cloudinary.com">
@@ -67,7 +69,7 @@ window.addEventListener('load',function(){
     <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,800;1,400&display=swap" rel="stylesheet"></noscript>
 
     <!-- Font Awesome — deferred, non-blocking -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" media="print" onload="this.media='all'">
+    <!-- Flatpickr CSS: loaded lazily with JS when date field is focused -->
     <style>
         /* Flatpickr brand overrides */
         .flatpickr-calendar { font-family: 'Inter', sans-serif; border-radius: 12px; box-shadow: 0 20px 60px rgba(0,0,0,0.15); border: none; }
@@ -292,6 +294,7 @@ window.addEventListener('load',function(){
     </header>
 
     <script>
+    (window.requestIdleCallback || function(cb){setTimeout(cb,1)})(function(){
     function toggleMobileMenu() {
         var menu = document.getElementById('mobile-menu');
         var btn = document.getElementById('mobile-menu-btn');
@@ -327,6 +330,10 @@ window.addEventListener('load',function(){
             chevron.style.transform = '';
         }
     }
+    window.toggleMobileMenu = toggleMobileMenu;
+    window.closeMobileMenu = closeMobileMenu;
+    window.toggleSafariAccordion = toggleSafariAccordion;
+    }); // end requestIdleCallback
     </script>
 
     <main class="w-full">
@@ -365,7 +372,7 @@ window.addEventListener('load',function(){
             <div class="absolute bottom-0 left-0 right-0 h-32" style="background:linear-gradient(to bottom, transparent, rgba(5,20,10,0.6));z-index:1;"></div>
 
             <script>
-            document.addEventListener('DOMContentLoaded', function() {
+            (window.requestIdleCallback || function(cb){setTimeout(cb,100)})(function(){
                 var v = document.getElementById('hero-video');
                 if (!v) return;
                 v.addEventListener('timeupdate', function() {
@@ -783,26 +790,47 @@ One Standard: Yours Alone.</h2>
         })();
         </script>
 
-        <!-- FLATPICKR DATE RANGE PICKER -->
-        <script src="https://cdn.jsdelivr.net/npm/flatpickr" defer></script>
+        <!-- FLATPICKR: lazy-loaded on date field focus (see init script below) -->
         <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            flatpickr('#date-range-picker', {
-                mode: 'range',
-                minDate: 'today',
-                dateFormat: 'M j, Y',
-                showMonths: 2,
-                disableMobile: false,
-                onChange: function(selectedDates, dateStr) {
-                    if (selectedDates.length === 2) {
-                        var nights = Math.round((selectedDates[1] - selectedDates[0]) / (1000 * 60 * 60 * 24));
-                        document.getElementById('date-range-picker').placeholder = dateStr + ' (' + nights + ' nights)';
-                    }
-                }
-            });
-        });
+        (function() {
+            var fpLoaded = false;
+            function initFlatpickr() {
+                if (fpLoaded) return;
+                fpLoaded = true;
+                // Load CSS
+                var css = document.createElement('link');
+                css.rel = 'stylesheet';
+                css.href = 'https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css';
+                document.head.appendChild(css);
+                // Load JS then init
+                var js = document.createElement('script');
+                js.src = 'https://cdn.jsdelivr.net/npm/flatpickr';
+                js.onload = function() {
+                    flatpickr('#date-range-picker', {
+                        mode: 'range',
+                        minDate: 'today',
+                        dateFormat: 'M j, Y',
+                        showMonths: 2,
+                        disableMobile: false,
+                        onChange: function(selectedDates, dateStr) {
+                            if (selectedDates.length === 2) {
+                                var nights = Math.round((selectedDates[1] - selectedDates[0]) / (1000 * 60 * 60 * 24));
+                                document.getElementById('date-range-picker').placeholder = dateStr + ' (' + nights + ' nights)';
+                            }
+                        }
+                    });
+                };
+                document.head.appendChild(js);
+            }
+            var dp = document.getElementById('date-range-picker');
+            if (dp) {
+                dp.addEventListener('focus', initFlatpickr, { once: true });
+                dp.addEventListener('click', initFlatpickr, { once: true });
+            }
+        })();
         </script>
         <script>
+        (window.requestIdleCallback || function(cb){setTimeout(cb,1)})(function(){
         (function() {
             var form = document.getElementById('enquiry-form');
             var success = document.getElementById('form-success');
@@ -860,6 +888,7 @@ One Standard: Yours Alone.</h2>
                 });
             });
         })();
+        }); // end requestIdleCallback
         </script>
     </main>
 
@@ -983,6 +1012,7 @@ One Standard: Yours Alone.</h2>
 </style>
 
 <script>
+(window.requestIdleCallback || function(cb){setTimeout(cb,1)})(function(){
 function sdfaqToggle(btn){
   var ans=btn.nextElementSibling;
   var icon=btn.querySelector('span:last-child');
@@ -991,6 +1021,8 @@ function sdfaqToggle(btn){
   document.querySelectorAll('.sdfaq button span:last-child').forEach(function(i){i.style.transform='rotate(0deg)';});
   if(!open){ans.style.maxHeight=ans.scrollHeight+'px';icon.style.transform='rotate(45deg)';}
 }
+window.sdfaqToggle = sdfaqToggle;
+}); // end requestIdleCallback
 </script>
 
 <section id="testimonials" style="background:#0B1F10;padding:96px 0 80px;border-top:1px solid rgba(201,138,39,0.15);">
@@ -1540,6 +1572,7 @@ function sdfaqToggle(btn){
     </div>
 
     <script>
+        (window.requestIdleCallback || function(cb){setTimeout(cb,200)})(function(){
         const bandwagonData = [];
         function runBandwagonCycle() {
             const popup = document.getElementById('bandwagon-popup');
@@ -1552,6 +1585,7 @@ function sdfaqToggle(btn){
         }
         setTimeout(runBandwagonCycle, 4000);
         setInterval(runBandwagonCycle, 15000);
+        }); // end requestIdleCallback
     </script>
 
 <!-- FLOATING WHATSAPP BUTTON -->
