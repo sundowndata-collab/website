@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
   <!-- HOMEPAGE -->
   <url>
     <loc>https://www.sundownsafari.com/</loc>
@@ -8,7 +7,6 @@
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
-
   <!-- TRIP PAGES -->
   <url>
     <loc>https://www.sundownsafari.com/trip/3-day-a-adventure-the-explorer.html</loc>
@@ -64,7 +62,6 @@
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
-
   <!-- HIGH-PRIORITY BLOG POSTS -->
   <url>
     <loc>https://www.sundownsafari.com/blog/kenya-safari-cost-2026.html</loc>
@@ -78,7 +75,19 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
+  <url>
+    <loc>https://www.sundownsafari.com/blog/private-conservancy-vs-national-reserve-kenya.html</loc>
+    <lastmod>2026-06-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- BLOG INDEX -->
+  <url>
+    <loc>https://www.sundownsafari.com/blog/</loc>
+    <lastmod>2026-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
   <!-- BLOG POSTS -->
   <url>
     <loc>https://www.sundownsafari.com/blog/2-day-masai-mara-safari-from-nairobi.html</loc>
@@ -87,19 +96,19 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.sundownsafari.com/blog/a-guide-to-kenyas-private-conservancies.html</loc>
+    <loc>https://www.sundownsafari.com/blog/a-guide-to-kenyas-private-conservancies-the-future-of-luxury-safaris.html</loc>
     <lastmod>2026-05-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.sundownsafari.com/blog/a-magical-guide-to-balloon-safaris.html</loc>
+    <loc>https://www.sundownsafari.com/blog/a-magical-guide-to-balloon-safaris-over-the-maasai-mara.html</loc>
     <lastmod>2026-05-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.sundownsafari.com/blog/best-kenya-group-safaris-for-friends.html</loc>
+    <loc>https://www.sundownsafari.com/blog/best-kenya-group-safaris-for-friends-private-lodges-big-adventures-unforgettable-nights.html</loc>
     <lastmod>2026-05-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -111,155 +120,309 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.sundownsafari.com/blog/beyond-game-drives-unique-safari-experiences.html</loc>
+    <loc>https://www.sundownsafari.com/blog/beyond-game-drives-unique-safari-activities-in-kenya.html</loc>
     <lastmod>2026-05-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.sundownsafari.com/blog/bush-walking-tours-in-kenya.html</loc>
+    <loc>https://www.sundownsafari.com/blog/bush-walking-tours-in-kenya-a-thrilling-way-to-explore-the-wild.html</loc>
     <lastmod>2026-05-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.sundownsafari.com/blog/can-you-book-a-last-minute-migration-safari.html</loc>
+    <loc>https://www.sundownsafari.com/blog/can-you-book-a-last-minute-migration-safari-in-kenya.html</loc>
     <lastmod>2026-05-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.sundownsafari.com/blog/capturing-the-wild-a-photographers-guide.html</loc>
+    <loc>https://www.sundownsafari.com/blog/capturing-the-wild-a-photographers-dream-safari-in-kenya.html</loc>
     <lastmod>2026-05-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.sundownsafari.com/blog/choosing-the-best-safari-operator-in-kenya.html</loc>
+    <loc>https://www.sundownsafari.com/blog/choosing-the-best-safari-operator-in-kenya-what-to-know.html</loc>
     <lastmod>2026-05-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.sundownsafari.com/blog/community-conservancies-how-local-communities-benefit.html</loc>
+    <loc>https://www.sundownsafari.com/blog/community-conservancies-how-local-maasai-safaris-enhance-wildlife-culture-2.html</loc>
     <lastmod>2026-05-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.sundownsafari.com/blog/ethical-safari-kenya-how-to-avoid-exploitation.html</loc>
+    <loc>https://www.sundownsafari.com/blog/community-conservancies-how-local-maasai-safaris-enhance-wildlife-culture.html</loc>
     <lastmod>2026-05-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.sundownsafari.com/blog/family-safaris-in-kenya-kid-friendly-options.html</loc>
+    <loc>https://www.sundownsafari.com/blog/ethical-safari-kenya-how-to-avoid-exploitation-support-real-conservation.html</loc>
     <lastmod>2026-05-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.sundownsafari.com/blog/hidden-gems-of-kenya-off-the-beaten-path.html</loc>
+    <loc>https://www.sundownsafari.com/blog/family-safaris-in-kenya-kid-friendly-activities-lodges-packing-tips.html</loc>
     <lastmod>2026-05-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.sundownsafari.com/blog/hidden-kenya-safari-gems-5-luxury-experiences.html</loc>
+    <loc>https://www.sundownsafari.com/blog/hidden-gems-of-kenya-off-the-beaten-path-safari-adventures.html</loc>
     <lastmod>2026-05-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.sundownsafari.com/blog/i-pointed-my-rifle-then-my-life-changed.html</loc>
+    <loc>https://www.sundownsafari.com/blog/hidden-kenya-safari-gems-5-luxury-destinations-better-than-the-masai-mara.html</loc>
     <lastmod>2026-05-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.sundownsafari.com/blog/immersive-cultural-safaris-in-kenya.html</loc>
+    <loc>https://www.sundownsafari.com/blog/i-pointed-my-rifle-then-my-life-changed-forever.html</loc>
     <lastmod>2026-05-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.sundownsafari.com/blog/inside-kenyas-most-unique-safari-lodges.html</loc>
+    <loc>https://www.sundownsafari.com/blog/immersive-cultural-safaris-in-kenya-discover-the-maasai-samburu-and-more.html</loc>
     <lastmod>2026-05-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.sundownsafari.com/blog/insider-tips-for-a-safe-and-magical-safari.html</loc>
+    <loc>https://www.sundownsafari.com/blog/inside-kenyas-most-unique-safari-lodges-design-comfort-wildlife.html</loc>
     <lastmod>2026-05-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.sundownsafari.com/blog/kenya-through-the-lens-the-ultimate-photography-safari.html</loc>
+    <loc>https://www.sundownsafari.com/blog/insider-tips-for-a-safe-and-magical-safari-in-kenya.html</loc>
     <lastmod>2026-05-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.sundownsafari.com/blog/kenya-vs-south-africa-safari-2025-luxury.html</loc>
+    <loc>https://www.sundownsafari.com/blog/kenya-through-the-lens-the-ultimate-guide-to-photographic-safaris.html</loc>
     <lastmod>2026-05-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.sundownsafari.com/blog/kenya-vs-tanzania-wheres-best-to-safari.html</loc>
+    <loc>https://www.sundownsafari.com/blog/kenya-vs-south-africa-safari-2025-luxury-comparison.html</loc>
     <lastmod>2026-05-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.sundownsafari.com/blog/kenya-walking-safaris-the-most-immersive.html</loc>
+    <loc>https://www.sundownsafari.com/blog/kenya-vs-tanzania-wheres-best-to-see-the-great-migration.html</loc>
     <lastmod>2026-05-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.sundownsafari.com/blog/kenya-walking-safaris-the-raw-untamed.html</loc>
+    <loc>https://www.sundownsafari.com/blog/kenya-walking-safaris-the-most-immersive-safari-experience.html</loc>
     <lastmod>2026-05-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.sundownsafari.com/blog/kenyas-most-epic-safari-lodges.html</loc>
+    <loc>https://www.sundownsafari.com/blog/kenya-walking-safaris-the-raw-untamed-adventure-you-cant-miss.html</loc>
     <lastmod>2026-05-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.sundownsafari.com/blog/kenyas-most-expensive-safari-lodges.html</loc>
+    <loc>https://www.sundownsafari.com/blog/kenyas-most-epic-safari-lodges-where-luxury-meets-the-wild.html</loc>
     <lastmod>2026-05-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.sundownsafari.com/blog/luxury-honeymoon-safaris-in-kenya.html</loc>
+    <loc>https://www.sundownsafari.com/blog/kenyas-most-expensive-safari-lodges-luxury-worth-splurging-on.html</loc>
     <lastmod>2026-05-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.sundownsafari.com/blog/luxury-kenya-safari-packing-list.html</loc>
+    <loc>https://www.sundownsafari.com/blog/luxury-honeymoon-safaris-in-kenya-romance-in-the-wild.html</loc>
     <lastmod>2026-05-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-
-  <!-- BLOG INDEX -->
   <url>
-    <loc>https://www.sundownsafari.com/blog/</loc>
-    <lastmod>2026-06-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-<url>
-    <loc>https://www.sundownsafari.com/blog/private-conservancy-vs-national-reserve-kenya.html</loc>
-    <lastmod>2026-06-05</lastmod>
+    <loc>https://www.sundownsafari.com/blog/luxury-kenya-safari-packing-list-what-to-wear-2025-guide.html</loc>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.sundownsafari.com/blog/luxury-safari-experiences-in-kenya-for-couples-romantic-getaways-in-the-wild.html</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.sundownsafari.com/blog/luxury-safari-lodges-in-kenya-wild-beauty-meets-ultimate-comfort.html</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.sundownsafari.com/blog/luxury-vs-budget-safaris-in-kenya-which-is-right-for-you.html</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.sundownsafari.com/blog/magical-nights-in-the-wild-unforgettable-bush-dinners-safari-sleepouts.html</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.sundownsafari.com/blog/month-by-month-guide-to-kenyas-great-migration.html</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.sundownsafari.com/blog/private-air-safari-kenya-luxury-fly-in-lodges-helicopter-adventures.html</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.sundownsafari.com/blog/safari-footwear-guide-boots-sneakers-or-sandals.html</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.sundownsafari.com/blog/safari-for-foodies-culinary-adventures-in-the-kenyan-wild.html</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.sundownsafari.com/blog/safari-packing-mistakes-what-not-to-wear-on-safari-in-kenya.html</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.sundownsafari.com/blog/safety-tips-for-walking-safaris-in-kenya.html</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.sundownsafari.com/blog/solo-female-safari-in-kenya-2025-safety-luxury-tips.html</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.sundownsafari.com/blog/the-big-cat-safari-adventure-tracking-lions-leopards-cheetahs-in-kenya.html</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.sundownsafari.com/blog/the-great-migration-in-kenya-best-times-where-to-stay.html</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.sundownsafari.com/blog/the-most-stunning-safari-lodges-in-maasai-mara.html</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.sundownsafari.com/blog/the-real-cost-of-a-kenyan-safari-budget-vs-luxury-options.html</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.sundownsafari.com/blog/the-ultimate-packing-guide-for-a-kenyan-safari-what-to-bring-what-to-wear.html</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.sundownsafari.com/blog/the-ultimate-safari-planning-guide-best-time-to-visit-kenyas-parks.html</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.sundownsafari.com/blog/thrills-in-the-sky-a-hot-air-balloon-safari-over-the-maasai-mara.html</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.sundownsafari.com/blog/top-tips-for-capturing-stunning-wildlife-photos-on-safari-in-kenya.html</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.sundownsafari.com/blog/unique-safari-activities-beyond-game-drives-hikes-canoes-hot-air-balloons.html</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.sundownsafari.com/blog/vows-in-the-wild-planning-a-dream-bush-wedding-in-kenya.html</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.sundownsafari.com/blog/walking-safaris-in-kenya-step-into-the-wild-on-foot.html</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.sundownsafari.com/blog/weirdest-kenya-safari-adventures-camel-treks-underwater-wine-more.html</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.sundownsafari.com/blog/wellness-in-the-wild-embrace-nature-with-kenyas-safari-inspired-retreats.html</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.sundownsafari.com/blog/what-to-pack-for-a-kenyan-safari-the-ultimate-guide-for-first-time-travelers.html</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.sundownsafari.com/blog/why-kenya-is-the-perfect-family-safari-destination.html</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.sundownsafari.com/blog/wings-over-kenya-the-ultimate-birdwatching-safari-experience.html</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 </urlset>
