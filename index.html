@@ -44,6 +44,16 @@
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
+      /* Consent Mode: regional. UK, EU/EEA and Switzerland visitors are asked first.
+         Everyone else is measured by default and can still opt out from the footer. */
+      var sdSaved = null; try { sdSaved = localStorage.getItem('sundown_consent'); } catch(e) {}
+      var sdTz = ''; try { sdTz = Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch(e) {}
+      var sdNeeds = !sdTz || /^(Europe\/|Atlantic\/(Canary|Madeira|Azores|Reykjavik|Faroe)|Arctic\/Longyearbyen)/.test(sdTz);
+      var sdState = (sdSaved === 'granted' || (sdSaved === null && !sdNeeds)) ? 'granted' : 'denied';
+      window.sundownConsent = {needs: sdNeeds, saved: sdSaved, state: sdState};
+      gtag('consent', 'default', {'ad_storage':'denied','analytics_storage':'denied','ad_user_data':'denied','ad_personalization':'denied','region':['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE','IT','LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES','SE','IS','LI','NO','GB','CH'],'wait_for_update':500});
+      gtag('consent', 'default', {'ad_storage':sdState,'analytics_storage':sdState,'ad_user_data':sdState,'ad_personalization':sdState});
+      if (sdSaved !== null || sdNeeds) { gtag('consent', 'update', {'ad_storage':sdState,'analytics_storage':sdState,'ad_user_data':sdState,'ad_personalization':sdState}); }
       gtag('js', new Date());
       gtag('config', 'G-ZZQGM8Z57G', {'anonymize_ip': true});
       gtag('config', 'AW-7101548637');
@@ -57,8 +67,19 @@
       n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
       t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
       (window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+      if (window.sundownConsent && window.sundownConsent.state === 'denied') { fbq('consent','revoke'); }
       fbq('init','1297796101963461');
       fbq('track','PageView');
+    </script>
+
+    <!-- Microsoft Clarity: async injection, consent aware -->
+    <script>
+      (function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window,document,"clarity","script","vwkwv0jjue");
+      var sdC = (window.sundownConsent && window.sundownConsent.state) || 'denied';
+      clarity('consentv2', {ad_Storage: sdC, analytics_Storage: sdC});
     </script>
 
     <!-- Google Fonts: preload→stylesheet swap — browser fetches in background,
@@ -106,30 +127,30 @@
             <div style="position:absolute;right:0;top:0;bottom:0;width:80px;background:linear-gradient(to left,#0B3A1D,transparent);z-index:2;"></div>
             <!-- Scrolling ticker -->
            <div id="ticker-track" style="display:flex;align-items:center;height:36px;width:max-content;animation:ticker-scroll 40s linear infinite;">
-                <span class="ticker-item"><i class="fa-solid fa-paw text-brand-accentGold mr-2"></i><strong>LIVE NOW:</strong> Great Migration river crossings continuing at Mara River — peak season through September</span>
+                <span class="ticker-item"><i class="fa-solid fa-paw text-brand-accentGold mr-2"></i><strong>OCTOBER SAFARIS:</strong> Your own Land Cruiser and guide, four guests at most. WhatsApp us your dates</span>
                 <span class="ticker-sep">·</span>
-                <span class="ticker-item"><i class="fa-solid fa-binoculars text-brand-accentGold mr-2"></i><strong>HIGH SEASON ALERT:</strong> Peak migration season — vehicles booking out fast, secure your dates now</span>
+                <span class="ticker-item"><i class="fa-solid fa-flag text-brand-accentGold mr-2"></i><strong>MASHUJAA WEEKEND:</strong> Two nights in the Taita Hills, 17 to 19 October. Sundowners by an elephant waterhole. Limited rooms</span>
                 <span class="ticker-sep">·</span>
-                <span class="ticker-item"><i class="fa-solid fa-moon text-brand-accentGold mr-2"></i><strong>EXCLUSIVE:</strong> Night drives open on Mara North Conservancy — limited permits</span>
+                <span class="ticker-item"><i class="fa-solid fa-clock text-brand-accentGold mr-2"></i><strong>REAL PRICING IN 24 HOURS:</strong> Send us your dates and get a draft itinerary and a straight quote by tomorrow</span>
                 <span class="ticker-sep">·</span>
-                <span class="ticker-item"><i class="fa-solid fa-elephant text-brand-accentGold mr-2"></i><strong>FIELD REPORT:</strong> Resident cheetah coalitions tracked daily in Olare Motorogi this month</span>
+                <span class="ticker-item"><i class="fa-solid fa-tag text-brand-accentGold mr-2"></i><strong>PARK FEES ROSE THIS YEAR:</strong> Request your quote now and we hold the price for 30 days</span>
                 <span class="ticker-sep">·</span>
-                <span class="ticker-item"><i class="fa-solid fa-star text-brand-accentGold mr-2"></i><strong>NEW:</strong> Star-bed sleepout dates open for September — limited nights remaining</span>
+                <span class="ticker-item"><i class="fa-solid fa-binoculars text-brand-accentGold mr-2"></i><strong>WEEKEND SAFARI:</strong> About four hours from Nairobi to wild Kenya. No shared vehicle, no crowds</span>
                 <span class="ticker-sep">·</span>
-                <span class="ticker-item"><i class="fa-solid fa-certificate text-brand-accentGold mr-2"></i><strong>THE SUNDOWN STANDARD:</strong> Max 4 guests per vehicle. Always. No exceptions.</span>
+                <span class="ticker-item"><i class="fa-solid fa-certificate text-brand-accentGold mr-2"></i><strong>THE SUNDOWN STANDARD:</strong> Four guests at most per vehicle, so every seat is a window seat</span>
                 <span class="ticker-sep">·</span>
                 <!-- Duplicate for seamless loop -->
-                <span class="ticker-item"><i class="fa-solid fa-paw text-brand-accentGold mr-2"></i><strong>LIVE NOW:</strong> Great Migration river crossings continuing at Mara River — peak season through September</span>
+                <span class="ticker-item"><i class="fa-solid fa-paw text-brand-accentGold mr-2"></i><strong>OCTOBER SAFARIS:</strong> Your own Land Cruiser and guide, four guests at most. WhatsApp us your dates</span>
                 <span class="ticker-sep">·</span>
-                <span class="ticker-item"><i class="fa-solid fa-binoculars text-brand-accentGold mr-2"></i><strong>HIGH SEASON ALERT:</strong> Peak migration season — vehicles booking out fast, secure your dates now</span>
+                <span class="ticker-item"><i class="fa-solid fa-flag text-brand-accentGold mr-2"></i><strong>MASHUJAA WEEKEND:</strong> Two nights in the Taita Hills, 17 to 19 October. Sundowners by an elephant waterhole. Limited rooms</span>
                 <span class="ticker-sep">·</span>
-                <span class="ticker-item"><i class="fa-solid fa-moon text-brand-accentGold mr-2"></i><strong>EXCLUSIVE:</strong> Night drives open on Mara North Conservancy — limited permits</span>
+                <span class="ticker-item"><i class="fa-solid fa-clock text-brand-accentGold mr-2"></i><strong>REAL PRICING IN 24 HOURS:</strong> Send us your dates and get a draft itinerary and a straight quote by tomorrow</span>
                 <span class="ticker-sep">·</span>
-                <span class="ticker-item"><i class="fa-solid fa-elephant text-brand-accentGold mr-2"></i><strong>FIELD REPORT:</strong> Resident cheetah coalitions tracked daily in Olare Motorogi this month</span>
+                <span class="ticker-item"><i class="fa-solid fa-tag text-brand-accentGold mr-2"></i><strong>PARK FEES ROSE THIS YEAR:</strong> Request your quote now and we hold the price for 30 days</span>
                 <span class="ticker-sep">·</span>
-                <span class="ticker-item"><i class="fa-solid fa-star text-brand-accentGold mr-2"></i><strong>NEW:</strong> Star-bed sleepout dates open for September — limited nights remaining</span>
+                <span class="ticker-item"><i class="fa-solid fa-binoculars text-brand-accentGold mr-2"></i><strong>WEEKEND SAFARI:</strong> About four hours from Nairobi to wild Kenya. No shared vehicle, no crowds</span>
                 <span class="ticker-sep">·</span>
-                <span class="ticker-item"><i class="fa-solid fa-certificate text-brand-accentGold mr-2"></i><strong>THE SUNDOWN STANDARD:</strong> Max 4 guests per vehicle. Always. No exceptions.</span>
+                <span class="ticker-item"><i class="fa-solid fa-certificate text-brand-accentGold mr-2"></i><strong>THE SUNDOWN STANDARD:</strong> Four guests at most per vehicle, so every seat is a window seat</span>
                 <span class="ticker-sep">·</span>
             </div>
             <style>
@@ -869,7 +890,9 @@ One Standard: Yours Alone.</h2>
                         success.scrollIntoView({ behavior: 'smooth', block: 'center' });
                         if (typeof gtag !== 'undefined') {
                             gtag('event', 'form_submit', { event_category: 'enquiry', event_label: 'safari_enquiry_form' });
+                            gtag('event', 'generate_lead', { event_category: 'enquiry', event_label: 'safari_enquiry_form', group_size: groupSize, budget_range: budgetRange, safari_priority: safariPriority });
                         }
+                        if (typeof clarity === 'function') { clarity('event', 'generate_lead'); }
                         if (typeof fbq !== 'undefined') { fbq('track', 'Lead'); }
                     } else {
                         btnText.textContent = 'Something went wrong — try again';
@@ -1550,7 +1573,7 @@ window.sdfaqToggle = sdfaqToggle;
 
         <!-- BOTTOM BAR -->
         <div class="flex flex-wrap items-center justify-between gap-4">
-          <p class="text-sm font-semibold text-stone-400">© 2026 Sundown Safaris Ltd. · Westlands, Nairobi, Kenya</p>
+          <p class="text-sm font-semibold text-stone-400">© 2026 Sundown Safaris Ltd. · Westlands, Nairobi, Kenya · <a href="#" onclick="sundownConsentOpen();return false;" class="underline hover:text-white">Cookie settings</a></p>
           <p class="font-serif italic text-sm text-stone-400">7 years in the field. Every detail considered.</p>
         </div>
 
@@ -1589,6 +1612,36 @@ window.sdfaqToggle = sdfaqToggle;
     <i class="fa-brands fa-whatsapp text-2xl"></i>
     <span class="text-sm font-bold tracking-wide hidden sm:block">Chat on WhatsApp</span>
 </a>
+<!-- COOKIE CONSENT -->
+<div id="consent-banner" role="dialog" aria-live="polite" aria-label="Cookie choices" style="display:none;position:fixed;left:50%;bottom:16px;transform:translateX(-50%);width:calc(100% - 32px);max-width:640px;background:#0B3A1D;color:#fff;border:1px solid #C98A27;border-radius:14px;padding:16px 18px;box-shadow:0 12px 40px rgba(0,0,0,0.35);z-index:2000;font-family:'Inter',sans-serif;">
+    <p style="margin:0 0 12px 0;font-size:13px;line-height:1.55;color:#f3efe6;">We use cookies to see how our site is used and to measure our ads, so we can plan better safaris for you. You choose. You can change your mind any time from Cookie settings in the footer.</p>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;">
+        <button type="button" id="consent-accept" style="background:#C98A27;color:#0B3A1D;font-weight:700;font-size:13px;padding:10px 20px;border-radius:999px;border:0;cursor:pointer;">Accept</button>
+        <button type="button" id="consent-decline" style="background:transparent;color:#fff;font-weight:600;font-size:13px;padding:10px 20px;border-radius:999px;border:1px solid rgba(255,255,255,0.5);cursor:pointer;">Decline</button>
+    </div>
+</div>
+<script>
+(function() {
+    var KEY = 'sundown_consent';
+    var banner = document.getElementById('consent-banner');
+    function stored() { try { return localStorage.getItem(KEY); } catch(e) { return null; } }
+    function save(v) { try { localStorage.setItem(KEY, v); } catch(e) {} }
+    function apply(granted) {
+        var g = granted ? 'granted' : 'denied';
+        if (typeof gtag === 'function') {
+            gtag('consent', 'update', {'ad_storage': g, 'analytics_storage': g, 'ad_user_data': g, 'ad_personalization': g});
+        }
+        if (typeof fbq === 'function') { fbq('consent', granted ? 'grant' : 'revoke'); }
+        if (typeof clarity === 'function') { clarity('consentv2', {ad_Storage: g, analytics_Storage: g}); }
+    }
+    function show() { banner.style.display = 'block'; }
+    function hide() { banner.style.display = 'none'; }
+    document.getElementById('consent-accept').addEventListener('click', function() { save('granted'); apply(true); hide(); });
+    document.getElementById('consent-decline').addEventListener('click', function() { save('denied'); apply(false); hide(); });
+    window.sundownConsentOpen = show;
+    if (stored() === null && window.sundownConsent && window.sundownConsent.needs) { show(); }
+})();
+</script>
 <script src="/js/whatsapp-tracking.js"></script>
 </body>
 </html>
