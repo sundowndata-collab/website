@@ -862,7 +862,35 @@
                     headers: { 'Accept': 'application/json' }
                 })
                 .then(function(response) {
-                    if (response.ok) {
+                    if (response.ok) {                        // Analytics: fires only on confirmed Formspree success
+                        try {
+                            var budgetMap = { '1500-2500': 2000, '2500-4000': 3250, '4000-6000': 5000, '6000+': 7000, 'flexible': 3000 };
+                            var sizeMap = { '1': 1, '2': 2, '3': 3, '4': 4, '5+': 5 };
+                            var perPerson = budgetMap[data.get('budget_range')] || 3000;
+                            var partySize = sizeMap[data.get('group_size')] || 1;
+                            var leadValue = perPerson * partySize;
+
+                            if (typeof gtag === 'function') {
+                                gtag('event', 'generate_lead', {
+                                    currency: 'USD',
+                                    value: leadValue,
+                                    budget_range: data.get('budget_range'),
+                                    group_size: data.get('group_size'),
+                                    safari_priority: data.get('safari_priority') || 'not_set',
+                                    referral_source: data.get('referral_source') || 'not_set'
+                                });
+                                gtag('event', 'conversion', {
+                                    send_to: 'AW-7101548637/REPLACE_WITH_YOUR_LABEL',
+                                    value: leadValue,
+                                    currency: 'USD'
+                                });
+                            }
+                            if (typeof fbq === 'function') {
+                                fbq('track', 'Lead', { value: leadValue, currency: 'USD' });
+                            }
+                        } catch (err) {
+                            console.log('Analytics error:', err);
+                        }
                         // Send confirmation email to guest via EmailJS
                         var guestEmail = document.querySelector('#enquiry-form input[name="email"]').value;
                         var guestName = document.querySelector('#enquiry-form input[name="full_name"]').value;
