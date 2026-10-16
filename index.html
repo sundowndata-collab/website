@@ -121,7 +121,7 @@
 <body class="bg-brand-safariBg text-brand-darkText font-sans text-base antialiased">
 
     <header class="bg-white sticky top-0 z-50 shadow-md">
-        <div class="bg-brand-green border-b border-brand-accentGold hidden sm:block overflow-hidden" style="height:44px;position:relative;">
+        <div class="bg-brand-green border-b border-brand-accentGold block overflow-hidden" style="height:44px;position:relative;">
             <!-- Fade edges -->
             <div style="position:absolute;left:0;top:0;bottom:0;width:80px;background:linear-gradient(to right,#0B3A1D,transparent);z-index:2;"></div>
             <div style="position:absolute;right:0;top:0;bottom:0;width:80px;background:linear-gradient(to left,#0B3A1D,transparent);z-index:2;"></div>
@@ -160,6 +160,7 @@
                 .ticker-sep{display:inline-block;width:7px;height:7px;border-radius:50%;background:rgba(201,168,76,0.6);margin:0 12px;padding:0;font-size:0;flex-shrink:0;}
                 @keyframes ticker-scroll{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
                 #ticker-track:hover{animation-play-state:paused;}
+                @media (max-width:639px){.ticker-item{font-size:13px;padding:0 16px;}.ticker-item i{font-size:15px;}}
             </style>
         </div>
 
