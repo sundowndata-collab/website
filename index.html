@@ -108,6 +108,10 @@
         body .flatpickr-calendar .flatpickr-months{background:#0B3A1D;border-radius:12px 12px 0 0}
         body .flatpickr-calendar .flatpickr-current-month,body .flatpickr-calendar .flatpickr-current-month .numInputWrapper span.arrowUp:after{color:white}
         body .flatpickr-calendar .flatpickr-months .flatpickr-prev-month svg,body .flatpickr-calendar .flatpickr-months .flatpickr-next-month svg{fill:white}
+        body .flatpickr-calendar .sd-hint{background:#C98A27;color:#0d1f16;font-weight:800;font-size:14px;text-align:center;padding:10px 12px;border-radius:12px 12px 0 0}
+        body .flatpickr-calendar .flatpickr-months{position:relative}
+        body .flatpickr-calendar .flatpickr-months .flatpickr-prev-month,body .flatpickr-calendar .flatpickr-months .flatpickr-next-month{top:50%;transform:translateY(-50%);padding:12px}
+        body .flatpickr-calendar .sd-hint + .flatpickr-months,body .flatpickr-calendar .sd-hint + .flatpickr-months .flatpickr-month{border-radius:0}
         @media (max-width:767px){
           .flatpickr-calendar.open{position:fixed!important;left:50%!important;top:50%!important;right:auto!important;transform:translate(-50%,-50%);max-width:calc(100vw - 32px);box-shadow:0 0 0 100vmax rgba(12,20,14,0.55),0 20px 60px rgba(0,0,0,0.3)!important;z-index:9999}
           .flatpickr-calendar.open:before,.flatpickr-calendar.open:after{display:none}
@@ -710,7 +714,8 @@
                     <!-- Travel Dates -->
                     <div>
                         <label class="block text-xs font-black uppercase tracking-wider text-stone-400 mb-2">When would you like to travel?</label>
-                        <input type="text" name="travel_dates" id="date-range-picker" required placeholder="Pick your dates" readonly class="w-full p-4 border border-stone-200 rounded-lg text-sm bg-stone-50 focus:outline-none focus:ring-2 focus:ring-brand-green focus:border-transparent transition cursor-pointer" style="background-image:url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2216%22 height=%2216%22 fill=%22%230B3A1D%22 viewBox=%220 0 16 16%22><path d=%22M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z%22/></svg>');background-repeat:no-repeat;background-position:right 16px center;padding-right:44px;">
+                        <input type="text" name="travel_dates" id="date-range-picker" required placeholder="Arrival and departure dates" readonly class="w-full p-4 border border-stone-200 rounded-lg text-sm bg-stone-50 focus:outline-none focus:ring-2 focus:ring-brand-green focus:border-transparent transition cursor-pointer" style="background-image:url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2216%22 height=%2216%22 fill=%22%230B3A1D%22 viewBox=%220 0 16 16%22><path d=%22M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z%22/></svg>');background-repeat:no-repeat;background-position:right 16px center;padding-right:44px;">
+                        <p id="date-help" class="text-xs text-stone-500 mt-2">Tap to choose your arrival and departure dates</p>
                     </div>
 
                     <!-- Group Size -->
@@ -813,43 +818,106 @@
         })();
         </script>
 
-        <!-- FLATPICKR: lazy-loaded on date field focus (see init script below) -->
+        <!-- FLATPICKR: preloaded as the form comes into view, opens on the first tap -->
         <script>
         (function() {
-            var fpLoaded = false;
-            function initFlatpickr() {
-                if (fpLoaded) return;
-                fpLoaded = true;
-                // Load CSS
+            var dp = document.getElementById('date-range-picker');
+            var help = document.getElementById('date-help');
+            if (!dp) return;
+            var state = 'idle', fp = null, openWhenReady = false;
+            var fmt = { weekday: 'short', day: 'numeric', month: 'short' };
+
+            function nice(d) { return d.toLocaleDateString('en-GB', fmt); }
+            function setHint(text) {
+                if (fp && fp.calendarContainer) {
+                    var h = fp.calendarContainer.querySelector('.sd-hint');
+                    if (h) h.textContent = text;
+                }
+            }
+            function setHelp(text, strong) {
+                if (!help) return;
+                help.textContent = text;
+                help.style.color = strong ? '#0B3A1D' : '';
+                help.style.fontWeight = strong ? '700' : '';
+            }
+
+            function build() {
+                fp = flatpickr(dp, {
+                    mode: 'range',
+                    minDate: 'today',
+                    dateFormat: 'M j, Y',
+                    showMonths: window.matchMedia('(max-width: 767px)').matches ? 1 : 2,
+                    disableMobile: true,
+                    position: 'auto center',
+                    onReady: function(sel, str, inst) {
+                        var h = document.createElement('div');
+                        h.className = 'sd-hint';
+                        h.textContent = 'Step 1 of 2. Tap your arrival date';
+                        inst.calendarContainer.insertBefore(h, inst.calendarContainer.firstChild);
+                    },
+                    onOpen: function(sel) {
+                        setHint(sel.length === 1 ? 'Step 2 of 2. Now tap your departure date' : 'Step 1 of 2. Tap your arrival date');
+                    },
+                    onChange: function(sel) {
+                        if (sel.length === 1) {
+                            setHint('Arriving ' + nice(sel[0]) + '. Now tap your departure date');
+                            setHelp('Now pick your departure date', true);
+                        } else if (sel.length === 2) {
+                            var nights = Math.round((sel[1] - sel[0]) / 86400000);
+                            setHelp(nights + (nights === 1 ? ' night, ' : ' nights, ') + nice(sel[0]) + ' to ' + nice(sel[1]), true);
+                        } else {
+                            setHelp('Tap to choose your arrival and departure dates');
+                        }
+                    },
+                    onClose: function(sel, str, inst) {
+                        // Only an arrival date picked: keep it and remind them, rather than losing their tap
+                        if (sel.length === 1) {
+                            dp.value = 'From ' + nice(sel[0]) + ', departure to be added';
+                            setHelp('Tap the box again to add your departure date', true);
+                        }
+                    }
+                });
+                state = 'ready';
+                if (openWhenReady) { openWhenReady = false; fp.open(); }
+            }
+
+            function load() {
+                if (state !== 'idle') return;
+                state = 'loading';
                 var css = document.createElement('link');
                 css.rel = 'stylesheet';
                 css.href = 'https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css';
                 document.head.appendChild(css);
-                // Load JS then init
                 var js = document.createElement('script');
                 js.src = 'https://cdn.jsdelivr.net/npm/flatpickr'; js.crossOrigin = 'anonymous';
-                js.onload = function() {
-                    flatpickr('#date-range-picker', {
-                        mode: 'range',
-                        minDate: 'today',
-                        dateFormat: 'M j, Y',
-                        showMonths: window.matchMedia('(max-width: 767px)').matches ? 1 : 2,
-                        disableMobile: true,
-                        position: 'auto center',
-                        onChange: function(selectedDates, dateStr) {
-                            if (selectedDates.length === 2) {
-                                var nights = Math.round((selectedDates[1] - selectedDates[0]) / (1000 * 60 * 60 * 24));
-                                document.getElementById('date-range-picker').placeholder = dateStr + ' (' + nights + ' nights)';
-                            }
-                        }
-                    });
+                js.onload = build;
+                js.onerror = function() {
+                    // Calendar could not load: let people type their dates instead
+                    state = 'failed';
+                    dp.removeAttribute('readonly');
+                    dp.placeholder = 'Type your dates, for example 12 to 18 March';
+                    setHelp('Type your rough dates, we will confirm them with you');
                 };
                 document.head.appendChild(js);
             }
-            var dp = document.getElementById('date-range-picker');
-            if (dp) {
-                dp.addEventListener('focus', initFlatpickr, { once: true });
-                dp.addEventListener('click', initFlatpickr, { once: true });
+
+            // First tap opens the calendar, even if it is still loading
+            function onTap() {
+                if (state === 'ready') return;          // flatpickr handles it
+                openWhenReady = true;
+                load();
+            }
+            dp.addEventListener('click', onTap);
+            dp.addEventListener('focus', onTap);
+
+            // Preload once the form is near the screen, so the tap feels instant
+            if ('IntersectionObserver' in window) {
+                var io = new IntersectionObserver(function(entries) {
+                    if (entries.some(function(e) { return e.isIntersecting; })) { io.disconnect(); load(); }
+                }, { rootMargin: '600px 0px' });
+                io.observe(dp);
+            } else {
+                setTimeout(load, 3000);
             }
         })();
         </script>
