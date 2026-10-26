@@ -112,8 +112,9 @@
         body .flatpickr-calendar .flatpickr-months{position:relative}
         body .flatpickr-calendar .flatpickr-months .flatpickr-prev-month,body .flatpickr-calendar .flatpickr-months .flatpickr-next-month{top:50%;transform:translateY(-50%);padding:12px}
         body .flatpickr-calendar .sd-hint + .flatpickr-months,body .flatpickr-calendar .sd-hint + .flatpickr-months .flatpickr-month{border-radius:0}
+        body .flatpickr-calendar.open,body .flatpickr-calendar.animate.open{animation:none!important}
         @media (max-width:767px){
-          .flatpickr-calendar.open{position:fixed!important;left:50%!important;top:50%!important;right:auto!important;transform:translate(-50%,-50%);max-width:calc(100vw - 32px);box-shadow:0 0 0 100vmax rgba(12,20,14,0.55),0 20px 60px rgba(0,0,0,0.3)!important;z-index:9999}
+          .flatpickr-calendar.open{animation:none!important;transition:none!important;position:fixed!important;left:50%!important;top:50%!important;right:auto!important;transform:translate(-50%,-50%);max-width:calc(100vw - 32px);box-shadow:0 0 0 100vmax rgba(12,20,14,0.55),0 20px 60px rgba(0,0,0,0.3)!important;z-index:9999}
           .flatpickr-calendar.open:before,.flatpickr-calendar.open:after{display:none}
           .flatpickr-day{height:42px;line-height:42px}
           #date-range-picker{font-size:16px}
@@ -849,6 +850,7 @@
                     showMonths: window.matchMedia('(max-width: 767px)').matches ? 1 : 2,
                     disableMobile: true,
                     position: 'auto center',
+                    animate: false,
                     onReady: function(sel, str, inst) {
                         var h = document.createElement('div');
                         h.className = 'sd-hint';
@@ -1248,13 +1250,53 @@ window.sdfaqToggle = sdfaqToggle;
         }); // end requestIdleCallback
     </script>
 
-<!-- FLOATING WHATSAPP BUTTON -->
-<a href="https://wa.me/254724491210?text=Hi, I found Sundown Safaris and would like to enquire about a private safari in Kenya" target="_blank" 
-   class="fixed bottom-6 right-6 z-50 flex items-center gap-3 bg-[#25D366] text-white pl-4 pr-5 py-3.5 rounded-full shadow-2xl hover:bg-[#20b858] transition duration-300 group"
-   style="box-shadow:0 8px 32px rgba(37,211,102,0.4);">
-    <i class="fa-brands fa-whatsapp text-2xl"></i>
-    <span class="text-sm font-bold tracking-wide hidden sm:block">Chat on WhatsApp</span>
-</a>
+<!-- STICKY ENQUIRY BAR: WhatsApp and the enquiry form, hidden while the form is on screen -->
+<div id="sticky-cta" role="region" aria-label="Plan your safari">
+    <p class="sticky-cta-note">Private safaris across Kenya. We reply within 2 hours.</p>
+    <div class="sticky-cta-buttons">
+        <a href="https://wa.me/254724491210?text=Hi%2C%20I%20found%20Sundown%20Safaris%20and%20would%20like%20to%20enquire%20about%20a%20private%20safari%20in%20Kenya" target="_blank" rel="noopener" class="sticky-cta-btn sticky-cta-wa">
+            <i class="fa-brands fa-whatsapp"></i><span>WhatsApp us</span>
+        </a>
+        <a href="#master-booking" id="sticky-cta-form" class="sticky-cta-btn sticky-cta-form">
+            <i class="fa-regular fa-calendar-check"></i><span>Plan my trip</span>
+        </a>
+    </div>
+</div>
+<style>
+    #sticky-cta{position:fixed;left:0;right:0;bottom:0;z-index:1500;background:#fff;border-top:1px solid #e7e5e4;box-shadow:0 -8px 30px rgba(0,0,0,0.12);padding:10px 16px calc(12px + env(safe-area-inset-bottom));font-family:'Inter',sans-serif}
+    #sticky-cta.is-hidden{display:none}
+    .sticky-cta-note{margin:0 0 8px;text-align:center;font-size:12px;font-weight:600;color:#57534e}
+    .sticky-cta-buttons{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .sticky-cta-btn{display:flex;align-items:center;justify-content:center;gap:8px;min-height:48px;border-radius:999px;font-weight:800;font-size:15px;text-decoration:none;letter-spacing:0.01em}
+    .sticky-cta-btn i{font-size:19px}
+    .sticky-cta-wa{background:#25D366;color:#fff}
+    .sticky-cta-wa:hover{background:#20b858}
+    .sticky-cta-form{background:#0B3A1D;color:#fff}
+    .sticky-cta-form:hover{background:#C98A27;color:#0d1f16}
+    body.has-sticky-cta{padding-bottom:110px}
+    @media (min-width:768px){
+        #sticky-cta{left:50%;right:auto;bottom:20px;transform:translateX(-50%);width:460px;border:1px solid #e7e5e4;border-radius:18px;padding:12px 14px}
+        body.has-sticky-cta{padding-bottom:0}
+    }
+</style>
+<script>
+(function(){
+    var bar = document.getElementById('sticky-cta');
+    var form = document.getElementById('master-booking');
+    if (!bar) return;
+    document.body.classList.add('has-sticky-cta');
+    if (form && 'IntersectionObserver' in window) {
+        new IntersectionObserver(function(entries){
+            entries.forEach(function(e){ bar.classList.toggle('is-hidden', e.isIntersecting); });
+        }, { threshold: 0, rootMargin: '0px 0px -25% 0px' }).observe(form);
+    }
+    var btn = document.getElementById('sticky-cta-form');
+    if (btn) btn.addEventListener('click', function(){
+        if (typeof gtag !== 'undefined') { gtag('event', 'sticky_form_click', { event_category: 'enquiry', event_label: 'sticky_bar' }); }
+        if (typeof clarity === 'function') { clarity('event', 'sticky_form_click'); }
+    });
+})();
+</script>
 <!-- COOKIE CONSENT -->
 <div id="consent-banner" role="dialog" aria-live="polite" aria-label="Cookie choices" style="display:none;position:fixed;left:50%;bottom:16px;transform:translateX(-50%);width:calc(100% - 32px);max-width:640px;background:#0B3A1D;color:#fff;border:1px solid #C98A27;border-radius:14px;padding:16px 18px;box-shadow:0 12px 40px rgba(0,0,0,0.35);z-index:2000;font-family:'Inter',sans-serif;">
     <p style="margin:0 0 12px 0;font-size:13px;line-height:1.55;color:#f3efe6;">We use cookies to see how our site is used and to measure our ads, so we can plan better safaris for you. You choose. You can change your mind any time from Cookie settings in the footer.</p>
