@@ -109,7 +109,7 @@
         /* Site globals */
         html{scroll-behavior:smooth}
         .hero-gradient{background:linear-gradient(135deg,#051A0D 0%,#0B3A1D 60%,#19522F 100%)}
-        .dropdown:hover .dropdown-menu{display:block}
+        .dropdown:hover .dropdown-menu,.dropdown:focus-within .dropdown-menu{display:block}
     </style>
 
     <!-- Tailwind purged CSS: fully inline, zero network, paints immediately -->
@@ -180,12 +180,12 @@
                 <a href="/#about-us-summary" class="hover:text-brand-green transition py-2 border-b-2 border-transparent hover:border-brand-green">About Us</a>
                 
                 <div class="relative dropdown py-4">
-                    <span class="text-brand-green flex items-center gap-1.5 cursor-pointer py-2 border-b-2 border-transparent">
+                    <a href="/#grid-anchor" class="text-brand-green flex items-center gap-1.5 cursor-pointer py-2 border-b-2 border-transparent hover:border-brand-green">
                         Our Safaris <i class="fa-solid fa-chevron-down text-xs text-brand-accentGold"></i>
-                    </span>
+                    </a>
                     <div class="dropdown-menu hidden absolute left-1/2 -translate-x-1/2 top-full w-[460px] bg-white shadow-2xl rounded-xl border border-stone-200 overflow-hidden py-4 z-50 mt-1">
                         <div class="grid grid-cols-1 gap-1 normal-case tracking-normal text-base font-normal">
-                            <div class="px-5 py-1.5 text-xs font-black uppercase tracking-widest text-stone-400 bg-stone-50">3 Day Safaris</div>
+                            <a href="/#safaris-3-day" class="block px-5 py-1.5 text-xs font-black uppercase tracking-widest text-stone-400 bg-stone-50 hover:text-brand-green">3 Day Safaris</a>
                             <a href="/trip/3-day-a-adventure-the-explorer.html" class="w-full text-left px-5 py-2.5 text-stone-700 hover:bg-brand-lightGreen hover:text-brand-green flex justify-between items-center text-sm font-medium">
                                 <span>3 Day Adventure: <strong class="font-serif font-bold">"The Explorer"</strong></span> <i class="fa-solid fa-chevron-right text-xs opacity-40"></i>
                             </a>
@@ -196,7 +196,7 @@
                                 <span>3 Day Luxury Lite: <strong class="font-serif font-bold">"The Sundowner"</strong></span> <i class="fa-solid fa-chevron-right text-xs opacity-40"></i>
                             </a>
                             
-                            <div class="px-5 py-1.5 text-xs font-black uppercase tracking-widest text-stone-400 bg-stone-50 mt-2">5 Day Safaris</div>
+                            <a href="/#safaris-5-day" class="block px-5 py-1.5 text-xs font-black uppercase tracking-widest text-stone-400 bg-stone-50 hover:text-brand-green mt-2">5 Day Safaris</a>
                             <a href="/trip/5-day-a-adventure-the-trailblazer.html" class="w-full text-left px-5 py-2.5 text-stone-700 hover:bg-brand-lightGreen hover:text-brand-green flex justify-between items-center text-sm font-medium">
                                 <span>5 Day Adventure: <strong class="font-serif font-bold">"The Trailblazer"</strong></span> <i class="fa-solid fa-chevron-right text-xs opacity-40"></i>
                             </a>
@@ -207,7 +207,7 @@
                                 <span>5 Day Luxury Lite: <strong class="font-serif font-bold">"The Horizon Chaser"</strong></span> <i class="fa-solid fa-chevron-right text-xs opacity-40"></i>
                             </a>
                             
-                            <div class="px-5 py-1.5 text-xs font-black uppercase tracking-widest text-stone-400 bg-stone-50 mt-2">7 Day Safaris</div>
+                            <a href="/#safaris-7-day" class="block px-5 py-1.5 text-xs font-black uppercase tracking-widest text-stone-400 bg-stone-50 hover:text-brand-green mt-2">7 Day Safaris</a>
                             <a href="/trip/7-day-a-flagship-ultimate-kenya.html" class="w-full text-left px-5 py-2.5 text-stone-700 hover:bg-brand-lightGreen hover:text-brand-green flex justify-between items-center text-sm font-medium">
                                 <span>7 Day Flagship: <strong class="font-serif font-bold">"Ultimate Kenya"</strong> Circuit</span> <i class="fa-solid fa-chevron-right text-xs opacity-40"></i>
                             </a>
@@ -226,11 +226,11 @@
             </nav>
 
             <div class="flex items-center space-x-4">
-                <a href="tel:+254724491210" class="hidden lg:flex items-center text-right space-x-3 border-r border-stone-200 pr-4">
+                <a href="https://wa.me/254724491210" target="_blank" class="hidden lg:flex items-center text-right space-x-3 border-r border-stone-200 pr-4">
                     <div class="text-stone-400 text-xl"><i class="fa-solid fa-headset"></i></div>
                     <div class="flex flex-col text-left font-sans">
                         <span class="text-xs uppercase font-extrabold text-stone-400 tracking-wider leading-none">Speak to a Spotter</span>
-                        <span class="text-sm font-bold text-brand-darkText hover:text-brand-accentGold transition mt-0.5">0724 491 210</span>
+                        <span class="text-sm font-bold text-brand-darkText hover:text-brand-accentGold transition mt-0.5">+254 724 491 210</span>
                     </div>
                 </a>
                 <a href="/#master-booking" class="hidden sm:inline-flex items-center gap-2.5 bg-brand-green text-white px-6 py-3.5 rounded-full font-bold text-sm tracking-wider hover:bg-brand-accentGold transition duration-300 shadow-md">
@@ -261,15 +261,15 @@
                         Our Safaris <i id="safari-chevron" class="fa-solid fa-chevron-down text-xs text-brand-accentGold transition-transform duration-300"></i>
                     </button>
                     <div id="safari-accordion" class="hidden pl-4 mt-1 space-y-1">
-                        <p class="text-xs font-black uppercase tracking-widest text-stone-400 px-4 py-2">3 Day Safaris</p>
+                        <a href="/#safaris-3-day" onclick="closeMobileMenu()" class="block text-xs font-black uppercase tracking-widest text-stone-400 px-4 py-2 hover:text-brand-green">3 Day Safaris</a>
                         <a href="/trip/3-day-a-adventure-the-explorer.html" class="flex items-center justify-between py-2.5 px-4 rounded-lg text-sm text-stone-600 hover:bg-brand-lightGreen hover:text-brand-green transition">The Explorer <span class="text-brand-accentGold text-xs font-bold">$1,500</span></a>
                         <a href="/trip/3-day-b-classic-the-photographer.html" class="flex items-center justify-between py-2.5 px-4 rounded-lg text-sm text-stone-600 hover:bg-brand-lightGreen hover:text-brand-green transition">The Photographer <span class="text-brand-accentGold text-xs font-bold">$2,800</span></a>
                         <a href="/trip/3-day-c-luxury-lite-the-sundowner.html" class="flex items-center justify-between py-2.5 px-4 rounded-lg text-sm text-stone-600 hover:bg-brand-lightGreen hover:text-brand-green transition">The Sundowner <span class="text-brand-accentGold text-xs font-bold">$3,400</span></a>
-                        <p class="text-xs font-black uppercase tracking-widest text-stone-400 px-4 py-2 mt-2">5 Day Safaris</p>
+                        <a href="/#safaris-5-day" onclick="closeMobileMenu()" class="block text-xs font-black uppercase tracking-widest text-stone-400 px-4 py-2 hover:text-brand-green mt-2">5 Day Safaris</a>
                         <a href="/trip/5-day-a-adventure-the-trailblazer.html" class="flex items-center justify-between py-2.5 px-4 rounded-lg text-sm text-stone-600 hover:bg-brand-lightGreen hover:text-brand-green transition">The Trailblazer <span class="text-brand-accentGold text-xs font-bold">$2,300</span></a>
                         <a href="/trip/5-day-b-classic-the-dreamcatcher.html" class="flex items-center justify-between py-2.5 px-4 rounded-lg text-sm text-stone-600 hover:bg-brand-lightGreen hover:text-brand-green transition">The Dreamcatcher <span class="text-brand-accentGold text-xs font-bold">$3,900</span></a>
                         <a href="/trip/5-day-c-luxury-lite-the-horizon-chaser.html" class="flex items-center justify-between py-2.5 px-4 rounded-lg text-sm text-stone-600 hover:bg-brand-lightGreen hover:text-brand-green transition">The Horizon Chaser <span class="text-brand-accentGold text-xs font-bold">$4,800</span></a>
-                        <p class="text-xs font-black uppercase tracking-widest text-stone-400 px-4 py-2 mt-2">7 Day Safaris</p>
+                        <a href="/#safaris-7-day" onclick="closeMobileMenu()" class="block text-xs font-black uppercase tracking-widest text-stone-400 px-4 py-2 hover:text-brand-green mt-2">7 Day Safaris</a>
                         <a href="/trip/7-day-a-flagship-ultimate-kenya.html" class="flex items-center justify-between py-2.5 px-4 rounded-lg text-sm text-stone-600 hover:bg-brand-lightGreen hover:text-brand-green transition">Ultimate Kenya <span class="text-brand-accentGold text-xs font-bold">$5,900</span></a>
                         <a href="/trip/7-day-b-classic-the-voyager.html" class="flex items-center justify-between py-2.5 px-4 rounded-lg text-sm text-stone-600 hover:bg-brand-lightGreen hover:text-brand-green transition">The Voyager <span class="text-brand-accentGold text-xs font-bold">$4,900</span></a>
                         <a href="/trip/7-day-c-luxury-lite-the-constellation.html" class="flex items-center justify-between py-2.5 px-4 rounded-lg text-sm text-stone-600 hover:bg-brand-lightGreen hover:text-brand-green transition">The Constellation <span class="text-brand-accentGold text-xs font-bold">$6,500</span></a>
@@ -439,7 +439,7 @@
 
             <!-- 3-Day -->
             <div class="mb-20">
-                <div class="text-sm font-black uppercase tracking-widest text-brand-accentGold mb-6 flex items-center gap-2.5 border-b border-stone-200 pb-3">
+                <div id="safaris-3-day" class="scroll-mt-28 text-sm font-black uppercase tracking-widest text-brand-accentGold mb-6 flex items-center gap-2.5 border-b border-stone-200 pb-3">
                     <i class="fa-solid fa-hourglass-start text-base"></i> 3 Day Safaris
                 </div>
                 <div class="grid md:grid-cols-3 gap-6">
@@ -484,7 +484,7 @@
 
             <!-- 5-Day -->
             <div class="mb-20">
-                <div class="text-sm font-black uppercase tracking-widest text-brand-accentGold mb-6 flex items-center gap-2.5 border-b border-stone-200 pb-3">
+                <div id="safaris-5-day" class="scroll-mt-28 text-sm font-black uppercase tracking-widest text-brand-accentGold mb-6 flex items-center gap-2.5 border-b border-stone-200 pb-3">
                     <i class="fa-solid fa-hourglass-half text-base"></i> 5 Day Safaris
                 </div>
                 <div class="grid md:grid-cols-3 gap-6">
@@ -532,7 +532,7 @@
 
             <!-- 7-Day -->
             <div>
-                <div class="text-sm font-black uppercase tracking-widest text-brand-accentGold mb-6 flex items-center gap-2.5 border-b border-stone-200 pb-3">
+                <div id="safaris-7-day" class="scroll-mt-28 text-sm font-black uppercase tracking-widest text-brand-accentGold mb-6 flex items-center gap-2.5 border-b border-stone-200 pb-3">
                     <i class="fa-solid fa-hourglass text-base"></i> 7 Day Safaris
                 </div>
                 <div class="grid md:grid-cols-3 gap-6">
@@ -790,11 +790,11 @@
             function loadEmailJS(){
                 if(loaded)return; loaded=true;
                 var s=document.createElement('script');
-                s.src='https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js';
+                s.src='https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js'; s.crossOrigin='anonymous';
                 s.onload=function(){emailjs.init('IE1I9YeI1vfUb7XTC');};
                 document.head.appendChild(s);
             }
-            var form=document.getElementById('booking-form')||document.querySelector('form');
+            var form=document.getElementById('enquiry-form');
             if(form){
                 form.addEventListener('focus',loadEmailJS,{once:true,capture:true});
                 form.addEventListener('mouseenter',loadEmailJS,{once:true});
@@ -818,7 +818,7 @@
                 document.head.appendChild(css);
                 // Load JS then init
                 var js = document.createElement('script');
-                js.src = 'https://cdn.jsdelivr.net/npm/flatpickr';
+                js.src = 'https://cdn.jsdelivr.net/npm/flatpickr'; js.crossOrigin = 'anonymous';
                 js.onload = function() {
                     flatpickr('#date-range-picker', {
                         mode: 'range',
@@ -844,61 +844,70 @@
         })();
         </script>
         <script>
-        (window.requestIdleCallback || function(cb){setTimeout(cb,1)})(function(){
         (function() {
             var form = document.getElementById('enquiry-form');
             var success = document.getElementById('form-success');
             var btnText = document.getElementById('btn-text');
             var submitBtn = document.getElementById('submit-btn');
+            if (!form) return;
+
+            function field(sel) { var el = form.querySelector(sel); return el ? el.value : ''; }
 
             form.addEventListener('submit', function(e) {
                 e.preventDefault();
+                if (submitBtn.disabled) return;
                 submitBtn.disabled = true;
                 btnText.textContent = 'Sending...';
 
-                var data = new FormData(form);
+                var guestEmail = field('input[name="email"]');
+                var guestName = field('input[name="full_name"]');
+                var travelDates = field('input[name="travel_dates"]');
+                var groupSize = field('select[name="group_size"]');
+                var budgetRange = field('select[name="budget_range"]');
+                var safariPriority = field('select[name="safari_priority"]');
+
                 fetch('https://formspree.io/f/mkoajzzv', {
                     method: 'POST',
-                    body: data,
+                    body: new FormData(form),
                     headers: { 'Accept': 'application/json' }
                 })
                 .then(function(response) {
-                    if (response.ok) {                        // Analytics: fires only on confirmed Formspree success
-                        // Send confirmation email to guest via EmailJS
-                        var guestEmail = document.querySelector('#enquiry-form input[name="email"]').value;
-                        var guestName = document.querySelector('#enquiry-form input[name="full_name"]').value;
-                        var travelDates = document.querySelector('#enquiry-form input[name="travel_dates"]').value;
-                        var groupSize = document.querySelector('#enquiry-form select[name="group_size"]').value;
-                        var budgetRange = document.querySelector('#enquiry-form select[name="budget_range"]').value;
-                        var safariPriority = document.querySelector('#enquiry-form select[name="safari_priority"]').value;
-
-                        emailjs.send('service_jptsykv', 'template_d0mnaa8', {
-                            to_email:        guestEmail,
-                            full_name:       guestName,
-                            travel_dates:    travelDates,
-                            group_size:      groupSize,
-                            budget_range:    budgetRange,
-                            safari_priority: safariPriority,
-                        }).then(function() {
-                            console.log('Confirmation email sent');
-                        }).catch(function(err) {
-                            console.log('EmailJS error:', JSON.stringify(err));
-                        });
-                        form.classList.add('hidden');
-                        success.classList.remove('hidden');
-                        success.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                        var budgetMap = { '1500-2500': 2000, '2500-4000': 3250, '4000-6000': 5000, '6000+': 7000, 'flexible': 3000 };
-var sizeMap = { '1': 1, '2': 2, '3': 3, '4': 4, '5+': 5 };
-var leadValue = (budgetMap[budgetRange] || 3000) * (sizeMap[groupSize] || 1);
-if (typeof gtag !== 'undefined') {
-    gtag('event', 'generate_lead', { event_category: 'enquiry', event_label: 'safari_enquiry_form', group_size: groupSize, budget_range: budgetRange, safari_priority: safariPriority, currency: 'USD', value: leadValue });
-}
-if (typeof clarity === 'function') { clarity('event', 'generate_lead'); }
-if (typeof fbq !== 'undefined') { fbq('track', 'Lead', { value: leadValue, currency: 'USD' }); }
-                    } else {
+                    if (!response.ok) {
                         btnText.textContent = 'Something went wrong. Please try again';
                         submitBtn.disabled = false;
+                        return;
                     }
+
+                    // The enquiry is saved. Show success first so nothing below can undo it.
+                    form.classList.add('hidden');
+                    success.classList.remove('hidden');
+                    success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+                    // Analytics: fires once, only on confirmed Formspree success
+                    try {
+                        var budgetMap = { '1500-2500': 2000, '2500-4000': 3250, '4000-6000': 5000, '6000+': 7000, 'flexible': 3000 };
+                        var sizeMap = { '1': 1, '2': 2, '3': 3, '4': 4, '5+': 5 };
+                        var leadValue = (budgetMap[budgetRange] || 3000) * (sizeMap[groupSize] || 1);
+                        if (typeof gtag !== 'undefined') {
+                            gtag('event', 'generate_lead', { event_category: 'enquiry', event_label: 'safari_enquiry_form', group_size: groupSize, budget_range: budgetRange, safari_priority: safariPriority, currency: 'USD', value: leadValue });
+                        }
+                        if (typeof clarity === 'function') { clarity('event', 'generate_lead'); }
+                        if (typeof fbq !== 'undefined') { fbq('track', 'Lead', { value: leadValue, currency: 'USD' }); }
+                    } catch (err) { console.log('Analytics error:', err); }
+
+                    // Guest confirmation email. Optional: if EmailJS failed to load, the enquiry still stands.
+                    try {
+                        if (typeof emailjs !== 'undefined' && emailjs.send) {
+                            emailjs.send('service_jptsykv', 'template_d0mnaa8', {
+                                to_email:        guestEmail,
+                                full_name:       guestName,
+                                travel_dates:    travelDates,
+                                group_size:      groupSize,
+                                budget_range:    budgetRange,
+                                safari_priority: safariPriority
+                            }).catch(function(err) { console.log('EmailJS error:', JSON.stringify(err)); });
+                        }
+                    } catch (err) { console.log('EmailJS error:', err); }
                 })
                 .catch(function() {
                     btnText.textContent = 'Something went wrong. Please try again';
@@ -906,7 +915,6 @@ if (typeof fbq !== 'undefined') { fbq('track', 'Lead', { value: leadValue, curre
                 });
             });
         })();
-        }); // end requestIdleCallback
         </script>
     </main>
 

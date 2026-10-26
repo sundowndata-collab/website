@@ -169,6 +169,18 @@
         .prose strong { color: #111B14; font-weight: 700; }
         .dropdown:hover .dropdown-menu { display: block; }
     </style>
+    <!-- Microsoft Clarity: same consent rule as the homepage -->
+    <script>
+      (function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window,document,"clarity","script","vwkwv0jjue");
+      (function(){var sv=null,tz='';try{sv=localStorage.getItem('sundown_consent');}catch(e){}
+      try{tz=Intl.DateTimeFormat().resolvedOptions().timeZone||'';}catch(e){}
+      var eu=!tz||/^(Europe\/|Atlantic\/(Canary|Madeira|Azores|Reykjavik|Faroe)|Arctic\/Longyearbyen)/.test(tz);
+      var st=(sv==='granted'||(sv===null&&!eu))?'granted':'denied';
+      clarity('consentv2',{ad_Storage:st,analytics_Storage:st});})();
+    </script>
 </head>
 <body class="bg-brand-safariBg text-brand-darkText font-sans antialiased">
 
