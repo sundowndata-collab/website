@@ -95,16 +95,25 @@
     <!-- Inline styles: render immediately, no network round-trip -->
     <style>
         /* Flatpickr brand overrides — loaded before lazy FP JS kicks in */
-        .flatpickr-calendar{font-family:'Inter',sans-serif;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,0.15);border:none}
-        .flatpickr-day.selected,.flatpickr-day.startRange,.flatpickr-day.endRange{background:#0B3A1D!important;border-color:#0B3A1D!important}
-        .flatpickr-day.inRange{background:#EAF2EC!important;border-color:#EAF2EC!important;color:#0B3A1D!important}
-        .flatpickr-day:hover{background:#EAF2EC;color:#0B3A1D}
-        .flatpickr-months .flatpickr-month{background:#0B3A1D;color:white;border-radius:12px 12px 0 0}
-        .flatpickr-current-month .flatpickr-monthDropdown-months{background:#0B3A1D;color:white}
-        .flatpickr-current-month input.cur-year{color:white}
-        .flatpickr-weekday{color:#0B3A1D;font-weight:700}
-        .flatpickr-months .flatpickr-prev-month,.flatpickr-months .flatpickr-next-month{color:white!important;fill:white!important}
-        .flatpickr-months .flatpickr-prev-month:hover svg,.flatpickr-months .flatpickr-next-month:hover svg{fill:#C98A27!important}
+        body .flatpickr-calendar{font-family:'Inter',sans-serif;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,0.15);border:none}
+        body .flatpickr-calendar .flatpickr-day.selected,body .flatpickr-calendar .flatpickr-day.startRange,body .flatpickr-calendar .flatpickr-day.endRange{background:#0B3A1D!important;border-color:#0B3A1D!important}
+        body .flatpickr-calendar .flatpickr-day.inRange{background:#EAF2EC!important;border-color:#EAF2EC!important;color:#0B3A1D!important}
+        body .flatpickr-calendar .flatpickr-day:hover{background:#EAF2EC;color:#0B3A1D}
+        body .flatpickr-calendar .flatpickr-months .flatpickr-month{background:#0B3A1D;color:white;border-radius:12px 12px 0 0}
+        body .flatpickr-calendar .flatpickr-current-month .flatpickr-monthDropdown-months{background:#0B3A1D;color:white}
+        body .flatpickr-calendar .flatpickr-current-month input.cur-year{color:white}
+        body .flatpickr-calendar .flatpickr-weekday{color:#0B3A1D;font-weight:700}
+        body .flatpickr-calendar .flatpickr-months .flatpickr-prev-month,body .flatpickr-calendar .flatpickr-months .flatpickr-next-month{color:white!important;fill:white!important}
+        body .flatpickr-calendar .flatpickr-months .flatpickr-prev-month:hover svg,body .flatpickr-calendar .flatpickr-months .flatpickr-next-month:hover svg{fill:#C98A27!important}
+        body .flatpickr-calendar .flatpickr-months{background:#0B3A1D;border-radius:12px 12px 0 0}
+        body .flatpickr-calendar .flatpickr-current-month,body .flatpickr-calendar .flatpickr-current-month .numInputWrapper span.arrowUp:after{color:white}
+        body .flatpickr-calendar .flatpickr-months .flatpickr-prev-month svg,body .flatpickr-calendar .flatpickr-months .flatpickr-next-month svg{fill:white}
+        @media (max-width:767px){
+          .flatpickr-calendar.open{position:fixed!important;left:50%!important;top:50%!important;right:auto!important;transform:translate(-50%,-50%);max-width:calc(100vw - 32px);box-shadow:0 0 0 100vmax rgba(12,20,14,0.55),0 20px 60px rgba(0,0,0,0.3)!important;z-index:9999}
+          .flatpickr-calendar.open:before,.flatpickr-calendar.open:after{display:none}
+          .flatpickr-day{height:42px;line-height:42px}
+          #date-range-picker{font-size:16px}
+        }
         .flatpickr-day.selected.startRange + .endRange:not(:nth-child(7n+1)),.flatpickr-day.startRange + .endRange:not(:nth-child(7n+1)),.flatpickr-day.endRange + .endRange:not(:nth-child(7n+1)){box-shadow:-10px 0 0 #EAF2EC}
         /* Site globals */
         html{scroll-behavior:smooth}
@@ -824,8 +833,9 @@
                         mode: 'range',
                         minDate: 'today',
                         dateFormat: 'M j, Y',
-                        showMonths: 2,
-                        disableMobile: false,
+                        showMonths: window.matchMedia('(max-width: 767px)').matches ? 1 : 2,
+                        disableMobile: true,
+                        position: 'auto center',
                         onChange: function(selectedDates, dateStr) {
                             if (selectedDates.length === 2) {
                                 var nights = Math.round((selectedDates[1] - selectedDates[0]) / (1000 * 60 * 60 * 24));
