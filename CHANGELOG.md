@@ -231,6 +231,18 @@ Guest reviews, the Our Story quote, the review on every trip page, the testimoni
 
 Trip pages are about 13 percent shorter on phones and desktop before the footer. The itinerary days sit closer together, the three feature cards become slim rows on phones, and section and card padding is tighter. Standard blog posts are about 7 to 13 percent shorter, with a smaller header image, tighter headings and paragraph spacing, and a slightly larger 17 pixel text size on phones for easier reading. Tables in articles now keep a readable width and scroll sideways on phones instead of squeezing into tall narrow rows; 29 tables are covered. The featured posts' header button now reads Book on phones instead of squashing. The shared styles live in css/sundown-shared.css.
 
+### 41. Homepage meta description
+
+Google was rewriting the homepage snippet for searches of the brand name, stitching page fragments into "sell Nine private journeys. From $1,500 per ,". The old description never mentioned Sundown Safaris, so Google went looking elsewhere for it. The new description leads with the brand, the difference, proof and price, at 152 characters so it is not cut off: Sundown Safaris runs private Kenya safaris from Nairobi. Your own Land Cruiser and guide, at your own pace. Rated 4.9 on Google, from $1,500 per person. The same text is in the structured data. WhatsApp and Facebook previews get a version that ends with Free itinerary in 24 hours. Google picks this up on its next crawl; requesting indexing for the homepage in Search Console speeds it up.
+
+### 42. No guest limit anywhere on the site
+
+Sundown arranges private safaris for any size of group and plans the vehicles around it, so every claim of four guests at most has been removed: about 200 mentions across 73 pages, including the hero badge, the Our Story figures, the trip page stats and feature cards, trip and blog descriptions, the cost guide, the private versus group guide, the footer and the weekend page. They now say what Sundown does offer: your own vehicle and guide, never shared with strangers, for a couple, a family or a big group. The hero badge reads Any group size, Never shared, and the Our Story figure reads 0 strangers in your vehicle. General advice in articles, such as typical walking safari group sizes, is unchanged.
+
+### 43. Brand search result: title and site icon
+
+The homepage title now leads with the brand: Sundown Safaris | Private Kenya Safaris from Nairobi, 51 characters so it shows in full. The share preview titles match. The site icon, which Google shows beside search results and browsers show in tabs, was a lion emoji that looked different on every device. It is now the gold elephant on a green circle, the same as the logo, as favicon.svg plus PNG versions for older browsers (favicon-48.png), iPhone home screens (apple-touch-icon.png) and Android (icon-192.png, icon-512.png, listed in site.webmanifest). All 72 pages carry the new icon tags. Google refreshes the icon in search results on its own schedule, usually within a few weeks.
+
 # How to check the work
 
 1. **Form.** Submit one test enquiry from a phone. The success message should appear straight away, and GA4 Realtime should show generate_lead once with a value.
