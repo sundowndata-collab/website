@@ -173,6 +173,32 @@ A new homepage section, From the field, sits just above the enquiry form. It sho
 
 It is placed right before the form on purpose. A visitor who has just seen real vehicles and real sightings meets the form at the moment of highest trust. The layout is two columns on phones and three on desktop, every image loads only when scrolled to, and all seven measure 100 percent sharp on phone and desktop. The Land Rover front photo is cropped above its number plate.
 
+## Compact layout, 26 October afternoon
+
+### 29. Homepage made compact
+
+The phone homepage is about 40 percent shorter, from roughly 18,000 to 11,000 pixels of scrolling, and desktop about 13 percent shorter. Section spacing is now 40 to 56 pixels on phones and 56 to 64 on desktop, instead of up to 96. On phones each row of trips (3, 5 and 7 days) is a swipeable row showing one card with the next peeking in, with a small Swipe hint, instead of nine full height cards stacked. The four guest reviews swipe the same way. Card descriptions are trimmed to three lines on phones, and the full text stays on the trip pages.
+
+### 30. Hero with one centred call to action
+
+The hero is now centred, with one button, Get My Free Itinerary, tracked as hero_cta_click. The See the Nine Journeys button and the side panel holding the rating and the Sundown Promise were removed. Below the button sits a row of four trust badges with gold icons: 4.9 on Google from 16 guest reviews, KATO bonded, 4 guests max, and Reply in 2 hours. They sit in one bar on desktop and a two by two grid on phones. The intro paragraph was shortened. The desktop video still plays behind it, now with an even overlay so centred text stays readable.
+
+### 31. Three years operating
+
+Every mention of seven years now says three years: the Our Story figures and text, the footer, the Explorer trip page and the cost guide.
+
+### 32. Icons in Our Story
+
+The four figures, years operating, guests per vehicle, private journeys and conservancy licences, each have a gold icon in a circle. The three cards below them use matching circled icons. The credentials under The Sundown Safaris Team, Nairobi, Kenya are now pills with icons: KATO bonded, KWS compliant, TRA licensed and Nairobi based. The guest photo now uses its wider crop, which removes the empty space beside it on desktop and keeps the Sundown mark in view on phones.
+
+### 33. Testimonials tightened
+
+The figures and credentials repeated in the testimonials section were removed, since Our Story already shows them. The closing button is now rounded to match the rest of the site.
+
+### 34. Compact footer
+
+The footer is rebuilt in about half the height. It has the brand, a one line promise, WhatsApp and email, then three link columns: Our Safaris, Travel Guide and Company. Our Safaris now links straight to each duration row. Below sits a row of credential pills and a single line for copyright and the icon credit. On desktop the floating WhatsApp and Plan my trip bar steps aside when the footer is in view, so it never covers it.
+
 # How to check the work
 
 1. **Form.** Submit one test enquiry from a phone. The success message should appear straight away, and GA4 Realtime should show generate_lead once with a value.
