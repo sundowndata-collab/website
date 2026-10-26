@@ -162,6 +162,13 @@
   ]
 }
     </script>
+<style id="sd-fx-css">
+.sd-fx-spot{margin:14px 0 0}
+.sd-fx-line{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px 10px;font:500 13px/1.5 'Inter',sans-serif;color:#78716c}
+.sd-fx-spot-left .sd-fx-line{justify-content:flex-start}
+.sd-fx-select{border:1px solid #d6d3d1;border-radius:999px;padding:4px 26px 4px 12px;background:#fff;color:#0B3A1D;font:700 13px/1.2 'Inter',sans-serif;cursor:pointer}
+.sd-fx-select:focus{outline:2px solid #C98A27;outline-offset:1px}
+</style>
 </head>
 <body class="bg-brand-safariBg text-brand-darkText font-sans text-base antialiased">
 
@@ -291,8 +298,8 @@
                         </div>
                         <div class="border-t border-white/10 pt-4">
                             <p class="text-xs uppercase tracking-widest text-stone-400 font-semibold mb-1">From</p>
-                            <p class="text-3xl font-black text-white font-serif">$4,800</p>
-                            <p class="text-stone-400 text-xs mt-1">USD per person, all inclusive</p>
+                            <p class="text-3xl font-black text-white font-serif" data-usd="4800">$4,800</p>
+                            <p class="text-stone-400 text-xs mt-1" data-fx-note data-fx-usd="4800">USD per person, all inclusive</p>
                         </div>
                     </div>
                 </div>
@@ -457,9 +464,10 @@
                 <div class="bg-white border border-stone-200 rounded-2xl shadow-xl p-8 sticky top-28">
                     <p class="text-xs font-black uppercase tracking-widest text-stone-400 mb-1">Price from</p>
                     <div class="flex items-baseline gap-2 mb-1">
-                        <span class="text-4xl font-black text-stone-950 font-serif">$4,800</span>
+                        <span class="text-4xl font-black text-stone-950 font-serif" data-usd="4800">$4,800</span>
                     </div>
-                    <p class="text-xs text-stone-400 mb-6">USD per person, all inclusive</p>
+                    <p class="text-xs text-stone-400 mb-2" data-fx-note data-fx-usd="4800">USD per person, all inclusive</p>
+                    <div class="sd-fx-spot sd-fx-spot-left mb-6" data-fx-picker></div>
                     <div class="bg-rose-50 border border-rose-200 rounded-lg p-4 mb-6">
                         <p class="text-rose-800 text-xs font-black uppercase tracking-wider flex items-center gap-1.5 mb-1">
                             <i class="fa-solid fa-triangle-exclamation"></i> Good to know
@@ -513,5 +521,6 @@
     </footer>
 
 <script src="/js/whatsapp-tracking.js"></script>
+<script src="/js/currency.js" defer></script>
 </body>
 </html>

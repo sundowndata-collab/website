@@ -203,6 +203,16 @@ The footer is rebuilt in about half the height. It has the brand, a one line pro
 
 The elephant in the logo circle is now the Lucide Lab elephant, ISC licence, which allows commercial use without a visible credit. A short licence note sits in the page code beside each icon. The previous elephant was licensed CC BY 3.0, which required the visible footer credit, so both were replaced together. Applies to all 14 pages with the logo.
 
+### 36. Prices in each visitor's own currency
+
+Visitors now see prices in their country's official currency, worked out from their location by Vercel. A visitor in the UK sees the Explorer from £1,160, in Kenya from KES 201,000, and in the US from $1,500 as before. It covers the homepage cards, the safaris menu, the budget options in the enquiry form, both prices on every trip page, and the 105 From prices in blog posts. A small picker under the trip grid and on each trip page lets anyone switch currency, and their choice is remembered.
+
+**Rates.** A small function at /api/fx returns the visitor's country and the day's market rates for 154 currencies, from the free exchange-api feed with a second mirror as backup. Rates refresh daily and are kept on the visitor's device for three hours. If the rates ever fail to load, prices simply stay in US dollars.
+
+**No FX loss to Sundown.** Prices stay set in US dollars, and bookings are still invoiced in US dollars (or shillings for resident quotes), so what Sundown receives never depends on a visitor's currency. The local figure adds 3% for bank conversion spreads and is rounded up, so the guide price is never below what the guest will actually pay. The page says so plainly: Prices in GBP at today's rate, plus 3% for bank conversion. Invoiced in US dollars. The 3% is one setting, FX_BUFFER, at the top of js/currency.js.
+
+Search engines and the structured data still see US dollars, and the enquiry form still sends the US dollar budget band. GA4 records currency_shown and currency_change, which shows where visitors come from.
+
 # How to check the work
 
 1. **Form.** Submit one test enquiry from a phone. The success message should appear straight away, and GA4 Realtime should show generate_lead once with a value.

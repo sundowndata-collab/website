@@ -510,6 +510,13 @@
 
     }
     </style>
+<style id="sd-fx-css">
+.sd-fx-spot{margin:14px 0 0}
+.sd-fx-line{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px 10px;font:500 13px/1.5 'Inter',sans-serif;color:#78716c}
+.sd-fx-spot-left .sd-fx-line{justify-content:flex-start}
+.sd-fx-select{border:1px solid #d6d3d1;border-radius:999px;padding:4px 26px 4px 12px;background:#fff;color:#0B3A1D;font:700 13px/1.2 'Inter',sans-serif;cursor:pointer}
+.sd-fx-select:focus{outline:2px solid #C98A27;outline-offset:1px}
+</style>
 </head>
 <body class="bg-brand-safariBg text-brand-darkText font-sans text-base antialiased">
 
@@ -659,17 +666,17 @@
                     </button>
                     <div id="safari-accordion" class="hidden pl-4 mt-1 space-y-1">
                         <a href="/#safaris-3-day" onclick="closeMobileMenu()" class="block text-xs font-black uppercase tracking-widest text-stone-400 px-4 py-2 hover:text-brand-green">3 Day Safaris</a>
-                        <a href="/trip/3-day-a-adventure-the-explorer.html" class="flex items-center justify-between py-2.5 px-4 rounded-lg text-sm text-stone-600 hover:bg-brand-lightGreen hover:text-brand-green transition">The Explorer <span class="text-brand-accentGold text-xs font-bold">$1,500</span></a>
-                        <a href="/trip/3-day-b-classic-the-photographer.html" class="flex items-center justify-between py-2.5 px-4 rounded-lg text-sm text-stone-600 hover:bg-brand-lightGreen hover:text-brand-green transition">The Photographer <span class="text-brand-accentGold text-xs font-bold">$2,800</span></a>
-                        <a href="/trip/3-day-c-luxury-lite-the-sundowner.html" class="flex items-center justify-between py-2.5 px-4 rounded-lg text-sm text-stone-600 hover:bg-brand-lightGreen hover:text-brand-green transition">The Sundowner <span class="text-brand-accentGold text-xs font-bold">$3,400</span></a>
+                        <a href="/trip/3-day-a-adventure-the-explorer.html" class="flex items-center justify-between py-2.5 px-4 rounded-lg text-sm text-stone-600 hover:bg-brand-lightGreen hover:text-brand-green transition">The Explorer <span class="text-brand-accentGold text-xs font-bold" data-usd="1500">$1,500</span></a>
+                        <a href="/trip/3-day-b-classic-the-photographer.html" class="flex items-center justify-between py-2.5 px-4 rounded-lg text-sm text-stone-600 hover:bg-brand-lightGreen hover:text-brand-green transition">The Photographer <span class="text-brand-accentGold text-xs font-bold" data-usd="2800">$2,800</span></a>
+                        <a href="/trip/3-day-c-luxury-lite-the-sundowner.html" class="flex items-center justify-between py-2.5 px-4 rounded-lg text-sm text-stone-600 hover:bg-brand-lightGreen hover:text-brand-green transition">The Sundowner <span class="text-brand-accentGold text-xs font-bold" data-usd="3400">$3,400</span></a>
                         <a href="/#safaris-5-day" onclick="closeMobileMenu()" class="block text-xs font-black uppercase tracking-widest text-stone-400 px-4 py-2 hover:text-brand-green mt-2">5 Day Safaris</a>
-                        <a href="/trip/5-day-a-adventure-the-trailblazer.html" class="flex items-center justify-between py-2.5 px-4 rounded-lg text-sm text-stone-600 hover:bg-brand-lightGreen hover:text-brand-green transition">The Trailblazer <span class="text-brand-accentGold text-xs font-bold">$2,300</span></a>
-                        <a href="/trip/5-day-b-classic-the-dreamcatcher.html" class="flex items-center justify-between py-2.5 px-4 rounded-lg text-sm text-stone-600 hover:bg-brand-lightGreen hover:text-brand-green transition">The Dreamcatcher <span class="text-brand-accentGold text-xs font-bold">$3,900</span></a>
-                        <a href="/trip/5-day-c-luxury-lite-the-horizon-chaser.html" class="flex items-center justify-between py-2.5 px-4 rounded-lg text-sm text-stone-600 hover:bg-brand-lightGreen hover:text-brand-green transition">The Horizon Chaser <span class="text-brand-accentGold text-xs font-bold">$4,800</span></a>
+                        <a href="/trip/5-day-a-adventure-the-trailblazer.html" class="flex items-center justify-between py-2.5 px-4 rounded-lg text-sm text-stone-600 hover:bg-brand-lightGreen hover:text-brand-green transition">The Trailblazer <span class="text-brand-accentGold text-xs font-bold" data-usd="2300">$2,300</span></a>
+                        <a href="/trip/5-day-b-classic-the-dreamcatcher.html" class="flex items-center justify-between py-2.5 px-4 rounded-lg text-sm text-stone-600 hover:bg-brand-lightGreen hover:text-brand-green transition">The Dreamcatcher <span class="text-brand-accentGold text-xs font-bold" data-usd="3900">$3,900</span></a>
+                        <a href="/trip/5-day-c-luxury-lite-the-horizon-chaser.html" class="flex items-center justify-between py-2.5 px-4 rounded-lg text-sm text-stone-600 hover:bg-brand-lightGreen hover:text-brand-green transition">The Horizon Chaser <span class="text-brand-accentGold text-xs font-bold" data-usd="4800">$4,800</span></a>
                         <a href="/#safaris-7-day" onclick="closeMobileMenu()" class="block text-xs font-black uppercase tracking-widest text-stone-400 px-4 py-2 hover:text-brand-green mt-2">7 Day Safaris</a>
-                        <a href="/trip/7-day-a-flagship-ultimate-kenya.html" class="flex items-center justify-between py-2.5 px-4 rounded-lg text-sm text-stone-600 hover:bg-brand-lightGreen hover:text-brand-green transition">Ultimate Kenya <span class="text-brand-accentGold text-xs font-bold">$5,900</span></a>
-                        <a href="/trip/7-day-b-classic-the-voyager.html" class="flex items-center justify-between py-2.5 px-4 rounded-lg text-sm text-stone-600 hover:bg-brand-lightGreen hover:text-brand-green transition">The Voyager <span class="text-brand-accentGold text-xs font-bold">$4,900</span></a>
-                        <a href="/trip/7-day-c-luxury-lite-the-constellation.html" class="flex items-center justify-between py-2.5 px-4 rounded-lg text-sm text-stone-600 hover:bg-brand-lightGreen hover:text-brand-green transition">The Constellation <span class="text-brand-accentGold text-xs font-bold">$6,500</span></a>
+                        <a href="/trip/7-day-a-flagship-ultimate-kenya.html" class="flex items-center justify-between py-2.5 px-4 rounded-lg text-sm text-stone-600 hover:bg-brand-lightGreen hover:text-brand-green transition">Ultimate Kenya <span class="text-brand-accentGold text-xs font-bold" data-usd="5900">$5,900</span></a>
+                        <a href="/trip/7-day-b-classic-the-voyager.html" class="flex items-center justify-between py-2.5 px-4 rounded-lg text-sm text-stone-600 hover:bg-brand-lightGreen hover:text-brand-green transition">The Voyager <span class="text-brand-accentGold text-xs font-bold" data-usd="4900">$4,900</span></a>
+                        <a href="/trip/7-day-c-luxury-lite-the-constellation.html" class="flex items-center justify-between py-2.5 px-4 rounded-lg text-sm text-stone-600 hover:bg-brand-lightGreen hover:text-brand-green transition">The Constellation <span class="text-brand-accentGold text-xs font-bold" data-usd="6500">$6,500</span></a>
                     </div>
                 </div>
 
@@ -832,6 +839,7 @@
             <div class="text-center max-w-3xl mx-auto mb-20">
                 <h2 class="text-3xl md:text-5xl font-serif font-black text-brand-green">Nine private journeys. One promise: it is yours alone.</h2>
                 <p class="text-stone-600 text-base mt-4 leading-relaxed">Choose your length. Choose your style. Every journey comes with your own Land Cruiser, a guide who knows this land by name, and four guests at most per vehicle, so every seat is a window seat and every decision is yours. Travelling with more than four? We simply send more than one vehicle.</p>
+                <div class="sd-fx-spot" data-fx-picker></div>
             </div>
 
             <!-- 3-Day -->
@@ -846,7 +854,7 @@
                             <div>
                                 <span class="text-xs font-black uppercase tracking-widest text-stone-400 mb-2 block">Adventure, 3 Days</span>
                                 <h3 class="font-serif font-bold text-2xl text-brand-darkText">"The Explorer"</h3>
-                                <p class="text-lg font-black text-brand-green mt-2 mb-1">From $1,500 per person <span class="text-xs font-normal text-stone-400">all inclusive</span></p>
+                                <p class="text-lg font-black text-brand-green mt-2 mb-1">From <span data-usd="1500">$1,500</span> per person <span class="text-xs font-normal text-stone-400">all inclusive</span></p>
                                 <p class="text-sm text-stone-600 mt-1">Three days, three sunrises and a lot of ground. Early starts, a bush lunch in the field and a guide who reads tracks like a book. You are back in Nairobi before the weekend ends, with stories that take a week to tell.</p>
                             </div>
                             <span class="inline-block text-sm font-extrabold text-brand-green mt-5">See the itinerary and price</span>
@@ -858,7 +866,7 @@
                             <div>
                                 <span class="text-xs font-black uppercase tracking-widest text-stone-400 mb-2 block">Classic, 3 Days</span>
                                 <h3 class="font-serif font-bold text-2xl text-brand-darkText">"The Photographer"</h3>
-                                <p class="text-lg font-black text-brand-accentGold mt-2 mb-1">From $2,800 per person <span class="text-xs font-normal text-stone-400">all inclusive</span></p>
+                                <p class="text-lg font-black text-brand-accentGold mt-2 mb-1">From <span data-usd="2800">$2,800</span> per person <span class="text-xs font-normal text-stone-400">all inclusive</span></p>
                                 <p class="text-sm text-stone-600 mt-1">Your guide switches off the engine and stays as long as you need. No rushing, no engine shake, just you and the frame you have been chasing for years.</p>
                             </div>
                             <span class="inline-block text-sm font-extrabold text-brand-accentGold mt-5">See the itinerary and price</span>
@@ -870,7 +878,7 @@
                             <div>
                                 <span class="text-xs font-black uppercase tracking-widest text-stone-400 mb-2 block">Luxury Lite, 3 Days</span>
                                 <h3 class="font-serif font-bold text-2xl text-brand-darkText">"The Sundowner"</h3>
-                                <p class="text-lg font-black text-brand-green mt-2 mb-1">From $3,400 per person <span class="text-xs font-normal text-stone-400">all inclusive</span></p>
+                                <p class="text-lg font-black text-brand-green mt-2 mb-1">From <span data-usd="3400">$3,400</span> per person <span class="text-xs font-normal text-stone-400">all inclusive</span></p>
                                 <p class="text-sm text-stone-600 mt-1">Skip the road. Fly in, and your camp is waiting with a glass already poured. Three days of wildlife, then one flight home, with no dust and no long hours in a vehicle.</p>
                             </div>
                             <span class="inline-block text-sm font-extrabold text-brand-green mt-5">See the itinerary and price</span>
@@ -891,7 +899,7 @@
                             <div>
                                 <span class="text-xs font-black uppercase tracking-widest text-stone-400 mb-2 block">Adventure, 5 Days</span>
                                 <h3 class="font-serif font-bold text-2xl text-brand-darkText">"The Trailblazer"</h3>
-                                <p class="text-lg font-black text-brand-green mt-2 mb-1">From $2,300 per person <span class="text-xs font-normal text-stone-400">all inclusive</span></p>
+                                <p class="text-lg font-black text-brand-green mt-2 mb-1">From <span data-usd="2300">$2,300</span> per person <span class="text-xs font-normal text-stone-400">all inclusive</span></p>
                                 <p class="text-sm text-stone-600 mt-1">Start in Samburu among reticulated giraffe and Grevy's zebra, animals you will not see in the Mara. Then fly south to the Mara itself. Two very different Kenyas in five days.</p>
                             </div>
                             <span class="inline-block text-sm font-extrabold text-brand-green mt-5">See the itinerary and price</span>
@@ -906,7 +914,7 @@
                             <div>
                                 <span class="text-xs font-black uppercase tracking-widest text-stone-400 mb-2 block">Classic, 5 Days</span>
                                 <h3 class="font-serif font-bold text-2xl text-brand-darkText">"The Dreamcatcher"</h3>
-                                <p class="text-lg font-black text-brand-green mt-2 mb-1">From $3,900 per person <span class="text-xs font-normal text-stone-400">all inclusive</span></p>
+                                <p class="text-lg font-black text-brand-green mt-2 mb-1">From <span data-usd="3900">$3,900</span> per person <span class="text-xs font-normal text-stone-400">all inclusive</span></p>
                                 <p class="text-sm text-stone-600 mt-1">Five days is when Kenya starts to open up. On day one your guide maps the pride territories. By day three you are spotting animals before he says a word.</p>
                             </div>
                             <span class="inline-block text-sm font-extrabold text-brand-green mt-5">See the itinerary and price</span>
@@ -918,7 +926,7 @@
                             <div>
                                 <span class="text-xs font-black uppercase tracking-widest text-stone-400 mb-2 block">Luxury Lite, 5 Days</span>
                                 <h3 class="font-serif font-bold text-2xl text-brand-darkText">"The Horizon Chaser"</h3>
-                                <p class="text-lg font-black text-brand-green mt-2 mb-1">From $4,800 per person <span class="text-xs font-normal text-stone-400">all inclusive</span></p>
+                                <p class="text-lg font-black text-brand-green mt-2 mb-1">From <span data-usd="4800">$4,800</span> per person <span class="text-xs font-normal text-stone-400">all inclusive</span></p>
                                 <p class="text-sm text-stone-600 mt-1">Wake in the dark, then rise over the Mara as the sun breaks the horizon. One hour above the plains that guests talk about for years.</p>
                             </div>
                             <span class="inline-block text-sm font-extrabold text-brand-green mt-5">See the itinerary and price</span>
@@ -939,7 +947,7 @@
                             <div>
                                 <span class="text-xs font-black uppercase tracking-widest text-stone-400 mb-2 block">Flagship, 7 Days</span>
                                 <h3 class="font-serif font-bold text-2xl text-brand-darkText">"Ultimate Kenya"</h3>
-                                <p class="text-lg font-black text-brand-green mt-2 mb-1">From $5,900 per person <span class="text-xs font-normal text-stone-400">all inclusive</span></p>
+                                <p class="text-lg font-black text-brand-green mt-2 mb-1">From <span data-usd="5900">$5,900</span> per person <span class="text-xs font-normal text-stone-400">all inclusive</span></p>
                                 <p class="text-sm text-stone-600 mt-1">Big elephant herds with Kilimanjaro rising behind them, then four days in the Mara with the big cats. The whole of Kenya, with nothing left out.</p>
                             </div>
                             <span class="inline-block text-sm font-extrabold text-brand-green mt-5">See the itinerary and price</span>
@@ -951,7 +959,7 @@
                             <div>
                                 <span class="text-xs font-black uppercase tracking-widest text-stone-400 mb-2 block">Classic, 7 Days</span>
                                 <h3 class="font-serif font-bold text-2xl text-brand-darkText">"The Voyager"</h3>
-                                <p class="text-lg font-black text-brand-green mt-2 mb-1">From $4,900 per person <span class="text-xs font-normal text-stone-400">all inclusive</span></p>
+                                <p class="text-lg font-black text-brand-green mt-2 mb-1">From <span data-usd="4900">$4,900</span> per person <span class="text-xs font-normal text-stone-400">all inclusive</span></p>
                                 <p class="text-sm text-stone-600 mt-1">Seven days is how long it takes to really know a place. By the end your guide can tell one lion from another, and you probably can too. The Mara at depth, not at speed.</p>
                             </div>
                             <span class="inline-block text-sm font-extrabold text-brand-green mt-5">See the itinerary and price</span>
@@ -963,7 +971,7 @@
                             <div>
                                 <span class="text-xs font-black uppercase tracking-widest text-stone-400 mb-2 block">Luxury Lite, 7 Days</span>
                                 <h3 class="font-serif font-bold text-2xl text-brand-darkText">"The Constellation"</h3>
-                                <p class="text-lg font-black text-brand-green mt-2 mb-1">From $6,500 per person <span class="text-xs font-normal text-stone-400">all inclusive</span></p>
+                                <p class="text-lg font-black text-brand-green mt-2 mb-1">From <span data-usd="6500">$6,500</span> per person <span class="text-xs font-normal text-stone-400">all inclusive</span></p>
                                 <p class="text-sm text-stone-600 mt-1">Sleep on an open platform under the Milky Way, with an armed ranger nearby. You can hear the wilderness all around you. It is a night you will remember for the rest of your life.</p>
                             </div>
                             <span class="inline-block text-sm font-extrabold text-brand-green mt-5">See the itinerary and price</span>
@@ -1170,10 +1178,10 @@
                         <label class="block text-xs font-black uppercase tracking-wider text-stone-400 mb-2">Roughly what would you like to spend per person?</label>
                         <select name="budget_range" required class="w-full p-4 border border-stone-200 rounded-lg text-sm bg-stone-50 text-stone-700 focus:outline-none focus:ring-2 focus:ring-brand-green transition">
                             <option value="" disabled selected>Choose one</option>
-                            <option value="1500-2500">$1,500 to $2,500, Adventure</option>
-                            <option value="2500-4000">$2,500 to $4,000, Classic</option>
-                            <option value="4000-6000">$4,000 to $6,000, Luxury Lite</option>
-                            <option value="6000+">$6,000 and up, Full Luxury</option>
+                            <option value="1500-2500" data-usd-range="1500-2500" data-usd-label="Adventure">$1,500 to $2,500, Adventure</option>
+                            <option value="2500-4000" data-usd-range="2500-4000" data-usd-label="Classic">$2,500 to $4,000, Classic</option>
+                            <option value="4000-6000" data-usd-range="4000-6000" data-usd-label="Luxury Lite">$4,000 to $6,000, Luxury Lite</option>
+                            <option value="6000+" data-usd-range="6000" data-usd-label="Full Luxury">$6,000 and up, Full Luxury</option>
                             <option value="flexible">Flexible, show me options</option>
                         </select>
                     </div>
@@ -1755,5 +1763,6 @@ window.sdfaqToggle = sdfaqToggle;
 })();
 </script>
 <script src="/js/whatsapp-tracking.js"></script>
+<script src="/js/currency.js" defer></script>
 </body>
 </html>
