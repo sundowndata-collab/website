@@ -199,6 +199,10 @@ The figures and credentials repeated in the testimonials section were removed, s
 
 The footer is rebuilt in about half the height. It has the brand, a one line promise, WhatsApp and email, then three link columns: Our Safaris, Travel Guide and Company. Our Safaris now links straight to each duration row. Below sits a row of credential pills and a single line for copyright and the icon credit. On desktop the floating WhatsApp and Plan my trip bar steps aside when the footer is in view, so it never covers it.
 
+### 35. Logo icon swapped, footer credit removed
+
+The elephant in the logo circle is now the Lucide Lab elephant, ISC licence, which allows commercial use without a visible credit. A short licence note sits in the page code beside each icon. The previous elephant was licensed CC BY 3.0, which required the visible footer credit, so both were replaced together. Applies to all 14 pages with the logo.
+
 # How to check the work
 
 1. **Form.** Submit one test enquiry from a phone. The success message should appear straight away, and GA4 Realtime should show generate_lead once with a value.
