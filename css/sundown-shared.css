@@ -1,0 +1,122 @@
+/* Sundown shared styles for trip pages and blog posts: footer, quotes and reviews. */
+:root{--sd-green:#0B3A1D;--sd-gold:#C98A27;--sd-gold-soft:rgba(201,138,39,.16)}
+
+/* Quotes and reviews: Montserrat, upright, easy to read */
+.sd-quote{font-family:'Montserrat','Inter',system-ui,sans-serif!important;font-style:normal!important;font-weight:500;line-height:1.65;letter-spacing:0}
+blockquote{margin:22px 0;padding:14px 18px;border-left:3px solid var(--sd-gold);background:rgba(201,138,39,.07);border-radius:0 10px 10px 0}
+blockquote p,blockquote{font-family:'Montserrat','Inter',system-ui,sans-serif;font-style:normal;font-weight:500;line-height:1.65}
+blockquote p:last-child{margin-bottom:0}
+
+/* Footer */
+.sd-footer{background:var(--sd-green);color:#fff;font-family:'Inter',system-ui,sans-serif;text-align:left;border:0;padding:0;margin:0}
+.sd-footer *{box-sizing:border-box}
+.sd-footer p{margin:0;color:inherit}
+.sd-footer a{text-decoration:none}
+.sd-ico{width:1em;height:1em;fill:currentColor;flex:0 0 auto;vertical-align:-.125em}
+.sd-footer-wrap{max-width:1180px;margin:0 auto;padding:44px 20px 24px}
+.sd-footer-top{display:grid;grid-template-columns:minmax(260px,1.1fr) 2fr;gap:40px;padding-bottom:28px;border-bottom:1px solid rgba(255,255,255,.12)}
+.sd-footer-logo{display:inline-flex;align-items:center;gap:12px;color:#fff}
+.sd-footer-mark{width:48px;height:48px;border-radius:50%;border:2px solid var(--sd-gold);background:rgba(201,138,39,.15);display:flex;align-items:center;justify-content:center;color:var(--sd-gold);font-size:22px}
+.sd-footer-mark svg{width:1em;height:1em}
+.sd-footer-name{display:block;font-family:'Playfair Display',Georgia,serif;font-weight:900;font-size:24px;line-height:1;color:#fff}
+.sd-footer-sub{display:block;color:var(--sd-gold);font-weight:800;font-size:11px;letter-spacing:.3em;text-transform:uppercase;margin-top:4px}
+.sd-footer-tag{color:#d6d3d1!important;font-size:14px;line-height:1.55;margin:14px 0!important;max-width:320px}
+.sd-footer-contact{display:flex;flex-direction:column;gap:8px}
+.sd-footer-contact a{color:var(--sd-gold);font-weight:700;font-size:15px;display:inline-flex;align-items:center;gap:9px}
+.sd-footer-contact a:hover{color:#fff}
+.sd-footer-links{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.sd-footer-links p{color:var(--sd-gold)!important;font-weight:900;font-size:12px;letter-spacing:.18em;text-transform:uppercase;margin:4px 0 12px!important}
+.sd-footer-links a{display:block;color:#e7e5e4;font-weight:600;font-size:15px;line-height:1.3;padding:5px 0}
+.sd-footer-links a:hover{color:var(--sd-gold)}
+.sd-creds{list-style:none;margin:20px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:10px}
+.sd-creds li{display:inline-flex;align-items:center;gap:8px;padding:7px 13px;border-radius:999px;border:1px solid rgba(201,138,39,.4);background:rgba(255,255,255,.04);color:#e7e5e4;font:700 11px/1 'Inter',system-ui,sans-serif;letter-spacing:.1em;text-transform:uppercase;margin:0}
+.sd-creds li .sd-ico{color:var(--sd-gold);font-size:12px}
+.sd-footer-bottom{margin-top:20px;color:#a8a29e;font-size:13px;line-height:1.5}
+@media (max-width:767px){
+  .sd-footer-wrap{padding:36px 16px 24px}
+  .sd-footer-top{grid-template-columns:1fr;gap:26px;padding-bottom:22px}
+  .sd-footer-links{grid-template-columns:1fr 1fr;gap:18px 16px}
+  .sd-footer-links > div:last-child{grid-column:1 / -1;display:flex;flex-wrap:wrap;gap:0 18px}
+  .sd-footer-links > div:last-child p{width:100%}
+  .sd-footer-links a{font-size:14px;padding:4px 0}
+  .sd-footer-bottom{font-size:12px}
+}
+
+/* ===== Compact trip pages ===== */
+.sd-trip main > section:first-child{min-height:72vh!important}
+.sd-trip main > section:first-child > div.relative{padding-top:96px!important;padding-bottom:40px!important}
+.sd-trip main .py-16{padding-top:48px!important;padding-bottom:48px!important}
+.sd-trip main .gap-12{gap:36px!important}
+.sd-trip main .space-y-16 > * + *{margin-top:40px!important}
+.sd-trip main .pb-8.mb-8{padding-bottom:20px!important;margin-bottom:20px!important}
+.sd-trip main .flex.gap-6.border-b{gap:16px!important}
+.sd-trip main .flex-1.pt-2{padding-top:4px!important}
+.sd-trip main .p-8{padding:26px!important}
+.sd-trip main .grid.sm\:grid-cols-3.gap-6{gap:12px!important}
+.sd-trip main .grid.sm\:grid-cols-3.gap-6 > div{padding:18px!important}
+@media (max-width:767px){
+  .sd-trip main > section:first-child{min-height:0!important}
+  .sd-trip main > section:first-child > div.relative{padding-top:64px!important;padding-bottom:28px!important}
+  .sd-trip main .py-16{padding-top:32px!important;padding-bottom:32px!important}
+  .sd-trip main .gap-12{gap:28px!important}
+  .sd-trip main .space-y-16 > * + *{margin-top:30px!important}
+  .sd-trip main .pb-8.mb-8{padding-bottom:16px!important;margin-bottom:16px!important}
+  .sd-trip main .w-12.h-12{width:38px!important;height:38px!important;font-size:16px!important}
+  .sd-trip main .p-8{padding:20px!important}
+  .sd-trip main .p-6{padding:18px!important}
+  .sd-trip main .grid.sm\:grid-cols-3.gap-6 > div{display:grid!important;grid-template-columns:28px 1fr;column-gap:12px;align-items:center;text-align:left!important;padding:14px 16px!important}
+  .sd-trip main .grid.sm\:grid-cols-3.gap-6 > div > i{grid-row:span 2;margin:0!important;font-size:20px!important}
+  .sd-trip main .grid.sm\:grid-cols-3.gap-6 > div > h4{margin:0!important}
+  .sd-trip main h2{font-size:28px!important;line-height:1.2!important}
+}
+
+/* ===== Compact blog posts, readable on any screen ===== */
+.sd-post{line-height:1.7!important}
+.sd-post .container{padding:32px 24px 52px!important}
+.sd-post .back{margin-bottom:18px!important}
+.sd-post h1{margin-bottom:10px!important;line-height:1.25!important}
+.sd-post .meta{margin-bottom:22px!important}
+.sd-post .featured-img{height:360px!important;margin-bottom:26px!important}
+.sd-post h2{margin:30px 0 10px!important;line-height:1.3!important}
+.sd-post h3{margin:22px 0 8px!important;line-height:1.35!important}
+.sd-post p{margin-bottom:15px!important}
+.sd-post ul,.sd-post ol{margin-bottom:15px!important}
+.sd-post li{margin-bottom:5px!important}
+.sd-post .container div[style*="margin:40px 0"]{margin:30px 0!important;padding:20px 0!important}
+.sd-post .cta-box{margin-top:36px!important;padding:28px 24px!important}
+@media (max-width:600px){
+  .sd-post{font-size:17px}
+  .sd-post .container{padding:20px 18px 40px!important}
+  .sd-post h1{font-size:1.75em!important}
+  .sd-post h2{font-size:1.35em!important;margin:26px 0 8px!important}
+  .sd-post .featured-img{height:210px!important;margin-bottom:20px!important}
+  .sd-post .cta-box{padding:24px 18px!important}
+}
+
+/* Featured posts (built on the trip page styles) */
+.sd-feature main .py-16,.sd-feature .py-16{padding-top:36px!important;padding-bottom:36px!important}
+.sd-feature .mb-10{margin-bottom:28px!important}
+@media (max-width:767px){.sd-feature .py-16{padding-top:24px!important;padding-bottom:24px!important}}
+
+/* Tables in articles: readable width, scroll sideways on small screens */
+.sd-table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 0 18px;border-radius:10px}
+.sd-table-scroll table{margin:0}
+@media (max-width:767px){
+  .sd-table-scroll table{min-width:600px;font-size:13.5px}
+  .sd-table-scroll::after{content:'Scroll sideways for the full table';display:block;padding:6px 2px 0;font:600 11px/1.3 'Inter',system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#a8a29e}
+}
+/* Footer on phones: tighter */
+@media (max-width:767px){
+  .sd-footer-wrap{padding:28px 16px 20px}
+  .sd-footer-tag{display:none}
+  .sd-footer-contact{margin-top:14px}
+  .sd-footer-top{gap:22px;padding-bottom:18px}
+  .sd-footer-links p{margin:0 0 8px!important}
+  .sd-footer-links a{padding:3px 0}
+  .sd-creds{gap:8px;margin-top:16px}
+  .sd-footer-bottom{margin-top:14px}
+}
+
+/* Keep page level rules (blog nav bars, link colours) out of the footer */
+.sd-footer nav.sd-footer-links{background:none!important;border:0!important;padding:0!important;display:grid!important;justify-content:normal!important;align-items:start!important}
+.sd-post blockquote p:last-child,.sd-feature blockquote p:last-child{margin-bottom:0!important}

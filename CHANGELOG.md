@@ -213,6 +213,24 @@ Visitors now see prices in their country's official currency, worked out from th
 
 Search engines and the structured data still see US dollars, and the enquiry form still sends the US dollar budget band. GA4 records currency_shown and currency_change, which shows where visitors come from.
 
+## Legal name, deposit, quotes and compact pages, 26 October night
+
+### 37. Legal name in every footer
+
+Every page now carries the same compact footer as the homepage, ending with: Copyright 2026 Sundown Capital Limited, trading as Sundown Safaris. Westlands, Nairobi, Kenya. The old footers said Sundown Safaris Ltd., which is not the registered company. The homepage structured data now lists Sundown Capital Limited as the legal name, with Sundown Safaris as the trading name. The trip and blog footers use built in icons, so blog posts don't need an extra icon library to show them.
+
+### 38. Deposit is now 50 percent
+
+The booking answer in the homepage FAQ, both on the page and in the structured data, now says a 50 percent deposit confirms the booking, with the balance due 60 days before travel. It was 30 percent.
+
+### 39. Quotes and reviews in Montserrat, upright
+
+Guest reviews, the Our Story quote, the review on every trip page, the testimonial on the featured posts, quotes inside blog posts and the reviews on the weekend getaway page now use Montserrat in an upright style instead of italic serif. Blog quotes also get a gold side bar and a soft background so they stand out from the text.
+
+### 40. Compact trip and blog pages
+
+Trip pages are about 13 percent shorter on phones and desktop before the footer. The itinerary days sit closer together, the three feature cards become slim rows on phones, and section and card padding is tighter. Standard blog posts are about 7 to 13 percent shorter, with a smaller header image, tighter headings and paragraph spacing, and a slightly larger 17 pixel text size on phones for easier reading. Tables in articles now keep a readable width and scroll sideways on phones instead of squeezing into tall narrow rows; 29 tables are covered. The featured posts' header button now reads Book on phones instead of squashing. The shared styles live in css/sundown-shared.css.
+
 # How to check the work
 
 1. **Form.** Submit one test enquiry from a phone. The success message should appear straight away, and GA4 Realtime should show generate_lead once with a value.
