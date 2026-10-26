@@ -363,35 +363,6 @@
     /* ===== Compact layout, 26 October 2026 ===== */
     :root{--sd-green:#0B3A1D;--sd-gold:#C98A27;--sd-gold-soft:rgba(201,138,39,.16)}
 
-    /* HERO: one centred call to action, trust badges below */
-    #hero{min-height:82vh!important;align-items:center}
-    .sd-hero-content{max-width:880px;margin:0 auto;padding:72px 20px 64px;text-align:center;display:flex;flex-direction:column;align-items:center}
-    .sd-hero-label{color:var(--sd-gold);font:800 12px/1.5 'Inter',sans-serif;letter-spacing:.32em;text-transform:uppercase;margin-bottom:16px}
-    .sd-hero-title{font-family:'Playfair Display',Georgia,serif;font-weight:800;font-size:clamp(32px,5.4vw,60px);line-height:1.1;letter-spacing:-.01em;margin:0 0 18px;color:#fff}
-    .sd-hero-lead{color:#e7e5e4;font:400 clamp(16px,1.6vw,18px)/1.6 'Inter',sans-serif;max-width:620px;margin:0 0 28px;opacity:.95}
-    .sd-hero-cta{display:inline-flex;align-items:center;justify-content:center;gap:12px;background:var(--sd-gold);color:#0d1f16;font:800 15px/1 'Inter',sans-serif;letter-spacing:.08em;text-transform:uppercase;padding:19px 36px;border-radius:999px;box-shadow:0 10px 30px rgba(0,0,0,.35);text-decoration:none;transition:background .2s,transform .2s}
-    .sd-hero-cta:hover{background:#fff;transform:translateY(-1px)}
-    .sd-trust{list-style:none;margin:36px 0 0;padding:14px 10px;display:grid;grid-template-columns:repeat(4,auto);gap:4px 0;background:rgba(5,20,10,.55);border:1px solid rgba(201,138,39,.35);border-radius:16px;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
-    .sd-trust li{display:flex;align-items:center;gap:11px;padding:4px 20px;text-align:left}
-    .sd-trust li+li{border-left:1px solid rgba(255,255,255,.14)}
-    .sd-trust-icon{flex:0 0 38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--sd-gold-soft);border:1px solid rgba(201,138,39,.55);color:var(--sd-gold);font-size:15px}
-    .sd-trust strong{display:block;color:#fff;font:800 14px/1.2 'Inter',sans-serif;white-space:nowrap}
-    .sd-trust small{display:block;color:#d6d3d1;font:500 12px/1.3 'Inter',sans-serif;margin-top:2px;white-space:nowrap}
-    @media (min-width:768px){#hero-overlay{background:radial-gradient(ellipse at center,rgba(5,20,10,.62) 0%,rgba(5,20,10,.55) 45%,rgba(5,20,10,.72) 100%)!important}}
-    @media (max-width:767px){
-      .sd-hero-content{padding:0 16px 36px!important;padding-top:calc(83.4vw - 92px)!important}
-      #hero-content{padding-bottom:36px!important}
-      .sd-hero-label{font-size:11px;letter-spacing:.26em;margin-bottom:12px}
-      .sd-hero-lead{margin-bottom:22px}
-      .sd-hero-cta{width:100%;max-width:340px;padding:18px 20px}
-      .sd-trust{grid-template-columns:1fr 1fr;gap:12px 8px;padding:14px 12px;margin-top:26px;width:100%;max-width:400px}
-      .sd-trust li{padding:0;gap:9px}
-      .sd-trust li+li{border-left:0}
-      .sd-trust-icon{flex-basis:34px;height:34px;font-size:13px}
-      .sd-trust strong{font-size:13px}
-      .sd-trust small{font-size:11px}
-    }
-
     /* SECTION RHYTHM */
     #grid-anchor{padding-top:64px!important;padding-bottom:48px!important}
     #grid-anchor > .text-center{margin-bottom:40px!important}
@@ -526,77 +497,167 @@
 .sd-fx-select{border:1px solid #d6d3d1;border-radius:999px;padding:4px 26px 4px 12px;background:#fff;color:#0B3A1D;font:700 13px/1.2 'Inter',sans-serif;cursor:pointer}
 .sd-fx-select:focus{outline:2px solid #C98A27;outline-offset:1px}
 </style>
+<style id="sd-premium">
+/* ===== Premium header and hero, 26 October 2026 ===== */
+:root{--sd-night:#06170D;--sd-bone:#F5EEDF;--sd-gold-hi:#E3A845}
+html{scroll-padding-top:84px}
+body{padding-top:0}
+
+/* Header: transparent over the hero, solid once you scroll */
+.sd-header{position:fixed;top:0;left:0;right:0;z-index:60;font-family:'Inter',system-ui,sans-serif;transition:background .35s ease,box-shadow .35s ease}
+.sd-header.is-top{background:linear-gradient(to bottom,rgba(6,23,13,.72),rgba(6,23,13,0))}
+.sd-header.is-solid{background:#fff;box-shadow:0 1px 0 rgba(11,58,29,.08),0 10px 30px rgba(6,23,13,.08)}
+
+.sd-announce{height:36px;background:var(--sd-night);border-bottom:1px solid rgba(201,138,39,.35);display:flex;align-items:center;justify-content:center;gap:18px;padding:0 16px;overflow:hidden;transition:height .35s ease,border-color .35s ease}
+.sd-header.is-solid .sd-announce{height:0;border-color:transparent}
+.sd-announce-list{list-style:none;margin:0;padding:0;position:relative;height:36px;flex:0 1 auto;min-width:0}
+.sd-announce-list li{position:absolute;inset:0 auto 0 50%;transform:translateX(-50%);display:flex;align-items:center;white-space:nowrap;color:#E9E3D3;font-size:13px;font-weight:500;opacity:0;transition:opacity .6s ease}
+.sd-announce-list li.is-active{opacity:1;position:relative;inset:auto;transform:none}
+.sd-announce-list li strong{color:var(--sd-gold);font-weight:700;margin-right:6px}
+.sd-announce-link{color:var(--sd-bone);font-size:12px;font-weight:700;text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(201,138,39,.7);white-space:nowrap}
+.sd-announce-link:hover{color:var(--sd-gold)}
+
+.sd-nav{max-width:1240px;margin:0 auto;height:84px;padding:0 24px;display:flex;align-items:center;gap:28px;transition:height .35s ease}
+.sd-header.is-solid .sd-nav{height:72px}
+.sd-brand{display:flex;align-items:center;gap:12px;text-decoration:none;flex:0 0 auto}
+.sd-brand-mark{width:52px;height:52px;border-radius:50%;background:#0B3A1D;border:2px solid var(--sd-gold);display:flex;align-items:center;justify-content:center;color:var(--sd-gold);font-size:24px;transition:width .35s,height .35s}
+.sd-header.is-solid .sd-brand-mark{width:46px;height:46px}
+.sd-brand-svg{width:1em;height:1em}
+.sd-brand-words{display:flex;flex-direction:column}
+.sd-brand-name{font-family:'Playfair Display',Georgia,serif;font-weight:900;font-size:26px;line-height:.95;letter-spacing:.01em;color:#fff;transition:color .35s}
+.sd-brand-sub{font-weight:800;font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--sd-gold);margin-top:4px}
+.sd-header.is-solid .sd-brand-name{color:#0B3A1D}
+
+.sd-menu{display:flex;align-items:center;gap:30px;margin-left:auto}
+.sd-menu > a,.sd-menu-parent{position:relative;display:inline-flex;align-items:center;gap:7px;padding:8px 0;color:rgba(255,255,255,.92);font-size:15px;font-weight:600;text-decoration:none;transition:color .25s}
+.sd-menu-parent i{font-size:10px;color:var(--sd-gold)}
+.sd-menu > a::after,.sd-menu-parent::after{content:'';position:absolute;left:0;right:0;bottom:2px;height:2px;background:var(--sd-gold);transform:scaleX(0);transform-origin:left;transition:transform .25s ease}
+.sd-menu > a:hover::after,.sd-menu-drop:hover .sd-menu-parent::after,.sd-menu > a:focus-visible::after{transform:scaleX(1)}
+.sd-menu > a:hover,.sd-menu-parent:hover{color:#fff}
+.sd-header.is-solid .sd-menu > a,.sd-header.is-solid .sd-menu-parent{color:#1F2A22}
+.sd-header.is-solid .sd-menu > a:hover,.sd-header.is-solid .sd-menu-parent:hover{color:#0B3A1D}
+.sd-menu-drop{padding:20px 0}
+.sd-dropdown{text-transform:none;letter-spacing:normal}
+
+.sd-nav-actions{display:flex;align-items:center;gap:14px;flex:0 0 auto}
+.sd-nav-phone{display:inline-flex;align-items:center;gap:8px;color:#fff;font-size:14px;font-weight:700;text-decoration:none;padding:10px 4px;transition:color .25s}
+.sd-nav-phone i{color:#25D366;font-size:18px}
+.sd-nav-phone:hover{color:var(--sd-gold-hi)}
+.sd-header.is-solid .sd-nav-phone{color:#0B3A1D}
+.sd-nav-cta{display:inline-flex;align-items:center;background:var(--sd-gold);color:#0d1f16;font-size:14px;font-weight:800;letter-spacing:.01em;padding:13px 22px;border-radius:999px;text-decoration:none;box-shadow:0 6px 18px rgba(201,138,39,.35);transition:background .2s,transform .2s}
+.sd-nav-cta:hover{background:var(--sd-gold-hi);transform:translateY(-1px)}
+.sd-header.is-solid .sd-nav-cta{background:#0B3A1D;color:#fff;box-shadow:none}
+.sd-header.is-solid .sd-nav-cta:hover{background:var(--sd-gold);color:#0d1f16}
+.sd-burger{display:none;width:44px;height:44px;border:0;background:transparent;border-radius:10px;flex-direction:column;align-items:center;justify-content:center;gap:6px;cursor:pointer}
+.sd-burger .hamburger-line{display:block;width:24px;height:2px;border-radius:2px;background:#fff;transition:transform .3s,opacity .3s,background .3s}
+.sd-header.is-solid .sd-burger .hamburger-line{background:#0B3A1D}
+.sd-header a:focus-visible,.sd-header button:focus-visible{outline:2px solid var(--sd-gold);outline-offset:3px;border-radius:6px}
+#mobile-menu{max-height:calc(100vh - 72px);overflow-y:auto}
+
+/* Hero */
+.sd-hero{min-height:100vh;min-height:100svh;display:flex;flex-direction:column;justify-content:center;background:var(--sd-night)}
+#hero-overlay{background:
+  linear-gradient(to bottom,rgba(6,23,13,.55) 0%,rgba(6,23,13,.15) 30%,rgba(6,23,13,.25) 62%,rgba(6,23,13,.92) 100%),
+  radial-gradient(ellipse 70% 60% at 50% 48%,rgba(6,23,13,.55) 0%,rgba(6,23,13,.15) 70%,rgba(6,23,13,0) 100%)}
+.sd-hero-content{width:100%;max-width:1000px;margin:0 auto;padding:140px 24px 128px;text-align:center;display:flex;flex-direction:column;align-items:center}
+.sd-proof{display:inline-flex;align-items:center;gap:10px;padding:7px 14px 7px 12px;border-radius:999px;background:rgba(6,23,13,.45);border:1px solid rgba(201,138,39,.45);color:var(--sd-bone);font-size:13px;font-weight:600;text-decoration:none;margin-bottom:22px;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+.sd-proof:hover{border-color:var(--sd-gold)}
+.sd-proof-stars{display:inline-flex;gap:2px;color:var(--sd-gold-hi);font-size:12px}
+.sd-hero-title{font-family:'Playfair Display',Georgia,serif;font-weight:900;color:#fff;font-size:clamp(38px,min(5.4vw,8.6vh),76px);line-height:1.02;letter-spacing:-.018em;margin:0 0 22px;max-width:19ch;text-wrap:balance;text-shadow:0 2px 30px rgba(0,0,0,.35)}
+.sd-hero-lead{color:var(--sd-bone);font-size:clamp(16px,1.5vw,19px);line-height:1.6;font-weight:400;max-width:620px;margin:0 0 30px;text-wrap:pretty;text-shadow:0 1px 14px rgba(0,0,0,.4)}
+.sd-hero-cta{display:inline-flex;align-items:center;justify-content:center;background:var(--sd-gold);color:#0d1f16;font-size:17px;font-weight:800;letter-spacing:.005em;padding:20px 44px;border-radius:999px;text-decoration:none;box-shadow:0 14px 40px rgba(201,138,39,.38),inset 0 1px 0 rgba(255,255,255,.35);transition:background .2s,transform .2s,box-shadow .2s}
+.sd-hero-cta:hover{background:var(--sd-gold-hi);transform:translateY(-2px);box-shadow:0 18px 46px rgba(201,138,39,.45),inset 0 1px 0 rgba(255,255,255,.4)}
+.sd-hero-cta:focus-visible{outline:3px solid #fff;outline-offset:4px}
+.sd-hero-note{margin:14px 0 0;color:rgba(245,238,223,.82);font-size:14px;line-height:1.5}
+
+/* Credentials band along the bottom edge */
+.sd-trust{position:absolute;left:0;right:0;bottom:0;z-index:3;list-style:none;margin:0;padding:0 24px;display:grid;grid-template-columns:repeat(4,1fr);max-width:none;background:rgba(6,23,13,.55);border-top:1px solid rgba(201,138,39,.35);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.sd-trust li{display:flex;align-items:center;justify-content:center;gap:12px;padding:20px 14px;text-align:left}
+.sd-trust li+li{border-left:1px solid rgba(245,238,223,.12)}
+.sd-trust-icon{flex:0 0 40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(201,138,39,.16);border:1px solid rgba(201,138,39,.55);color:var(--sd-gold-hi);font-size:15px}
+.sd-trust strong{display:block;color:#fff;font-size:15px;font-weight:800;line-height:1.2}
+.sd-trust small{display:block;color:rgba(245,238,223,.75);font-size:12.5px;font-weight:500;line-height:1.35;margin-top:2px}
+
+/* One page load moment */
+@media (prefers-reduced-motion:no-preference){
+  .sd-hero-content > *{animation:sd-rise .9s cubic-bezier(.2,.7,.2,1) both}
+  .sd-hero-content > :nth-child(2){animation-delay:.08s}
+  .sd-hero-content > :nth-child(3){animation-delay:.18s}
+  .sd-hero-content > :nth-child(4){animation-delay:.28s}
+  .sd-hero-content > :nth-child(5){animation-delay:.34s}
+  .sd-trust{animation:sd-fade 1s .45s ease both}
+}
+@keyframes sd-rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes sd-fade{from{opacity:0}to{opacity:1}}
+
+@media (min-width:768px) and (max-height:760px){
+  .sd-hero-content{padding:122px 24px 112px}
+  .sd-proof{margin-bottom:16px}
+  .sd-hero-title{margin-bottom:16px}
+  .sd-hero-lead{font-size:16px;margin-bottom:22px}
+  .sd-hero-cta{padding:17px 40px;font-size:16px}
+  .sd-hero-note{margin-top:10px;font-size:13px}
+  .sd-trust li{padding:14px 12px}
+}
+@media (max-width:1100px){
+  .sd-menu{gap:22px}
+  .sd-nav-phone span{display:none}
+}
+@media (max-width:899px){
+  .sd-menu{display:none}
+  .sd-burger{display:flex}
+  .sd-nav-actions{margin-left:auto}
+}
+@media (max-width:767px){
+  .sd-announce{height:34px;justify-content:flex-start}
+  .sd-announce-list{height:34px;flex:1 1 auto;overflow:hidden}
+  .sd-announce-list li{left:0;transform:none;font-size:12px}
+  .sd-announce-list li strong{display:none}
+  .sd-announce-link{display:none}
+  .sd-nav{height:66px;padding:0 16px;gap:12px}
+  .sd-header.is-solid .sd-nav{height:62px}
+  .sd-brand-mark{width:44px;height:44px;font-size:20px}
+  .sd-header.is-solid .sd-brand-mark{width:40px;height:40px}
+  .sd-brand-name{font-size:22px}
+  .sd-brand-sub{font-size:10px}
+  .sd-nav-phone{display:none}
+  .sd-nav-cta{padding:10px 16px;font-size:13px;box-shadow:none}
+  .sd-hero{display:block;min-height:0;background:var(--sd-night)}
+  #hero-picture{bottom:auto!important;height:92vw!important}
+  #hero-picture img{object-position:50% 50%!important}
+  #hero-overlay{background:linear-gradient(to bottom,rgba(6,23,13,.55) 0,rgba(6,23,13,.05) 30vw,rgba(6,23,13,.2) 55vw,rgba(6,23,13,.9) 80vw,var(--sd-night) 92vw,var(--sd-night) 100%)!important}
+  .sd-hero-content{padding:calc(92vw - 70px) 18px 26px!important}
+  .sd-proof{margin-bottom:16px;font-size:12px}
+  .sd-hero-title{font-size:clamp(32px,9.4vw,40px);margin-bottom:16px;max-width:none}
+  .sd-hero-lead{font-size:16px;margin-bottom:22px}
+  .sd-hero-cta{width:100%;max-width:360px;padding:18px 20px;font-size:16px}
+  .sd-hero-note{font-size:13px}
+  .sd-trust{position:static;grid-template-columns:1fr 1fr;padding:6px 14px 30px;background:var(--sd-night);border-top:0;backdrop-filter:none;-webkit-backdrop-filter:none;gap:0}
+  .sd-trust li{justify-content:flex-start;padding:12px 6px;gap:10px;border-top:1px solid rgba(245,238,223,.1)}
+  .sd-trust li+li{border-left:0}
+  .sd-trust-icon{flex-basis:34px;height:34px;font-size:13px}
+  .sd-trust strong{font-size:13.5px}
+  .sd-trust small{font-size:11.5px}
+}
+</style>
 </head>
 <body class="bg-brand-safariBg text-brand-darkText font-sans text-base antialiased">
 
-    <header class="bg-white sticky top-0 z-50 shadow-md">
-        <div class="bg-brand-green border-b border-brand-accentGold block overflow-hidden" style="height:44px;position:relative;">
-            <!-- Fade edges -->
-            <div style="position:absolute;left:0;top:0;bottom:0;width:80px;background:linear-gradient(to right,#0B3A1D,transparent);z-index:2;"></div>
-            <div style="position:absolute;right:0;top:0;bottom:0;width:80px;background:linear-gradient(to left,#0B3A1D,transparent);z-index:2;"></div>
-            <!-- Scrolling ticker -->
-           <div id="ticker-track" style="display:flex;align-items:center;height:44px;width:max-content;animation:ticker-scroll 100s linear infinite;">
-                <span class="ticker-item"><i class="fa-solid fa-paw text-brand-accentGold mr-2"></i><strong>NOVEMBER AND DECEMBER SAFARIS:</strong> Your own Land Cruiser and guide, whatever the size of your group. WhatsApp us your dates</span>
-                <span class="ticker-sep"></span>
-                <span class="ticker-item"><i class="fa-solid fa-gift text-brand-accentGold mr-2"></i><strong>CHRISTMAS AND NEW YEAR:</strong> Lodges fill first over the holidays. Send your dates early and spend the festive season in the bush</span>
-                <span class="ticker-sep"></span>
-                <span class="ticker-item"><i class="fa-solid fa-leaf text-brand-accentGold mr-2"></i><strong>THE MARA AFTER THE MIGRATION:</strong> Lions, cheetahs and elephants stay all year, with far fewer vehicles and green plains</span>
-                <span class="ticker-sep"></span>
-                <span class="ticker-item"><i class="fa-solid fa-clock text-brand-accentGold mr-2"></i><strong>REAL PRICING IN 24 HOURS:</strong> Send us your dates and get a draft itinerary and a straight quote by tomorrow</span>
-                <span class="ticker-sep"></span>
-                <span class="ticker-item"><i class="fa-solid fa-tag text-brand-accentGold mr-2"></i><strong>PARK FEES ROSE THIS YEAR:</strong> Request your quote now and we hold the price for 30 days</span>
-                <span class="ticker-sep"></span>
-                <span class="ticker-item"><i class="fa-solid fa-binoculars text-brand-accentGold mr-2"></i><strong>WEEKEND SAFARI:</strong> About four hours from Nairobi to wild Kenya. No shared vehicle, no crowds</span>
-                <span class="ticker-sep"></span>
-                <span class="ticker-item"><i class="fa-solid fa-certificate text-brand-accentGold mr-2"></i><strong>THE SUNDOWN STANDARD:</strong> Your vehicle and guide are never shared with strangers</span>
-                <span class="ticker-sep"></span>
-                <!-- Duplicate for seamless loop -->
-                <span class="ticker-item"><i class="fa-solid fa-paw text-brand-accentGold mr-2"></i><strong>NOVEMBER AND DECEMBER SAFARIS:</strong> Your own Land Cruiser and guide, whatever the size of your group. WhatsApp us your dates</span>
-                <span class="ticker-sep"></span>
-                <span class="ticker-item"><i class="fa-solid fa-gift text-brand-accentGold mr-2"></i><strong>CHRISTMAS AND NEW YEAR:</strong> Lodges fill first over the holidays. Send your dates early and spend the festive season in the bush</span>
-                <span class="ticker-sep"></span>
-                <span class="ticker-item"><i class="fa-solid fa-leaf text-brand-accentGold mr-2"></i><strong>THE MARA AFTER THE MIGRATION:</strong> Lions, cheetahs and elephants stay all year, with far fewer vehicles and green plains</span>
-                <span class="ticker-sep"></span>
-                <span class="ticker-item"><i class="fa-solid fa-clock text-brand-accentGold mr-2"></i><strong>REAL PRICING IN 24 HOURS:</strong> Send us your dates and get a draft itinerary and a straight quote by tomorrow</span>
-                <span class="ticker-sep"></span>
-                <span class="ticker-item"><i class="fa-solid fa-tag text-brand-accentGold mr-2"></i><strong>PARK FEES ROSE THIS YEAR:</strong> Request your quote now and we hold the price for 30 days</span>
-                <span class="ticker-sep"></span>
-                <span class="ticker-item"><i class="fa-solid fa-binoculars text-brand-accentGold mr-2"></i><strong>WEEKEND SAFARI:</strong> About four hours from Nairobi to wild Kenya. No shared vehicle, no crowds</span>
-                <span class="ticker-sep"></span>
-                <span class="ticker-item"><i class="fa-solid fa-certificate text-brand-accentGold mr-2"></i><strong>THE SUNDOWN STANDARD:</strong> Your vehicle and guide are never shared with strangers</span>
-                <span class="ticker-sep"></span>
-            </div>
-            <style>
-                .ticker-item{white-space:nowrap;color:white;font-size:15px;font-weight:600;letter-spacing:0.03em;padding:0 24px;font-family:'Inter',sans-serif;}
-                .ticker-item strong{color:#C98A27;}
-                .ticker-item i{font-size:18px;vertical-align:-1px;}
-                .ticker-sep{display:inline-block;width:7px;height:7px;border-radius:50%;background:rgba(201,168,76,0.6);margin:0 12px;padding:0;font-size:0;flex-shrink:0;}
-                @keyframes ticker-scroll{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
-                #ticker-track:hover{animation-play-state:paused;}
-                @media (max-width:639px){.ticker-item{font-size:13px;padding:0 16px;}.ticker-item i{font-size:15px;}}
-            </style>
+    <header id="site-header" class="sd-header is-top">
+        <div class="sd-announce" role="region" aria-label="News from Sundown">
+            <ul class="sd-announce-list" aria-live="polite"><li class="is-active"><strong>Christmas and New Year:</strong> Lodges fill first over the holidays. Send your dates early.</li><li><strong>November and December safaris:</strong> Your own Land Cruiser and guide, whatever the size of your group.</li><li><strong>The Mara after the migration:</strong> Lions, cheetahs and elephants stay all year, with far fewer vehicles.</li><li><strong>Real pricing in 24 hours:</strong> Send your dates and get a draft itinerary and a straight quote.</li><li><strong>Park fees rose this year:</strong> Request your quote now and we hold the price for 30 days.</li></ul>
+            <a class="sd-announce-link" href="https://wa.me/254724491210" target="_blank" rel="noopener">Ask on WhatsApp</a>
         </div>
-
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-24 flex items-center justify-between">
-            <a href="/" class="flex items-center space-x-3 text-left focus:outline-none group">
-                <div class="w-16 h-16 bg-brand-green rounded-full flex items-center justify-center text-white border-2 border-brand-accentGold shadow-sm group-hover:bg-brand-accentGold transition duration-300">
-                    <svg class="text-2xl text-brand-accentGold group-hover:text-brand-green transition duration-300" viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" focusable="false"><!-- Elephant icon from Lucide Lab, ISC licence, lucide.dev --><g><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M14.5 12H14c-2.8 0-5-2.2-5-5V5a2 2 0 0 1 2-2h2c1.5 0 2.8.8 3.4 2H19c1.7 0 3 1.3 3 3v10m-4-8h.01"/><path d="M14 10a4 4 0 0 0 4 4a4 4 0 0 1 4 4a2 2 0 0 1-4 0m-8-2v5"/><path d="M18 14a4 4 0 0 0-4 4v3H6v-2.6c0-1.1-.8-2.3-1.7-3C2.9 14.3 2 12.8 2 11c0-3.3 3.1-6 7-6m-7 6v7"/></g></g></svg>
-                </div>
-                <div class="flex flex-col">
-                    <span class="text-3xl font-serif font-black tracking-tight text-brand-green leading-none">SUNDOWN</span>
-                    <span class="text-sm uppercase tracking-[0.3em] text-brand-accentGold font-extrabold mt-0.5">Safaris</span>
-                </div>
+        <div class="sd-nav">
+            <a href="/" class="sd-brand" aria-label="Sundown Safaris home">
+                <span class="sd-brand-mark"><svg class="sd-brand-svg" viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" focusable="false"><!-- Elephant icon from Lucide Lab, ISC licence, lucide.dev --><g><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M14.5 12H14c-2.8 0-5-2.2-5-5V5a2 2 0 0 1 2-2h2c1.5 0 2.8.8 3.4 2H19c1.7 0 3 1.3 3 3v10m-4-8h.01"/><path d="M14 10a4 4 0 0 0 4 4a4 4 0 0 1 4 4a2 2 0 0 1-4 0m-8-2v5"/><path d="M18 14a4 4 0 0 0-4 4v3H6v-2.6c0-1.1-.8-2.3-1.7-3C2.9 14.3 2 12.8 2 11c0-3.3 3.1-6 7-6m-7 6v7"/></g></g></svg></span>
+                <span class="sd-brand-words"><span class="sd-brand-name">SUNDOWN</span><span class="sd-brand-sub">Safaris</span></span>
             </a>
-
-            <nav class="hidden md:flex items-center space-x-8 text-sm font-extrabold uppercase tracking-wider text-stone-600">
-                <a href="/" class="hover:text-brand-green transition py-2 border-b-2 border-transparent hover:border-brand-green">Home</a>
-                <a href="/#about-us-summary" class="hover:text-brand-green transition py-2 border-b-2 border-transparent hover:border-brand-green">About Us</a>
-                
-                <div class="relative dropdown py-4">
-                    <a href="/#grid-anchor" class="text-brand-green flex items-center gap-1.5 cursor-pointer py-2 border-b-2 border-transparent hover:border-brand-green">
-                        Our Safaris <i class="fa-solid fa-chevron-down text-xs text-brand-accentGold"></i>
-                    </a>
-                    <div class="dropdown-menu hidden absolute left-1/2 -translate-x-1/2 top-full w-[460px] bg-white shadow-2xl rounded-xl border border-stone-200 overflow-hidden py-4 z-50 mt-1">
+            <nav class="sd-menu" aria-label="Main">
+                <a href="/#about-us-summary">About</a>
+                <div class="relative dropdown sd-menu-drop">
+                    <a href="/#grid-anchor" class="sd-menu-parent">Safaris <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></a>
+                    <div class="dropdown-menu hidden absolute left-1/2 -translate-x-1/2 top-full w-[460px] sd-dropdown bg-white shadow-2xl rounded-xl border border-stone-200 overflow-hidden py-4 z-50 mt-1">
                         <div class="grid grid-cols-1 gap-1 normal-case tracking-normal text-base font-normal">
                             <a href="/#safaris-3-day" class="block px-5 py-1.5 text-xs font-black uppercase tracking-widest text-stone-400 bg-stone-50 hover:text-brand-green">3 Day Safaris</a>
                             <a href="/trip/3-day-a-adventure-the-explorer.html" class="w-full text-left px-5 py-2.5 text-stone-700 hover:bg-brand-lightGreen hover:text-brand-green flex justify-between items-center text-sm font-medium">
@@ -633,27 +694,15 @@
                         </div>
                     </div>
                 </div>
-                
-                <a href="/#master-booking" class="text-stone-600 hover:text-brand-green transition py-2 border-b-2 border-transparent hover:border-brand-green">Contact Us</a>
-                <a href="/blog/" class="text-stone-600 hover:text-brand-green transition py-2 border-b-2 border-transparent hover:border-brand-green">Travel Guide</a>
+                <a href="/#from-the-field">From the field</a>
+                <a href="/#testimonials">Reviews</a>
+                <a href="/blog/">Travel guide</a>
             </nav>
-
-            <div class="flex items-center space-x-4">
-                <a href="https://wa.me/254724491210" target="_blank" class="hidden lg:flex items-center text-right space-x-3 border-r border-stone-200 pr-4">
-                    <div class="text-stone-400 text-xl"><i class="fa-solid fa-headset"></i></div>
-                    <div class="flex flex-col text-left font-sans">
-                        <span class="text-xs uppercase font-extrabold text-stone-400 tracking-wider leading-none">Speak to a Spotter</span>
-                        <span class="text-sm font-bold text-brand-darkText hover:text-brand-accentGold transition mt-0.5">+254 724 491 210</span>
-                    </div>
-                </a>
-                <a href="/#master-booking" class="hidden sm:inline-flex items-center gap-2.5 bg-brand-green text-white px-6 py-3.5 rounded-full font-bold text-sm tracking-wider hover:bg-brand-accentGold transition duration-300 shadow-md">
-                    Book With Us <i class="fa-solid fa-arrow-right-long text-sm"></i>
-                </a>
-                <!-- HAMBURGER BUTTON -->
-                <button id="mobile-menu-btn" class="md:hidden flex flex-col justify-center items-center w-10 h-10 rounded-lg hover:bg-stone-100 transition" onclick="toggleMobileMenu()" aria-label="Open menu">
-                    <span class="hamburger-line block w-6 h-0.5 bg-brand-green mb-1.5 transition-all duration-300"></span>
-                    <span class="hamburger-line block w-6 h-0.5 bg-brand-green mb-1.5 transition-all duration-300"></span>
-                    <span class="hamburger-line block w-6 h-0.5 bg-brand-green transition-all duration-300"></span>
+            <div class="sd-nav-actions">
+                <a href="https://wa.me/254724491210" target="_blank" rel="noopener" class="sd-nav-phone"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i><span>+254 724 491 210</span></a>
+                <a href="/#master-booking" class="sd-nav-cta">Plan my trip</a>
+                <button id="mobile-menu-btn" class="sd-burger" onclick="toggleMobileMenu()" aria-label="Open menu">
+                    <span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span>
                 </button>
             </div>
         </div>
@@ -755,7 +804,7 @@
     <main class="w-full">
 
         <!-- HERO -->
-        <section id="hero" class="text-white relative overflow-hidden" style="min-height:90vh;display:flex;align-items:center;">
+        <section id="hero" class="sd-hero text-white relative overflow-hidden">
 
             <!-- HERO BACKGROUND: picture for mobile, JS-injected video for desktop -->
             <!-- Mobile: <picture> with correct srcset renders immediately, no video bytes fetched -->
@@ -813,34 +862,26 @@
             })();
             </script>
 
-            <style>
-            /* Phones: the photo sits as a sharp 6:5 band across the top and fades into the brand green,
-               instead of being cropped to a thin, blurry strip behind the tall text block */
-            @media (max-width: 767px) {
-                #hero { display:block !important; min-height:0 !important; background:#05140a; }
-                #hero-picture { bottom:auto !important; height:83.4vw !important; }
-                #hero-picture img { object-position:50% 50% !important; }
-                #hero-overlay { background:linear-gradient(to bottom, rgba(5,20,10,0.10) 0, rgba(5,20,10,0.25) 45vw, rgba(5,20,10,0.85) 70vw, #05140a 83.4vw, #05140a 100%) !important; }
-                #hero-bottomfade { display:none; }
-                #hero-content { padding-top:calc(83.4vw - 104px) !important; padding-bottom:48px !important; }
-            }
-            </style>
             <!-- DARK OVERLAY for text readability -->
-            <div id="hero-overlay" class="absolute inset-0" style="background:linear-gradient(to right, rgba(5,20,10,0.80) 0%, rgba(5,20,10,0.65) 45%, rgba(5,20,10,0.40) 70%, rgba(5,20,10,0.20) 100%);z-index:2;"></div>
+            <div id="hero-overlay" class="absolute inset-0" style="z-index:2;"></div>
             <!-- BOTTOM FADE -->
-            <div id="hero-bottomfade" class="absolute bottom-0 left-0 right-0 h-32" style="background:linear-gradient(to bottom, transparent, rgba(5,20,10,0.6));z-index:2;"></div>
+            
             <div id="hero-content" class="sd-hero-content" style="position:relative;z-index:3;">
-                <span class="sd-hero-label">Private safaris from Nairobi, Kenya</span>
-                <h1 class="sd-hero-title">Right now in the Mara, the light is turning gold. Your seat in the Land Cruiser is empty.</h1>
-                <p class="sd-hero-lead">Your own Land Cruiser and guide, never shared with strangers, whether you travel as a couple, a family or a big group. Tell us your dates and get a real price and a draft itinerary within 24 hours.</p>
-                <a href="#master-booking" id="hero-cta" class="sd-hero-cta">Get My Free Itinerary <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
-                <ul class="sd-trust" aria-label="Why travel with Sundown">
-                    <li><span class="sd-trust-icon"><i class="fa-solid fa-star" aria-hidden="true"></i></span><span><strong>4.9 on Google</strong><small>16 guest reviews</small></span></li>
-                    <li><span class="sd-trust-icon"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i></span><span><strong>KATO bonded</strong><small>Licensed operator</small></span></li>
-                    <li><span class="sd-trust-icon"><i class="fa-solid fa-user-group" aria-hidden="true"></i></span><span><strong>Any group size</strong><small>Never shared</small></span></li>
-                    <li><span class="sd-trust-icon"><i class="fa-solid fa-clock" aria-hidden="true"></i></span><span><strong>Reply in 2 hours</strong><small>Real people in Nairobi</small></span></li>
-                </ul>
+                <a href="#testimonials" class="sd-proof" aria-label="Rated 4.9 out of 5 from 16 Google reviews">
+                    <span class="sd-proof-stars" aria-hidden="true"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span>
+                    <span>4.9 from 16 Google reviews</span>
+                </a>
+                <h1 class="sd-hero-title">Right now in the Mara, the light is turning gold.</h1>
+                <p class="sd-hero-lead">Your seat in the Land Cruiser is empty. Private safaris from Nairobi with your own vehicle and guide, for a couple, a family or a whole group.</p>
+                <a href="#master-booking" id="hero-cta" class="sd-hero-cta">Get my free itinerary</a>
+                <p class="sd-hero-note">A draft itinerary and a real price within 24 hours. Nothing to pay to ask.</p>
             </div>
+            <ul class="sd-trust" aria-label="Why travel with Sundown">
+                <li><span class="sd-trust-icon"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i></span><span><strong>KATO bonded</strong><small>Licensed tour operator</small></span></li>
+                <li><span class="sd-trust-icon"><i class="fa-solid fa-user-group" aria-hidden="true"></i></span><span><strong>Any group size</strong><small>Never shared with strangers</small></span></li>
+                <li><span class="sd-trust-icon"><i class="fa-solid fa-tree" aria-hidden="true"></i></span><span><strong>Private conservancies</strong><small>Mara North and Olare Motorogi</small></span></li>
+                <li><span class="sd-trust-icon"><i class="fa-solid fa-clock" aria-hidden="true"></i></span><span><strong>Reply in 2 hours</strong><small>Real people in Nairobi</small></span></li>
+            </ul>
         </section>
 
         <!-- SAFARI GRID -->
@@ -1708,15 +1749,17 @@ window.sdfaqToggle = sdfaqToggle;
     var hero = document.getElementById('hero');
     var formOn = false, heroOn = !!hero, desk = window.matchMedia('(min-width: 768px)');
     var footOn = false, foot = document.querySelector('footer');
-    function update(){ bar.classList.toggle('is-hidden', formOn || (desk.matches && (heroOn || footOn))); }
+    function update(){ bar.classList.toggle('is-hidden', formOn || heroOn || (desk.matches && footOn)); }
     if ('IntersectionObserver' in window) {
         if (form) new IntersectionObserver(function(entries){
             entries.forEach(function(e){ formOn = e.isIntersecting; }); update();
         }, { threshold: 0, rootMargin: '0px 0px -25% 0px' }).observe(form);
         // On desktop the hero has its own buttons, so the bar waits until the hero scrolls away
-        if (hero) new IntersectionObserver(function(entries){
+        // The bar waits until the hero's own button has scrolled away, on every screen
+        var heroBtn = document.getElementById('hero-cta');
+        if (heroBtn) new IntersectionObserver(function(entries){
             entries.forEach(function(e){ heroOn = e.isIntersecting; }); update();
-        }, { threshold: 0.35 }).observe(hero);
+        }, { threshold: 0 }).observe(heroBtn);
         // On desktop the footer has its own contact links, so the bar steps aside there
         if (foot) new IntersectionObserver(function(entries){
             entries.forEach(function(e){ footOn = e.isIntersecting; }); update();
@@ -1773,5 +1816,20 @@ window.sdfaqToggle = sdfaqToggle;
 </script>
 <script src="/js/whatsapp-tracking.js"></script>
 <script src="/js/currency.js" defer></script>
+<script>
+/* Header state and announcement rotation */
+(function(){
+  var h=document.getElementById('site-header'); if(!h) return;
+  var menu=document.getElementById('mobile-menu');
+  function set(){ var solid=window.scrollY>24 || (menu && !menu.classList.contains('hidden'));
+    h.classList.toggle('is-solid',solid); h.classList.toggle('is-top',!solid); }
+  set(); window.addEventListener('scroll',set,{passive:true});
+  var btn=document.getElementById('mobile-menu-btn'); if(btn) btn.addEventListener('click',function(){ setTimeout(set,0); });
+  var items=h.querySelectorAll('.sd-announce-list li'); if(items.length<2) return;
+  var i=0, paused=false, bar=h.querySelector('.sd-announce');
+  bar.addEventListener('mouseenter',function(){paused=true}); bar.addEventListener('mouseleave',function(){paused=false});
+  setInterval(function(){ if(paused||document.hidden) return; items[i].classList.remove('is-active'); i=(i+1)%items.length; items[i].classList.add('is-active'); },5500);
+})();
+</script>
 </body>
 </html>

@@ -243,6 +243,18 @@ Sundown arranges private safaris for any size of group and plans the vehicles ar
 
 The homepage title now leads with the brand: Sundown Safaris | Private Kenya Safaris from Nairobi, 51 characters so it shows in full. The share preview titles match. The site icon, which Google shows beside search results and browsers show in tabs, was a lion emoji that looked different on every device. It is now the gold elephant on a green circle, the same as the logo, as favicon.svg plus PNG versions for older browsers (favicon-48.png), iPhone home screens (apple-touch-icon.png) and Android (icon-192.png, icon-512.png, listed in site.webmanifest). All 72 pages carry the new icon tags. Google refreshes the icon in search results on its own schedule, usually within a few weeks.
 
+### 44. Premium header and hero on the homepage
+
+**Announcement bar.** The scrolling ticker is replaced by a slim dark bar showing one message at a time, fading to the next every few seconds and pausing on hover, with an Ask on WhatsApp link. Messages are in sentence case. It folds away once the visitor scrolls.
+
+**Header.** The header now sits transparently over the hero video with white menu links and a gold Plan my trip button, then turns solid white with green links as soon as the visitor scrolls. The menu is shorter and plainer: About, Safaris (with the trip dropdown), From the field, Reviews and Travel guide, with the WhatsApp number beside the button. Links get a gold underline on hover. Phones show the logo, the Plan my trip button and the menu button.
+
+**Hero.** It fills the screen and is built around one bold element: the headline, now one sentence over two lines, Right now in the Mara, the light is turning gold. Above it, a gold star badge shows 4.9 from 16 Google reviews and links to the reviews. Below it, a shorter lead, one gold Get my free itinerary button (still tracked as hero_cta_click), and one line of reassurance: A draft itinerary and a real price within 24 hours. Nothing to pay to ask. A dark glass credentials band runs along the bottom edge: KATO bonded, Any group size, Private conservancies and Reply in 2 hours. The video gets a softer, even overlay so the text stays readable. Everything fits above the fold on a 1366 by 640 laptop and on an iPhone. There is one gentle entrance on page load, switched off for visitors who prefer reduced motion.
+
+**Floating bar.** The WhatsApp and Plan my trip bar now waits until the hero's own button has scrolled out of view, on phones as well as desktop, so the two never sit on top of each other.
+
+Trip pages and blog posts keep their own header for now.
+
 # How to check the work
 
 1. **Form.** Submit one test enquiry from a phone. The success message should appear straight away, and GA4 Realtime should show generate_lead once with a value.
