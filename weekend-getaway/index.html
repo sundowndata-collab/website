@@ -127,7 +127,7 @@ h2{font-size:clamp(24px,4vw,34px);font-weight:800;line-height:1.15;margin-bottom
 .img-break{width:100%;height:230px;border-radius:12px;overflow:hidden;margin-top:22px;}
 .img-break img{width:100%;height:100%;object-fit:cover;display:block;}
 .img-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:6px;}
-.img-strip .cell{border-radius:10px;overflow:hidden;height:150px;}
+.img-strip .cell{border-radius:10px;overflow:hidden;aspect-ratio:16 / 10;}
 .img-strip img{width:100%;height:100%;object-fit:cover;display:block;}
 
 .faq-item{border-bottom:1px solid rgba(11,58,29,0.12);padding:14px 0;}
@@ -387,8 +387,8 @@ footer{text-align:center;padding:18px 20px;font-size:13px;color:#8a8a8a;}
   <div class="wrap">
     <div class="img-strip">
       <div class="cell"><img src="https://images.unsplash.com/photo-1517001170041-70a5966d5402?auto=format&fit=crop&w=600&q=65" alt="Hot air balloon safari over the Masai Mara" loading="lazy"></div>
-      <div class="cell"><img src="https://images.unsplash.com/photo-1691677543751-f47087859ecd?auto=format&fit=crop&w=600&q=65" alt="Guests on a private safari vehicle" loading="lazy"></div>
-      <div class="cell"><img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=600&q=65" alt="Golden hour game drive in the Masai Mara" loading="lazy"></div>
+      <div class="cell"><img src="/images/guest-zebra-wide-600.jpg" srcset="/images/guest-zebra-wide-600.jpg 600w, /images/guest-zebra-wide-1200.jpg 1200w" sizes="(max-width: 700px) calc(100vw - 40px), 360px" alt="A Sundown Safaris guest feeding a zebra from a woven basket" loading="lazy"></div>
+      <div class="cell"><img src="/images/sunset-landcruiser-wide-600.jpg" srcset="/images/sunset-landcruiser-wide-600.jpg 600w, /images/sunset-landcruiser-wide-1200.jpg 1200w" sizes="(max-width: 700px) calc(100vw - 40px), 360px" alt="Sundown Safaris Land Cruiser silhouetted against the sunset" loading="lazy"></div>
     </div>
   </div>
 </section>

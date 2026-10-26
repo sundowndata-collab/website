@@ -62,7 +62,7 @@
     <meta property="og:title" content="7 Day Flagship: Ultimate Kenya Circuit, from $5,900 per person">
     <meta property="og:description" content="7 day Kenya flagship safari. Amboseli elephants and Masai Mara big cats in one epic circuit. Max 4 guests.">
     <meta property="og:url" content="https://www.sundownsafari.com/trip/7-day-a-flagship-ultimate-kenya.html">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1519066629447-267fffa62d4b?auto=format&amp;fit=crop&amp;w=1600&amp;q=80">
+    <meta property="og:image" content="https://www.sundownsafari.com/images/trip-ultimate-kenya-og.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <!-- Structured data: trip, price and itinerary -->
     <script type="application/ld+json">
@@ -78,7 +78,7 @@
       "name": "7 Day Flagship: Ultimate Kenya Circuit",
       "description": "7 day Kenya flagship safari. Amboseli elephants and Masai Mara big cats in one epic circuit. Max 4 guests.",
       "url": "https://www.sundownsafari.com/trip/7-day-a-flagship-ultimate-kenya.html",
-      "image": "https://images.unsplash.com/photo-1519066629447-267fffa62d4b?auto=format&fit=crop&w=1600&q=80",
+      "image": "https://www.sundownsafari.com/images/trip-ultimate-kenya-card-1200.jpg",
       "brand": {
         "@type": "Brand",
         "name": "Sundown Safaris"
@@ -172,6 +172,16 @@
   ]
 }
     </script>
+    <style>
+        /* Phones: sharp 6:5 photo band at the top, fading into the dark hero */
+        @media (max-width: 767px) {
+            #trip-hero { display:block !important; min-height:0 !important; background:#0c0a09; }
+            #trip-hero > div.absolute { bottom:auto !important; height:83.4vw !important; }
+            #trip-hero > div.absolute img { object-position:50% 50% !important; }
+            #trip-hero > div.absolute > div { background:linear-gradient(to bottom, rgba(12,10,9,0.15) 0, rgba(12,10,9,0.35) 50vw, #0c0a09 83.4vw) !important; }
+            #trip-hero > div.relative { padding-top:calc(83.4vw - 96px) !important; }
+        }
+    </style>
 </head>
 <body class="bg-brand-safariBg text-brand-darkText font-sans text-base antialiased">
 
@@ -237,10 +247,13 @@
 <main class="w-full">
 
     <!-- HERO — full bleed above the fold with large image -->
-    <section class="relative min-h-[85vh] flex items-end overflow-hidden">
+    <section id="trip-hero" class="relative min-h-[85vh] flex items-end overflow-hidden">
         <!-- Full bleed background image -->
         <div class="absolute inset-0">
-            <img src="https://images.unsplash.com/photo-1519066629447-267fffa62d4b?auto=format&fit=crop&w=1600&q=80" alt="Ultimate Kenya Grand Circuit, a Sundown Safaris private safari in Kenya" class="w-full h-full object-cover">
+            <picture>
+                <source media="(max-width: 767px)" srcset="https://www.sundownsafari.com/images/trip-ultimate-kenya-m800.jpg 800w, https://www.sundownsafari.com/images/trip-ultimate-kenya-m1200.jpg 1200w" sizes="100vw">
+                <img src="https://images.unsplash.com/photo-1519066629447-267fffa62d4b?auto=format&fit=crop&w=1600&q=80" alt="Ultimate Kenya, a Sundown Safaris private safari from Amboseli to the Masai Mara" class="w-full h-full object-cover" fetchpriority="high">
+            </picture>
             <div class="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-950/60 to-stone-950/20"></div>
         </div>
         <!-- Content overlay -->

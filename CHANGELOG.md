@@ -145,6 +145,34 @@ The Book With Us button on trip pages squashed into a large green blob on phones
 
 On desktop the sticky bar slightly overlapped the hero's See the Nine Journeys button. It now appears once the visitor scrolls past the hero, and still hides at the form. Phones are unchanged.
 
+## More of Sundown's own photos, third upload of the day
+
+### 24. Guest photo with zebras
+
+A guest feeding zebras, used with her consent, now appears in two places. On the homepage it sits at the top of the Our Story figures. On the weekend getaway page, the paid ads landing page, it replaces the stock photo labelled Guests on a private safari vehicle. The weekend page strip also swaps a stock golden hour photo for Sundown's sunset Land Cruiser. The strip's photos are now taller, so they are no longer thin 150 pixel bands on phones.
+
+### 25. The Explorer shows the partner Land Rover
+
+The Explorer card, its link preview and its phone banner now use a sharper, 1200 pixel photo of the same partner Land Rover, shown under Sundown's agreement with the partner. The vehicle's name was removed from the grille and the number plate is cropped out or removed. On desktop the Explorer banner keeps its stock image, because the photo is not wide enough for a sharp full width banner.
+
+All new images measure 100 percent sharp on an iPhone 13 sized screen and on a high resolution desktop.
+
+### 26. Licensed photos for Ultimate Kenya and the rhino story
+
+Baraka confirmed Sundown has the rights to these photos. The lion with Kilimanjaro now leads the Ultimate Kenya card, its phone banner and its link preview, which matches the trip's Amboseli and Masai Mara itinerary. The two white rhinos are now the featured image and link preview of the blog post I Pointed My Rifle, a story set at Ol Pejeta. These photos carry no Sundown mark, because a brand mark on licensed photos would suggest Sundown took them. On desktop the Ultimate Kenya banner keeps its stock image, since the photo is 720 pixels and too small for a full width banner.
+
+Two further photos were held back. The tusker elephant was enlarged from a thumbnail before it arrived and looks smeared even at card size. The lions feeding with elephants behind them has the hallmarks of an AI generated image.
+
+### 27. Blog posts on phones
+
+56 blog posts had a typo in their phone styles, with every bracket doubled, so the phone layout never applied. Their navigation and page padding stayed at desktop sizes, and the featured image stayed 400 pixels tall, which zoomed and blurred it. All 56 are fixed.
+
+### 28. From the field gallery
+
+A new homepage section, From the field, sits just above the enquiry form. It shows seven real photos with short captions: a white rhino crossing the track, a rhino grazing in Nairobi National Park with the skyline behind, Point Lenana on Mount Kenya, a guide with guests at their vehicle, an open Land Cruiser at a lunch stop, the partner Land Rover's leather seats, and the Land Rover ready for a Nairobi pickup. It ends with a Plan my trip button that jumps to the form, tracked as field_gallery_click in GA4 and Clarity.
+
+It is placed right before the form on purpose. A visitor who has just seen real vehicles and real sightings meets the form at the moment of highest trust. The layout is two columns on phones and three on desktop, every image loads only when scrolled to, and all seven measure 100 percent sharp on phone and desktop. The Land Rover front photo is cropped above its number plate.
+
 # How to check the work
 
 1. **Form.** Submit one test enquiry from a phone. The success message should appear straight away, and GA4 Realtime should show generate_lead once with a value.
@@ -158,7 +186,7 @@ On desktop the sticky bar slightly overlapped the hero's See the Nine Journeys b
 
 1. Six trips still use stock photos: the Photographer, Trailblazer, Horizon Chaser, Ultimate Kenya, Voyager and Constellation. Each needs a real photo of what it promises, such as a balloon, Amboseli elephants with Kilimanjaro, a river crossing, a night sky camp, Samburu wildlife, and golden hour photography.
 2. The guide with guests photo is ready but waiting for the guests' permission to appear.
-3. Send the original files for the Explorer and Dreamcatcher photos, shared as documents rather than photos so WhatsApp does not compress them. That would make their cards fully sharp and let their trip page banners use them.
+3. Send the original file for the Dreamcatcher lion photo, shared as a document rather than a photo so WhatsApp does not compress it.
 4. Twelve older image sizes in the images folder are no longer used. They are harmless and can be deleted on GitHub whenever convenient.
 5. Add the DMARC email record in Vercel DNS. Name _dmarc, type TXT, value v=DMARC1; p=none; rua=mailto:bookings@sundownsafari.com
 6. If blog/blog-index-tracked.html is not used in any campaign, delete it.

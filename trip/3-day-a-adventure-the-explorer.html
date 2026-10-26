@@ -78,7 +78,7 @@
       "name": "3 Day Adventure: The Explorer",
       "description": "3 day adventure safari in the Masai Mara. Active trekking, cross country tracking with private Land Cruiser. Max 4 guests.",
       "url": "https://www.sundownsafari.com/trip/3-day-a-adventure-the-explorer.html",
-      "image": "https://www.sundownsafari.com/images/trip-explorer-1600.jpg",
+      "image": "https://www.sundownsafari.com/images/trip-explorer-card-1200.jpg",
       "brand": {
         "@type": "Brand",
         "name": "Sundown Safaris"
@@ -152,6 +152,16 @@
   ]
 }
     </script>
+    <style>
+        /* Phones: sharp 6:5 photo band at the top, fading into the dark hero */
+        @media (max-width: 767px) {
+            #trip-hero { display:block !important; min-height:0 !important; background:#0c0a09; }
+            #trip-hero > div.absolute { bottom:auto !important; height:83.4vw !important; }
+            #trip-hero > div.absolute img { object-position:50% 50% !important; }
+            #trip-hero > div.absolute > div { background:linear-gradient(to bottom, rgba(12,10,9,0.15) 0, rgba(12,10,9,0.35) 50vw, #0c0a09 83.4vw) !important; }
+            #trip-hero > div.relative { padding-top:calc(83.4vw - 96px) !important; }
+        }
+    </style>
 </head>
 <body class="bg-brand-safariBg text-brand-darkText font-sans text-base antialiased">
 
@@ -217,10 +227,13 @@
 <main class="w-full">
 
     <!-- HERO — full bleed above the fold with large image -->
-    <section class="relative min-h-[85vh] flex items-end overflow-hidden">
+    <section id="trip-hero" class="relative min-h-[85vh] flex items-end overflow-hidden">
         <!-- Full bleed background image -->
         <div class="absolute inset-0">
-            <img src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?auto=format&fit=crop&w=1600&q=80" alt="Cheetah on the Kenya savanna, The Explorer, a Sundown Safaris private safari" class="w-full h-full object-cover" fetchpriority="high">
+            <picture>
+                <source media="(max-width: 767px)" srcset="https://www.sundownsafari.com/images/trip-explorer-m800.jpg 800w, https://www.sundownsafari.com/images/trip-explorer-m1200.jpg 1200w" sizes="100vw">
+                <img src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?auto=format&fit=crop&w=1600&q=80" alt="The Explorer, a Sundown Safaris private safari in Kenya" class="w-full h-full object-cover" fetchpriority="high">
+            </picture>
             <div class="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-950/60 to-stone-950/20"></div>
         </div>
         <!-- Content overlay -->
