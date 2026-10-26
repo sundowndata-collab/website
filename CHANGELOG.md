@@ -119,6 +119,32 @@ The three featured posts showed guest quotes with random stock faces from random
 
 blog/blog-index-tracked.html is an older copy of the blog index, missing the three featured posts. It now tells Google that the real blog index is the original and asks not to be indexed. It still loads, in case it is used in a campaign link. The structured data wrongly added to it earlier today was removed.
 
+## Sharpness and polish, second upload of the day
+
+### 19. Sharp images on phones
+
+**What was wrong.** On phones the homepage hero is a tall box, about 390 by 1218 points, because the headline and text stack up. The landscape sunset photo had to be cropped to a thin vertical strip and enlarged about two and a half times to fill it, so it looked soft and showed only part of the vehicle. The trip cards also loaded images too small for high resolution phone screens.
+
+**What changed.** On phones the hero photo now sits as a sharp 6 by 5 band across the top, showing the whole vehicle against the sun, then fades into the brand green with the headline below. The Sundowner trip page uses the same treatment. Every image is now sized for the frame it fills, and measured sharpness is 100 percent on an iPhone 13 and a Pixel 7 for the hero, the Sundowner page and all three cards. The desktop hero is now up to 2576 pixels wide, the full size of the original photo. Desktop is otherwise unchanged and the video still plays.
+
+**Source limits.** The Explorer and Dreamcatcher photos arrived compressed, 720 and 1280 pixels wide, likely by WhatsApp. They have been enlarged carefully for phone screens, but original files would be sharper still. Their trip page banners stay on the stock images for now, because a full width banner needs far more pixels than those files have.
+
+### 20. Sundown mark always fully visible
+
+Each image is now cropped to the exact shape of its frame, so the corner mark is never cut off. The mark sits further in from the edge, the SAFARIS line is in warm white, and a soft dark backing keeps it readable on bright grass and dark sunsets alike. Link preview images keep the mark well inside, so square thumbnails show it too.
+
+### 21. Logo icon restored
+
+The logo circle used an elephant icon that only exists in the paid version of Font Awesome, while the site loads the free version, so the logo showed an empty green circle on all 14 pages that use it. It is now an elephant silhouette by Delapouite from game-icons.net, licensed CC BY 3.0, built into the page. The licence requires credit, which sits in the homepage footer.
+
+### 22. Trip page header on phones
+
+The Book With Us button on trip pages squashed into a large green blob on phones. It now reads Book on phones, on one line, and Book With Us on larger screens.
+
+### 23. Sticky bar on desktop
+
+On desktop the sticky bar slightly overlapped the hero's See the Nine Journeys button. It now appears once the visitor scrolls past the hero, and still hides at the form. Phones are unchanged.
+
 # How to check the work
 
 1. **Form.** Submit one test enquiry from a phone. The success message should appear straight away, and GA4 Realtime should show generate_lead once with a value.
@@ -132,8 +158,10 @@ blog/blog-index-tracked.html is an older copy of the blog index, missing the thr
 
 1. Six trips still use stock photos: the Photographer, Trailblazer, Horizon Chaser, Ultimate Kenya, Voyager and Constellation. Each needs a real photo of what it promises, such as a balloon, Amboseli elephants with Kilimanjaro, a river crossing, a night sky camp, Samburu wildlife, and golden hour photography.
 2. The guide with guests photo is ready but waiting for the guests' permission to appear.
-3. Add the DMARC email record in Vercel DNS. Name _dmarc, type TXT, value v=DMARC1; p=none; rua=mailto:bookings@sundownsafari.com
-4. If blog/blog-index-tracked.html is not used in any campaign, delete it.
-5. Review the homepage banner in early January, when the festive messages go out of date.
-6. Write supporting content for Ultimate Kenya once Search Console passes 30 indexed pages.
-7. Replace the Tailwind test CDN with a built stylesheet on the 12 pages that still use it.
+3. Send the original files for the Explorer and Dreamcatcher photos, shared as documents rather than photos so WhatsApp does not compress them. That would make their cards fully sharp and let their trip page banners use them.
+4. Twelve older image sizes in the images folder are no longer used. They are harmless and can be deleted on GitHub whenever convenient.
+5. Add the DMARC email record in Vercel DNS. Name _dmarc, type TXT, value v=DMARC1; p=none; rua=mailto:bookings@sundownsafari.com
+6. If blog/blog-index-tracked.html is not used in any campaign, delete it.
+7. Review the homepage banner in early January, when the festive messages go out of date.
+8. Write supporting content for Ultimate Kenya once Search Console passes 30 indexed pages.
+9. Replace the Tailwind test CDN with a built stylesheet on the 12 pages that still use it.

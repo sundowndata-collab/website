@@ -32,11 +32,8 @@
     <link rel="dns-prefetch" href="https://res.cloudinary.com">
 
     <!-- Hero image preload: mobile-first sizes, highest priority -->
-    <link rel="preload" as="image"
-          href="/images/hero-sundown-sunset-750.jpg"
-          imagesrcset="/images/hero-sundown-sunset-400.jpg 400w, /images/hero-sundown-sunset-750.jpg 750w, /images/hero-sundown-sunset-1100.jpg 1100w"
-          imagesizes="(max-width: 640px) 400px, (max-width: 1024px) 750px, 1100px"
-          fetchpriority="high">
+    <link rel="preload" as="image" media="(max-width: 767px)" href="/images/hero-sundown-sunset-m1200.jpg"
+          imagesrcset="/images/hero-sundown-sunset-m800.jpg 800w, /images/hero-sundown-sunset-m1200.jpg 1200w, /images/hero-sundown-sunset-m1739.jpg 1739w" imagesizes="100vw" fetchpriority="high">
 
     <!-- GA4: async attribute ensures zero parser blocking -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZZQGM8Z57G"></script>
@@ -413,7 +410,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-24 flex items-center justify-between">
             <a href="/" class="flex items-center space-x-3 text-left focus:outline-none group">
                 <div class="w-16 h-16 bg-brand-green rounded-full flex items-center justify-center text-white border-2 border-brand-accentGold shadow-sm group-hover:bg-brand-accentGold transition duration-300">
-                    <i class="fa-solid fa-elephant text-2xl text-brand-accentGold group-hover:text-brand-green transition duration-300"></i>
+                    <svg class="text-2xl text-brand-accentGold group-hover:text-brand-green transition duration-300" viewBox="0 0 512 512" width="1em" height="1em" fill="currentColor" aria-hidden="true" focusable="false"><!-- Elephant icon by Delapouite, game-icons.net, CC BY 3.0 --><path d="M236.422 98.393c-126.642-1.276-206.07 46.77-212.058 83.93-2.977 41.18-4.165 83.628-4.016 124.617l4.31 3.796c3.963-15.315 6.47-31.843 14.122-44.085 1.3 27.18 5.068 58.562 11.369 82.067-2.477 24.988-2.118 47.99-3.436 72.978 21.158 12.726 60.485 10.65 67.541 1.986 2.936-20.695 4.981-42.58 3.973-68.535l7.592-35.355c6.418-14.587 25.29-17.243 23.406-31.799l17.828-2.467c.355 25.196-14.375 27.1-24.713 41.653 12.994 5.357 14.676 3.886 24.059 5.124 23.848 2.742 45.234 3.774 67.802-8.175l-3.101-17.541 17.723-3.135 3.064 17.328c4.22 14.097 11.996 104.392 18.559 108.361 13.411 6.417 53.823 6.417 55.472-5.312 1.647-45.786 3.861-90.1-5.07-133.242 3.702-4.1 7.34-8.112 10.928-12.096-20.178-10.157-44.214-25.838-57.62-41.797-9.037-17.21-13.75-38.688-17.304-56.256-2.546-12.943-4.3-26.074-3.81-37.486.244-5.706 1.003-11.018 2.982-15.938 19.848-20.186 56.606-35.68 79.58-46.503-33.273-7.269-71.55 7.386-99.182 17.882zm128.934-9.931c-29.757 10.977-72.215 22.174-92.633 45.267-.807 2.008-1.51 5.563-1.7 9.994-.38 8.863 1.097 21.093 3.487 33.243 2.39 12.15 5.644 24.32 8.53 33.642 1.442 4.662 2.797 8.624 3.865 11.44 15.216 22.215 45.646 39.625 67.966 44.959l14.495-28.713c-11.574-15.04-13.779-35.226-4.59-50.352 4.932-6.143 9.727-10.553 16.982-10.416 4.545.109 9.194 1.996 12.856 5.045 25.905 21.572 49.481 48.69 83.37 70.66-.136-6.626-.26-12.94-.243-18.761.026-9.03-18.924-97.759-50.614-139.553-22.918-5.83-40.343-9.14-61.771-6.455zm68.883 76.232c4.327-.07 8.421.563 11.857 2.319.061 4.922-.298 10.035-10.887 16.152-4.501-4.72-11.239-10.838-17.908-15.627 5.427-1.506 11.374-2.754 16.938-2.844zm-54.233 32.838c-2.263 3.593-3.912 11.657-2.703 17.531 1.402 6.812 9.062 16.901 21.55 26.47 12.49 9.567 29.242 18.77 46.753 26.087 15.609 6.522 31.748 11.435 46.058 14.19-49.78-25.118-79.482-61.19-108.566-85.409-1.548-1.595-2.387.034-3.092 1.131zm58.914 86.797c.526 23.427-2.416 50.265-17.086 59.894-11.128 7.306-33.235 1.34-38.41-10.925-3.657-8.667 15.567-15.677 13.408-24.832-1.718-7.287-11.033-14.374-18.375-12.912-17.881 3.558-34.905 28.836-29.3 46.185 10.14 31.387 62.177 51.105 91.875 36.75 27.49-13.288 35.058-46.714 36.808-81.19-12.704-3.13-25.983-7.579-38.92-12.97zm-200.681 52.52a129.415 129.415 0 0 1-9.993 4.34l-8.67 77.603c1.22 8.802 15.819 12.647 30.385 12.81zm-100.65 4.519c-1.341 10.733-2.367 21.785-3.073 30.953-1.545 20.225-2.483 41.562-2.496 51.49 18.869 11.927 54.798 4.533 53.105-2.005-.656-27.278-6.002-49.806-12.58-73.717-11.983-1.258-23.524-3.864-34.957-6.721z"/></svg>
                 </div>
                 <div class="flex flex-col">
                     <span class="text-3xl font-serif font-black tracking-tight text-brand-green leading-none">SUNDOWN</span>
@@ -588,27 +585,28 @@
     <main class="w-full">
 
         <!-- HERO -->
-        <section class="text-white relative overflow-hidden" style="min-height:90vh;display:flex;align-items:center;">
+        <section id="hero" class="text-white relative overflow-hidden" style="min-height:90vh;display:flex;align-items:center;">
 
             <!-- HERO BACKGROUND: picture for mobile, JS-injected video for desktop -->
             <!-- Mobile: <picture> with correct srcset renders immediately, no video bytes fetched -->
             <picture id="hero-picture" class="absolute inset-0 w-full h-full" style="z-index:0;">
                 <source
-                    srcset="/images/hero-sundown-sunset-400.jpg"
-                    media="(max-width: 640px)">
+                    srcset="/images/hero-sundown-sunset-m800.jpg 800w, /images/hero-sundown-sunset-m1200.jpg 1200w, /images/hero-sundown-sunset-m1739.jpg 1739w"
+                    sizes="100vw"
+                    media="(max-width: 767px)">
                 <source
-                    srcset="/images/hero-sundown-sunset-750.jpg"
-                    media="(max-width: 1024px)">
+                    srcset="/images/hero-sundown-sunset-1100.jpg 1100w, /images/hero-sundown-sunset-1600.jpg 1600w, /images/hero-sundown-sunset-2400.jpg 2400w, /images/hero-sundown-sunset-2576.jpg 2576w"
+                    sizes="100vw">
                 <img
-                    src="/images/hero-sundown-sunset-1100.jpg"
+                    src="/images/hero-sundown-sunset-1600.jpg"
                     alt="Sundown Safaris Land Cruiser silhouetted against the sunset on a Kenya game drive"
                     class="w-full h-full object-cover"
-                    style="object-position:center 40%;"
+                    style="object-position:center 45%;"
                     fetchpriority="high"
                     loading="eager"
                     decoding="sync"
-                    width="1100"
-                    height="733">
+                    width="1600"
+                    height="900">
             </picture>
 
             <!-- Desktop: video injected via JS only — never downloaded on mobile -->
@@ -621,7 +619,7 @@
                 wrap.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;z-index:1;';
                 wrap.innerHTML = '<video id="hero-video" autoplay muted loop playsinline preload="none"'
                     + ' style="width:100%;height:100%;object-fit:cover;object-position:center;filter:brightness(1.25) contrast(1.05) saturate(1.1);"'
-                    + ' poster="/images/hero-sundown-sunset-1100.jpg">'
+                    + ' poster="/images/hero-sundown-sunset-1600.jpg">'
                     + '<source src="https://res.cloudinary.com/dodvkw5bj/video/upload/so_0,eo_60,q_auto,f_mp4,l_text:Arial_1:.,co_rgb:00000000/videoplayback_ame7td.mp4" type="video/mp4">'
                     + '<source src="https://res.cloudinary.com/dodvkw5bj/video/upload/so_0,eo_60,q_auto,f_webm/videoplayback_ame7td.webm" type="video/webm">'
                     + '<track kind="captions" src="" label="No captions" default>'
@@ -645,11 +643,23 @@
             })();
             </script>
 
+            <style>
+            /* Phones: the photo sits as a sharp 6:5 band across the top and fades into the brand green,
+               instead of being cropped to a thin, blurry strip behind the tall text block */
+            @media (max-width: 767px) {
+                #hero { display:block !important; min-height:0 !important; background:#05140a; }
+                #hero-picture { bottom:auto !important; height:83.4vw !important; }
+                #hero-picture img { object-position:50% 50% !important; }
+                #hero-overlay { background:linear-gradient(to bottom, rgba(5,20,10,0.10) 0, rgba(5,20,10,0.25) 45vw, rgba(5,20,10,0.85) 70vw, #05140a 83.4vw, #05140a 100%) !important; }
+                #hero-bottomfade { display:none; }
+                #hero-content { padding-top:calc(83.4vw - 104px) !important; padding-bottom:48px !important; }
+            }
+            </style>
             <!-- DARK OVERLAY for text readability -->
-            <div class="absolute inset-0" style="background:linear-gradient(to right, rgba(5,20,10,0.80) 0%, rgba(5,20,10,0.65) 45%, rgba(5,20,10,0.40) 70%, rgba(5,20,10,0.20) 100%);z-index:2;"></div>
+            <div id="hero-overlay" class="absolute inset-0" style="background:linear-gradient(to right, rgba(5,20,10,0.80) 0%, rgba(5,20,10,0.65) 45%, rgba(5,20,10,0.40) 70%, rgba(5,20,10,0.20) 100%);z-index:2;"></div>
             <!-- BOTTOM FADE -->
-            <div class="absolute bottom-0 left-0 right-0 h-32" style="background:linear-gradient(to bottom, transparent, rgba(5,20,10,0.6));z-index:2;"></div>
-            <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-12 gap-12 items-center py-20 w-full" style="position:relative;z-index:3;">
+            <div id="hero-bottomfade" class="absolute bottom-0 left-0 right-0 h-32" style="background:linear-gradient(to bottom, transparent, rgba(5,20,10,0.6));z-index:2;"></div>
+            <div id="hero-content" class="max-w-7xl mx-auto px-4 grid md:grid-cols-12 gap-12 items-center py-20 w-full" style="position:relative;z-index:3;">
                 <div class="md:col-span-8 space-y-6">
                     <span class="text-brand-accentGold uppercase font-bold tracking-[0.35em] text-sm block">Private safaris from Nairobi, Kenya</span>
                     <h1 class="text-4xl md:text-6xl font-serif font-extrabold tracking-tight leading-tight">
@@ -690,7 +700,7 @@
                 </div>
                 <div class="grid md:grid-cols-3 gap-6">
                     <a href="/trip/3-day-a-adventure-the-explorer.html" class="bg-white border border-stone-200 rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:border-brand-green transition duration-300 group flex flex-col">
-                        <div class="h-56 overflow-hidden relative bg-stone-200"><img src="/images/trip-explorer-400.jpg" srcset="/images/trip-explorer-400.jpg 400w, /images/trip-explorer-600.jpg 600w, /images/trip-explorer-800.jpg 800w" sizes="(max-width: 640px) 400px, (max-width: 1024px) 600px, 800px" alt="Open sided safari Land Rover ready for a game drive in Kenya, Sundown Safaris 3 Day Explorer private safari" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" width="800" height="450" loading="lazy"></div>
+                        <div class="h-56 overflow-hidden relative bg-stone-200"><img src="/images/trip-explorer-card-600.jpg" srcset="/images/trip-explorer-card-600.jpg 600w, /images/trip-explorer-card-1200.jpg 1200w" sizes="(max-width: 767px) calc(100vw - 32px), 400px" alt="Open sided safari Land Rover ready for a game drive in Kenya, Sundown Safaris 3 Day Explorer private safari" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" width="800" height="450" loading="lazy"></div>
                         <div class="p-6 flex-1 flex flex-col justify-between">
                             <div>
                                 <span class="text-xs font-black uppercase tracking-widest text-stone-400 mb-2 block">Adventure, 3 Days</span>
@@ -714,7 +724,7 @@
                         </div>
                     </a>
                     <a href="/trip/3-day-c-luxury-lite-the-sundowner.html" class="bg-white border border-stone-200 rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:border-brand-green transition duration-300 group flex flex-col">
-                        <div class="h-56 overflow-hidden relative bg-stone-200"><img src="/images/trip-sundowner-400.jpg" srcset="/images/trip-sundowner-400.jpg 400w, /images/trip-sundowner-600.jpg 600w, /images/trip-sundowner-800.jpg 800w" sizes="(max-width: 640px) 400px, (max-width: 1024px) 600px, 800px" alt="Sundowner drinks set beside a safari Land Cruiser at golden hour, Sundown Safaris Sundowner package" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" width="800" height="450" loading="lazy"></div>
+                        <div class="h-56 overflow-hidden relative bg-stone-200"><img src="/images/trip-sundowner-card-600.jpg" srcset="/images/trip-sundowner-card-600.jpg 600w, /images/trip-sundowner-card-900.jpg 900w, /images/trip-sundowner-card-1200.jpg 1200w" sizes="(max-width: 767px) calc(100vw - 32px), 400px" alt="Sundowner drinks set beside a safari Land Cruiser at golden hour, Sundown Safaris Sundowner package" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" width="800" height="450" loading="lazy"></div>
                         <div class="p-6 flex-1 flex flex-col justify-between">
                             <div>
                                 <span class="text-xs font-black uppercase tracking-widest text-stone-400 mb-2 block">Luxury Lite, 3 Days</span>
@@ -750,7 +760,7 @@
                         <div class="absolute top-4 left-4 z-10 bg-brand-green text-white text-xs font-black uppercase tracking-widest px-3 py-1.5 rounded-full flex items-center gap-1.5">
                             <i class="fa-solid fa-star text-brand-accentGold text-xs"></i> Most Popular
                         </div>
-                        <div class="h-56 overflow-hidden relative bg-stone-200"><img src="/images/trip-dreamcatcher-400.jpg" srcset="/images/trip-dreamcatcher-400.jpg 400w, /images/trip-dreamcatcher-600.jpg 600w, /images/trip-dreamcatcher-800.jpg 800w" sizes="(max-width: 640px) 400px, (max-width: 1024px) 600px, 800px" alt="Male lion walking past a safari vehicle on a Sundown Safaris game drive, Dreamcatcher private safari" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" width="800" height="450" loading="lazy"></div>
+                        <div class="h-56 overflow-hidden relative bg-stone-200"><img src="/images/trip-dreamcatcher-card-600.jpg" srcset="/images/trip-dreamcatcher-card-600.jpg 600w, /images/trip-dreamcatcher-card-900.jpg 900w, /images/trip-dreamcatcher-card-1200.jpg 1200w" sizes="(max-width: 767px) calc(100vw - 32px), 400px" alt="Male lion walking past a safari vehicle on a Sundown Safaris game drive, Dreamcatcher private safari" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" width="800" height="450" loading="lazy"></div>
                         <div class="p-6 flex-1 flex flex-col justify-between">
                             <div>
                                 <span class="text-xs font-black uppercase tracking-widest text-stone-400 mb-2 block">Classic, 5 Days</span>
@@ -1400,7 +1410,7 @@ window.sdfaqToggle = sdfaqToggle;
           <div class="md:col-span-4">
             <a href="/" class="flex items-center gap-3 mb-6 group">
               <div class="w-16 h-16 rounded-full flex items-center justify-center border-2 border-brand-accentGold group-hover:bg-brand-accentGold transition duration-300" style="background:rgba(201,138,39,0.15);">
-                <i class="fa-solid fa-elephant text-2xl text-brand-accentGold group-hover:text-brand-green transition duration-300"></i>
+                <svg class="text-2xl text-brand-accentGold group-hover:text-brand-green transition duration-300" viewBox="0 0 512 512" width="1em" height="1em" fill="currentColor" aria-hidden="true" focusable="false"><!-- Elephant icon by Delapouite, game-icons.net, CC BY 3.0 --><path d="M236.422 98.393c-126.642-1.276-206.07 46.77-212.058 83.93-2.977 41.18-4.165 83.628-4.016 124.617l4.31 3.796c3.963-15.315 6.47-31.843 14.122-44.085 1.3 27.18 5.068 58.562 11.369 82.067-2.477 24.988-2.118 47.99-3.436 72.978 21.158 12.726 60.485 10.65 67.541 1.986 2.936-20.695 4.981-42.58 3.973-68.535l7.592-35.355c6.418-14.587 25.29-17.243 23.406-31.799l17.828-2.467c.355 25.196-14.375 27.1-24.713 41.653 12.994 5.357 14.676 3.886 24.059 5.124 23.848 2.742 45.234 3.774 67.802-8.175l-3.101-17.541 17.723-3.135 3.064 17.328c4.22 14.097 11.996 104.392 18.559 108.361 13.411 6.417 53.823 6.417 55.472-5.312 1.647-45.786 3.861-90.1-5.07-133.242 3.702-4.1 7.34-8.112 10.928-12.096-20.178-10.157-44.214-25.838-57.62-41.797-9.037-17.21-13.75-38.688-17.304-56.256-2.546-12.943-4.3-26.074-3.81-37.486.244-5.706 1.003-11.018 2.982-15.938 19.848-20.186 56.606-35.68 79.58-46.503-33.273-7.269-71.55 7.386-99.182 17.882zm128.934-9.931c-29.757 10.977-72.215 22.174-92.633 45.267-.807 2.008-1.51 5.563-1.7 9.994-.38 8.863 1.097 21.093 3.487 33.243 2.39 12.15 5.644 24.32 8.53 33.642 1.442 4.662 2.797 8.624 3.865 11.44 15.216 22.215 45.646 39.625 67.966 44.959l14.495-28.713c-11.574-15.04-13.779-35.226-4.59-50.352 4.932-6.143 9.727-10.553 16.982-10.416 4.545.109 9.194 1.996 12.856 5.045 25.905 21.572 49.481 48.69 83.37 70.66-.136-6.626-.26-12.94-.243-18.761.026-9.03-18.924-97.759-50.614-139.553-22.918-5.83-40.343-9.14-61.771-6.455zm68.883 76.232c4.327-.07 8.421.563 11.857 2.319.061 4.922-.298 10.035-10.887 16.152-4.501-4.72-11.239-10.838-17.908-15.627 5.427-1.506 11.374-2.754 16.938-2.844zm-54.233 32.838c-2.263 3.593-3.912 11.657-2.703 17.531 1.402 6.812 9.062 16.901 21.55 26.47 12.49 9.567 29.242 18.77 46.753 26.087 15.609 6.522 31.748 11.435 46.058 14.19-49.78-25.118-79.482-61.19-108.566-85.409-1.548-1.595-2.387.034-3.092 1.131zm58.914 86.797c.526 23.427-2.416 50.265-17.086 59.894-11.128 7.306-33.235 1.34-38.41-10.925-3.657-8.667 15.567-15.677 13.408-24.832-1.718-7.287-11.033-14.374-18.375-12.912-17.881 3.558-34.905 28.836-29.3 46.185 10.14 31.387 62.177 51.105 91.875 36.75 27.49-13.288 35.058-46.714 36.808-81.19-12.704-3.13-25.983-7.579-38.92-12.97zm-200.681 52.52a129.415 129.415 0 0 1-9.993 4.34l-8.67 77.603c1.22 8.802 15.819 12.647 30.385 12.81zm-100.65 4.519c-1.341 10.733-2.367 21.785-3.073 30.953-1.545 20.225-2.483 41.562-2.496 51.49 18.869 11.927 54.798 4.533 53.105-2.005-.656-27.278-6.002-49.806-12.58-73.717-11.983-1.258-23.524-3.864-34.957-6.721z"/></svg>
               </div>
               <div>
                 <div class="text-3xl font-serif font-black tracking-tight leading-none text-white">SUNDOWN</div>
@@ -1459,6 +1469,7 @@ window.sdfaqToggle = sdfaqToggle;
         <div class="flex flex-wrap items-center justify-between gap-4">
           <p class="text-sm font-semibold text-stone-400">Copyright 2026 Sundown Safaris Ltd., Westlands, Nairobi, Kenya <a href="#" onclick="sundownConsentOpen();return false;" class="underline hover:text-white">Cookie settings</a></p>
           <p class="font-serif italic text-sm text-stone-400">7 years in the field. Every detail considered.</p>
+          <p class="w-full text-xs text-stone-500">Elephant icon by Delapouite, <a href="https://game-icons.net" class="underline hover:text-white" rel="noopener" target="_blank">game-icons.net</a>, licensed <a href="https://creativecommons.org/licenses/by/3.0/" class="underline hover:text-white" rel="noopener" target="_blank">CC BY 3.0</a></p>
         </div>
 
       </div>
@@ -1517,11 +1528,20 @@ window.sdfaqToggle = sdfaqToggle;
     var form = document.getElementById('master-booking');
     if (!bar) return;
     document.body.classList.add('has-sticky-cta');
-    if (form && 'IntersectionObserver' in window) {
-        new IntersectionObserver(function(entries){
-            entries.forEach(function(e){ bar.classList.toggle('is-hidden', e.isIntersecting); });
+    var hero = document.getElementById('hero');
+    var formOn = false, heroOn = !!hero, desk = window.matchMedia('(min-width: 768px)');
+    function update(){ bar.classList.toggle('is-hidden', formOn || (desk.matches && heroOn)); }
+    if ('IntersectionObserver' in window) {
+        if (form) new IntersectionObserver(function(entries){
+            entries.forEach(function(e){ formOn = e.isIntersecting; }); update();
         }, { threshold: 0, rootMargin: '0px 0px -25% 0px' }).observe(form);
-    }
+        // On desktop the hero has its own buttons, so the bar waits until the hero scrolls away
+        if (hero) new IntersectionObserver(function(entries){
+            entries.forEach(function(e){ heroOn = e.isIntersecting; }); update();
+        }, { threshold: 0.35 }).observe(hero);
+        if (desk.addEventListener) desk.addEventListener('change', update);
+    } else { heroOn = false; }
+    update();
     var btn = document.getElementById('sticky-cta-form');
     if (btn) btn.addEventListener('click', function(){
         if (typeof gtag !== 'undefined') { gtag('event', 'sticky_form_click', { event_category: 'enquiry', event_label: 'sticky_bar' }); }
