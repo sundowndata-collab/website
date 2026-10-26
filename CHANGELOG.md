@@ -1,0 +1,139 @@
+# Sundown Safaris website changelog
+
+A plain record of what changed on sundownsafari.com, why it changed, and how to check it. Newest work first.
+
+# 26 October 2026
+
+This round started from a review of Microsoft Clarity data for 1 September to 26 October. That data showed 61 real visits, 150 bot visits filtered out, and 4 enquiries. The site was converting well but losing some buyers to bugs, and most pages were not being measured at all. Everything below came out of that review.
+
+## Confirmed by Baraka on 26 October
+
+The testimonials from David K. and from Tom and Linda B. are real guests. The desktop hero video is Sundown's own footage. generate_lead is imported into Google Ads as the lead conversion.
+
+## Already live
+
+These went live through GitHub uploads during the day and were confirmed on Vercel production.
+
+### 1. The enquiry form can no longer fail after a successful send
+
+**What was wrong.** After Formspree saved an enquiry, the code tried to send the guest a confirmation through EmailJS. If EmailJS had not loaded, which happens on slow mobile data and with some browser blockers, the code crashed at that point. The visitor saw "Something went wrong, please try again" even though their enquiry had gone through, no lead was recorded, and retrying sent duplicates. One recorded Clarity session shows a visitor doing exactly this before leaving.
+
+**What changed.** The success message now shows first, the moment Formspree confirms. The lead tracking and the guest email each run separately, so neither can undo a successful enquiry. The button can no longer send the same enquiry twice. The form is ready the instant the page loads instead of waiting for the browser to be idle.
+
+**Tracking.** generate_lead in GA4, Lead in Meta and generate_lead in Clarity fire once per enquiry, only after Formspree confirms. The double counting fix from 16 October is kept.
+
+### 2. Navigation dead clicks fixed
+
+**What was wrong.** Our Safaris in the desktop menu was plain text that only opened when hovered, so clicking it did nothing and the trip menu could not be opened on touchscreen laptops and tablets. The 3, 5 and 7 Day Safaris labels looked clickable but were not. Clarity recorded dead clicks in four sessions.
+
+**What changed.** Our Safaris now links to the trip grid and the menu also opens on tap and keyboard focus. The duration labels in both the desktop and mobile menus jump to their row of trips on the homepage.
+
+### 3. Header phone number
+
+Now reads +254 724 491 210 and opens WhatsApp. It was a phone call link, which does nothing on a laptop, and roughly three quarters of visits come from laptops.
+
+### 4. Clarity now records every page
+
+Clarity was only installed on the homepage, so blog posts, trip pages and the weekend getaway landing page were never recorded. It is now on all 71 of those pages, using the same consent rule as the homepage, where visitors in the UK, the EU and Switzerland are asked first.
+
+### 5. Date picker rebuilt for phones
+
+**What was wrong.** The calendar showed two months side by side, about 620 pixels wide on a phone screen of about 390, so it pushed the page sideways. It needed two taps to open, gave no hint that a second date was needed, and its month arrows were white on white.
+
+**What changed.**
+
+1. Phones show one month, fixed in the centre of the screen with the page dimmed behind it and no sliding animation.
+2. The first tap opens it, because it loads quietly while the visitor scrolls towards the form.
+3. A gold bar guides the visitor. It says Step 1 of 2, tap your arrival date, then names their arrival and asks for the departure.
+4. Once both dates are picked, a line under the field confirms the nights and dates in plain words.
+5. If only an arrival date is chosen, it is kept with a reminder to add the departure.
+6. If the calendar ever fails to load, the field becomes a normal text box so the enquiry can still go through.
+7. The brand green month bar and visible month arrows are restored on every device.
+
+### 6. Sticky enquiry bar
+
+The floating WhatsApp bubble is replaced with a bar fixed to the bottom of the screen. It holds two buttons side by side, WhatsApp us and Plan my trip, under the line "Private safaris across Kenya. We reply within 2 hours." It runs full width on phones and is a compact box on desktop. It hides while the enquiry form is on screen, so it never covers a field or the submit button.
+
+**Tracking.** Plan my trip clicks fire sticky_form_click in GA4 and Clarity. WhatsApp clicks were already tracked as whatsapp_click.
+
+### 7. Homepage banner refreshed
+
+The Mashujaa Weekend item, for 17 to 19 October, and the October Safaris item were replaced with November and December Safaris, Christmas and New Year, and The Mara after the migration. Review again in early January.
+
+### 8. GA4 settings
+
+Confirmed done in GA4: form_submit is no longer a key event, so each enquiry counts once, and whatsapp_click is now a key event.
+
+## In this upload
+
+### 9. Structured data on 70 pages
+
+Structured data tells Google, in its own format, what each page is about.
+
+1. **Homepage.** Sundown Safaris as a tour operator in Westlands, Nairobi, with phone, email, booking contact, a catalogue of all nine trips with prices, and all ten FAQs.
+2. **Nine trip pages.** Trip name, from price in US dollars, the full day by day itinerary, and breadcrumbs.
+3. **57 blog posts.** Marked as articles published by Sundown Safaris, with date and image.
+4. **Three featured posts.** Their existing structured data pointed at the bare domain and has been corrected to the live www addresses.
+
+No star ratings are marked up on purpose. Google does not allow a business to mark up reviews about itself, and doing so can lead to a penalty.
+
+### 10. Link previews on trip pages
+
+Trip pages had no preview tags at all, so a trip shared on WhatsApp showed no image or summary. Each now previews with its photo, name, price and description.
+
+### 11. Broken blog links
+
+Five links inside blog posts pointed at addresses from an older version of the site. The most important sent readers of the Kenya versus Tanzania post to a dead link instead of the Ultimate Kenya trip. All five now point to the right pages. A full scan of the site found no other broken internal links.
+
+### 12. Own photos replace stock photos
+
+**Where.** The homepage hero shows the sunset Land Cruiser. The Explorer shows the open Land Rover, the Sundowner shows the sundowner setup at golden hour, and the Dreamcatcher shows the lion walking past the vehicle. Each appears on its homepage card and its trip page.
+
+**Cleaned.** Other camp and operator names, a permit sticker and a number plate were removed. Each photo carries a small Sundown Safaris mark in the bottom corner.
+
+**Files.** All photos live in a new images folder, compressed to about 2 megabytes in total.
+
+**Hero video.** The desktop hero video is unchanged and still plays on desktop only. The still image shown before it loads is now the sunset Land Cruiser. Phones see the photo instead of the video, so the page loads fast on mobile data.
+
+### 13. Link preview images
+
+The homepage, the three trips above and the three featured posts now preview with real images. This also fixes the Kenya safari cost guide, whose preview pointed at an image that never existed.
+
+### 14. Trip page image descriptions
+
+The image descriptions on all nine trip pages had doubled quote marks, so Google and screen readers read them badly. All nine are fixed.
+
+### 15. Every blog post now leads to a trip
+
+48 older posts had no link to any trip, so a reader arriving from Google had nowhere to go. Each now has a related trips block before the closing call to action, in the same design as the eight posts linked on 7 October. Each block names the two trips that best fit the post's topic. For example, walking safari posts point to the Explorer and the Trailblazer, honeymoon posts to the Sundowner and the Constellation, and packing guides to Ultimate Kenya and the Dreamcatcher. Every block also links to the 2026 cost guide. Every blog post now links to at least one trip.
+
+### 16. Trip page header phone
+
+All nine trip pages now show +254 724 491 210 in the header, opening WhatsApp, matching the homepage.
+
+### 17. Stock faces removed from testimonials
+
+The three featured posts showed guest quotes with random stock faces from randomuser.me. Each face is replaced with an initials badge in the brand colours, DK and TB. The unused connection to randomuser.me was removed from the homepage.
+
+### 18. Duplicate blog index
+
+blog/blog-index-tracked.html is an older copy of the blog index, missing the three featured posts. It now tells Google that the real blog index is the original and asks not to be indexed. It still loads, in case it is used in a campaign link. The structured data wrongly added to it earlier today was removed.
+
+# How to check the work
+
+1. **Form.** Submit one test enquiry from a phone. The success message should appear straight away, and GA4 Realtime should show generate_lead once with a value.
+2. **Date picker.** On a phone, tap the date field once. One month should open in the centre with the gold step bar.
+3. **Sticky bar.** Scroll the homepage on a phone. The two buttons stay at the bottom, disappear at the form and return after it.
+4. **Structured data.** Paste a trip page address into Google's Rich Results Test. It should detect the product and its price.
+5. **Link previews.** Send a trip page link to yourself on WhatsApp. It should show the photo and price. WhatsApp keeps old previews for a while, so a link shared before this change may take time to refresh.
+6. **Search Console.** Check the Pages report weekly. Indexed pages were 16 on 19 October, up from 9 on 7 October.
+
+# Still to do
+
+1. Six trips still use stock photos: the Photographer, Trailblazer, Horizon Chaser, Ultimate Kenya, Voyager and Constellation. Each needs a real photo of what it promises, such as a balloon, Amboseli elephants with Kilimanjaro, a river crossing, a night sky camp, Samburu wildlife, and golden hour photography.
+2. The guide with guests photo is ready but waiting for the guests' permission to appear.
+3. Add the DMARC email record in Vercel DNS. Name _dmarc, type TXT, value v=DMARC1; p=none; rua=mailto:bookings@sundownsafari.com
+4. If blog/blog-index-tracked.html is not used in any campaign, delete it.
+5. Review the homepage banner in early January, when the festive messages go out of date.
+6. Write supporting content for Ultimate Kenya once Search Console passes 30 indexed pages.
+7. Replace the Tailwind test CDN with a built stylesheet on the 12 pages that still use it.
