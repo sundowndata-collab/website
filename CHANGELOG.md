@@ -273,6 +273,18 @@ The red banner that said we keep every vehicle small is gone. The booking card n
 ### 50. Small fixes
 WhatsApp messages no longer read "the The Explorer". Link previews and structured data for five trips now use Sundown photos instead of stock ones.
 
+### 51. Giraffes and a rhino with her calf added
+The homepage From the field gallery now has nine photos: a tower of giraffes leads it, and a rhino with her calf at a waterhole sits in the third column. The giraffe photo also appears in the field photo row on all nine trip pages. The rhino photo stays on the homepage only, because white rhinos are not part of any current trip route.
+
+### 52. Eleven more real photos
+The From the field gallery now shows twelve photos, with eight more behind a See more button so the homepage stays compact. The new photos are lions beside the vehicle, a black rhino, a zebra herd, two lionesses on the track, breakfast under a tree, the Land Rover at golden hour, rafting on the river, a rafting group, two vehicle interiors and a helicopter. Number plates, another company's door sticker, a TV channel sticker and a rafting company logo were painted out, and every photo carries the Sundown mark. The field photo row on each trip page now mixes the new wildlife photos, so no two trips show the same three.
+
+### 53. Partner photos of hippos and young lions
+Two photos from a partner, used with permission: a pod of hippos and two young lions lying on the track. The partner's caption label was cropped out and the Sundown mark added. Both now sit in the first twelve gallery photos, with the rafting river and helicopter moved behind See more, and they also appear on the Horizon Chaser, Dreamcatcher, Voyager and Constellation pages.
+
+### 54. One consistent Sundown mark on every photo
+Every Sundown photo on the site was regenerated from its original with the same mark: SUNDOWN in white with SAFARIS in gold beneath, bottom right, sized to the photo so it carries the same weight on a wide strip or a tall portrait, with equal margins and a soft shadow so it reads on sky, sand or water. Frames that crop the photo get extra margin, so the mark is never cut. On phones the trip hero photo now anchors to the bottom so the mark stays in view. The last five stock photos on the homepage trip cards were replaced with Sundown photos, and the trip page rows no longer use photos whose mark was cut off. Checked on a phone and a laptop across the homepage, the weekend page and all nine trip pages. The homepage hero stays clean behind the headline, and the licensed lion below Kilimanjaro carries no mark because Sundown did not take it.
+
 # How to check the work
 
 1. **Form.** Submit one test enquiry from a phone. The success message should appear straight away, and GA4 Realtime should show generate_lead once with a value.
