@@ -132,6 +132,7 @@ blockquote p:last-child{margin-bottom:0}
   .sdt-hero{padding:0 0 30px}
   .sdt-hero-grid{gap:20px}
   .sdt-hero-media{margin:0 -16px;border-radius:0;outline:0;box-shadow:none;aspect-ratio:16/10}
+  .sdt-hero-media img{object-position:50% 92%}
   .sdt-back{display:none}
   .sdt-badge{margin-bottom:10px}
   .sdt-hero h1{font-size:32px;margin-bottom:10px}
