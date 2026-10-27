@@ -131,35 +131,13 @@
     <link rel="preload" as="image" href="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?auto=format&fit=crop&w=1200&q=60&fm=webp" fetchpriority="high">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdn.tailwindcss.com">
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,800;1,400&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,800;1,400&display=swap" rel="stylesheet"></noscript>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/css/site.css">
 
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        serif: ['Playfair Display', 'serif'],
-                    },
-                    colors: {
-                        brand: {
-                            green: '#0B3A1D',
-                            lightGreen: '#EAF2EC',
-                            darkText: '#111B14',
-                            accentGold: '#C98A27',
-                            safariBg: '#FBFBFA'
-                        }
-                    }
-                }
-            }
-        }
-    </script>
     <style>
         html { scroll-behavior: smooth; }
         .prose h2 { font-family: 'Playfair Display', serif; font-weight: 800; color: #0B3A1D; font-size: 1.75rem; margin: 2.5rem 0 1rem; line-height: 1.2; }
@@ -187,57 +165,38 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <link rel="stylesheet" href="/css/sundown-shared.css">
+<link rel="stylesheet" href="/css/sd-header.css">
 </head>
 <body class="sd-feature bg-brand-safariBg text-brand-darkText font-sans antialiased">
 
 <!-- HEADER -->
-<header class="bg-white sticky top-0 z-50 shadow-md">
-    <div class="bg-brand-green text-white text-xs font-semibold tracking-wider py-2.5 px-4 border-b border-brand-accentGold hidden sm:block">
-        <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <span class="opacity-90"><i class="fa-solid fa-circle-check text-brand-accentGold text-sm mr-2"></i> <strong>The Sundown Standard:</strong> Fully audited 4x4 Land Cruisers, private to your group. Never crowded.</span>
-            <span class="font-bold text-brand-accentGold font-sans text-sm">Direct Operations Office: Nairobi, Kenya</span>
-        </div>
-    </div>
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-24 flex items-center justify-between">
-        <a href="/" class="flex items-center space-x-3 group">
-            <div class="w-16 h-16 bg-brand-green rounded-full flex items-center justify-center text-white border-2 border-brand-accentGold shadow-sm group-hover:bg-brand-accentGold transition duration-300">
-                <svg class="text-2xl text-brand-accentGold group-hover:text-brand-green transition duration-300" viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" focusable="false"><!-- Elephant icon from Lucide Lab, ISC licence, lucide.dev --><g><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M14.5 12H14c-2.8 0-5-2.2-5-5V5a2 2 0 0 1 2-2h2c1.5 0 2.8.8 3.4 2H19c1.7 0 3 1.3 3 3v10m-4-8h.01"/><path d="M14 10a4 4 0 0 0 4 4a4 4 0 0 1 4 4a2 2 0 0 1-4 0m-8-2v5"/><path d="M18 14a4 4 0 0 0-4 4v3H6v-2.6c0-1.1-.8-2.3-1.7-3C2.9 14.3 2 12.8 2 11c0-3.3 3.1-6 7-6m-7 6v7"/></g></g></svg>
-            </div>
-            <div class="flex flex-col">
-                <span class="text-3xl font-serif font-black tracking-tight text-brand-green leading-none">SUNDOWN</span>
-                <span class="text-sm uppercase tracking-[0.3em] text-brand-accentGold font-extrabold mt-0.5">Safaris</span>
-            </div>
-        </a>
-        <nav class="hidden md:flex items-center space-x-8 text-sm font-extrabold uppercase tracking-wider text-stone-600">
-            <a href="/" class="hover:text-brand-green transition py-2 border-b-2 border-transparent hover:border-brand-green">Home</a>
-            <div class="relative dropdown py-4">
-                <span class="flex items-center gap-1.5 cursor-pointer py-2 border-b-2 border-transparent hover:border-brand-green hover:text-brand-green transition">
-                    Our Safaris <i class="fa-solid fa-chevron-down text-xs text-brand-accentGold"></i>
-                </span>
-                <div class="dropdown-menu hidden absolute left-1/2 -translate-x-1/2 top-full w-[460px] bg-white shadow-2xl rounded-xl border border-stone-200 overflow-hidden py-4 z-50 mt-1">
-                    <div class="grid grid-cols-1 gap-1 normal-case tracking-normal text-base font-normal">
-                        <div class="px-5 py-1.5 text-xs font-black uppercase tracking-widest text-stone-400 bg-stone-50">3 Day Safaris</div>
-                        <a href="/trip/3-day-a-adventure-the-explorer.html" class="w-full text-left px-5 py-2.5 text-stone-700 hover:bg-brand-lightGreen hover:text-brand-green flex justify-between items-center text-sm font-medium"><span>3 Day Adventure: <strong class="font-serif">"The Explorer"</strong></span><i class="fa-solid fa-chevron-right text-xs opacity-40"></i></a>
-                        <a href="/trip/3-day-b-classic-the-photographer.html" class="w-full text-left px-5 py-2.5 text-stone-700 hover:bg-brand-lightGreen hover:text-brand-green flex justify-between items-center text-sm font-medium"><span>3 Day Classic: <strong class="font-serif">"The Photographer"</strong></span><i class="fa-solid fa-chevron-right text-xs opacity-40"></i></a>
-                        <a href="/trip/3-day-c-luxury-lite-the-sundowner.html" class="w-full text-left px-5 py-2.5 text-stone-700 hover:bg-brand-lightGreen hover:text-brand-green flex justify-between items-center text-sm font-medium"><span>3 Day Luxury Lite: <strong class="font-serif">"The Sundowner"</strong></span><i class="fa-solid fa-chevron-right text-xs opacity-40"></i></a>
-                        <div class="px-5 py-1.5 text-xs font-black uppercase tracking-widest text-stone-400 bg-stone-50 mt-2">5 Day Safaris</div>
-                        <a href="/trip/5-day-a-adventure-the-trailblazer.html" class="w-full text-left px-5 py-2.5 text-stone-700 hover:bg-brand-lightGreen hover:text-brand-green flex justify-between items-center text-sm font-medium"><span>5 Day Adventure: <strong class="font-serif">"The Trailblazer"</strong></span><i class="fa-solid fa-chevron-right text-xs opacity-40"></i></a>
-                        <a href="/trip/5-day-b-classic-the-dreamcatcher.html" class="w-full text-left px-5 py-2.5 text-stone-700 hover:bg-brand-lightGreen hover:text-brand-green flex justify-between items-center text-sm font-medium"><span>5 Day Classic: <strong class="font-serif">"The Dreamcatcher"</strong></span><i class="fa-solid fa-chevron-right text-xs opacity-40"></i></a>
-                        <a href="/trip/5-day-c-luxury-lite-the-horizon-chaser.html" class="w-full text-left px-5 py-2.5 text-stone-700 hover:bg-brand-lightGreen hover:text-brand-green flex justify-between items-center text-sm font-medium"><span>5 Day Luxury Lite: <strong class="font-serif">"The Horizon Chaser"</strong></span><i class="fa-solid fa-chevron-right text-xs opacity-40"></i></a>
-                        <div class="px-5 py-1.5 text-xs font-black uppercase tracking-widest text-stone-400 bg-stone-50 mt-2">7 Day Safaris</div>
-                        <a href="/trip/7-day-a-flagship-ultimate-kenya.html" class="w-full text-left px-5 py-2.5 text-stone-700 hover:bg-brand-lightGreen hover:text-brand-green flex justify-between items-center text-sm font-medium"><span>7 Day Flagship: <strong class="font-serif">"Ultimate Kenya"</strong> Circuit</span><i class="fa-solid fa-chevron-right text-xs opacity-40"></i></a>
-                        <a href="/trip/7-day-b-classic-the-voyager.html" class="w-full text-left px-5 py-2.5 text-stone-700 hover:bg-brand-lightGreen hover:text-brand-green flex justify-between items-center text-sm font-medium"><span>7 Day Classic: <strong class="font-serif">"The Voyager"</strong></span><i class="fa-solid fa-chevron-right text-xs opacity-40"></i></a>
-                        <a href="/trip/7-day-c-luxury-lite-the-constellation.html" class="w-full text-left px-5 py-2.5 text-stone-700 hover:bg-brand-lightGreen hover:text-brand-green flex justify-between items-center text-sm font-medium"><span>7 Day Luxury Lite: <strong class="font-serif">"The Constellation"</strong></span><i class="fa-solid fa-chevron-right text-xs opacity-40"></i></a>
-                    </div>
-                </div>
-            </div>
-            <a href="/blog/" class="text-brand-accentGold border-b-2 border-brand-accentGold py-2">Travel Guide</a>
-            <a href="/#master-booking" class="hover:text-brand-green transition py-2 border-b-2 border-transparent hover:border-brand-green">Contact Us</a>
-        </nav>
-        <a href="/#master-booking" class="inline-flex items-center gap-2 sm:gap-2.5 whitespace-nowrap shrink-0 bg-brand-green text-white px-5 py-3 sm:px-6 sm:py-3.5 rounded-full font-bold text-sm tracking-wider hover:bg-brand-accentGold transition duration-300 shadow-md">
-            <span class="sm:hidden">Book</span><span class="hidden sm:inline">Book With Us</span> <i class="fa-solid fa-arrow-right-long text-sm"></i>
-        </a>
-    </div>
+<header id="site-header" class="sd-header">
+<div class="sd-announce" role="region" aria-label="News from Sundown"><ul class="sd-announce-list" aria-live="polite"><li class="is-active"><strong>Christmas and New Year:</strong> Lodges fill first over the holidays. Send your dates early.</li><li><strong>November and December safaris:</strong> Your own Land Cruiser and guide, whatever the size of your group.</li><li><strong>The Mara after the migration:</strong> Lions, cheetahs and elephants stay all year, with far fewer vehicles.</li><li><strong>Real pricing in 24 hours:</strong> Send your dates and get a draft itinerary and a straight quote.</li><li><strong>Park fees rose this year:</strong> Request your quote now and we hold the price for 30 days.</li></ul><a class="sd-announce-link" href="https://wa.me/254724491210" target="_blank" rel="noopener">Ask on WhatsApp</a></div>
+<div class="sd-nav">
+<a href="/" class="sd-brand" aria-label="Sundown Safaris home"><span class="sd-brand-mark"><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" focusable="false"><!-- Elephant icon from Lucide Lab, ISC licence, lucide.dev --><g><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M14.5 12H14c-2.8 0-5-2.2-5-5V5a2 2 0 0 1 2-2h2c1.5 0 2.8.8 3.4 2H19c1.7 0 3 1.3 3 3v10m-4-8h.01"/><path d="M14 10a4 4 0 0 0 4 4a4 4 0 0 1 4 4a2 2 0 0 1-4 0m-8-2v5"/><path d="M18 14a4 4 0 0 0-4 4v3H6v-2.6c0-1.1-.8-2.3-1.7-3C2.9 14.3 2 12.8 2 11c0-3.3 3.1-6 7-6m-7 6v7"/></g></g></svg></span><span class="sd-brand-words"><span class="sd-brand-name">SUNDOWN</span><span class="sd-brand-sub">Safaris</span></span></a>
+<nav class="sd-menu" aria-label="Main">
+<a href="/#about-us-summary">About</a>
+<div class="sd-dd"><button type="button" class="sd-dd-btn" aria-expanded="false" aria-haspopup="true">Safaris <svg viewBox="0 0 448 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/></svg></button><div class="sd-dd-panel"><a class="sd-dd-group" href="/#safaris-3-day">3 Day Safaris</a><a class="sd-dd-trip" href="/trip/3-day-a-adventure-the-explorer.html"><span>3 Day Adventure: <b>The Explorer</b></span><span data-usd="1500">$1,500</span></a><a class="sd-dd-trip" href="/trip/3-day-b-classic-the-photographer.html"><span>3 Day Classic: <b>The Photographer</b></span><span data-usd="2800">$2,800</span></a><a class="sd-dd-trip" href="/trip/3-day-c-luxury-lite-the-sundowner.html"><span>3 Day Luxury Lite: <b>The Sundowner</b></span><span data-usd="3400">$3,400</span></a><a class="sd-dd-group" href="/#safaris-5-day">5 Day Safaris</a><a class="sd-dd-trip" href="/trip/5-day-a-adventure-the-trailblazer.html"><span>5 Day Adventure: <b>The Trailblazer</b></span><span data-usd="2300">$2,300</span></a><a class="sd-dd-trip" href="/trip/5-day-b-classic-the-dreamcatcher.html"><span>5 Day Classic: <b>The Dreamcatcher</b></span><span data-usd="3900">$3,900</span></a><a class="sd-dd-trip" href="/trip/5-day-c-luxury-lite-the-horizon-chaser.html"><span>5 Day Luxury Lite: <b>The Horizon Chaser</b></span><span data-usd="4800">$4,800</span></a><a class="sd-dd-group" href="/#safaris-7-day">7 Day Safaris</a><a class="sd-dd-trip" href="/trip/7-day-a-flagship-ultimate-kenya.html"><span>7 Day Flagship: <b>Ultimate Kenya</b></span><span data-usd="5900">$5,900</span></a><a class="sd-dd-trip" href="/trip/7-day-b-classic-the-voyager.html"><span>7 Day Classic: <b>The Voyager</b></span><span data-usd="4900">$4,900</span></a><a class="sd-dd-trip" href="/trip/7-day-c-luxury-lite-the-constellation.html"><span>7 Day Luxury Lite: <b>The Constellation</b></span><span data-usd="6500">$6,500</span></a></div></div>
+<a href="/#from-the-field">From the field</a>
+<a href="/#testimonials">Reviews</a>
+<a href="/blog/" aria-current="page">Travel guide</a>
+</nav>
+<div class="sd-nav-actions">
+<a href="https://wa.me/254724491210" target="_blank" rel="noopener" class="sd-nav-phone"><svg viewBox="0 0 448 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg><span>+254 724 491 210</span></a>
+<a href="/#master-booking" class="sd-nav-cta">Plan my trip</a>
+<button type="button" class="sd-burger" aria-controls="sd-mm" aria-expanded="false" aria-label="Open menu"><span></span><span></span><span></span></button>
+</div>
+</div>
+<div id="sd-mm" class="sd-mm" hidden>
+<a href="/">Home</a>
+<a href="/#about-us-summary">About us</a>
+<button type="button" class="sd-mm-acc-btn" aria-controls="sd-mm-acc" aria-expanded="false">Our safaris <svg viewBox="0 0 448 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/></svg></button>
+<div id="sd-mm-acc" class="sd-mm-acc" hidden><a class="sd-dd-group" href="/#safaris-3-day">3 Day Safaris</a><a class="sd-dd-trip" href="/trip/3-day-a-adventure-the-explorer.html"><span>3 Day Adventure: <b>The Explorer</b></span><span data-usd="1500">$1,500</span></a><a class="sd-dd-trip" href="/trip/3-day-b-classic-the-photographer.html"><span>3 Day Classic: <b>The Photographer</b></span><span data-usd="2800">$2,800</span></a><a class="sd-dd-trip" href="/trip/3-day-c-luxury-lite-the-sundowner.html"><span>3 Day Luxury Lite: <b>The Sundowner</b></span><span data-usd="3400">$3,400</span></a><a class="sd-dd-group" href="/#safaris-5-day">5 Day Safaris</a><a class="sd-dd-trip" href="/trip/5-day-a-adventure-the-trailblazer.html"><span>5 Day Adventure: <b>The Trailblazer</b></span><span data-usd="2300">$2,300</span></a><a class="sd-dd-trip" href="/trip/5-day-b-classic-the-dreamcatcher.html"><span>5 Day Classic: <b>The Dreamcatcher</b></span><span data-usd="3900">$3,900</span></a><a class="sd-dd-trip" href="/trip/5-day-c-luxury-lite-the-horizon-chaser.html"><span>5 Day Luxury Lite: <b>The Horizon Chaser</b></span><span data-usd="4800">$4,800</span></a><a class="sd-dd-group" href="/#safaris-7-day">7 Day Safaris</a><a class="sd-dd-trip" href="/trip/7-day-a-flagship-ultimate-kenya.html"><span>7 Day Flagship: <b>Ultimate Kenya</b></span><span data-usd="5900">$5,900</span></a><a class="sd-dd-trip" href="/trip/7-day-b-classic-the-voyager.html"><span>7 Day Classic: <b>The Voyager</b></span><span data-usd="4900">$4,900</span></a><a class="sd-dd-trip" href="/trip/7-day-c-luxury-lite-the-constellation.html"><span>7 Day Luxury Lite: <b>The Constellation</b></span><span data-usd="6500">$6,500</span></a></div>
+<a href="/#from-the-field">From the field</a>
+<a href="/#testimonials">Reviews</a>
+<a href="/blog/">Travel guide</a>
+<div class="sd-mm-ctas"><a class="sd-mm-wa" href="https://wa.me/254724491210" target="_blank" rel="noopener"><svg viewBox="0 0 448 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg> WhatsApp us</a><a class="sd-mm-plan" href="/#master-booking">Plan my trip</a></div>
+</div>
 </header>
 
 <!-- HERO -->
@@ -693,5 +652,6 @@
 
 <script src="/js/whatsapp-tracking.js"></script>
 <script src="/js/currency.js" defer></script>
+<script src="/js/sd-header.js" defer></script>
 </body>
 </html>

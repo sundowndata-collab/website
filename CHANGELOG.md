@@ -285,6 +285,15 @@ Two photos from a partner, used with permission: a pod of hippos and two young l
 ### 54. One consistent Sundown mark on every photo
 Every Sundown photo on the site was regenerated from its original with the same mark: SUNDOWN in white with SAFARIS in gold beneath, bottom right, sized to the photo so it carries the same weight on a wide strip or a tall portrait, with equal margins and a soft shadow so it reads on sky, sand or water. Frames that crop the photo get extra margin, so the mark is never cut. On phones the trip hero photo now anchors to the bottom so the mark stays in view. The last five stock photos on the homepage trip cards were replaced with Sundown photos, and the trip page rows no longer use photos whose mark was cut off. Checked on a phone and a laptop across the homepage, the weekend page and all nine trip pages. The homepage hero stays clean behind the headline, and the licensed lion below Kilimanjaro carries no mark because Sundown did not take it.
 
+### 55. Faster trip and guide pages
+The 9 trip pages and the 3 featured guides loaded Tailwind as a live script, around 300 KB of code that rebuilt the styles in the visitor's browser before the page could appear. They now load one small ready made stylesheet, css/site.css, at about 14 KB. Pages look exactly the same and paint sooner, most noticeably on phones.
+
+### 56. One premium header across the site
+The trip pages and all 60 travel guide pages now use the same header as the homepage: the dark announcement bar with the rotating messages, the Sundown brand, About, a Safaris dropdown with every trip and its price, From the field, Reviews, Travel guide, WhatsApp, and a Plan my trip button. On phones a menu opens with the full safari list. The bar folds away as you scroll so the header stays slim. It runs on its own small stylesheet and script, css/sd-header.css and js/sd-header.js, with built in icons, so it adds almost nothing to load time. The old travel guide link to /#contact, which went nowhere, is gone.
+
+### 57. Weekend page WhatsApp buttons repaired
+All four WhatsApp buttons on the weekend landing page had their style and tracking names stuck inside the link, so the buttons showed as plain text and the WhatsApp message carried stray words. They now show as proper green buttons, open WhatsApp with a clean message, and carry their tracking names again.
+
 # How to check the work
 
 1. **Form.** Submit one test enquiry from a phone. The success message should appear straight away, and GA4 Realtime should show generate_lead once with a value.
@@ -299,9 +308,6 @@ Every Sundown photo on the site was regenerated from its original with the same 
 1. Horizon Chaser and Constellation both use the sunset Land Cruiser, in different crops. A river crossing, a night sky camp or Samburu wildlife photo would give each trip its own picture.
 2. The Dreamcatcher and Ultimate Kenya photos are small originals, so they look slightly soft on large phones. Larger originals would fix this.
 3. Send the original file for the Dreamcatcher lion photo, shared as a document rather than a photo so WhatsApp does not compress it.
-4. Twelve older image sizes in the images folder are no longer used. They are harmless and can be deleted on GitHub whenever convenient.
-5. Add the DMARC email record in Vercel DNS. Name _dmarc, type TXT, value v=DMARC1; p=none; rua=mailto:bookings@sundownsafari.com
-6. If blog/blog-index-tracked.html is not used in any campaign, delete it.
-7. Review the homepage banner in early January, when the festive messages go out of date.
-8. Write supporting content for Ultimate Kenya once Search Console passes 30 indexed pages.
-9. Replace the Tailwind test CDN with a built stylesheet on the 12 pages that still use it.
+4. Add the DMARC email record in Vercel DNS. Name _dmarc, type TXT, value v=DMARC1; p=none; rua=mailto:bookings@sundownsafari.com
+5. Review the homepage and site header banner in early January, when the festive messages go out of date.
+6. Write supporting content for Ultimate Kenya once Search Console passes 30 indexed pages.
