@@ -255,6 +255,24 @@ The homepage title now leads with the brand: Sundown Safaris | Private Kenya Saf
 
 Trip pages and blog posts keep their own header for now.
 
+### 45. New hero on all nine trip pages
+Each page now opens with the trip name, a short description, the Google rating, one gold Get my free itinerary button with a quieter Ask on WhatsApp button beside it, and a framed photo on the right. The full width stock banner is gone. On phones the photo sits on top and the button is visible without scrolling.
+
+### 46. Only real safari photos on trip pages
+Every trip hero is now one of Sundown's own photos or a licensed one, branded with the Sundown mark. Explorer has the safari Land Rover, Photographer the guest with the zebra, Sundowner the sundowner setup, Trailblazer the open Land Cruiser, Dreamcatcher the lion past the vehicle, Horizon Chaser the sunset Land Cruiser, Ultimate Kenya the lion below Kilimanjaro, Voyager the guide with guests, and Constellation a close sunset crop. No stock photos remain on any trip page.
+
+### 47. Facts strip under the hero
+Duration, group, region, best season and the starting price sit in one clean row, and the price still converts to the visitor's currency.
+
+### 48. Below the fold in a clear order
+Overview, a day by day timeline, three field photos, what is included and not included, the guest review and the trust cards, with the booking card alongside on desktop.
+
+### 49. Softer availability note
+The red banner that said we keep every vehicle small is gone. The booking card now says peak months book out early and invites guests to send their dates.
+
+### 50. Small fixes
+WhatsApp messages no longer read "the The Explorer". Link previews and structured data for five trips now use Sundown photos instead of stock ones.
+
 # How to check the work
 
 1. **Form.** Submit one test enquiry from a phone. The success message should appear straight away, and GA4 Realtime should show generate_lead once with a value.
@@ -266,8 +284,8 @@ Trip pages and blog posts keep their own header for now.
 
 # Still to do
 
-1. Six trips still use stock photos: the Photographer, Trailblazer, Horizon Chaser, Ultimate Kenya, Voyager and Constellation. Each needs a real photo of what it promises, such as a balloon, Amboseli elephants with Kilimanjaro, a river crossing, a night sky camp, Samburu wildlife, and golden hour photography.
-2. The guide with guests photo is ready but waiting for the guests' permission to appear.
+1. Horizon Chaser and Constellation both use the sunset Land Cruiser, in different crops. A river crossing, a night sky camp or Samburu wildlife photo would give each trip its own picture.
+2. The Dreamcatcher and Ultimate Kenya photos are small originals, so they look slightly soft on large phones. Larger originals would fix this.
 3. Send the original file for the Dreamcatcher lion photo, shared as a document rather than a photo so WhatsApp does not compress it.
 4. Twelve older image sizes in the images folder are no longer used. They are harmless and can be deleted on GitHub whenever convenient.
 5. Add the DMARC email record in Vercel DNS. Name _dmarc, type TXT, value v=DMARC1; p=none; rua=mailto:bookings@sundownsafari.com
