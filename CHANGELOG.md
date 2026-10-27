@@ -294,6 +294,10 @@ The trip pages and all 60 travel guide pages now use the same header as the home
 ### 57. Weekend page WhatsApp buttons repaired
 All four WhatsApp buttons on the weekend landing page had their style and tracking names stuck inside the link, so the buttons showed as plain text and the WhatsApp message carried stray words. They now show as proper green buttons, open WhatsApp with a clean message, and carry their tracking names again.
 
+### 58. Trip planner in the enquiry form
+The enquiry form now runs in three short steps with a progress bar: your trip (dates and who is coming), your style (budget and what would make it special), and where to send your plan (name, email, an optional WhatsApp number, how you found us and notes). Beside it a Your plan card builds as the visitor answers: the matching trip with its photo, length, travellers, comfort level, the starting price in the visitor's own currency, and the first days of the itinerary. On phones the card shows as a slim line above the button. The last button reads Send me this plan.
+Every enquiry now arrives with two extra lines, plan_trip and plan_estimate, plus the WhatsApp number when given. The "Get my free itinerary" buttons on each trip page carry that trip into the form, so the card shows the trip the visitor picked and presets its budget. Formspree, the guest confirmation email and the generate_lead tracking are unchanged. New GA4 and Clarity events show the funnel: form_start, form_step (steps 2 and 3) and form_plan_sent. If a browser blocks scripts, the form shows every field at once as before.
+
 # How to check the work
 
 1. **Form.** Submit one test enquiry from a phone. The success message should appear straight away, and GA4 Realtime should show generate_lead once with a value.

@@ -640,6 +640,72 @@ body{padding-top:0}
   .sd-trust small{font-size:11.5px}
 }
 </style>
+<style id="sd-planner">
+/* Trip planner: stepped enquiry form with a live plan card */
+.sd-pl-wrap{max-width:1040px}
+.sd-pl{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:24px;align-items:start;text-align:left;margin:0 auto}
+.sd-pl-form{padding:28px 30px 26px}
+.sd-pl-form fieldset{border:0;margin:0;padding:0;min-width:0}
+.sd-pl-step{display:grid;grid-template-columns:1fr 1fr;gap:18px 20px}
+.sd-pl-step + .sd-pl-step{margin-top:22px}
+.sd-pl-wide{grid-column:1 / -1}
+.sd-pl-step[data-step="1"]{grid-template-columns:1fr}
+.sd-pl-legend{grid-column:1 / -1;font-family:'Playfair Display',Georgia,serif;font-weight:800;font-size:20px;color:#0B3A1D;margin:0 0 2px;padding:0}
+.is-stepped .sd-pl-step{display:none}
+.is-stepped .sd-pl-step.is-active{display:grid;margin-top:0;animation:sd-pl-in .25s ease}
+.is-stepped .sd-pl-legend{display:none}
+@keyframes sd-pl-in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.sd-pl-progress{margin:0 0 20px}
+.sd-pl-label{margin:0 0 8px;font-size:13px;color:#57534e}
+.sd-pl-label b{color:#0B3A1D;font-weight:800;margin-right:6px}
+.sd-pl-bar{height:6px;background:#f0eeec;border-radius:999px;overflow:hidden}
+.sd-pl-bar span{display:block;height:100%;width:33%;background:linear-gradient(90deg,#0B3A1D,#C98A27);border-radius:999px;transition:width .35s ease}
+.sd-pl-nav{display:flex;gap:10px;margin-top:22px}
+.sd-pl-nav [hidden]{display:none!important}
+.sd-pl-back{flex:0 0 auto;padding:15px 20px;border-radius:10px;border:1px solid #d6d3d1;background:#fff;color:#44403c;font-weight:700;font-size:14px;cursor:pointer}
+.sd-pl-back:hover{border-color:#0B3A1D;color:#0B3A1D}
+.sd-pl-next,.sd-pl-submit{flex:1 1 auto;display:flex;align-items:center;justify-content:center;gap:10px;padding:16px;border-radius:10px;border:0;background:#0B3A1D;color:#fff;font-weight:800;font-size:14px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;transition:background .2s}
+.sd-pl-next:hover,.sd-pl-submit:hover{background:#C98A27;color:#0d1f16}
+.sd-pl-submit:disabled{opacity:.7;cursor:wait}
+.sd-pl-mini{display:none}
+
+.sd-pl-card{position:sticky;top:96px;background:linear-gradient(160deg,#0f4a26,#0B3A1D 55%,#06200f);border:1px solid rgba(201,138,39,.4);border-radius:18px;padding:22px;color:#f5eedf;box-shadow:0 24px 60px rgba(0,0,0,.35)}
+.sd-pl-card-kicker{margin:0 0 12px;font-size:11px;font-weight:900;letter-spacing:.18em;text-transform:uppercase;color:#E3A845}
+.sd-pl-empty{border:1px dashed rgba(245,238,223,.3);border-radius:12px;padding:22px}
+.sd-pl-empty p{margin:0;font-size:14px;line-height:1.6;color:rgba(245,238,223,.8)}
+.sd-pl-empty .sd-pl-empty-h{font-family:'Playfair Display',Georgia,serif;font-size:19px;font-weight:800;color:#fff;margin-bottom:8px}
+.sd-pl-photo{position:relative;margin:0 0 14px;border-radius:12px;overflow:hidden;aspect-ratio:16/10;background:#06170D}
+.sd-pl-photo img{display:block;width:100%;height:100%;object-fit:cover}
+.sd-pl-photo figcaption{position:absolute;left:10px;top:10px;background:rgba(12,10,9,.62);color:#fff;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:5px 9px;border-radius:999px}
+.sd-pl-name{font-family:'Playfair Display',Georgia,serif;font-weight:900;font-size:26px;line-height:1.1;color:#fff;margin:0 0 6px}
+.sd-pl-why{margin:0 0 12px;font-size:13px;color:rgba(245,238,223,.75)}
+.sd-pl-facts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}
+.sd-pl-facts div{background:rgba(255,255,255,.06);border:1px solid rgba(245,238,223,.12);border-radius:10px;padding:9px 10px}
+.sd-pl-facts dt{font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#E3A845;margin:0 0 3px}
+.sd-pl-facts dd{margin:0;font-size:13px;font-weight:700;color:#fff;line-height:1.3}
+.sd-pl-price{margin:14px 0 12px;font-size:13px;color:rgba(245,238,223,.8)}
+.sd-pl-price b{font-family:'Playfair Display',Georgia,serif;font-size:28px;font-weight:900;color:#fff;margin:0 4px}
+.sd-pl-days{list-style:none;margin:0;padding:12px 0 0;border-top:1px solid rgba(245,238,223,.15);display:grid;gap:7px}
+.sd-pl-days li{font-size:13.5px;color:#f5eedf;display:flex;gap:10px;margin:0}
+.sd-pl-days li span{flex:0 0 46px;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#E3A845;padding-top:2px}
+.sd-pl-days .sd-pl-more{color:rgba(245,238,223,.6);font-style:normal;padding-left:56px;font-size:12.5px}
+.sd-pl-alt{margin:12px 0 0;font-size:13px;color:rgba(245,238,223,.8)}
+.sd-pl-alt a{color:#E3A845;text-decoration:underline;text-underline-offset:3px}
+.sd-pl-note{margin:12px 0 0;font-size:11.5px;line-height:1.5;color:rgba(245,238,223,.55)}
+
+@media (max-width:860px){
+  .sd-pl{grid-template-columns:1fr}
+  .sd-pl-card{display:none}
+  .sd-pl-mini{display:flex;align-items:center;gap:12px;margin-top:18px;padding:10px 12px;border-radius:12px;background:#EAF2EC;border:1px solid #d1e5d7;font-size:13px;color:#1c1917}
+  .sd-pl-mini[hidden]{display:none}
+  .sd-pl-mini img{width:64px;height:40px;object-fit:cover;border-radius:8px;flex:0 0 auto}
+  .sd-pl-mini b{font-family:'Playfair Display',Georgia,serif;color:#0B3A1D}
+}
+@media (max-width:640px){
+  .sd-pl-form{padding:22px 18px 20px}
+  .sd-pl-step{grid-template-columns:1fr}
+}
+</style>
 </head>
 <body class="bg-brand-safariBg text-brand-darkText font-sans text-base antialiased">
 
@@ -1241,11 +1307,11 @@ if(typeof gtag!=='undefined')gtag('event','field_gallery_more');});})();
 
         <!-- BOOKING FORM -->
         <section id="master-booking" class="py-16 bg-stone-900 text-white">
-            <div class="max-w-4xl mx-auto px-4 text-center">
+            <div class="sd-pl-wrap mx-auto px-4 text-center">
                 <span class="text-brand-accentGold uppercase font-black tracking-widest text-xs block mb-3">Your free itinerary</span>
                 <h2 class="text-3xl md:text-5xl font-serif font-black mb-4">Tell us about the trip you are dreaming of</h2>
                 <p class="text-stone-400 max-w-xl mx-auto mb-12 text-sm leading-relaxed">
-                    Five small details is all we need. A real person in Nairobi reads every enquiry and sends you a draft itinerary with a straight price within 24 hours. No sales script, no pressure, and nothing to pay to ask. It takes about a minute.
+                    Three quick steps, about a minute. Your plan builds as you answer, then a real person in Nairobi sends your full itinerary and a straight price within 24 hours. No sales script and nothing to pay to ask.
                 </p>
 
                 <!-- SUCCESS MESSAGE -->
@@ -1258,32 +1324,24 @@ if(typeof gtag!=='undefined')gtag('event','field_gallery_more');});})();
                     </a>
                 </div>
 
-                <!-- QUALIFYING FORM -->
-                <form id="enquiry-form" action="https://formspree.io/f/mkoajzzv" method="POST" class="bg-white text-stone-900 p-8 md:p-10 rounded-2xl shadow-2xl text-left grid md:grid-cols-2 gap-6 max-w-2xl mx-auto">
-
-                    <!-- Full Name -->
-                    <div>
-                        <label class="block text-xs font-black uppercase tracking-wider text-stone-400 mb-2">Your name</label>
-                        <input type="text" name="full_name" required placeholder="First and last name" class="w-full p-4 border border-stone-200 rounded-lg text-sm bg-stone-50 focus:outline-none focus:ring-2 focus:ring-brand-green focus:border-transparent transition">
+                <!-- TRIP PLANNER: the enquiry form in three steps, with a live plan card -->
+                <div class="sd-pl">
+                <form id="enquiry-form" action="https://formspree.io/f/mkoajzzv" method="POST" class="sd-pl-form bg-white text-stone-900 rounded-2xl shadow-2xl text-left">
+                    <div class="sd-pl-progress" hidden>
+                        <p class="sd-pl-label"><b>Step 1 of 3</b> Your trip</p>
+                        <div class="sd-pl-bar" aria-hidden="true"><span></span></div>
                     </div>
 
-                    <!-- Email -->
-                    <div>
-                        <label class="block text-xs font-black uppercase tracking-wider text-stone-400 mb-2">Your email</label>
-                        <input type="email" name="email" required placeholder="sarah@example.com" class="w-full p-4 border border-stone-200 rounded-lg text-sm bg-stone-50 focus:outline-none focus:ring-2 focus:ring-brand-green focus:border-transparent transition">
-                    </div>
-
-                    <!-- Travel Dates -->
-                    <div>
-                        <label class="block text-xs font-black uppercase tracking-wider text-stone-400 mb-2">When would you like to travel?</label>
-                        <input type="text" name="travel_dates" id="date-range-picker" required placeholder="Arrival and departure dates" readonly class="w-full p-4 border border-stone-200 rounded-lg text-sm bg-stone-50 focus:outline-none focus:ring-2 focus:ring-brand-green focus:border-transparent transition cursor-pointer" style="background-image:url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2216%22 height=%2216%22 fill=%22%230B3A1D%22 viewBox=%220 0 16 16%22><path d=%22M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z%22/></svg>');background-repeat:no-repeat;background-position:right 16px center;padding-right:44px;">
-                        <p id="date-help" class="text-xs text-stone-500 mt-2">Tap to choose your arrival and departure dates</p>
-                    </div>
-
-                    <!-- Group Size -->
-                    <div>
-                        <label class="block text-xs font-black uppercase tracking-wider text-stone-400 mb-2">Who is coming?</label>
-                        <select name="group_size" required class="w-full p-4 border border-stone-200 rounded-lg text-sm bg-stone-50 text-stone-700 focus:outline-none focus:ring-2 focus:ring-brand-green transition">
+                    <fieldset class="sd-pl-step" data-step="1">
+                        <legend class="sd-pl-legend">Your trip</legend>
+                        <div>
+                            <label class="block text-xs font-black uppercase tracking-wider text-stone-400 mb-2" for="date-range-picker">When would you like to travel?</label>
+                            <input type="text" name="travel_dates" id="date-range-picker" required placeholder="Arrival and departure dates" readonly class="w-full p-4 border border-stone-200 rounded-lg text-sm bg-stone-50 focus:outline-none focus:ring-2 focus:ring-brand-green focus:border-transparent transition cursor-pointer" style="background-image:url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2216%22 height=%2216%22 fill=%22%230B3A1D%22 viewBox=%220 0 16 16%22><path d=%22M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z%22/></svg>');background-repeat:no-repeat;background-position:right 16px center;padding-right:44px;">
+                            <p id="date-help" class="text-xs text-stone-500 mt-2">Tap to choose your arrival and departure dates</p>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-black uppercase tracking-wider text-stone-400 mb-2">Who is coming?</label>
+                            <select name="group_size" required class="w-full p-4 border border-stone-200 rounded-lg text-sm bg-stone-50 text-stone-700 focus:outline-none focus:ring-2 focus:ring-brand-green transition">
                             <option value="" disabled selected>Choose one</option>
                             <option value="1">Just me</option>
                             <option value="2">Two of us</option>
@@ -1291,12 +1349,14 @@ if(typeof gtag!=='undefined')gtag('event','field_gallery_more');});})();
                             <option value="4">Four of us, one vehicle</option>
                             <option value="5+">Five or more, more than one vehicle</option>
                         </select>
-                    </div>
+                        </div>
+                    </fieldset>
 
-                    <!-- Budget Range -->
-                    <div>
-                        <label class="block text-xs font-black uppercase tracking-wider text-stone-400 mb-2">Roughly what would you like to spend per person?</label>
-                        <select name="budget_range" required class="w-full p-4 border border-stone-200 rounded-lg text-sm bg-stone-50 text-stone-700 focus:outline-none focus:ring-2 focus:ring-brand-green transition">
+                    <fieldset class="sd-pl-step" data-step="2">
+                        <legend class="sd-pl-legend">Your style</legend>
+                        <div>
+                            <label class="block text-xs font-black uppercase tracking-wider text-stone-400 mb-2">Roughly what would you like to spend per person?</label>
+                            <select name="budget_range" required class="w-full p-4 border border-stone-200 rounded-lg text-sm bg-stone-50 text-stone-700 focus:outline-none focus:ring-2 focus:ring-brand-green transition">
                             <option value="" disabled selected>Choose one</option>
                             <option value="1500-2500" data-usd-range="1500-2500" data-usd-label="Adventure">$1,500 to $2,500, Adventure</option>
                             <option value="2500-4000" data-usd-range="2500-4000" data-usd-label="Classic">$2,500 to $4,000, Classic</option>
@@ -1304,12 +1364,10 @@ if(typeof gtag!=='undefined')gtag('event','field_gallery_more');});})();
                             <option value="6000+" data-usd-range="6000" data-usd-label="Full Luxury">$6,000 and up, Full Luxury</option>
                             <option value="flexible">Flexible, show me options</option>
                         </select>
-                    </div>
-
-                    <!-- What Matters Most -->
-                    <div>
-                        <label class="block text-xs font-black uppercase tracking-wider text-stone-400 mb-2">What would make this trip special? (optional)</label>
-                        <select name="safari_priority" class="w-full p-4 border border-stone-200 rounded-lg text-sm bg-stone-50 text-stone-700 focus:outline-none focus:ring-2 focus:ring-brand-green transition">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-black uppercase tracking-wider text-stone-400 mb-2">What would make this trip special? (optional)</label>
+                            <select name="safari_priority" class="w-full p-4 border border-stone-200 rounded-lg text-sm bg-stone-50 text-stone-700 focus:outline-none focus:ring-2 focus:ring-brand-green transition">
                             <option value="" disabled selected>Choose one</option>
                             <option value="big_cats">Big cats, lion, leopard and cheetah</option>
                             <option value="photography">Wildlife photography</option>
@@ -1319,12 +1377,26 @@ if(typeof gtag!=='undefined')gtag('event','field_gallery_more');});})();
                             <option value="family">Family safari with children</option>
                             <option value="first_time">My first safari, I want to see everything</option>
                         </select>
-                    </div>
+                        </div>
+                    </fieldset>
 
-                    <!-- How Did You Hear -->
-                    <div class="md:col-span-2">
-                        <label class="block text-xs font-black uppercase tracking-wider text-stone-400 mb-2">How did you find us? (optional)</label>
-                        <select name="referral_source" class="w-full p-4 border border-stone-200 rounded-lg text-sm bg-stone-50 text-stone-700 focus:outline-none focus:ring-2 focus:ring-brand-green transition">
+                    <fieldset class="sd-pl-step" data-step="3">
+                        <legend class="sd-pl-legend">Where to send your plan</legend>
+                        <div>
+                            <label class="block text-xs font-black uppercase tracking-wider text-stone-400 mb-2">Your name</label>
+                            <input type="text" name="full_name" required placeholder="First and last name" class="w-full p-4 border border-stone-200 rounded-lg text-sm bg-stone-50 focus:outline-none focus:ring-2 focus:ring-brand-green focus:border-transparent transition">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-black uppercase tracking-wider text-stone-400 mb-2">Your email</label>
+                            <input type="email" name="email" required placeholder="sarah@example.com" class="w-full p-4 border border-stone-200 rounded-lg text-sm bg-stone-50 focus:outline-none focus:ring-2 focus:ring-brand-green focus:border-transparent transition">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-black uppercase tracking-wider text-stone-400 mb-2">Your WhatsApp number (optional)</label>
+                            <input type="tel" name="whatsapp" autocomplete="tel" inputmode="tel" placeholder="With your country code, for example +44" class="w-full p-4 border border-stone-200 rounded-lg text-sm bg-stone-50 focus:outline-none focus:ring-2 focus:ring-brand-green focus:border-transparent transition">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-black uppercase tracking-wider text-stone-400 mb-2">How did you find us? (optional)</label>
+                            <select name="referral_source" class="w-full p-4 border border-stone-200 rounded-lg text-sm bg-stone-50 text-stone-700 focus:outline-none focus:ring-2 focus:ring-brand-green transition">
                             <option value="" disabled selected>Choose one</option>
                             <option value="google">Google Search</option>
                             <option value="google_ads">Google Ads</option>
@@ -1334,27 +1406,34 @@ if(typeof gtag!=='undefined')gtag('event','field_gallery_more');});})();
                             <option value="referral">Friend or family referral</option>
                             <option value="other">Other</option>
                         </select>
-                    </div>
-
-                    <!-- Additional Notes -->
-                    <div class="md:col-span-2">
-                        <label class="block text-xs font-black uppercase tracking-wider text-stone-400 mb-2">Anything else we should know? (optional)</label>
-                        <textarea name="additional_notes" rows="3" placeholder="An anniversary, a first safari, children or parents travelling, an animal you have always dreamed of seeing" class="w-full p-4 border border-stone-200 rounded-lg text-sm bg-stone-50 focus:outline-none focus:ring-2 focus:ring-brand-green focus:border-transparent transition resize-none"></textarea>
-                    </div>
+                        </div>
+                        <div class="sd-pl-wide">
+                            <label class="block text-xs font-black uppercase tracking-wider text-stone-400 mb-2">Anything else we should know? (optional)</label>
+                            <textarea name="additional_notes" rows="3" placeholder="An anniversary, a first safari, children or parents travelling, an animal you have always dreamed of seeing" class="w-full p-4 border border-stone-200 rounded-lg text-sm bg-stone-50 focus:outline-none focus:ring-2 focus:ring-brand-green focus:border-transparent transition resize-none"></textarea>
+                        </div>
+                    </fieldset>
 
                     <!-- Hidden spam trap -->
-                    <input type="text" name="_gotcha" style="display:none">
+                    <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
                     <!-- Formspree subject line -->
-                    <input type="hidden" name="_subject" value="New Safari Enquiry — Sundown Safaris">
+                    <input type="hidden" name="_subject" value="New Safari Enquiry, Sundown Safaris">
+                    <!-- Filled by the planner so the enquiry arrives with the trip and guide price -->
+                    <input type="hidden" name="plan_trip" value="">
+                    <input type="hidden" name="plan_estimate" value="">
 
-                    <!-- Submit -->
-                    <div class="md:col-span-2 pt-2">
-                        <button type="submit" id="submit-btn" class="w-full bg-brand-green text-white font-extrabold p-4 rounded-lg hover:bg-brand-accentGold transition text-sm uppercase tracking-widest flex items-center justify-center gap-2">
+                    <div class="sd-pl-mini" hidden></div>
+
+                    <div class="sd-pl-nav">
+                        <button type="button" class="sd-pl-back" hidden>Back</button>
+                        <button type="button" class="sd-pl-next" hidden>Continue</button>
+                        <button type="submit" id="submit-btn" class="sd-pl-submit">
                             <span id="btn-text">Get My Free Itinerary</span>
                             <i class="fa-solid fa-arrow-right-long text-sm"></i>
                         </button>
                     </div>
                 </form>
+                <aside id="sd-pl-card" class="sd-pl-card" aria-live="polite" aria-label="Your plan"></aside>
+                </div>
                 <p class="text-xs text-stone-500 mt-6"><i class="fa-solid fa-lock mr-1"></i> Your details go straight to our team in Nairobi and are never shared. We reply within 2 hours during field hours.</p>
             </div>
         </section>
@@ -1886,6 +1965,7 @@ window.sdfaqToggle = sdfaqToggle;
 </script>
 <script src="/js/whatsapp-tracking.js"></script>
 <script src="/js/currency.js" defer></script>
+<script src="/js/planner.js" defer></script>
 <script>
 /* Header state and announcement rotation */
 (function(){

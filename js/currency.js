@@ -86,6 +86,12 @@
     });
 
     document.documentElement.setAttribute('data-currency', code);
+    // Let other scripts (the trip planner) show prices the same way
+    window.sdFx = {
+      code: local ? code : 'USD',
+      price: function (usd) { return local ? format(niceUp(usd * rate * (1 + FX_BUFFER)), code) : usdLabel(usd); }
+    };
+    try { document.dispatchEvent(new CustomEvent('sd:fx')); } catch (e) {}
     document.querySelectorAll('.sd-fx-select').forEach(function (s) { s.value = code; });
     document.querySelectorAll('.sd-fx-line-text').forEach(function (t) {
       t.textContent = local
