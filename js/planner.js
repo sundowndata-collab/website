@@ -123,12 +123,65 @@
     hidEst.value = 'From US$' + t.usd.toLocaleString('en') + ' per person' + (window.sdFx && window.sdFx.code !== 'USD' ? ', shown to guest as ' + money(t.usd) : '');
   }
 
+  // ---------- live progress ----------
+  // Starts at 10 percent so nobody begins at zero; each answer adds its share.
+  var WEIGHTS = { travel_dates: 20, group_size: 15, budget_range: 15, safari_priority: 5, full_name: 15, email: 15, whatsapp: 5 };
+  var pctNow = 10;
+  function filled(name) {
+    var el = form.elements[name]; if (!el) return false;
+    var v = (el.value || '').trim();
+    if (name === 'travel_dates') return v.length > 0;
+    if (name === 'email') return /^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(v);
+    if (name === 'whatsapp') return v.replace(/\D/g, '').length >= 7;
+    if (name === 'full_name') return v.length >= 2;
+    return v.length > 0;
+  }
+  function percent() {
+    var p = 10;
+    for (var k in WEIGHTS) if (filled(k)) p += WEIGHTS[k];
+    return Math.min(100, p);
+  }
+  function hint(p) {
+    if (p >= 100) return 'All set. Send it and your plan is on its way.';
+    var need = [];
+    if (!filled('travel_dates')) need.push('your dates');
+    if (!filled('group_size')) need.push('who is coming');
+    if (!filled('budget_range')) need.push('your budget');
+    if (!filled('full_name')) need.push('your name');
+    if (!filled('email')) need.push('your email');
+    if (!need.length) return filled('whatsapp') ? 'Nearly there. Tell us what would make it special for the full 100%.' : 'Ready to send. Add your WhatsApp for a faster reply and the full 100%.';
+    if (p < 40) return 'Good start. Next: ' + need[0] + '.';
+    if (p < 70) return 'Halfway there. Still to go: ' + need.join(', ') + '.';
+    return 'Almost done. Just ' + need.join(' and ') + ' left.';
+  }
+  var pctEl = form.querySelector('.sd-pl-pct');
+  var hintEl = form.querySelector('.sd-pl-hint');
+  function updateProgress() {
+    var target = percent();
+    bar.style.width = target + '%';
+    if (hintEl) hintEl.textContent = hint(target);
+    if (!pctEl) return;
+    form.querySelector('.sd-pl-bar').setAttribute('aria-valuenow', target);
+    // count the number up or down so the change is felt
+    var from = pctNow; pctNow = target;
+    if (from === target) { pctEl.textContent = target + '% complete'; return; }
+    var t0 = null;
+    function tick(ts) {
+      if (t0 === null) t0 = ts;
+      var k = Math.min(1, (ts - t0) / 450);
+      pctEl.textContent = Math.round(from + (target - from) * k) + '% complete';
+      if (k < 1 && pctNow === target) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+    pctEl.classList.toggle('is-done', target >= 100);
+  }
+
   // ---------- steps ----------
   function show(i) {
     current = i;
     steps.forEach(function (s, k) { s.classList.toggle('is-active', k === i); });
-    bar.style.width = ((i + 1) / steps.length * 100) + '%';
     label.innerHTML = '<b>Step ' + (i + 1) + ' of ' + steps.length + '</b> ' + STEP_TITLES[i];
+    updateProgress();
     backBtn.hidden = i === 0;
     nextBtn.hidden = i === steps.length - 1;
     submitBtn.hidden = i !== steps.length - 1;
@@ -178,13 +231,13 @@
   var started = false;
   function start() { if (!started) { started = true; track('form_start', { step: 1, step_name: STEP_TITLES[0] }); } }
   form.addEventListener('focusin', start);
-  form.addEventListener('change', render);
-  form.addEventListener('input', function (e) { if (e.target === dp) render(); });
+  form.addEventListener('change', function () { render(); updateProgress(); });
+  form.addEventListener('input', function (e) { if (e.target === dp) render(); updateProgress(); });
   document.addEventListener('sd:fx', render);
   if (dp) {
     // flatpickr loads later; re-render whenever the dates change
     var last = '';
-    setInterval(function () { if (dp.value !== last) { last = dp.value; render(); } }, 600);
+    setInterval(function () { if (dp.value !== last) { last = dp.value; render(); updateProgress(); } }, 400);
   }
 
   // Once the enquiry is sent the existing handler hides the form; hide the card with it
