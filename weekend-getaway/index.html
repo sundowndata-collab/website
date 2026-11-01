@@ -3,7 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Private Weekend Safari From Nairobi, Sundown Safaris</title>
+<title>Private Mara Weekend Safari From Nairobi, December Dates, Sundown Safaris</title>
+<link rel="preload" as="image" href="/images/hero-sundown-sunset-1600.jpg" media="(min-width:701px)">
+<link rel="preload" as="image" href="/images/hero-sundown-sunset-m1200.jpg" media="(max-width:700px)">
 <meta name="description" content="A private safari from Nairobi. Your own vehicle, your own pace, no shared convoy. Private vehicle, KATO bonded. Message us on WhatsApp to check weekend dates.">
 <link rel="canonical" href="https://www.sundownsafari.com/weekend-getaway">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -13,7 +15,7 @@
     <meta name="theme-color" content="#0B3A1D">
 <meta name="robots" content="noindex, follow">
 
-<meta property="og:title" content="You&#x27;re 4 Hours From This. A Private Safari From Nairobi">
+<meta property="og:title" content="You&#x27;re One Morning&#x27;s Drive From This. A Private Mara Weekend From Nairobi">
 <meta property="og:description" content="No shared convoy. No tourist circus. Your vehicle, your pace, your route.">
 <meta property="og:type" content="website">
 
@@ -67,7 +69,43 @@ header{background:var(--safari-bg);padding:18px 0;border-bottom:1px solid rgba(1
 .header-cta{display:inline-flex;align-items:center;gap:8px;background:var(--whatsapp);color:#fff;padding:10px 18px;border-radius:30px;font-weight:700;font-size:14px;}
 .header-cta i{font-size:16px;}
 
-.hero{position:relative;min-height:64vh;display:flex;align-items:flex-end;background:linear-gradient(180deg, rgba(8,38,20,0.35) 0%, rgba(8,38,20,0.55) 55%, rgba(8,38,20,0.92) 100%), url('https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=1600&q=70') center/cover no-repeat;}
+.hero{position:relative;min-height:64vh;display:flex;align-items:flex-end;background:linear-gradient(180deg, rgba(8,38,20,0.35) 0%, rgba(8,38,20,0.55) 55%, rgba(8,38,20,0.92) 100%), url('/images/hero-sundown-sunset-1600.jpg') center/cover no-repeat;}
+@media (max-width:700px){.hero{background-image:linear-gradient(180deg, rgba(8,38,20,0.55) 0%, rgba(8,38,20,0.72) 45%, rgba(8,38,20,0.95) 100%),url('/images/hero-sundown-sunset-m1200.jpg');background-position:center top}}
+.hero-festive{margin-top:14px;display:inline-block;background:rgba(201,138,39,0.18);border:1px solid rgba(201,138,39,0.55);color:#fff;font-size:14.5px;font-weight:600;padding:9px 14px;border-radius:8px;max-width:560px;line-height:1.45}
+.hero-festive b{color:#E9B865}
+/* Weekend picker, the hero centerpiece */
+.wk-pick{width:100%;max-width:560px;background:rgba(255,255,255,0.97);border-radius:14px;padding:16px;box-shadow:0 16px 40px rgba(0,0,0,0.35);border-top:4px solid var(--gold);color:var(--dark)}
+.wk-q{font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#6b6b6b;margin-bottom:10px}
+.wk-chips{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.wk-chips button{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:54px;border:1.5px solid #e6e2da;background:#faf8f4;border-radius:10px;cursor:pointer;font-family:inherit;color:var(--dark);padding:6px 4px;transition:border-color .15s,background .15s}
+.wk-chips b{font-size:15px;font-weight:800;line-height:1.1}
+.wk-chips span{font-size:11.5px;color:#777;font-weight:600;margin-top:2px}
+.wk-chips .wk-hot span{color:#a8701c}
+.wk-chips button[aria-checked="true"]{border-color:var(--green);background:var(--light-green);box-shadow:inset 0 0 0 1px var(--green)}
+.wk-chips button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.wk-row{display:flex;align-items:center;justify-content:space-between;margin:14px 0}
+.wk-q-inline{margin:0}
+.wk-step{display:flex;align-items:center;height:44px;border:1.5px solid #e6e2da;border-radius:10px;background:#faf8f4;overflow:hidden}
+.wk-step button{width:44px;height:100%;border:0;background:none;font-size:20px;font-weight:700;color:var(--green);cursor:pointer}
+.wk-step button:disabled{color:#d4d0c8;cursor:default}
+.wk-n{min-width:28px;text-align:center;font-weight:800;font-size:16px}
+.wk-go{width:100%;justify-content:center}
+.wk-note{font-size:12.5px;color:#6b6b6b;text-align:center;margin-top:9px}
+@media (max-width:700px){.hero .hero-sub{display:none}.hero-inner{padding-top:28px}.sticky-cta{transition:transform .25s}.sticky-cta.wk-hide{transform:translateY(110%)}}
+/* A typical weekend */
+.wk-days-sec{padding-top:8px}
+.wk-days{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:22px;counter-reset:none}
+.wk-days li{background:#fff;border-radius:12px;overflow:hidden;border:1px solid rgba(11,58,29,0.08);box-shadow:0 10px 26px rgba(11,58,29,0.08)}
+.wk-days figure{aspect-ratio:16 / 10;overflow:hidden;margin:0}
+.wk-days img{width:100%;height:100%;object-fit:cover;display:block}
+.wk-day-t{padding:16px 18px 18px}
+.wk-day-n{display:inline-block;background:var(--green);color:#fff;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:4px 10px;border-radius:20px;margin-bottom:8px}
+.wk-days h3{font-size:18px;margin-bottom:6px}
+.wk-days p{font-size:14.5px;color:#555;line-height:1.55}
+@media (max-width:760px){.wk-days{grid-template-columns:1fr}.wk-days li{display:grid;grid-template-columns:118px 1fr}.wk-days figure{aspect-ratio:auto;height:100%}.wk-day-t{padding:12px 14px}.wk-days h3{font-size:16px}.wk-days p{font-size:13.5px}}
+
+.hero .eyebrow,.hero h1,.hero-sub{text-shadow:0 2px 14px rgba(0,0,0,0.55)}
+.hero .eyebrow{color:#E9B865}
 .hero-inner{padding:40px 20px 36px;width:100%;}
 .eyebrow{color:var(--gold);text-transform:uppercase;letter-spacing:0.3em;font-size:12px;font-weight:800;margin-bottom:18px;}
 .hero h1{color:#fff;font-size:clamp(34px,6vw,58px);line-height:1.08;font-weight:800;max-width:760px;}
@@ -185,7 +223,7 @@ footer{text-align:center;padding:18px 20px;font-size:13px;color:#8a8a8a;}
         <span>Safaris</span>
       </div>
     </div>
-    <a href="https://wa.me/254724491210?text=Hi%2C%20I%20saw%20your%20ad%20and%20I%27d%20like%20to%20check%20weekend%20safari%20dates" class="header-cta" id="wa-header" target="_blank">
+    <a href="https://wa.me/254724491210?text=Hi%20Sundown%2C%20I%20saw%20your%20ad%20and%20I%27d%20like%20to%20check%20December%20weekend%20safari%20dates" class="header-cta" id="wa-header" target="_blank">
       <i class="fa-brands fa-whatsapp"></i> Message Us
     </a>
   </div>
@@ -193,13 +231,34 @@ footer{text-align:center;padding:18px 20px;font-size:13px;color:#8a8a8a;}
 
 <section class="hero">
   <div class="wrap hero-inner">
-    <div class="eyebrow">Private Safaris From Nairobi</div>
-    <h1>You're 4 hours from this.</h1>
-    <p class="hero-sub">Not a fourteen hour flight. Not a two year plan you keep putting off. Just four hours from your desk to lions standing in golden grass. No crowds. No shared convoy. No tourist circus.</p>
+    <div class="eyebrow">December Mara Weekends From Nairobi</div>
+    <h1>You're one morning's drive from this.</h1>
+    <p class="hero-sub">Not a fourteen hour flight. Not a two year plan you keep putting off. Just one morning from your desk to lions standing in golden grass. No crowds. No shared convoy. No tourist circus.</p>
+    <p class="hero-festive"><b>December weekends are filling.</b> Christmas and New Year dates go first, so send us yours early and we will tell you honestly what is open.</p>
     <div class="hero-cta-row">
-      <a href="https://wa.me/254724491210?text=Hi%2C%20I%20saw%20your%20ad%20and%20I%27d%20like%20to%20check%20weekend%20safari%20dates" class="btn-wa" id="wa-hero" target="_blank">
-        <i class="fa-brands fa-whatsapp"></i> Message Us on WhatsApp
-      </a>
+      <div class="wk-pick" id="wk-pick">
+        <p class="wk-q">Which weekend are you thinking?</p>
+        <div class="wk-chips" role="radiogroup" aria-label="Choose a weekend">
+          <button type="button" role="radio" aria-checked="false" data-wk="4 to 6 December"><b>4 to 6</b><span>December</span></button>
+          <button type="button" role="radio" aria-checked="false" data-wk="11 to 13 December"><b>11 to 13</b><span>December</span></button>
+          <button type="button" role="radio" aria-checked="false" data-wk="18 to 20 December"><b>18 to 20</b><span>December</span></button>
+          <button type="button" role="radio" aria-checked="false" data-wk="Christmas weekend, 25 to 27 December" class="wk-hot"><b>25 to 27</b><span>Christmas</span></button>
+          <button type="button" role="radio" aria-checked="false" data-wk="New Year weekend, 1 to 3 January" class="wk-hot"><b>1 to 3</b><span>New Year</span></button>
+          <button type="button" role="radio" aria-checked="false" data-wk="another date"><b>Other</b><span>dates</span></button>
+        </div>
+        <div class="wk-row">
+          <span class="wk-q wk-q-inline" id="wk-g-l">Travellers</span>
+          <div class="wk-step" role="group" aria-labelledby="wk-g-l">
+            <button type="button" class="wk-minus" aria-label="One fewer traveller">&minus;</button>
+            <output class="wk-n" aria-live="polite">2</output>
+            <button type="button" class="wk-plus" aria-label="One more traveller">+</button>
+          </div>
+        </div>
+        <a href="https://wa.me/254724491210?text=Hi%20Sundown%2C%20I%20saw%20your%20ad%20and%20I%27d%20like%20to%20check%20December%20weekend%20safari%20dates" class="btn-wa wk-go" id="wa-hero" target="_blank" rel="noopener">
+          <i class="fa-brands fa-whatsapp"></i> <span class="wk-go-t">Check my weekend on WhatsApp</span>
+        </a>
+        <p class="wk-note">A real person replies. Your own vehicle and guide, collected from your door.</p>
+      </div>
       <div class="rating-badge">
         <div><span class="score">4.9</span></div>
         <div>
@@ -221,6 +280,31 @@ footer{text-align:center;padding:18px 20px;font-size:13px;color:#8a8a8a;}
     <div class="section-label">The Weekend Reset</div>
     <h2>This is what your weekend could look like instead.</h2>
     <p class="lead">No traffic on Waiyaki Way. No inbox. Just golden grass and a Land Cruiser with your name on it, and it's closer than you think. Sundown puts together private, fully guided safaris out of Nairobi for people who would rather disappear for 48 hours than scroll through another one.</p>
+  </div>
+</section>
+
+<section class="wk-days-sec">
+  <div class="wrap">
+    <div class="section-label">A Mara Weekend</div>
+    <h2>Friday morning to Sunday night, sorted.</h2>
+    <p class="lead">A typical Sundown weekend. We shape the details around your dates and what you want to see.</p>
+    <ol class="wk-days">
+      <li>
+        <figure><img src="/images/field-land-cruiser-600.jpg" srcset="/images/field-land-cruiser-600.jpg 600w, /images/field-land-cruiser-1000.jpg 1000w" sizes="(max-width:760px) calc(100vw - 40px), 340px" alt="A Sundown Land Cruiser ready for the drive to the Mara" loading="lazy"></figure>
+        <div class="wk-day-t"><span class="wk-day-n">Friday</span><h3>Out of Nairobi</h3>
+        <p>Collected from your door early and down the Rift Valley escarpment. Into the Mara in time for an afternoon game drive and your first sundowner.</p></div>
+      </li>
+      <li>
+        <figure><img src="/images/field-lioness-walk-600.jpg" srcset="/images/field-lioness-walk-600.jpg 600w, /images/field-lioness-walk-1000.jpg 1000w" sizes="(max-width:760px) calc(100vw - 40px), 340px" alt="A lioness walking past in the Masai Mara" loading="lazy"></figure>
+        <div class="wk-day-t"><span class="wk-day-n">Saturday</span><h3>A full day with the cats</h3>
+        <p>Out at first light, when the lions are moving. A full day on conservancy tracks with your own guide, and nobody deciding when you leave a sighting.</p></div>
+      </li>
+      <li>
+        <figure><img src="/images/field-mara-picnic-600.jpg" srcset="/images/field-mara-picnic-600.jpg 600w, /images/field-mara-picnic-1000.jpg 1000w" sizes="(max-width:760px) calc(100vw - 40px), 340px" alt="A bush picnic set up in the Masai Mara" loading="lazy"></figure>
+        <div class="wk-day-t"><span class="wk-day-n">Sunday</span><h3>One last drive, then home</h3>
+        <p>A final dawn drive and a slow breakfast, then the road back. Home in Nairobi by Sunday evening, before the Monday feeling sets in.</p></div>
+      </li>
+    </ol>
   </div>
 </section>
 
@@ -250,7 +334,7 @@ footer{text-align:center;padding:18px 20px;font-size:13px;color:#8a8a8a;}
       </div>
     </div>
     <div class="img-break">
-      <img src="https://images.unsplash.com/photo-1709402606682-400133d92ab2?auto=format&fit=crop&w=1400&q=70" alt="Private safari vehicle with a lion in the Masai Mara" loading="lazy">
+      <img src="/images/field-lions-road-1000.jpg" alt="Lions on a track in the Masai Mara, photographed from a Sundown vehicle" loading="lazy">
     </div>
   </div>
 </section>
@@ -391,7 +475,7 @@ footer{text-align:center;padding:18px 20px;font-size:13px;color:#8a8a8a;}
 <section style="padding-top:0;">
   <div class="wrap">
     <div class="img-strip">
-      <div class="cell"><img src="https://images.unsplash.com/photo-1517001170041-70a5966d5402?auto=format&fit=crop&w=600&q=65" alt="Hot air balloon safari over the Masai Mara" loading="lazy"></div>
+      <div class="cell"><img src="/images/field-rover-sunset-600.jpg" srcset="/images/field-rover-sunset-600.jpg 600w, /images/field-rover-sunset-1000.jpg 1000w" sizes="(max-width: 700px) calc(100vw - 40px), 360px" alt="A Sundown vehicle at sunset in the Masai Mara" loading="lazy"></div>
       <div class="cell"><img src="/images/guest-zebra-wide-600.jpg" srcset="/images/guest-zebra-wide-600.jpg 600w, /images/guest-zebra-wide-1200.jpg 1200w" sizes="(max-width: 700px) calc(100vw - 40px), 360px" alt="A Sundown Safaris guest feeding a zebra from a woven basket" loading="lazy"></div>
       <div class="cell"><img src="/images/sunset-landcruiser-wide-600.jpg" srcset="/images/sunset-landcruiser-wide-600.jpg 600w, /images/sunset-landcruiser-wide-1200.jpg 1200w" sizes="(max-width: 700px) calc(100vw - 40px), 360px" alt="Sundown Safaris Land Cruiser silhouetted against the sunset" loading="lazy"></div>
     </div>
@@ -402,21 +486,51 @@ footer{text-align:center;padding:18px 20px;font-size:13px;color:#8a8a8a;}
   <div class="wrap" style="max-width:600px;">
     <h2>Weekend availability is limited by design.</h2>
     <p class="lead">Guests rate us 4.9 out of 5 on Google. Send us your dates on WhatsApp and we will tell you honestly what is open this weekend.</p>
-    <a href="https://wa.me/254724491210?text=Hi%2C%20I%20saw%20your%20ad%20and%20I%27d%20like%20to%20check%20weekend%20safari%20dates" class="btn-wa" id="wa-final" target="_blank">
+    <a href="https://wa.me/254724491210?text=Hi%20Sundown%2C%20I%20saw%20your%20ad%20and%20I%27d%20like%20to%20check%20December%20weekend%20safari%20dates" class="btn-wa" id="wa-final" target="_blank">
       <i class="fa-brands fa-whatsapp"></i> Message Us on WhatsApp
     </a>
   </div>
 </section>
 
 <footer>
-  Copyright 2026 Sundown Capital Limited, trading as Sundown Safaris. Nairobi, Kenya. KATO bonded operator.
+  Copyright 2026 Sundown Capital Limited, trading as Sundown Safaris. Nairobi, Kenya. KATO bonded operator.<br><a href="https://www.instagram.com/sundown_safaris/" target="_blank" rel="me noopener" style="color:inherit;text-decoration:underline">Instagram</a> &middot; <a href="https://www.facebook.com/trysundownsafaris" target="_blank" rel="me noopener" style="color:inherit;text-decoration:underline">Facebook</a>
 </footer>
 
-<a href="https://wa.me/254724491210?text=Hi%2C%20I%20saw%20your%20ad%20and%20I%27d%20like%20to%20check%20weekend%20safari%20dates" class="sticky-cta" id="wa-sticky" target="_blank">
+<a href="https://wa.me/254724491210?text=Hi%20Sundown%2C%20I%20saw%20your%20ad%20and%20I%27d%20like%20to%20check%20December%20weekend%20safari%20dates" class="sticky-cta" id="wa-sticky" target="_blank">
   <i class="fa-brands fa-whatsapp"></i> Message Us on WhatsApp
 </a>
 
 <script src="/js/whatsapp-tracking.js"></script>
+<script>
+/* Weekend picker: turns the choice into a ready written WhatsApp message */
+(function(){
+  var box=document.getElementById('wk-pick'); if(!box) return;
+  var chips=box.querySelectorAll('.wk-chips button'), go=box.querySelector('.wk-go'), goT=box.querySelector('.wk-go-t');
+  var nEl=box.querySelector('.wk-n'), minus=box.querySelector('.wk-minus'), plus=box.querySelector('.wk-plus');
+  var wk='', n=2, started=false;
+  function track(name,data){try{if(typeof gtag!=='undefined')gtag('event',name,data||{});}catch(e){}try{if(typeof clarity==='function')clarity('event',name);}catch(e){}}
+  function render(){
+    nEl.textContent=n; minus.disabled=n<=1; plus.disabled=n>=12;
+    var who=n===1?'just me':n+' of us';
+    var when=!wk?'a December weekend':wk==='another date'?'another date':/^(Christmas|New Year)/.test(wk)?'the '+wk:'the weekend of '+wk;
+    var msg='Hi Sundown, I saw your ad. Could you check '+when+' for a private Mara safari? We are '+who+'.';
+    go.href='https://wa.me/254724491210?text='+encodeURIComponent(msg);
+    goT.textContent=wk&&wk!=='another date'?'Check '+(wk.indexOf('Christmas')===0?'Christmas':wk.indexOf('New Year')===0?'New Year':wk.replace(' December',' Dec'))+' on WhatsApp':'Check my weekend on WhatsApp';
+  }
+  function start(){if(!started){started=true;track('weekend_pick_start');}}
+  chips.forEach(function(c){c.addEventListener('click',function(){
+    chips.forEach(function(o){o.setAttribute('aria-checked','false');});
+    c.setAttribute('aria-checked','true'); wk=c.getAttribute('data-wk'); start(); render();
+  });});
+  minus.addEventListener('click',function(){n=Math.max(1,n-1);start();render();});
+  plus.addEventListener('click',function(){n=Math.min(12,n+1);start();render();});
+  go.addEventListener('click',function(){track('weekend_pick_whatsapp',{weekend:wk||'not chosen',travellers:n});});
+  render();
+  /* keep the sticky bar out of the way while the picker is on screen */
+  var sticky=document.getElementById('wa-sticky');
+  if(sticky&&'IntersectionObserver' in window){new IntersectionObserver(function(e){sticky.classList.toggle('wk-hide',e[0].isIntersecting);}).observe(box);}
+})();
+</script>
 
 </body>
 </html>
