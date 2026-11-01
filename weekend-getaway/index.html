@@ -62,7 +62,10 @@
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:'Inter',sans-serif;color:var(--dark);background:var(--safari-bg);line-height:1.6;}
 h1,h2,h3{font-family:'Playfair Display',serif;color:var(--green);}
-.wrap{max-width:1080px;margin:0 auto;padding:0 20px;}
+.wrap{max-width:1240px;margin:0 auto;padding:0 24px;}
+.wrap.narrow>*{max-width:720px}
+@media (max-width:760px){.wrap{padding:0 16px}}
+.sd-star-90::before{background:linear-gradient(90deg,currentColor 0 50%,rgba(201,138,39,.3) 50% 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
 a{text-decoration:none;}
 
 header{background:var(--safari-bg);padding:18px 0;border-bottom:1px solid rgba(11,58,29,0.08);}
@@ -107,6 +110,16 @@ header{background:var(--safari-bg);padding:18px 0;border-bottom:1px solid rgba(1
 .wk-proof blockquote{font-size:13.5px;font-weight:600;color:#2a2a2a;line-height:1.45;margin:3px 0 4px}
 .wk-proof figcaption{font-size:11.5px;color:#777}
 .final-proof{margin-top:14px;font-size:13px;color:#BFD0C4}
+.proof-hero{margin-top:34px;display:flex;align-items:center;gap:22px;flex-wrap:wrap;padding:22px 24px;border-radius:14px;background:linear-gradient(135deg,rgba(201,138,39,0.20),rgba(255,255,255,0.04));border:1px solid rgba(201,138,39,0.45)}
+.proof-badge{padding:14px 20px}
+.proof-badge .score{font-size:40px}
+.proof-badge .stars-sm{font-size:17px}
+.proof-badge .count{font-size:13px}
+.proof-line{font-family:'Playfair Display',serif;font-weight:800;color:#fff;font-size:clamp(26px,3.6vw,38px);line-height:1.1;margin:0}
+.proof-line span{color:#E9B865;font-style:italic}
+.proof-sub{color:#D8E3DC;font-size:15px;margin:8px 0 0}
+@media (max-width:760px){.proof-hero{padding:18px;gap:16px}.proof-copy{flex:1 1 100%}}
+
 
 @media (max-width:700px){.hero .hero-sub{display:none}.hero-inner{padding-top:28px}.sticky-cta{transition:transform .25s}.sticky-cta.wk-hide{transform:translateY(110%)}}
 /* A typical weekend */
@@ -182,6 +195,11 @@ h2{font-size:clamp(24px,4vw,34px);font-weight:800;line-height:1.15;margin-bottom
 .owner-reply{margin-top:14px;padding:12px 14px;background:rgba(255,255,255,0.08);border-radius:8px;border-left:2px solid var(--gold);}
 .owner-reply .rc-name{font-size:12.5px;}
 .owner-reply p{font-size:13.5px;color:#D8E3DC;}
+.review-card{display:flex;flex-direction:column}
+.rc-photo{position:relative;margin:-18px -18px 14px;aspect-ratio:16 / 7;overflow:hidden;border-radius:12px 12px 0 0}
+.rc-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.rc-photo figcaption{position:absolute;left:10px;bottom:8px;background:rgba(8,38,20,0.78);color:#E9E4D8;font-size:11px;font-weight:600;padding:3px 8px;border-radius:20px}
+
 
 .img-break{width:100%;height:230px;border-radius:12px;overflow:hidden;margin-top:22px;}
 .img-break img{width:100%;height:100%;object-fit:cover;display:block;}
@@ -276,7 +294,7 @@ footer{text-align:center;padding:18px 20px;font-size:13px;color:#8a8a8a;}
         </a>
         <p class="wk-note"><b>Free to ask, no commitment.</b> A real person replies, not a call centre.</p>
         <figure class="wk-proof">
-          <span class="wk-stars" aria-label="Rated 4.9 out of 5">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <span class="wk-stars" aria-label="Rated 4.9 out of 5">&#9733;&#9733;&#9733;&#9733;<span style="background:linear-gradient(90deg,#C98A27 0 50%,rgba(201,138,39,.3) 50% 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent">&#9733;</span></span>
           <blockquote>Thanks to him, I got to see the Big Five for the very first time.</blockquote>
           <figcaption>Doreen L. on her guide Omar, Google review. Rated 4.9 by 16 guests.</figcaption>
         </figure>
@@ -284,7 +302,7 @@ footer{text-align:center;padding:18px 20px;font-size:13px;color:#8a8a8a;}
       <div class="rating-badge">
         <div><span class="score">4.9</span></div>
         <div>
-          <div class="stars-sm"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          <div class="stars-sm"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star sd-star-90" aria-hidden="true"></i></div>
           <div class="count">16 Google reviews</div>
         </div>
       </div>
@@ -298,7 +316,7 @@ footer{text-align:center;padding:18px 20px;font-size:13px;color:#8a8a8a;}
 </section>
 
 <section>
-  <div class="wrap" style="max-width:720px;">
+  <div class="wrap narrow">
     <div class="section-label">The Weekend Reset</div>
     <h2>This is what your weekend could look like instead.</h2>
     <p class="lead">No traffic on Waiyaki Way. No inbox. Just golden grass and a Land Cruiser with your name on it, and it's closer than you think. Sundown puts together private, fully guided safaris out of Nairobi for people who would rather disappear for 48 hours than scroll through another one.</p>
@@ -407,19 +425,23 @@ footer{text-align:center;padding:18px 20px;font-size:13px;color:#8a8a8a;}
       </div>
     </div>
 
-    <div style="margin-top:28px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
-      <div class="rating-badge">
+    <div class="proof-hero">
+      <div class="rating-badge proof-badge">
         <div><span class="score">4.9</span></div>
         <div>
-          <div class="stars-sm"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          <div class="stars-sm"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star sd-star-90" aria-hidden="true"></i></div>
           <div class="count"><i class="fa-brands fa-google"></i> 16 Google reviews</div>
         </div>
       </div>
-      <p style="color:#D8E3DC;font-size:14.5px;margin:0;">What guests said after travelling with us, straight from Google.</p>
+      <div class="proof-copy">
+        <p class="proof-line">Don't take our word for it. <span>Take theirs.</span></p>
+        <p class="proof-sub">Real guests, real weekends, word for word from Google.</p>
+      </div>
     </div>
 
     <div class="review-grid">
       <div class="review-card">
+        <figure class="rc-photo"><img src="/images/field-mara-picnic-600.jpg" srcset="/images/field-mara-picnic-600.jpg 600w, /images/field-mara-picnic-1000.jpg 1000w" sizes="(max-width:760px) calc(100vw - 72px), 520px" alt="A bush picnic set up in the Masai Mara" loading="lazy"><figcaption>From our trips</figcaption></figure>
         <div class="rc-head">
           <div class="rc-avatar" style="background:#1A73E8;">I</div>
           <div>
@@ -431,6 +453,7 @@ footer{text-align:center;padding:18px 20px;font-size:13px;color:#8a8a8a;}
         <p>I had a great experience with this tour company from start to finish. Everything was well organized, and the team made the trip smooth and enjoyable. They were professional, friendly, and always willing to help whenever we had questions.</p>
       </div>
       <div class="review-card">
+        <figure class="rc-photo"><img src="/images/field-zebra-herd-600.jpg" srcset="/images/field-zebra-herd-600.jpg 600w, /images/field-zebra-herd-1000.jpg 1000w" sizes="(max-width:760px) calc(100vw - 72px), 520px" alt="A herd of zebra seen on a Sundown safari" loading="lazy"><figcaption>From our trips</figcaption></figure>
         <div class="rc-head">
           <div class="rc-avatar" style="background:#D93025;">K</div>
           <div>
@@ -442,6 +465,7 @@ footer{text-align:center;padding:18px 20px;font-size:13px;color:#8a8a8a;}
         <p>Best moments of my life, made a lot of good memories. Definitely booking with you next time.</p>
       </div>
       <div class="review-card">
+        <figure class="rc-photo"><img src="/images/field-rhino-road-600.jpg" srcset="/images/field-rhino-road-600.jpg 600w, /images/field-rhino-road-1000.jpg 1000w" sizes="(max-width:760px) calc(100vw - 72px), 520px" alt="A rhino on the road, seen on a Sundown safari" loading="lazy"><figcaption>From our trips</figcaption></figure>
         <div class="rc-head">
           <div class="rc-avatar" style="background:#188038;">P</div>
           <div>
@@ -457,6 +481,7 @@ footer{text-align:center;padding:18px 20px;font-size:13px;color:#8a8a8a;}
         </div>
       </div>
       <div class="review-card">
+        <figure class="rc-photo"><img src="/images/field-lioness-walk-600.jpg" srcset="/images/field-lioness-walk-600.jpg 600w, /images/field-lioness-walk-1000.jpg 1000w" sizes="(max-width:760px) calc(100vw - 72px), 520px" alt="A lioness walking past in the Masai Mara" loading="lazy"><figcaption>From our trips</figcaption></figure>
         <div class="rc-head">
           <div class="rc-avatar" style="background:#8B2E00;">D</div>
           <div>
@@ -472,7 +497,7 @@ footer{text-align:center;padding:18px 20px;font-size:13px;color:#8a8a8a;}
 </section>
 
 <section>
-  <div class="wrap" style="max-width:720px;">
+  <div class="wrap narrow">
     <div class="section-label">Before You Message</div>
     <h2>A few things people usually ask.</h2>
     <div class="faq-item">

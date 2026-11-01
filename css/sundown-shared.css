@@ -13,7 +13,7 @@ blockquote p:last-child{margin-bottom:0}
 .sd-footer p{margin:0;color:inherit}
 .sd-footer a{text-decoration:none}
 .sd-ico{width:1em;height:1em;fill:currentColor;flex:0 0 auto;vertical-align:-.125em}
-.sd-footer-wrap{max-width:1180px;margin:0 auto;padding:44px 20px 24px}
+.sd-footer-wrap{max-width:1240px;margin:0 auto;padding:44px 24px 24px}
 .sd-footer-top{display:grid;grid-template-columns:minmax(260px,1.1fr) 2fr;gap:40px;padding-bottom:28px;border-bottom:1px solid rgba(255,255,255,.12)}
 .sd-footer-logo{display:inline-flex;align-items:center;gap:12px;color:#fff}
 .sd-footer-mark{width:48px;height:48px;border-radius:50%;border:2px solid var(--sd-gold);background:rgba(201,138,39,.15);display:flex;align-items:center;justify-content:center;color:var(--sd-gold);font-size:22px}
@@ -44,7 +44,7 @@ blockquote p:last-child{margin-bottom:0}
 
 /* ===== Trip pages: split hero, facts strip, structured body ===== */
 .sdt{font-family:'Inter',system-ui,sans-serif;color:#1c1917}
-.sdt-wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+.sdt-wrap{max-width:1240px;margin:0 auto;padding:0 24px}
 .sdt-hero{background:radial-gradient(120% 140% at 85% 10%,#14532d 0,#0B3A1D 45%,#06200f 100%);color:#fff;padding:40px 0 44px}
 .sdt-hero-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:48px;align-items:center}
 .sdt-back{display:inline-flex;align-items:center;gap:8px;color:#d6d3d1;font-size:13px;font-weight:600;text-decoration:none;margin-bottom:18px}
@@ -209,3 +209,6 @@ blockquote p:last-child{margin-bottom:0}
 /* Keep page level rules (blog nav bars, link colours) out of the footer */
 .sd-footer nav.sd-footer-links{background:none!important;border:0!important;padding:0!important;display:grid!important;justify-content:normal!important;align-items:start!important}
 .sd-post blockquote p:last-child,.sd-feature blockquote p:last-child{margin-bottom:0!important}
+
+/* 4.9 rating: the fifth star is filled to match the real score */
+.sd-star-90::before{background:linear-gradient(90deg,currentColor 0 50%,rgba(201,138,39,.3) 50% 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
