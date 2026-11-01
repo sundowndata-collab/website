@@ -75,7 +75,7 @@
         "url": "https://www.sundownsafari.com/"
       },
       "datePublished": "2026-06-04",
-      "dateModified": "2026-06-04",
+      "dateModified": "2026-11-01",
       "url": "https://www.sundownsafari.com/blog/kenya-safari-cost-2026.html"
     }
     </script>
@@ -163,6 +163,70 @@
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <link rel="stylesheet" href="/css/sundown-shared.css">
 <link rel="stylesheet" href="/css/sd-header.css">
+<style>
+/* Cost estimator, the centerpiece of this guide */
+.sd-est-hero{padding-top:2.25rem;padding-bottom:2.5rem}
+.sd-est-hero h1{margin-bottom:1rem}
+.sd-est{margin-top:1.75rem;background:#fff;color:#111B14;border-radius:18px;padding:1.25rem;box-shadow:0 18px 50px rgba(0,0,0,.28);border-top:4px solid #C98A27}
+.sd-est-title{font-family:'Playfair Display',serif;font-weight:800;color:#0B3A1D;font-size:1.45rem;line-height:1.2;margin:0}
+.sd-est-sub{color:#57534e;font-size:.9rem;margin:.35rem 0 1.1rem}
+.sd-est-grid{display:grid;gap:1.25rem}
+.sd-est fieldset{border:0;margin:0 0 1rem;padding:0;min-width:0}
+.sd-est legend,.sd-est-label{display:block;font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#78716c;margin-bottom:.5rem}
+.sd-est-chips{display:grid;gap:.5rem}
+.sd-est-3{grid-template-columns:repeat(3,1fr)}
+.sd-est-styles{grid-template-columns:repeat(3,1fr)}
+.sd-est-chips label{position:relative;cursor:pointer;display:block}
+.sd-est-chips input{position:absolute;opacity:0;width:1px;height:1px}
+.sd-est-chips span{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;min-height:48px;padding:.6rem .4rem;border:1.5px solid #e7e5e4;border-radius:10px;background:#fafaf9;font-weight:700;font-size:.92rem;color:#1c1917;transition:border-color .15s,background .15s}
+.sd-est-styles span{min-height:84px}
+.sd-est-chips small{display:block;font-weight:500;font-size:.72rem;color:#78716c;margin-top:.15rem;line-height:1.3}
+.sd-est-chips em{display:block;font-style:normal;font-weight:700;font-size:.74rem;color:#0B3A1D;margin-top:.3rem}
+.sd-est-chips input:checked+span{border-color:#0B3A1D;background:#EAF2EC;box-shadow:inset 0 0 0 1px #0B3A1D}
+.sd-est-chips input:focus-visible+span{outline:3px solid #C98A27;outline-offset:2px}
+.sd-est-row{display:grid;grid-template-columns:1fr auto;gap:.75rem;align-items:end}
+.sd-est select{width:100%;height:48px;border:1.5px solid #e7e5e4;border-radius:10px;background:#fafaf9;padding:0 .75rem;font-size:.95rem;font-weight:600;color:#1c1917}
+.sd-est-stepper{display:flex;align-items:center;height:48px;border:1.5px solid #e7e5e4;border-radius:10px;background:#fafaf9;overflow:hidden}
+.sd-est-stepper button{width:44px;height:100%;font-size:1.3rem;font-weight:700;color:#0B3A1D;background:none;border:0;cursor:pointer}
+.sd-est-stepper button:disabled{color:#d6d3d1;cursor:default}
+.sd-est-guests-n{min-width:2rem;text-align:center;font-weight:800;font-size:1.05rem}
+.sd-est-out{background:#FBFBFA;border:1px solid #eeece9;border-radius:14px;padding:1rem}
+.sd-est-result{display:block}
+.sd-est-match{display:grid;grid-template-columns:104px 1fr;gap:.85rem;align-items:center}
+.sd-est-match img{width:104px;height:72px;object-fit:cover;border-radius:10px;display:block}
+.sd-est-kicker{font-size:.68rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#C98A27;margin:0}
+.sd-est-name{font-family:'Playfair Display',serif;font-weight:800;font-size:1.2rem;margin:.1rem 0 .2rem;line-height:1.2}
+.sd-est-name a{color:#0B3A1D;text-decoration:underline;text-decoration-color:#C98A27;text-underline-offset:3px}
+.sd-est-hook{font-size:.8rem;color:#57534e;margin:0;line-height:1.45}
+.sd-est-lines{margin:1rem 0 .75rem;padding:0}
+.sd-est-lines div{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding:.5rem 0;border-bottom:1px solid #eeece9}
+.sd-est-lines dt{font-size:.85rem;color:#57534e}
+.sd-est-lines dt a{color:#57534e;text-decoration:underline;text-decoration-color:#C98A27}
+.sd-est-lines dd{margin:0;font-weight:700;font-size:.92rem;color:#1c1917;text-align:right;white-space:nowrap}
+.sd-est-big dd{font-size:.9rem;color:#57534e;font-weight:600}
+.sd-est-big b{font-family:'Playfair Display',serif;font-size:1.65rem;font-weight:800;color:#0B3A1D}
+.sd-est-total{border-bottom:0!important}
+.sd-est-total dt{font-weight:700;color:#1c1917}
+.sd-est-total dd{color:#0B3A1D}
+.sd-est-season{font-size:.82rem;line-height:1.5;color:#44403c;background:#fff7e8;border-left:3px solid #C98A27;border-radius:6px;padding:.6rem .75rem;margin:0 0 .6rem}
+.sd-est-season b{color:#8a5a12}
+.sd-est-note{font-size:.74rem;line-height:1.5;color:#78716c;margin:0}
+.sd-est-ctas{display:grid;gap:.5rem;margin-top:1rem}
+.sd-est-ctas a{display:flex;align-items:center;justify-content:center;min-height:50px;border-radius:10px;font-weight:800;font-size:.92rem;text-align:center;padding:.6rem 1rem;text-decoration:none;transition:filter .15s}
+.sd-est-wa{background:#C98A27;color:#1c1917}
+.sd-est-form{background:#0B3A1D;color:#fff}
+.sd-est-ctas a:hover{filter:brightness(1.08)}
+.sd-est-fx{margin:.75rem 0 0;font-size:.72rem;color:#78716c}
+.sd-est-fx .sd-fx-line{display:flex;align-items:center;justify-content:space-between;gap:.5rem}
+.sd-est-fx select{height:32px;width:auto;font-size:.8rem;padding:0 .4rem}
+@media (min-width:860px){
+  .sd-est-hero{max-width:64rem;padding-top:3rem;padding-bottom:3.5rem}
+  .sd-est{padding:1.75rem}
+  .sd-est-grid{grid-template-columns:1.05fr 1fr;gap:1.75rem;align-items:start}
+  .sd-est-title{font-size:1.75rem}
+}
+@media (max-width:380px){.sd-est-styles small{display:none}.sd-est{padding:1rem}}
+</style>
 </head>
 <body class="sd-feature bg-brand-safariBg text-brand-darkText font-sans antialiased">
 
@@ -198,7 +262,7 @@
 
 <!-- ARTICLE HERO -->
 <div class="bg-brand-green text-white">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="sd-est-hero max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center gap-2 text-brand-accentGold text-xs font-black uppercase tracking-widest mb-6">
             <a href="/blog/" class="hover:text-white transition">Travel Guide</a>
             <span class="opacity-40">/</span>
@@ -208,14 +272,82 @@
             How Much Does a Kenya Safari Cost in 2026?<br>
             <span class="text-brand-accentGold">An Honest Breakdown From a Nairobi Operator</span>
         </h1>
-        <p class="text-stone-300 text-lg leading-relaxed mb-8 max-w-2xl">
-            Most cost guides are written by travel bloggers who visited once. This one is written by an operator who runs safaris every week out of Nairobi. Real numbers. No ranges that span $3,000. No vagueness designed to get you on a call before revealing the price.
-        </p>
         <div class="flex flex-wrap items-center gap-6 text-sm text-stone-400">
             <span class="flex items-center gap-2"><i class="fa-solid fa-user-tie text-brand-accentGold"></i> By Sundown Safaris, Nairobi</span>
-            <span class="flex items-center gap-2"><i class="fa-regular fa-calendar text-brand-accentGold"></i> Updated June 2026</span>
+            <span class="flex items-center gap-2"><i class="fa-regular fa-calendar text-brand-accentGold"></i> Updated November 2026</span>
             <span class="flex items-center gap-2"><i class="fa-regular fa-clock text-brand-accentGold"></i> 12 min read</span>
         </div>
+
+        <!-- COST ESTIMATOR: the page centerpiece. Default result is written into the HTML so it reads without JavaScript. js/cost-estimator.js keeps it live. -->
+        <section id="cost-estimator" class="sd-est" aria-labelledby="sd-est-h">
+            <h2 id="sd-est-h" class="sd-est-title">Work out what your safari will cost</h2>
+            <p class="sd-est-sub">Four quick choices. Real Sundown prices, all inclusive, in your currency.</p>
+            <div class="sd-est-grid">
+                <form class="sd-est-form-fields" action="#cost-estimator" aria-label="Safari cost estimator">
+                    <fieldset>
+                        <legend>How many days?</legend>
+                        <div class="sd-est-chips sd-est-3">
+                            <label><input type="radio" name="est_days" value="3"><span>3 days</span></label>
+                            <label><input type="radio" name="est_days" value="5" checked><span>5 days</span></label>
+                            <label><input type="radio" name="est_days" value="7"><span>7 days</span></label>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend>What style?</legend>
+                        <div class="sd-est-chips sd-est-styles">
+                            <label><input type="radio" name="est_style" value="a"><span><b>Adventure</b><small>Active and hands on</small><em data-est-tier-price="a">from $2,300</em></span></label>
+                            <label><input type="radio" name="est_style" value="b" checked><span><b>Classic</b><small>Comfortable lodges</small><em data-est-tier-price="b">from $3,900</em></span></label>
+                            <label><input type="radio" name="est_style" value="c"><span><b>Luxury Lite</b><small>Luxury camps</small><em data-est-tier-price="c">from $4,800</em></span></label>
+                        </div>
+                    </fieldset>
+                    <div class="sd-est-row">
+                        <div>
+                            <label class="sd-est-label" for="est-month">When?</label>
+                            <select id="est-month" name="est_month">
+                                <option value="" selected>Not sure yet</option>
+                                <option value="0">January</option><option value="1">February</option><option value="2">March</option>
+                                <option value="3">April</option><option value="4">May</option><option value="5">June</option>
+                                <option value="6">July</option><option value="7">August</option><option value="8">September</option>
+                                <option value="9">October</option><option value="10">November</option><option value="11">December</option>
+                            </select>
+                        </div>
+                        <div>
+                            <span class="sd-est-label" id="est-guests-l">Travellers</span>
+                            <div class="sd-est-stepper" role="group" aria-labelledby="est-guests-l">
+                                <button type="button" class="sd-est-minus" aria-label="One fewer traveller">&minus;</button>
+                                <output class="sd-est-guests-n" aria-live="polite">2</output>
+                                <button type="button" class="sd-est-plus" aria-label="One more traveller">+</button>
+                                <input type="hidden" name="est_guests" value="2">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="sd-est-out">
+                    <output class="sd-est-result" for="est-month" aria-live="polite">
+                        <div class="sd-est-match">
+                            <img src="/images/trip-dreamcatcher-card-600.jpg" alt="The Dreamcatcher, a 5 day Classic safari in the Masai Mara and a private conservancy" width="600" height="375" loading="lazy">
+                            <div><p class="sd-est-kicker">Your matched trip</p>
+                            <h3 class="sd-est-name"><a href="/trip/5-day-b-classic-the-dreamcatcher.html">The Dreamcatcher</a></h3>
+                            <p class="sd-est-hook">5 days, Masai Mara and a private conservancy. Big cat tracking and river crossings.</p></div>
+                        </div>
+                        <dl class="sd-est-lines">
+                            <div class="sd-est-big"><dt>Per person, all inclusive</dt><dd>from <b>$3,900</b></dd></div>
+                            <div><dt>For your group of 2</dt><dd>from $7,800</dd></div>
+                            <div><dt>Tips, visa and insurance <a href="#hidden-costs">per person</a></dt><dd>$255 to $455</dd></div>
+                            <div class="sd-est-total"><dt>All in per person, before flights</dt><dd>$4,155 to $4,355</dd></div>
+                        </dl>
+                        <p class="sd-est-season">Pick a month and we will tell you how the season affects your price.</p>
+                        <p class="sd-est-note">Prices are per person sharing, with your own vehicle and guide for the whole trip. Park fees, accommodation, meals, guide and transfers are included. A guide price; your exact quote follows within 24 hours and is invoiced in US dollars.</p>
+                    </output>
+                    <div class="sd-est-ctas">
+                        <a class="sd-est-wa" href="https://wa.me/254724491210?text=Hi%20Sundown%2C%20I%20used%20the%20cost%20estimator%20on%20your%20website%20and%20would%20like%20a%20quote." target="_blank" rel="noopener">Send me this plan on WhatsApp</a>
+                        <a class="sd-est-form" href="/?trip=dreamcatcher#master-booking">Get my quote by email</a>
+                    </div>
+                    <p class="sd-est-fx" data-fx-picker></p>
+                </div>
+            </div>
+        </section>
+
     </div>
 </div>
 
@@ -225,15 +357,15 @@
         <p class="text-stone-950 font-black text-sm uppercase tracking-widest mb-3">Quick answer</p>
         <div class="grid sm:grid-cols-3 gap-4">
             <div class="bg-white/20 rounded-lg p-4 text-center">
-                <div class="text-2xl font-black text-stone-950 font-serif">$1,500</div>
+                <div class="text-2xl font-black text-stone-950 font-serif" data-usd="1500">$1,500</div>
                 <div class="text-xs font-bold text-stone-800 uppercase tracking-wider mt-1">3 Day Private From</div>
             </div>
             <div class="bg-white/20 rounded-lg p-4 text-center">
-                <div class="text-2xl font-black text-stone-950 font-serif">$3,900</div>
+                <div class="text-2xl font-black text-stone-950 font-serif" data-usd="3900">$3,900</div>
                 <div class="text-xs font-bold text-stone-800 uppercase tracking-wider mt-1">5 Day Private From</div>
             </div>
             <div class="bg-white/20 rounded-lg p-4 text-center">
-                <div class="text-2xl font-black text-stone-950 font-serif">$5,900</div>
+                <div class="text-2xl font-black text-stone-950 font-serif" data-usd="5900">$5,900</div>
                 <div class="text-xs font-bold text-stone-800 uppercase tracking-wider mt-1">7 Day Circuit From</div>
             </div>
         </div>
@@ -244,6 +376,7 @@
 <!-- ARTICLE BODY -->
 <article class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
     <div class="prose max-w-none">
+        <p class="sd-est-intro">Most cost guides are written by travel bloggers who visited once. This one is written by an operator who runs safaris every week out of Nairobi. Real numbers. No ranges that span $3,000. No vagueness designed to get you on a call before revealing the price.</p>
 
         <!-- TABLE OF CONTENTS -->
         <div class="bg-brand-lightGreen border border-green-100 rounded-xl p-6 mb-10 not-prose">
@@ -618,6 +751,8 @@
 </footer>
 
 <script src="/js/whatsapp-tracking.js"></script>
+<script src="/js/currency.js" defer></script>
+<script src="/js/cost-estimator.js" defer></script>
 <script src="/js/sd-header.js" defer></script>
 </body>
 </html>

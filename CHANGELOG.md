@@ -2,6 +2,20 @@
 
 A plain record of what changed on sundownsafari.com, why it changed, and how to check it. Newest work first.
 
+# 1 November 2026
+
+## Cost estimator at the top of the Kenya safari cost guide
+
+**Why.** The cost guide is the strongest commercial page on the blog and Google has never indexed it. Before requesting indexing, the top of the page was rebuilt so that Google's first look sees a planning tool, not a wall of text. A check of the pages ranking for Kenya safari cost 2026 (African Safari Mag, Imara Africa Safaris, SafariFind) found none with a working estimator on the article itself.
+
+**What changed.** A cost estimator now sits directly under the headline. The visitor picks days, style, month and number of travellers, and sees the matching Sundown trip, its starting price per person and for the group, the tips, visa and insurance that sit outside the package, and an all in figure before flights. The month adds an honest note on how the season affects the price. Every figure comes from the guide's own tables. Prices follow the site currency picker. Two buttons follow the result: Send me this plan on WhatsApp, with the choices written into the message, and Get my quote by email, which opens the homepage form with the trip already picked. The default result is written into the page itself, so it reads even before the script runs. The intro paragraph moved to the start of the article. Updated date, dateModified and sitemap lastmod set to 1 November.
+
+**Tracking.** estimator_start on the first change, estimator_whatsapp_click and estimator_form_click on the buttons, in GA4 and Clarity, carrying trip, days, style, guests and value. The WhatsApp button also fires whatsapp_click as before.
+
+**Files.** blog/kenya-safari-cost-2026.html, js/cost-estimator.js (new), sitemap.xml.
+
+**How to check.** Open the cost guide on a phone. The estimator should start on the first screen. Pick 7 days, Luxury Lite, August and 4 travellers: it should show The Constellation from $6,500 per person, $26,000 for the group, and a migration peak note. Then request indexing for the page in Search Console.
+
 # 26 October 2026
 
 This round started from a review of Microsoft Clarity data for 1 September to 26 October. That data showed 61 real visits, 150 bot visits filtered out, and 4 enquiries. The site was converting well but losing some buyers to bugs, and most pages were not being measured at all. Everything below came out of that review.
