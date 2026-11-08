@@ -1287,7 +1287,23 @@ section#about-us-summary.sds{background:#0B3A1D;padding:104px 0 0!important;colo
 .sds-contrast ul{list-style:none;margin:0;padding:0;display:grid;gap:18px}
 .sds-contrast li{display:flex;align-items:center;gap:16px;margin:0;font-family:'Playfair Display',Georgia,serif;font-size:clamp(22px,2.4vw,30px);font-weight:700;color:#fff;line-height:1.2}
 .sds-contrast li span{flex:0 0 auto;width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(239,68,68,.12);border:1px solid rgba(248,113,113,.45);color:#fca5a5;font:800 18px/1 'Inter',sans-serif}
-.sds-contrast li s{text-decoration-color:rgba(248,113,113,.7);text-decoration-thickness:2px}
+.sds-contrast li s{text-decoration:none;position:relative;display:inline-block;color:#fff}
+.sds-contrast li s::after{content:'';position:absolute;left:-4px;right:-4px;top:56%;height:5px;margin-top:-2.5px;border-radius:4px;background:#ef4444;box-shadow:0 2px 10px rgba(239,68,68,.45);transform-origin:left center;transform:scaleX(1) rotate(-1deg)}
+.sds-contrast.sds-anim li s{transition:color .4s ease}
+.sds-contrast.sds-anim li s::after{transform:scaleX(0) rotate(-1deg);transition:transform .55s cubic-bezier(.65,0,.35,1)}
+.sds-contrast.sds-anim li span{transform:scale(0) rotate(-90deg);opacity:0;transition:transform .45s cubic-bezier(.34,1.56,.64,1),opacity .2s}
+.sds-contrast.sds-anim p{opacity:0;transform:translateY(8px);transition:opacity .5s ease,transform .5s ease}
+.sds-contrast.sds-anim.is-in li s{color:rgba(255,255,255,.55)}
+.sds-contrast.sds-anim.is-in li s::after{transform:scaleX(1) rotate(-1deg)}
+.sds-contrast.sds-anim.is-in li span{transform:none;opacity:1}
+.sds-contrast.sds-anim.is-in p{opacity:1;transform:none;transition-delay:1.9s}
+.sds-contrast.sds-anim li:nth-child(1) s::after,.sds-contrast.sds-anim li:nth-child(1) s{transition-delay:.35s}
+.sds-contrast.sds-anim li:nth-child(1) span{transition-delay:.2s}
+.sds-contrast.sds-anim li:nth-child(2) s::after,.sds-contrast.sds-anim li:nth-child(2) s{transition-delay:.85s}
+.sds-contrast.sds-anim li:nth-child(2) span{transition-delay:.7s}
+.sds-contrast.sds-anim li:nth-child(3) s::after,.sds-contrast.sds-anim li:nth-child(3) s{transition-delay:1.35s}
+.sds-contrast.sds-anim li:nth-child(3) span{transition-delay:1.2s}
+.sds-contrast li span{background:#ef4444!important;border-color:#ef4444!important;color:#fff!important;box-shadow:0 0 0 4px rgba(239,68,68,.18)}
 .sds-contrast p{margin:26px 0 0;padding-top:22px;border-top:1px solid rgba(255,255,255,.12);color:#E9B865;font:700 15px/1.5 'Inter',sans-serif}
 .sds-pillars{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:0 0 72px}
 .sds-pillar{border-radius:20px;padding:30px 28px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);transition:border-color .2s,transform .2s}
@@ -1363,9 +1379,9 @@ section#about-us-summary.sds{background:#0B3A1D;padding:104px 0 0!important;colo
   <article class="sds-ch is-flip">
     <div class="sds-contrast" aria-label="What changed on safari">
       <ul>
-        <li><span aria-hidden="true">&times;</span><s>More vehicles</s></li>
-        <li><span aria-hidden="true">&times;</span><s>Longer queues at sightings</s></li>
-        <li><span aria-hidden="true">&times;</span><s>Guides watching the clock</s></li>
+        <li><span aria-hidden="true">&times;</span><s class="sds-strike">More vehicles</s></li>
+        <li><span aria-hidden="true">&times;</span><s class="sds-strike">Longer queues at sightings</s></li>
+        <li><span aria-hidden="true">&times;</span><s class="sds-strike">Guides watching the clock</s></li>
       </ul>
       <p>The quiet that makes a sighting unforgettable was being crowded out.</p>
     </div>
@@ -1419,6 +1435,13 @@ section#about-us-summary.sds{background:#0B3A1D;padding:104px 0 0!important;colo
     <a class="sds-cta" href="#master-booking" data-cta="story_plan">Start your own story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
   </div>
 </div>
+<script>
+(function(){var c=document.querySelector('#about-us-summary .sds-contrast');if(!c||!('IntersectionObserver' in window))return;
+if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+c.classList.add('sds-anim');
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){c.classList.add('is-in');io.disconnect();}});},{threshold:.55});
+io.observe(c);})();
+</script>
 </section>
 
         <!-- FROM THE FIELD: real photos as social proof -->
