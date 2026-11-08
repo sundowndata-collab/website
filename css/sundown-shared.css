@@ -257,3 +257,4 @@ blockquote p:last-child{margin-bottom:0}
 @media (max-width:767px){.sd-footer-brand .sd-footer-contact{max-width:none;margin-top:16px}}
 .sd-footer-brand .sd-footer-contact a.sd-footer-wa i,.sd-footer-brand .sd-footer-contact a.sd-footer-wa .sd-ico{font-size:24px!important;width:24px;height:24px;display:inline-flex;align-items:center;justify-content:center}
 @media (min-width:768px){.sd-footer-top .sd-footer-brand{display:flex;flex-direction:column}.sd-footer-top .sd-footer-brand .sd-footer-contact{margin-top:auto}}
+@media (max-width:767px){.sd-footer-bottom{flex-direction:column;align-items:flex-start!important;justify-content:flex-start!important;text-align:left!important}}

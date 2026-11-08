@@ -427,6 +427,8 @@
     .sd-stat-icon{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--sd-gold-soft);border:1px solid rgba(201,138,39,.5);color:var(--sd-gold);font-size:17px;margin-bottom:4px}
     .sd-stat-num{font-family:'Playfair Display',Georgia,serif;font-weight:900;font-size:34px;line-height:1;color:var(--sd-gold)}
     .sd-stat-label{color:#d6d3d1;font:800 11px/1.35 'Inter',sans-serif;letter-spacing:.12em;text-transform:uppercase}
+    .sd-stat{min-width:0}.sd-stat-label{min-width:0;overflow-wrap:anywhere}
+    @media (max-width:340px){.sd-stat-label{letter-spacing:.04em}}
 
     .sd-pillar-icon{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--sd-gold-soft);border:1px solid rgba(201,138,39,.5);color:var(--sd-gold);font-size:17px;margin-bottom:14px}
     #about-us-summary .sd-pillar-icon + h4{margin-bottom:8px!important}
@@ -471,6 +473,7 @@
     .sd-footer-bottom{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 20px;margin-top:20px;color:#a8a29e;font-size:13px}
     .sd-footer-bottom p{margin:0}
     .sd-footer-bottom a{color:inherit;text-decoration:underline}
+    @media (max-width:767px){.sd-footer-bottom{flex-direction:column;align-items:flex-start!important;justify-content:flex-start!important;text-align:left!important}}
     /* Footer contact card: one clear action, centred */
     .sd-footer-brand .sd-footer-contact{display:flex;flex-direction:column;align-items:stretch;gap:12px;max-width:340px;margin-top:20px;padding:18px;border:1px solid rgba(201,138,39,.32);border-radius:18px;background:linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,.015));text-align:center}
     .sd-footer-brand .sd-footer-contact a.sd-footer-wa{align-self:stretch;justify-content:center;gap:12px;padding:12px 18px;border-radius:14px;text-align:left}
@@ -711,6 +714,7 @@ body{padding-top:0}
   .sd-trust strong{font-size:13.5px}
   .sd-trust small{font-size:11.5px}
 }
+@media (max-width:389px){.sd-nav{padding:0 12px!important;gap:8px!important}.sd-brand{gap:9px!important}.sd-brand-mark{width:36px!important;height:36px!important;font-size:17px!important}.sd-brand-name{font-size:19px!important}.sd-brand-sub{font-size:9px!important;letter-spacing:.28em!important}.sd-nav-cta{padding:9px 13px!important;font-size:12.5px!important}.sd-nav-actions{gap:6px!important}.sd-burger{width:40px!important}}
 </style>
 <style id="sd-planner">
 /* Trip planner: stepped enquiry form with a live plan card */

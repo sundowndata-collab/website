@@ -90,4 +90,5 @@ html{scroll-padding-top:84px}
   .sd-nav-phone{display:none}
   .sd-nav-cta{padding:10px 16px;font-size:13px}
 }
+@media (max-width:389px){.sd-nav{padding:0 12px!important;gap:8px!important}.sd-brand{gap:9px!important}.sd-brand-mark{width:36px!important;height:36px!important;font-size:17px!important}.sd-brand-name{font-size:19px!important}.sd-brand-sub{font-size:9px!important;letter-spacing:.28em!important}.sd-nav-cta{padding:9px 13px!important;font-size:12.5px!important}.sd-nav-actions{gap:6px!important}.sd-burger{width:40px!important}}
 @media print{.sd-header{position:static;box-shadow:none}.sd-announce,.sd-nav-actions{display:none}}
