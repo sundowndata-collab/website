@@ -220,10 +220,10 @@ blockquote p:last-child{margin-bottom:0}
 
 /* Footer savanna scene */
 .sd-footer-scene{margin:0!important;padding:0!important;align-self:end;min-width:0}
-.sd-footer-scene svg{display:block;width:100%;height:auto;max-width:760px}
+.sd-footer-scene svg{display:block;width:100%;height:auto;max-width:860px}
 .sd-footer-scene figcaption{margin:14px 0 0;font-family:'Playfair Display',Georgia,serif;font-style:italic;font-size:16px;line-height:1.5;color:#e7e5e4}
 .sd-footer-scene .sd-scene-kicker{display:block;font-family:'Inter',system-ui,sans-serif;font-style:normal;font-weight:900;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#C98A27;margin:0 0 4px}
-.sd-footer-scene .sd-scene-cta{font-family:'Inter',system-ui,sans-serif;font-style:normal;font-weight:800;font-size:14px;color:#E9B865!important;white-space:nowrap;text-decoration:underline!important;text-underline-offset:4px;text-decoration-color:rgba(201,138,39,.6)!important;margin-left:4px}
+.sd-footer-scene .sd-scene-cta{font-family:'Inter',system-ui,sans-serif;font-style:normal;font-weight:800;font-size:14px;color:#E9B865!important;white-space:nowrap;text-decoration:underline!important;text-underline-offset:4px;text-decoration-color:rgba(201,138,39,.6)!important;display:table;margin:8px 0 0}
 .sd-footer-scene .sd-scene-cta:hover{color:#fff!important}
 @media (min-width:768px){.sd-footer-top .sd-footer-brand{grid-row:span 2}.sd-footer-scene{grid-column:2}}
 @media (max-width:767px){.sd-footer-scene figcaption{font-size:14px}}
