@@ -14,6 +14,86 @@
       "source": "/kenya-photography-safari/",
       "destination": "/kenya-photography-safari",
       "permanent": true
+    },
+    {
+      "source": "/blog/kenya-walking-safaris-the-raw-untamed-adventure-you-cant-miss.html",
+      "destination": "/blog/kenya-walking-safaris-the-most-immersive-safari-experience.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/kenya-walking-safaris-the-raw-untamed-adventure-you-cant-miss",
+      "destination": "/blog/kenya-walking-safaris-the-most-immersive-safari-experience.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/walking-safaris-in-kenya-step-into-the-wild-on-foot.html",
+      "destination": "/blog/kenya-walking-safaris-the-most-immersive-safari-experience.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/walking-safaris-in-kenya-step-into-the-wild-on-foot",
+      "destination": "/blog/kenya-walking-safaris-the-most-immersive-safari-experience.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/what-to-pack-for-a-kenyan-safari-the-ultimate-guide-for-first-time-travelers.html",
+      "destination": "/blog/the-ultimate-packing-guide-for-a-kenyan-safari-what-to-bring-what-to-wear.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/what-to-pack-for-a-kenyan-safari-the-ultimate-guide-for-first-time-travelers",
+      "destination": "/blog/the-ultimate-packing-guide-for-a-kenyan-safari-what-to-bring-what-to-wear.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/a-magical-guide-to-balloon-safaris-over-the-maasai-mara.html",
+      "destination": "/blog/thrills-in-the-sky-a-hot-air-balloon-safari-over-the-maasai-mara.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/a-magical-guide-to-balloon-safaris-over-the-maasai-mara",
+      "destination": "/blog/thrills-in-the-sky-a-hot-air-balloon-safari-over-the-maasai-mara.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/the-great-migration-in-kenya-best-times-where-to-stay.html",
+      "destination": "/blog/month-by-month-guide-to-kenyas-great-migration.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/the-great-migration-in-kenya-best-times-where-to-stay",
+      "destination": "/blog/month-by-month-guide-to-kenyas-great-migration.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/luxury-safari-experiences-in-kenya-for-couples-romantic-getaways-in-the-wild.html",
+      "destination": "/blog/luxury-honeymoon-safaris-in-kenya-romance-in-the-wild.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/luxury-safari-experiences-in-kenya-for-couples-romantic-getaways-in-the-wild",
+      "destination": "/blog/luxury-honeymoon-safaris-in-kenya-romance-in-the-wild.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/beyond-game-drives-unique-safari-activities-in-kenya.html",
+      "destination": "/blog/unique-safari-activities-beyond-game-drives-hikes-canoes-hot-air-balloons.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/beyond-game-drives-unique-safari-activities-in-kenya",
+      "destination": "/blog/unique-safari-activities-beyond-game-drives-hikes-canoes-hot-air-balloons.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/kenyas-most-epic-safari-lodges-where-luxury-meets-the-wild.html",
+      "destination": "/blog/luxury-safari-lodges-in-kenya-wild-beauty-meets-ultimate-comfort.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/kenyas-most-epic-safari-lodges-where-luxury-meets-the-wild",
+      "destination": "/blog/luxury-safari-lodges-in-kenya-wild-beauty-meets-ultimate-comfort.html",
+      "permanent": true
     }
   ]
 }
