@@ -1256,126 +1256,104 @@ body{padding-top:0}
         <!-- FROM THE FIELD: real photos as social proof -->
         <section id="from-the-field" class="sd-field">
             <style>
-                .sd-field{background:#F6F3EC;padding:72px 0 80px;border-top:1px solid #e7e5e4}
-                .sd-field-wrap{max-width:1120px;margin:0 auto;padding:0 16px}
-                .sd-field-head{text-align:center;max-width:640px;margin:0 auto 36px}
+                .sd-field{background:#F6F3EC;padding:80px 0 88px;border-top:1px solid #e7e5e4}
+                .sd-field-wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+                .sd-field-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px 48px;margin:0 0 32px}
+                .sd-field-head > div{max-width:640px}
                 .sd-field-label{display:block;color:#C98A27;font:800 12px/1 'Inter',sans-serif;letter-spacing:.3em;text-transform:uppercase;margin-bottom:14px}
-                .sd-field-head h2{font-family:'Playfair Display',Georgia,serif;font-weight:800;color:#0B3A1D;font-size:clamp(28px,4.5vw,44px);line-height:1.15;margin:0 0 14px}
+                .sd-field-head h2{font-family:'Playfair Display',Georgia,serif;font-weight:800;color:#0B3A1D;font-size:clamp(30px,4.4vw,46px);line-height:1.1;margin:0 0 14px}
                 .sd-field-head p{color:#57534e;font:400 17px/1.6 'Inter',sans-serif;margin:0}
-                .sd-field-grid{columns:2;column-gap:12px}
-                .sd-field-item{break-inside:avoid;margin:0 0 12px;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.06)}
-                .sd-field-item img{display:block;width:100%;height:auto}
-                .sd-field-item figcaption{padding:10px 12px 12px;color:#44403c;font:600 13px/1.4 'Inter',sans-serif}
+                .sd-field-proof{display:flex;gap:10px;flex-wrap:wrap;margin:0;padding:0;list-style:none}
+                .sd-field-proof li{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid #e7e0d2;border-radius:999px;padding:9px 14px;color:#0B3A1D;font:700 13px/1 'Inter',sans-serif;white-space:nowrap;margin:0}
+                .sd-field-proof b{color:#C98A27;font-weight:900}
+                .sd-field-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:190px;grid-auto-flow:dense;gap:12px}
+                .sd-field-item{position:relative;margin:0;border-radius:16px;overflow:hidden;background:#d6d3d1;isolation:isolate}
+                .sd-field-item.is-tall{grid-row:span 2}
+                .sd-field-item.is-wide{grid-column:span 2}
+                .sd-field-item.is-hero{grid-column:span 2;grid-row:span 2}
+                .sd-field-item img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+                .sd-field-item:hover img{transform:scale(1.05)}
+                .sd-field-item::after{content:'';position:absolute;left:0;right:0;bottom:0;height:60%;background:linear-gradient(to top,rgba(6,23,13,.86),rgba(6,23,13,0));pointer-events:none;z-index:1}
+                .sd-field-item figcaption{position:absolute;left:14px;bottom:12px;max-width:calc(100% - 110px);z-index:2;color:#fff;font:700 13.5px/1.35 'Inter',sans-serif;text-shadow:0 1px 10px rgba(0,0,0,.35)}
+                .sd-field-item.is-hero figcaption{font-size:17px;left:20px;bottom:18px}
+                .sd-field-item.is-hero img{object-position:50% 78%}
+                .sd-field-item.is-hero::before{content:'Recent Sundown trip';position:absolute;top:16px;left:16px;z-index:2;background:#C98A27;color:#0d1f16;font:900 11px/1 'Inter',sans-serif;letter-spacing:.14em;text-transform:uppercase;padding:8px 11px;border-radius:999px}
                 .sd-field-more{display:none}.sd-field-grid.is-open .sd-field-more{display:block}
-                .sd-field-toggle{text-align:center;margin-top:6px}
-                .sd-field-toggle button{background:none;border:1px solid #d6d3d1;color:#0B3A1D;font:700 14px/1 'Inter',sans-serif;padding:12px 22px;border-radius:999px;cursor:pointer}
-                .sd-field-toggle button:hover{border-color:#C98A27;color:#C98A27}
-                .sd-field-cta{text-align:center;margin-top:28px}
-                .sd-field-cta a{display:inline-flex;align-items:center;gap:10px;background:#0B3A1D;color:#fff;font:800 14px/1 'Inter',sans-serif;letter-spacing:.06em;text-transform:uppercase;padding:16px 28px;border-radius:999px;text-decoration:none}
-                .sd-field-cta a:hover{background:#C98A27;color:#0d1f16}
-                .sd-field-cta p{margin:12px 0 0;color:#78716c;font:500 13px/1.4 'Inter',sans-serif}
-                @media (min-width:768px){.sd-field-grid{columns:3;column-gap:16px}.sd-field-item{margin-bottom:16px}.sd-field-item figcaption{font-size:14px}}
+                .sd-field-toggle{text-align:center;margin:22px 0 0}
+                .sd-field-toggle button{display:inline-flex;align-items:center;gap:10px;background:#fff;border:1px solid #d9cfbd;color:#0B3A1D;font:800 14px/1 'Inter',sans-serif;padding:14px 22px;border-radius:999px;cursor:pointer;box-shadow:0 6px 18px rgba(11,58,29,.06);transition:border-color .2s,color .2s,transform .2s}
+                .sd-field-toggle button:hover{border-color:#C98A27;color:#9a6512;transform:translateY(-1px)}
+                .sd-field-toggle svg{width:18px;height:18px;color:#C98A27}
+                .sd-field-band{margin:36px 0 0;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:20px 40px;background:radial-gradient(120% 160% at 100% 0,#14532d 0,#0B3A1D 55%,#082a15 100%);border-radius:22px;padding:32px 36px;color:#fff;box-shadow:0 24px 60px rgba(11,58,29,.22);position:relative;overflow:hidden}
+                .sd-field-band::after{content:'';position:absolute;right:-60px;top:-60px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(233,184,101,.35),rgba(233,184,101,0) 70%);pointer-events:none}
+                .sd-field-band .k{margin:0 0 8px;color:#E9B865;font:900 11px/1 'Inter',sans-serif;letter-spacing:.22em;text-transform:uppercase}
+                .sd-field-band h3{margin:0 0 8px;font-family:'Playfair Display',Georgia,serif;font-weight:800;font-size:clamp(24px,2.8vw,32px);line-height:1.15;color:#fff}
+                .sd-field-band p.s{margin:0;color:#d6d3d1;font:500 15px/1.55 'Inter',sans-serif;max-width:34em}
+                .sd-field-btns{display:flex;gap:12px;flex-wrap:wrap;position:relative;z-index:1}
+                .sd-field-btns a{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:0 26px;border-radius:999px;font:800 15px/1 'Inter',sans-serif;text-decoration:none;white-space:nowrap;transition:transform .15s,background .2s,color .2s}
+                .sd-field-btns a:hover{transform:translateY(-1px)}
+                .sd-field-btns .b1{background:#C98A27;color:#0d1f16;box-shadow:0 10px 26px rgba(201,138,39,.35)}
+                .sd-field-btns .b1:hover{background:#E9B865}
+                .sd-field-btns .b2{background:rgba(255,255,255,.06);color:#fff;border:1px solid rgba(255,255,255,.3)}
+                .sd-field-btns .b2:hover{background:#25D366;border-color:#25D366;color:#06260F}
+                .sd-field-btns svg{width:19px;height:19px;flex:0 0 auto}
+                @media (max-width:900px){.sd-field-head{flex-direction:column;align-items:flex-start}.sd-field-band{grid-template-columns:1fr}}
+                @media (max-width:767px){
+                  .sd-field{padding:56px 0 64px}.sd-field-wrap{padding:0 16px}
+                  .sd-field-head{margin-bottom:22px}.sd-field-head p{font-size:16px}
+                  .sd-field-proof li{font-size:12px;padding:8px 12px}
+                  .sd-field-grid{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:150px;gap:8px}
+                  .sd-field-item{border-radius:12px}
+                  .sd-field-item figcaption{left:10px;bottom:9px;max-width:calc(100% - 20px);font-size:12px}
+                  .sd-field-item.is-hero figcaption{font-size:14px;left:12px;bottom:12px}
+                  .sd-field-item.is-hero::before{top:10px;left:10px;font-size:10px;padding:7px 9px}
+                  .sd-field-band{padding:26px 20px;border-radius:18px;margin-top:28px}
+                  .sd-field-btns{flex-direction:column}.sd-field-btns a{width:100%}
+                }
             </style>
             <div class="sd-field-wrap">
                 <div class="sd-field-head">
-                    <span class="sd-field-label">From the field</span>
-                    <h2>Real vehicles. Real sightings. Real guests.</h2>
-                    <p>A few moments from recent Sundown trips. This is what private looks like: your own vehicle, your own guide and nobody else at the sighting.</p>
+                    <div>
+                        <span class="sd-field-label">From the field</span>
+                        <h2>Real vehicles. Real sightings. Real guests.</h2>
+                        <p>Moments from recent Sundown trips. This is what private looks like: your own vehicle, your own guide and nobody else at the sighting.</p>
+                    </div>
+                    <ul class="sd-field-proof"><li><b>22</b> photos from real trips</li><li><b>4.9</b> on Google</li></ul>
                 </div>
                 <div class="sd-field-grid" id="sd-field-grid">
-<figure class="sd-field-item">
-<img src="/images/strip-lions-vehicle-600.jpg" srcset="/images/strip-lions-vehicle-600.jpg 600w, /images/strip-lions-vehicle-1000.jpg 1000w" sizes="(max-width: 767px) 46vw, 360px" alt="Lions resting a few metres from a safari vehicle on a game drive" width="600" height="450" loading="lazy" decoding="async">
-<figcaption>Lions a few metres from the vehicle</figcaption>
-</figure>
-<figure class="sd-field-item">
-                <img src="/images/strip-giraffes-600.jpg" srcset="/images/strip-giraffes-600.jpg 600w, /images/strip-giraffes-1000.jpg 1000w" sizes="(max-width: 767px) 46vw, 360px" alt="A tower of Masai giraffes watching from the long grass on a Sundown game drive" width="600" height="450" loading="lazy" decoding="async">
-                <figcaption>A tower of giraffes checks us out</figcaption>
-            </figure>
-<figure class="sd-field-item">
-<img src="/images/field-rhino-black-600.jpg" srcset="/images/field-rhino-black-600.jpg 600w, /images/field-rhino-black-1000.jpg 1000w" sizes="(max-width: 767px) 46vw, 360px" alt="A black rhino with a cattle egret stepping onto the track" width="600" height="800" loading="lazy" decoding="async">
-<figcaption>A black rhino steps onto the track</figcaption>
-</figure>
-<figure class="sd-field-item">
-<img src="/images/field-zebra-herd-600.jpg" srcset="/images/field-zebra-herd-600.jpg 600w, /images/field-zebra-herd-1000.jpg 1000w" sizes="(max-width: 767px) 46vw, 360px" alt="A herd of zebras gathered around the track near a safari vehicle" width="600" height="411" loading="lazy" decoding="async">
-<figcaption>Zebras all around us</figcaption>
-</figure>
-<figure class="sd-field-item">
-<img src="/images/field-lioness-walk-600.jpg" srcset="/images/field-lioness-walk-600.jpg 600w, /images/field-lioness-walk-1000.jpg 720w" sizes="(max-width: 767px) 46vw, 360px" alt="Two lionesses walking along the track right past the vehicle" width="600" height="800" loading="lazy" decoding="async">
-<figcaption>Two lionesses walk right past us</figcaption>
-</figure>
-<figure class="sd-field-item">
-<img src="/images/field-mara-picnic-600.jpg" srcset="/images/field-mara-picnic-600.jpg 600w, /images/field-mara-picnic-1000.jpg 1000w" sizes="(max-width: 767px) 46vw, 360px" alt="Bush breakfast set up under a tree beside the Land Cruiser on the plains" width="600" height="450" loading="lazy" decoding="async">
-<figcaption>Breakfast under a tree on the plains</figcaption>
-</figure>
-<figure class="sd-field-item">
-                <img src="/images/field-rhino-road-600.jpg" srcset="/images/field-rhino-road-600.jpg 600w, /images/field-rhino-road-1000.jpg 960w" sizes="(max-width: 767px) 46vw, 360px" alt="White rhino crossing the track on a Sundown game drive" width="600" height="800" loading="lazy" decoding="async">
-                <figcaption>A white rhino crosses our track</figcaption>
-            </figure>
-<figure class="sd-field-item">
-<img src="/images/field-rover-sunset-600.jpg" srcset="/images/field-rover-sunset-600.jpg 600w, /images/field-rover-sunset-1000.jpg 960w" sizes="(max-width: 767px) 46vw, 360px" alt="Our safari Land Rover on a dirt track under evening clouds" width="600" height="800" loading="lazy" decoding="async">
-<figcaption>Golden hour on the way back to camp</figcaption>
-</figure>
-<figure class="sd-field-item">
-                <img src="/images/field-rhino-calf-600.jpg" srcset="/images/field-rhino-calf-600.jpg 600w, /images/field-rhino-calf-1000.jpg 1000w" sizes="(max-width: 767px) 46vw, 360px" alt="A white rhino and her calf at a waterhole, seen from the vehicle" width="600" height="277" loading="lazy" decoding="async">
-                <figcaption>A rhino and her calf at the waterhole</figcaption>
-            </figure>
-<figure class="sd-field-item">
-                <img src="/images/field-guide-guests-600.jpg" srcset="/images/field-guide-guests-600.jpg 600w, /images/field-guide-guests-1000.jpg 1000w" sizes="(max-width: 767px) 46vw, 360px" alt="Sundown guests and their vehicle between game drives" width="600" height="450" loading="lazy" decoding="async">
-                <figcaption>Your guide, your vehicle, your pace</figcaption>
-            </figure>
-<figure class="sd-field-item">
-<img src="/images/field-hippos-600.jpg" srcset="/images/field-hippos-600.jpg 600w, /images/field-hippos-1000.jpg 1000w" sizes="(max-width: 767px) 46vw, 360px" alt="A pod of hippos resting together in the river" width="600" height="309" loading="lazy" decoding="async">
-<figcaption>A pod of hippos taking it easy</figcaption>
-</figure>
-<figure class="sd-field-item">
-<img src="/images/field-lions-road-600.jpg" srcset="/images/field-lions-road-600.jpg 600w, /images/field-lions-road-1000.jpg 1000w" sizes="(max-width: 767px) 46vw, 360px" alt="Two young lions resting on the track, looking straight at the vehicle" width="600" height="434" loading="lazy" decoding="async">
-<figcaption>Two young lions block the road</figcaption>
-</figure>
-<figure class="sd-field-item sd-field-more">
-<img src="/images/field-rafting-river-600.jpg" srcset="/images/field-rafting-river-600.jpg 600w, /images/field-rafting-river-1000.jpg 780w" sizes="(max-width: 767px) 46vw, 360px" alt="Sundown guests paddling a raft down the river" width="600" height="800" loading="lazy" decoding="async">
-<figcaption>White water day on the river</figcaption>
-</figure>
-<figure class="sd-field-item sd-field-more">
-<img src="/images/field-helicopter-600.jpg" srcset="/images/field-helicopter-600.jpg 600w, /images/field-helicopter-1000.jpg 960w" sizes="(max-width: 767px) 46vw, 360px" alt="A helicopter ready in the hangar for a scenic flight" width="600" height="800" loading="lazy" decoding="async">
-<figcaption>Ready for a scenic flight</figcaption>
-</figure>
-<figure class="sd-field-item sd-field-more">
-<img src="/images/field-rafting-group-600.jpg" srcset="/images/field-rafting-group-600.jpg 600w, /images/field-rafting-group-1000.jpg 780w" sizes="(max-width: 767px) 46vw, 360px" alt="A Sundown group in helmets and life jackets before rafting" width="600" height="800" loading="lazy" decoding="async">
-<figcaption>All smiles before the rapids</figcaption>
-</figure>
-<figure class="sd-field-item sd-field-more">
-<img src="/images/field-interior-shuka-600.jpg" srcset="/images/field-interior-shuka-600.jpg 600w, /images/field-interior-shuka-1000.jpg 960w" sizes="(max-width: 767px) 46vw, 360px" alt="Safari vehicle interior with Maasai shuka seat covers and a fridge" width="600" height="800" loading="lazy" decoding="async">
-<figcaption>Shuka seats and a fridge on board</figcaption>
-</figure>
-<figure class="sd-field-item sd-field-more">
-<img src="/images/field-interior-roof-600.jpg" srcset="/images/field-interior-roof-600.jpg 600w, /images/field-interior-roof-1000.jpg 1000w" sizes="(max-width: 767px) 46vw, 360px" alt="Safari vehicle interior with leather seats and the pop up roof open" width="600" height="419" loading="lazy" decoding="async">
-<figcaption>Pop up roof for standing views</figcaption>
-</figure>
-<figure class="sd-field-item sd-field-more">
-                <img src="/images/field-rhino-nairobi-600.jpg" srcset="/images/field-rhino-nairobi-600.jpg 600w, /images/field-rhino-nairobi-1000.jpg 1000w" sizes="(max-width: 767px) 46vw, 360px" alt="Rhino grazing in Nairobi National Park with the city skyline behind" width="600" height="450" loading="lazy" decoding="async">
-                <figcaption>Rhino grazing with Nairobi on the horizon</figcaption>
-            </figure>
-<figure class="sd-field-item sd-field-more">
-                <img src="/images/field-mt-kenya-600.jpg" srcset="/images/field-mt-kenya-600.jpg 600w, /images/field-mt-kenya-1000.jpg 1000w" sizes="(max-width: 767px) 46vw, 360px" alt="Point Lenana summit sign on Mount Kenya at 4,985 metres" width="600" height="800" loading="lazy" decoding="async">
-                <figcaption>Point Lenana, Mount Kenya, 4,985 m</figcaption>
-            </figure>
-<figure class="sd-field-item sd-field-more">
-                <img src="/images/field-land-cruiser-600.jpg" srcset="/images/field-land-cruiser-600.jpg 600w, /images/field-land-cruiser-1000.jpg 1000w" sizes="(max-width: 767px) 46vw, 360px" alt="Open safari Land Cruiser parked at a picnic stop in the bush" width="600" height="450" loading="lazy" decoding="async">
-                <figcaption>Lunch stop in the bush</figcaption>
-            </figure>
-<figure class="sd-field-item sd-field-more">
-                <img src="/images/field-land-rover-seats-600.jpg" srcset="/images/field-land-rover-seats-600.jpg 600w, /images/field-land-rover-seats-1000.jpg 720w" sizes="(max-width: 767px) 46vw, 360px" alt="Open sided safari Land Rover with leather seats" width="600" height="800" loading="lazy" decoding="async">
-                <figcaption>Leather seats and open sides</figcaption>
-            </figure>
-<figure class="sd-field-item sd-field-more">
-                <img src="/images/field-land-rover-front-600.jpg" srcset="/images/field-land-rover-front-600.jpg 600w, /images/field-land-rover-front-1000.jpg 1000w" sizes="(max-width: 767px) 46vw, 360px" alt="Safari Land Rover ready for a Nairobi pickup" width="600" height="561" loading="lazy" decoding="async">
-                <figcaption>Ready for your pickup in Nairobi</figcaption>
-            </figure>
+<figure class="sd-field-item is-hero"><img src="/images/strip-lions-vehicle-600.jpg" srcset="/images/strip-lions-vehicle-600.jpg 600w, /images/strip-lions-vehicle-1000.jpg 1000w" sizes="(max-width: 767px) 50vw, 560px" alt="Lions resting a few metres from a safari vehicle on a game drive" width="600" height="450" loading="lazy" decoding="async"><figcaption>Lions a few metres from the vehicle</figcaption></figure>
+<figure class="sd-field-item is-tall"><img src="/images/field-rhino-black-600.jpg" srcset="/images/field-rhino-black-600.jpg 600w, /images/field-rhino-black-1000.jpg 1000w" sizes="(max-width: 767px) 50vw, 280px" alt="A black rhino with a cattle egret stepping onto the track" width="600" height="800" loading="lazy" decoding="async"><figcaption>A black rhino steps onto the track</figcaption></figure>
+<figure class="sd-field-item is-wide"><img src="/images/strip-giraffes-600.jpg" srcset="/images/strip-giraffes-600.jpg 600w, /images/strip-giraffes-1000.jpg 1000w" sizes="(max-width: 767px) 50vw, 280px" alt="A tower of Masai giraffes watching from the long grass on a Sundown game drive" width="600" height="450" loading="lazy" decoding="async"><figcaption>A tower of giraffes checks us out</figcaption></figure>
+<figure class="sd-field-item is-wide"><img src="/images/field-zebra-herd-600.jpg" srcset="/images/field-zebra-herd-600.jpg 600w, /images/field-zebra-herd-1000.jpg 1000w" sizes="(max-width: 767px) 50vw, 280px" alt="A herd of zebras gathered around the track near a safari vehicle" width="600" height="411" loading="lazy" decoding="async"><figcaption>Zebras all around us</figcaption></figure>
+<figure class="sd-field-item is-tall"><img src="/images/field-lioness-walk-600.jpg" srcset="/images/field-lioness-walk-600.jpg 600w, /images/field-lioness-walk-1000.jpg 720w" sizes="(max-width: 767px) 50vw, 280px" alt="Two lionesses walking along the track right past the vehicle" width="600" height="800" loading="lazy" decoding="async"><figcaption>Two lionesses walk right past us</figcaption></figure>
+<figure class="sd-field-item is-wide"><img src="/images/field-mara-picnic-600.jpg" srcset="/images/field-mara-picnic-600.jpg 600w, /images/field-mara-picnic-1000.jpg 1000w" sizes="(max-width: 767px) 50vw, 560px" alt="Bush breakfast set up under a tree beside the Land Cruiser on the plains" width="600" height="450" loading="lazy" decoding="async"><figcaption>Breakfast under a tree on the plains</figcaption></figure>
+<figure class="sd-field-item is-tall"><img src="/images/field-rover-sunset-600.jpg" srcset="/images/field-rover-sunset-600.jpg 600w, /images/field-rover-sunset-1000.jpg 960w" sizes="(max-width: 767px) 50vw, 280px" alt="Our safari Land Rover on a dirt track under evening clouds" width="600" height="800" loading="lazy" decoding="async"><figcaption>Golden hour on the way back to camp</figcaption></figure>
+<figure class="sd-field-item is-wide"><img src="/images/field-rhino-calf-600.jpg" srcset="/images/field-rhino-calf-600.jpg 600w, /images/field-rhino-calf-1000.jpg 1000w" sizes="(max-width: 767px) 50vw, 560px" alt="A white rhino and her calf at a waterhole, seen from the vehicle" width="600" height="277" loading="lazy" decoding="async"><figcaption>A rhino and her calf at the waterhole</figcaption></figure>
+<figure class="sd-field-item"><img src="/images/field-guide-guests-600.jpg" srcset="/images/field-guide-guests-600.jpg 600w, /images/field-guide-guests-1000.jpg 1000w" sizes="(max-width: 767px) 50vw, 280px" alt="Sundown guests and their vehicle between game drives" width="600" height="450" loading="lazy" decoding="async"><figcaption>Your guide, your vehicle, your pace</figcaption></figure>
+<figure class="sd-field-item is-wide"><img src="/images/field-lions-road-600.jpg" srcset="/images/field-lions-road-600.jpg 600w, /images/field-lions-road-1000.jpg 1000w" sizes="(max-width: 767px) 50vw, 560px" alt="Two young lions resting on the track, looking straight at the vehicle" width="600" height="434" loading="lazy" decoding="async"><figcaption>Two young lions block the road</figcaption></figure>
+<figure class="sd-field-item is-wide"><img src="/images/field-hippos-600.jpg" srcset="/images/field-hippos-600.jpg 600w, /images/field-hippos-1000.jpg 1000w" sizes="(max-width: 767px) 50vw, 560px" alt="A pod of hippos resting together in the river" width="600" height="309" loading="lazy" decoding="async"><figcaption>A pod of hippos taking it easy</figcaption></figure>
+<figure class="sd-field-item"><img src="/images/field-rhino-road-600.jpg" srcset="/images/field-rhino-road-600.jpg 600w, /images/field-rhino-road-1000.jpg 960w" sizes="(max-width: 767px) 50vw, 280px" alt="White rhino crossing the track on a Sundown game drive" width="600" height="800" loading="lazy" decoding="async"><figcaption>A white rhino crosses our track</figcaption></figure>
+<figure class="sd-field-item is-tall sd-field-more"><img src="/images/field-rafting-river-600.jpg" srcset="/images/field-rafting-river-600.jpg 600w, /images/field-rafting-river-1000.jpg 780w" sizes="(max-width: 767px) 50vw, 280px" alt="Sundown guests paddling a raft down the river" width="600" height="800" loading="lazy" decoding="async"><figcaption>White water day on the river</figcaption></figure>
+<figure class="sd-field-item sd-field-more"><img src="/images/field-interior-roof-600.jpg" srcset="/images/field-interior-roof-600.jpg 600w, /images/field-interior-roof-1000.jpg 1000w" sizes="(max-width: 767px) 50vw, 560px" alt="Safari vehicle interior with leather seats and the pop up roof open" width="600" height="419" loading="lazy" decoding="async"><figcaption>Pop up roof for standing views</figcaption></figure>
+<figure class="sd-field-item is-tall sd-field-more"><img src="/images/field-helicopter-600.jpg" srcset="/images/field-helicopter-600.jpg 600w, /images/field-helicopter-1000.jpg 960w" sizes="(max-width: 767px) 50vw, 280px" alt="A helicopter ready in the hangar for a scenic flight" width="600" height="800" loading="lazy" decoding="async"><figcaption>Ready for a scenic flight</figcaption></figure>
+<figure class="sd-field-item is-wide sd-field-more"><img src="/images/field-rhino-nairobi-600.jpg" srcset="/images/field-rhino-nairobi-600.jpg 600w, /images/field-rhino-nairobi-1000.jpg 1000w" sizes="(max-width: 767px) 50vw, 560px" alt="Rhino grazing in Nairobi National Park with the city skyline behind" width="600" height="450" loading="lazy" decoding="async"><figcaption>Rhino grazing with Nairobi on the horizon</figcaption></figure>
+<figure class="sd-field-item is-tall sd-field-more"><img src="/images/field-mt-kenya-600.jpg" srcset="/images/field-mt-kenya-600.jpg 600w, /images/field-mt-kenya-1000.jpg 1000w" sizes="(max-width: 767px) 50vw, 280px" alt="Point Lenana summit sign on Mount Kenya at 4,985 metres" width="600" height="800" loading="lazy" decoding="async"><figcaption>Point Lenana, Mount Kenya, 4,985 m</figcaption></figure>
+<figure class="sd-field-item is-tall sd-field-more"><img src="/images/field-rafting-group-600.jpg" srcset="/images/field-rafting-group-600.jpg 600w, /images/field-rafting-group-1000.jpg 780w" sizes="(max-width: 767px) 50vw, 280px" alt="A Sundown group in helmets and life jackets before rafting" width="600" height="800" loading="lazy" decoding="async"><figcaption>All smiles before the rapids</figcaption></figure>
+<figure class="sd-field-item sd-field-more"><img src="/images/field-land-cruiser-600.jpg" srcset="/images/field-land-cruiser-600.jpg 600w, /images/field-land-cruiser-1000.jpg 1000w" sizes="(max-width: 767px) 50vw, 280px" alt="Open safari Land Cruiser parked at a picnic stop in the bush" width="600" height="450" loading="lazy" decoding="async"><figcaption>Lunch stop in the bush</figcaption></figure>
+<figure class="sd-field-item sd-field-more"><img src="/images/field-interior-shuka-600.jpg" srcset="/images/field-interior-shuka-600.jpg 600w, /images/field-interior-shuka-1000.jpg 960w" sizes="(max-width: 767px) 50vw, 280px" alt="Safari vehicle interior with Maasai shuka seat covers and a fridge" width="600" height="800" loading="lazy" decoding="async"><figcaption>Shuka seats and a fridge on board</figcaption></figure>
+<figure class="sd-field-item is-wide sd-field-more"><img src="/images/field-land-rover-front-600.jpg" srcset="/images/field-land-rover-front-600.jpg 600w, /images/field-land-rover-front-1000.jpg 1000w" sizes="(max-width: 767px) 50vw, 560px" alt="Safari Land Rover ready for a Nairobi pickup" width="600" height="561" loading="lazy" decoding="async"><figcaption>Ready for your pickup in Nairobi</figcaption></figure>
+<figure class="sd-field-item sd-field-more"><img src="/images/field-land-rover-seats-600.jpg" srcset="/images/field-land-rover-seats-600.jpg 600w, /images/field-land-rover-seats-1000.jpg 720w" sizes="(max-width: 767px) 50vw, 280px" alt="Open sided safari Land Rover with leather seats" width="600" height="800" loading="lazy" decoding="async"><figcaption>Leather seats and open sides</figcaption></figure>
 </div>
-<div class="sd-field-toggle"><button type="button" id="sd-field-more-btn" aria-controls="sd-field-grid" aria-expanded="false">See 10 more photos</button></div>
-<div class="sd-field-cta">
-                    <a href="#master-booking" id="field-cta">Plan my trip <span aria-hidden="true">&rarr;</span></a>
-                    <p>Free draft itinerary and a straight price within 24 hours.</p>
+<div class="sd-field-toggle"><button type="button" id="sd-field-more-btn" aria-controls="sd-field-grid" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>See 10 more moments</button></div>
+                <div class="sd-field-band" id="field-cta-band">
+                    <div>
+                        <p class="k">Your turn</p>
+                        <h3>Picture yourself in the next photo.</h3>
+                        <p class="s">Send your dates and get a free draft itinerary and a straight price within 24 hours. Nothing to pay to ask.</p>
+                    </div>
+                    <div class="sd-field-btns">
+                        <a href="#master-booking" id="field-cta" class="b1">Plan my trip <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                        <a href="https://wa.me/254724491210?text=Hi%20Sundown%2C%20I%20saw%20your%20photos%20from%20the%20field%20and%20would%20like%20to%20plan%20a%20private%20safari" target="_blank" rel="noopener" class="b2" data-cta="field_whatsapp"><svg viewBox="0 0 448 512" aria-hidden="true"><path fill="currentColor" d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg> WhatsApp us</a>
+                    </div>
                 </div>
             </div>
         <script>
@@ -1994,7 +1972,8 @@ window.sdfaqToggle = sdfaqToggle;
     var hero = document.getElementById('hero');
     var formOn = false, heroOn = !!hero, desk = window.matchMedia('(min-width: 768px)');
     var footOn = false, foot = document.querySelector('footer');
-    function update(){ bar.classList.toggle('is-hidden', formOn || heroOn || (desk.matches && footOn)); }
+    var bandOn = false, band = document.getElementById('field-cta-band');
+    function update(){ bar.classList.toggle('is-hidden', formOn || heroOn || bandOn || (desk.matches && footOn)); }
     if ('IntersectionObserver' in window) {
         if (form) new IntersectionObserver(function(entries){
             entries.forEach(function(e){ formOn = e.isIntersecting; }); update();
@@ -2009,6 +1988,10 @@ window.sdfaqToggle = sdfaqToggle;
         if (foot) new IntersectionObserver(function(entries){
             entries.forEach(function(e){ footOn = e.isIntersecting; }); update();
         }, { threshold: 0 }).observe(foot);
+        // The gallery has its own call to action band, so the bar steps aside while it is visible
+        if (band) new IntersectionObserver(function(entries){
+            entries.forEach(function(e){ bandOn = e.isIntersecting; }); update();
+        }, { threshold: 0 }).observe(band);
         if (desk.addEventListener) desk.addEventListener('change', update);
     } else { heroOn = false; }
     update();
