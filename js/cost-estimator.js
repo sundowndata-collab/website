@@ -28,6 +28,7 @@
     { id: 'dreamcatcher', slug: '5-day-b-classic-the-dreamcatcher', name: 'The Dreamcatcher', tier: 'b', len: 5, usd: 3900, parks: 'Masai Mara and a private conservancy', hook: 'Big cat tracking and river crossings' },
     { id: 'horizon-chaser', slug: '5-day-c-luxury-lite-the-horizon-chaser', name: 'The Horizon Chaser', tier: 'c', len: 5, usd: 4800, parks: 'Masai Mara and a private conservancy', hook: 'A dawn balloon flight and luxury glamping' },
     { id: 'ultimate-kenya', slug: '7-day-a-flagship-ultimate-kenya', name: 'Ultimate Kenya', tier: 'a', len: 7, usd: 5900, parks: 'Amboseli and Masai Mara', hook: 'Elephants under Kilimanjaro, then the Mara. Built for a first safari' },
+    { id: 'longlens', slug: '7-day-photography-the-long-lens', name: 'The Long Lens', tier: 'b', len: 7, usd: 4900, parks: 'Masai Mara, Mara Triangle and a conservancy', hook: 'Seven days built for photographers' },
     { id: 'voyager', slug: '7-day-b-classic-the-voyager', name: 'The Voyager', tier: 'b', len: 7, usd: 4900, parks: 'Masai Mara, Mara Triangle and a conservancy', hook: 'Seven days to really know the Mara' },
     { id: 'constellation', slug: '7-day-c-luxury-lite-the-constellation', name: 'The Constellation', tier: 'c', len: 7, usd: 6500, parks: 'Masai Mara, Mara Triangle and a conservancy', hook: 'A star bed night under the Milky Way' }
   ];
