@@ -227,3 +227,18 @@ blockquote p:last-child{margin-bottom:0}
 .sd-footer-scene .sd-scene-cta:hover{color:#fff!important}
 @media (min-width:768px){.sd-footer-top .sd-footer-brand{grid-row:span 2}.sd-footer-scene{grid-column:2}}
 @media (max-width:767px){.sd-footer-scene figcaption{font-size:14px}}
+
+/* Footer polish: WhatsApp pill, safari prices, bottom bar */
+.sd-footer-contact a.sd-footer-wa{align-self:flex-start;background:#25D366;color:#06260F!important;font-weight:700;font-size:14px;padding:11px 18px;border-radius:999px;gap:9px;box-shadow:0 8px 22px rgba(37,211,102,.22);transition:transform .15s,box-shadow .15s}
+.sd-footer-contact a.sd-footer-wa b{font-weight:900}
+.sd-footer-contact a.sd-footer-wa:hover{color:#06260F!important;transform:translateY(-1px);box-shadow:0 12px 26px rgba(37,211,102,.32)}
+.sd-footer-contact a.sd-footer-wa .sd-ico,.sd-footer-contact a.sd-footer-wa i{font-size:17px}
+.sd-footer-reply{font-size:12.5px!important;color:#a8a29e!important;margin:-2px 0 4px!important}
+.sd-footer-links a .sd-fl-from{display:block;font-size:12px;font-weight:600;color:#C98A27;margin-top:2px;letter-spacing:.01em}
+.sd-footer-links a{transition:color .2s,transform .2s}
+.sd-footer-links a:hover{transform:translateX(3px)}
+.sd-footer-bottom{display:flex!important;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 24px}
+.sd-footer-bottom p{margin:0}
+.sd-footer-bottom a.sd-top{display:inline-flex;align-items:center;gap:8px;color:#E9B865!important;font-weight:700;font-size:13px;text-decoration:none!important;padding:8px 14px;border:1px solid rgba(201,138,39,.45);border-radius:999px;transition:background .2s,color .2s}
+.sd-footer-bottom a.sd-top:hover{background:#C98A27;color:#0d1f16!important}
+@media (max-width:767px){.sd-footer-links a .sd-fl-from{display:inline;margin-left:4px}.sd-footer-bottom a.sd-top{margin-top:4px}}
