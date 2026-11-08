@@ -118,6 +118,18 @@
           .flatpickr-day{height:42px;line-height:42px}
           #date-range-picker{font-size:16px}
         }
+        /* Desktop: the two month calendar opens centred on screen with a dimmed backdrop, so it never overlaps the header or spills past the form */
+        @media (min-width:768px){
+          body .flatpickr-calendar.open{animation:none!important;transition:none!important;position:fixed!important;left:50%!important;top:50%!important;right:auto!important;transform:translate(-50%,-50%);width:auto!important;padding:0 0 14px;box-shadow:0 0 0 100vmax rgba(12,20,14,0.55),0 24px 70px rgba(0,0,0,0.35)!important;z-index:99999;border-radius:16px}
+          body .flatpickr-calendar.open:before,body .flatpickr-calendar.open:after{display:none}
+          body .flatpickr-calendar .sd-hint{font-size:15px;padding:14px 16px;border-radius:16px 16px 0 0}
+          body .flatpickr-calendar .flatpickr-months{height:58px;align-items:center}
+          body .flatpickr-calendar .flatpickr-months .flatpickr-month{height:58px}
+          body .flatpickr-calendar .flatpickr-current-month{padding-top:16px;font-size:18px}
+          body .flatpickr-calendar .flatpickr-innerContainer{padding:10px 14px 0}
+          body .flatpickr-calendar .flatpickr-weekdays{height:36px}
+          body .flatpickr-calendar .flatpickr-day{height:44px;line-height:44px;max-width:44px}
+        }
         .flatpickr-day.selected.startRange + .endRange:not(:nth-child(7n+1)),.flatpickr-day.startRange + .endRange:not(:nth-child(7n+1)),.flatpickr-day.endRange + .endRange:not(:nth-child(7n+1)){box-shadow:-10px 0 0 #EAF2EC}
         /* Site globals */
         html{scroll-behavior:smooth}
@@ -616,7 +628,7 @@ body{padding-top:0}
   .sd-announce{height:34px;justify-content:flex-start}
   .sd-announce-list{height:34px;flex:1 1 auto;overflow:hidden}
   .sd-announce-list li{left:0;transform:none;font-size:12px}
-  .sd-announce-list li strong{display:none}
+  .sd-announce-list li strong{display:none}.sd-announce-list li{right:0;white-space:normal;line-height:1.25;font-size:11.5px}
   .sd-announce-link{display:none}
   .sd-nav{height:66px;padding:0 16px;gap:12px}
   .sd-header.is-solid .sd-nav{height:62px}
@@ -653,7 +665,7 @@ body{padding-top:0}
 .sd-pl-step{display:grid;grid-template-columns:1fr 1fr;gap:18px 20px}
 .sd-pl-step + .sd-pl-step{margin-top:22px}
 .sd-pl-wide{grid-column:1 / -1}
-.sd-pl-step[data-step="1"]{grid-template-columns:1fr}
+.sd-pl-step[data-step="1"],.sd-pl-step[data-step="2"]{grid-template-columns:1fr}
 .sd-pl-legend{grid-column:1 / -1;font-family:'Playfair Display',Georgia,serif;font-weight:800;font-size:20px;color:#0B3A1D;margin:0 0 2px;padding:0}
 .is-stepped .sd-pl-step{display:none}
 .is-stepped .sd-pl-step.is-active{display:grid;margin-top:0;animation:sd-pl-in .25s ease}
@@ -1537,10 +1549,10 @@ if(typeof gtag!=='undefined')gtag('event','field_gallery_more');});})();
                 state = 'loading';
                 var css = document.createElement('link');
                 css.rel = 'stylesheet';
-                css.href = 'https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css';
+                css.href = 'https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.css';
                 document.head.appendChild(css);
                 var js = document.createElement('script');
-                js.src = 'https://cdn.jsdelivr.net/npm/flatpickr'; js.crossOrigin = 'anonymous';
+                js.src = 'https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.js'; js.crossOrigin = 'anonymous';
                 js.onload = build;
                 js.onerror = function() {
                     // Calendar could not load: let people type their dates instead

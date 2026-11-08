@@ -565,7 +565,7 @@ footer{text-align:center;padding:18px 20px;font-size:13px;color:#8a8a8a;}
     nEl.textContent=n; minus.disabled=n<=1; plus.disabled=n>=12;
     var who=n===1?'just me':n+' of us';
     var when=!wk?'a December weekend':wk==='another date'?'another date':/^(Christmas|New Year)/.test(wk)?'the '+wk:'the weekend of '+wk;
-    var msg='Hi Sundown, I saw your ad. Could you check '+when+' for a private Mara safari? We are '+who+'.';
+    var msg='Hi Sundown, I saw your ad. Could you check '+when+' for a private Mara safari? '+(n===1?'It is just me.':'We are '+n+' of us.');
     go.href='https://wa.me/254724491210?text='+encodeURIComponent(msg);
     goT.textContent=wk&&wk!=='another date'?'Check '+(wk.indexOf('Christmas')===0?'Christmas':wk.indexOf('New Year')===0?'New Year':wk.replace(' December',' Dec'))+' on WhatsApp':'Check my weekend on WhatsApp';
   }
