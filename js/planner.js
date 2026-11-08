@@ -32,6 +32,13 @@
   var bar = form.querySelector('.sd-pl-bar span');
   var label = form.querySelector('.sd-pl-label');
   var progress = form.querySelector('.sd-pl-progress');
+  var STEP_SHORT = ['Your trip', 'Your style', 'Send plan'];
+  var stepper = document.createElement('ol');
+  stepper.className = 'sd-steps';
+  stepper.innerHTML = STEP_SHORT.map(function (t, k) {
+    return '<li data-k="' + k + '"><button type="button" tabindex="-1"><span class="sd-steps-dot" aria-hidden="true">' + (k + 1) + '</span><span class="sd-steps-t">' + t + '</span></button></li>';
+  }).join('');
+  if (progress) progress.insertBefore(stepper, progress.firstChild);
   var nextBtn = form.querySelector('.sd-pl-next');
   var backBtn = form.querySelector('.sd-pl-back');
   var submitBtn = document.getElementById('submit-btn');
@@ -168,6 +175,11 @@
   function updateProgress() {
     var target = percent();
     bar.style.width = target + '%';
+    ['travel_dates', 'group_size', 'budget_range', 'safari_priority', 'full_name', 'email', 'whatsapp', 'referral_source', 'additional_notes'].forEach(function (n) {
+      var el = form.elements[n]; if (!el) return;
+      var lab = el.parentNode.querySelector('label');
+      if (lab) lab.classList.toggle('is-ok', n === 'referral_source' || n === 'additional_notes' ? !!(el.value || '').trim() : filled(n));
+    });
     if (hintEl) hintEl.textContent = hint(target);
     if (!pctEl) return;
     form.querySelector('.sd-pl-bar').setAttribute('aria-valuenow', target);
@@ -290,11 +302,18 @@
   function show(i) {
     current = i;
     steps.forEach(function (s, k) { s.classList.toggle('is-active', k === i); });
+    Array.prototype.forEach.call(stepper.children, function (li, k) {
+      li.classList.toggle('is-done', k < i);
+      li.classList.toggle('is-current', k === i);
+      var b = li.querySelector('button');
+      b.tabIndex = k < i ? 0 : -1;
+      b.setAttribute('aria-label', STEP_SHORT[k] + (k < i ? ', done, go back to edit' : k === i ? ', current step' : ''));
+    });
     label.innerHTML = '<b>Step ' + (i + 1) + ' of ' + steps.length + '</b> ' + STEP_TITLES[i];
     updateProgress();
     backBtn.hidden = i === 0;
     nextBtn.hidden = i === steps.length - 1;
-    if (i < steps.length - 1) nextBtn.textContent = 'Next: ' + STEP_TITLES[i + 1].toLowerCase();
+    if (i < steps.length - 1) nextBtn.textContent = ['Next: your style', 'Next: your details'][i] || 'Continue';
     submitBtn.hidden = i !== steps.length - 1;
     if (i === steps.length - 1 && btnText.textContent.indexOf('Sending') === -1) btnText.textContent = 'Send me this plan';
     if (i > reached) { reached = i; track('form_step', { step: i + 1, step_name: STEP_TITLES[i] }); }
@@ -327,6 +346,11 @@
     if (window.scrollY > top) window.scrollTo({ top: top, behavior: 'smooth' });
   });
   backBtn.addEventListener('click', function () { show(current - 1); });
+  stepper.addEventListener('click', function (e) {
+    var li = e.target.closest('li'); if (!li) return;
+    var k = +li.getAttribute('data-k');
+    if (k < current) show(k);
+  });
 
   // Pressing Enter before the last step moves on instead of sending early.
   // Capture phase on the document runs before the form's own submit handler.
