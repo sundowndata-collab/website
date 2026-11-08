@@ -214,6 +214,78 @@
     });
   }
 
+  // ---------- every other choice as tap cards and pills (the selects stay for the post) ----------
+  var TIER_NOTE = { Adventure: 'Value camps, active days', Classic: 'Comfortable lodges', 'Luxury Lite': 'Luxury tented camps', 'Full Luxury': 'The finest lodges' };
+  var OPTS = [
+    { name: 'budget_range', variant: 'cards' },
+    { name: 'safari_priority', variant: 'pills' },
+    { name: 'referral_source', variant: 'pills sd-opts-sm' }
+  ];
+  var optSets = [];
+  function buildOpts(set) {
+    var sel = set.sel, wrap = set.wrap;
+    wrap.innerHTML = '';
+    Array.prototype.forEach.call(sel.options, function (o) {
+      if (o.disabled || !o.value) return;
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.setAttribute('data-v', o.value);
+      var text = o.textContent.trim();
+      if (set.variant === 'cards') {
+        var label = o.getAttribute('data-usd-label');
+        var title = label || 'Flexible', sub;
+        if (label) { sub = text.replace(new RegExp(',\\s*' + label + '$'), '') + ' per person'; }
+        else { sub = 'Show me options at different prices'; }
+        b.innerHTML = '<b>' + esc(title) + '</b><span>' + esc(sub) + '</span>' + (TIER_NOTE[title] ? '<small>' + esc(TIER_NOTE[title]) + '</small>' : '');
+      } else {
+        b.textContent = text;
+      }
+      b.setAttribute('aria-pressed', o.value === sel.value ? 'true' : 'false');
+      wrap.appendChild(b);
+    });
+  }
+  function syncOpts() {
+    optSets.forEach(function (set) {
+      Array.prototype.forEach.call(set.wrap.querySelectorAll('button'), function (b) {
+        b.setAttribute('aria-pressed', b.getAttribute('data-v') === set.sel.value ? 'true' : 'false');
+      });
+    });
+  }
+  OPTS.forEach(function (o) {
+    var sel = form.elements[o.name];
+    if (!sel || sel.tagName !== 'SELECT') return;
+    var wrap = document.createElement('div');
+    wrap.className = 'sd-opts sd-opts-' + o.variant;
+    wrap.setAttribute('role', 'group');
+    var lab = sel.parentNode.querySelector('label');
+    if (lab) { if (!lab.id) lab.id = 'lbl-' + o.name; wrap.setAttribute('aria-labelledby', lab.id); }
+    var err = document.createElement('p');
+    err.className = 'sd-chips-err'; err.hidden = true; err.textContent = 'Choose one to continue';
+    sel.parentNode.insertBefore(wrap, sel);
+    sel.parentNode.insertBefore(err, sel);
+    sel.classList.add('sd-sr'); sel.setAttribute('tabindex', '-1'); sel.setAttribute('aria-hidden', 'true');
+    var set = { sel: sel, wrap: wrap, err: err, variant: o.variant };
+    optSets.push(set);
+    buildOpts(set);
+    wrap.addEventListener('click', function (e) {
+      var b = e.target.closest('button'); if (!b) return;
+      sel.value = b.getAttribute('data-v');
+      sel.dispatchEvent(new Event('change', { bubbles: true }));
+      syncOpts(); wrap.classList.remove('is-err'); err.hidden = true; start();
+    });
+  });
+  // prices in the budget cards follow the currency picker
+  document.addEventListener('sd:fx', function () { optSets.forEach(buildOpts); });
+  window.addEventListener('load', function () { optSets.forEach(buildOpts); });
+  function optErr(f) {
+    for (var i = 0; i < optSets.length; i++) if (optSets[i].sel === f) {
+      optSets[i].wrap.classList.add('is-err'); optSets[i].err.hidden = false;
+      optSets[i].wrap.scrollIntoView({ block: 'center', behavior: 'smooth' });
+      return true;
+    }
+    return false;
+  }
+
   // ---------- steps ----------
   function show(i) {
     current = i;
@@ -243,6 +315,7 @@
         continue;
       }
       if (f.name === 'group_size' && chips && !f.value) { chipErr(true); ok = false; break; }
+      if (f.tagName === 'SELECT' && f.required && !f.value && optErr(f)) { ok = false; break; }
       if (!f.checkValidity()) { f.reportValidity(); ok = false; break; }
     }
     return ok;
@@ -294,6 +367,7 @@
   if (picked) {
     var opt = form.querySelector('select[name="budget_range"] option[data-usd-label="' + TIER_NAME[picked.tier] + '"]');
     if (opt && !val('budget_range')) opt.selected = true;
+    syncOpts();
   }
   show(0);
   render();
