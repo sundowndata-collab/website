@@ -166,6 +166,37 @@
 <link as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&amp;display=swap" onload="this.onload=null;this.rel='stylesheet'" rel="preload"/>
 <link href="/css/sundown-shared.css" rel="stylesheet"/>
 <link rel="stylesheet" href="/css/sd-header.css">
+<style id="sdt-cro">
+.sdt-hero-price{display:inline-flex;flex-wrap:wrap;align-items:baseline;gap:4px 8px;margin:0 0 18px;padding:10px 16px;border-radius:14px;background:rgba(255,255,255,.08);border:1px solid rgba(201,138,39,.45);color:#d6d3d1;font-size:14px}
+.sdt-hero-price b{font-family:'Playfair Display',Georgia,serif;font-size:26px;font-weight:800;color:#fff;line-height:1}
+.sdt-hero-price span{color:#E9B865;font-weight:700}
+.sdt-bar{position:fixed;left:0;right:0;bottom:0;z-index:1500;display:none;align-items:center;gap:10px;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:#fff;border-top:1px solid #e7e5e4;box-shadow:0 -10px 30px rgba(0,0,0,.14);font-family:'Inter',system-ui,sans-serif;transform:translateY(110%);transition:transform .3s ease}
+.sdt-bar.is-on{transform:none}
+.sdt-bar-info{flex:1;min-width:0;line-height:1.2}
+.sdt-bar-info b{display:block;font-family:'Playfair Display',Georgia,serif;font-size:16px;color:#0B3A1D;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sdt-bar-info small{font-size:12px;color:#78716c}
+.sdt-bar-info small span{font-weight:800;color:#0B3A1D}
+.sdt-bar-wa{flex:0 0 auto;width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#25D366;color:#fff}
+.sdt-bar-wa svg{width:22px;height:22px}
+.sdt-bar-go{flex:0 0 auto;display:inline-flex;align-items:center;gap:8px;height:48px;padding:0 18px;border-radius:999px;background:#C98A27;color:#0d1f16;font-weight:800;font-size:14px;text-decoration:none}
+.sdt-bar-go svg{width:16px;height:16px}
+@media (max-width:1023px){.sdt-bar{display:flex}body.sd-trip{padding-bottom:84px}}
+.sdt-more{background:#F6F3EC;border-top:1px solid #e7e0d2;padding:64px 0 72px}
+.sdt-more h2{font-family:'Playfair Display',Georgia,serif;font-weight:800;color:#0B3A1D;font-size:clamp(26px,3vw,34px);margin:0 0 6px}
+.sdt-more > .sdt-wrap > p{margin:0 0 26px;color:#57534e;font-size:16px}
+.sdt-more-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.sdt-more a.c{display:flex;flex-direction:column;border-radius:18px;overflow:hidden;background:#fff;border:1px solid #e7e0d2;text-decoration:none;color:inherit;transition:transform .2s,box-shadow .2s,border-color .2s}
+.sdt-more a.c:hover{transform:translateY(-3px);box-shadow:0 20px 40px rgba(11,58,29,.12);border-color:#C98A27}
+.sdt-more a.c img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover}
+.sdt-more a.c div{padding:16px 18px 18px;display:flex;flex-direction:column;gap:4px}
+.sdt-more a.c small{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#C98A27}
+.sdt-more a.c strong{font-family:'Playfair Display',Georgia,serif;font-size:21px;color:#0B3A1D}
+.sdt-more a.c span{font-size:14px;color:#57534e}
+.sdt-more a.c span b{color:#0B3A1D}
+.sdt-more-cta{margin:26px 0 0;text-align:center;font-size:15px;color:#57534e}
+.sdt-more-cta a{color:#0B3A1D;font-weight:800;text-decoration:underline;text-decoration-color:#C98A27;text-underline-offset:4px}
+@media (max-width:767px){.sdt-more{padding:48px 0 56px}.sdt-more-row{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin:0 -16px;padding:0 16px 8px;scrollbar-width:none}.sdt-more-row::-webkit-scrollbar{display:none}.sdt-more a.c{flex:0 0 78%;scroll-snap-align:start}.sdt-hero-price{display:flex}}
+</style>
 </head>
 <body class="sd-trip bg-brand-safariBg text-brand-darkText font-sans text-base antialiased">
 <header id="site-header" class="sd-header">
@@ -205,6 +236,7 @@
 <h1>The Voyager Grand Circuit</h1>
 <p class="sdt-lead">Seven days to really know the Mara. By the end your guide can tell one lion from another, and so can you.</p>
 <div class="sdt-rating"><span class="sdt-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star sd-star-90" aria-hidden="true"></i></span><b>4.9</b><span>from 16 Google reviews</span></div>
+<p class="sdt-hero-price">From <b data-usd="4900">$4,900</b> per person <span>all inclusive</span></p>
 <div class="sdt-ctas">
 <a class="sdt-btn" data-cta="trip_hero_itinerary" href="/?trip=voyager#master-booking">Get my free itinerary <i class="fa-solid fa-arrow-right"></i></a>
 <a class="sdt-btn-ghost" href="https://wa.me/254724491210?text=Hi, I am interested in the Voyager Grand Circuit safari" rel="noopener" target="_blank"><i class="fa-brands fa-whatsapp"></i> Ask on WhatsApp</a>
@@ -309,6 +341,7 @@
 </div>
 </div></aside>
 </div>
+<section class="sdt-more" aria-label="Similar journeys"><div class="sdt-wrap"><h2>Not quite right? Compare similar journeys</h2><p>Every one is private to your group and can be adjusted around your dates.</p><div class="sdt-more-row"><a class="c" href="/trip/7-day-a-flagship-ultimate-kenya.html"><img src="/images/trip-ultimate-kenya-card-600.jpg" alt="Ultimate Kenya, 7 Day Flagship private safari" width="600" height="375" loading="lazy" decoding="async"><div><small>7 Day Flagship</small><strong>Ultimate Kenya</strong><span>From <b data-usd="5900">$5,900</b> per person</span></div></a><a class="c" href="/trip/7-day-c-luxury-lite-the-constellation.html"><img src="/images/trip-constellation-card-600.jpg" alt="The Constellation, 7 Day Luxury Lite private safari" width="600" height="375" loading="lazy" decoding="async"><div><small>7 Day Luxury Lite</small><strong>The Constellation</strong><span>From <b data-usd="6500">$6,500</b> per person</span></div></a><a class="c" href="/trip/5-day-c-luxury-lite-the-horizon-chaser.html"><img src="/images/trip-horizon-chaser-card-600.jpg" alt="The Horizon Chaser, 5 Day Luxury Lite private safari" width="600" height="375" loading="lazy" decoding="async"><div><small>5 Day Luxury Lite</small><strong>The Horizon Chaser</strong><span>From <b data-usd="4800">$4,800</b> per person</span></div></a></div><p class="sdt-more-cta">Or <a href="/?trip=voyager#master-booking" data-cta="trip_more_custom">tell us your dates and we will tailor The Voyager</a></p></div></section>
 </main>
 <!-- Shared footer. Icons: Font Awesome Free 6.4.0 by @fontawesome, fontawesome.com, CC BY 4.0. Elephant: Lucide Lab, ISC. -->
 <footer class="sd-footer">
@@ -369,5 +402,14 @@
 <script defer="" src="/js/currency.js"></script>
 <script src="/js/sd-header.js" defer></script>
 <script src="/js/sd-nudges.js" defer></script>
+<div class="sdt-bar" id="sdt-bar" role="region" aria-label="Enquire about The Voyager"><div class="sdt-bar-info"><b>The Voyager</b><small>From <span data-usd="4900">$4,900</span> per person</small></div><a class="sdt-bar-wa" href="https://wa.me/254724491210?text=Hi%20Sundown%2C%20I%20am%20interested%20in%20The%20Voyager" target="_blank" rel="noopener" aria-label="Ask about The Voyager on WhatsApp" data-cta="trip_bar_whatsapp"><svg viewBox="0 0 448 512" aria-hidden="true"><path fill="currentColor" d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg></a><a class="sdt-bar-go" href="/?trip=voyager#master-booking" data-cta="trip_bar_plan">Get my plan <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+<script>
+(function(){var bar=document.getElementById('sdt-bar');if(!bar||!('IntersectionObserver' in window)){if(bar)bar.classList.add('is-on');return;}
+var heroOn=true,cardOn=false,hero=document.querySelector('.sdt-ctas'),card=document.querySelector('.sdt-card');
+function up(){bar.classList.toggle('is-on',!heroOn&&!cardOn)}
+if(hero)new IntersectionObserver(function(e){heroOn=e[0].isIntersecting;up()}).observe(hero);
+if(card)new IntersectionObserver(function(e){cardOn=e[0].isIntersecting;up()},{threshold:.25}).observe(card);
+bar.addEventListener('click',function(e){var a=e.target.closest('a');if(!a)return;try{if(typeof gtag!=='undefined')gtag('event',a.getAttribute('data-cta'),{trip:'voyager'})}catch(x){}});})();
+</script>
 </body>
 </html>
