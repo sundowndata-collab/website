@@ -782,6 +782,40 @@ body{padding-top:0}
   .sd-pl-mini img{width:64px;height:40px;object-fit:cover;border-radius:8px;flex:0 0 auto}
   .sd-pl-mini b{font-family:'Playfair Display',Georgia,serif;color:#0B3A1D}
 }
+/* Booking section upgrade */
+.sd-mb{background:radial-gradient(120% 80% at 50% 0,#14532d 0,#0B3A1D 38%,#06170D 100%);padding:88px 0 92px;border-top:1px solid rgba(201,138,39,.2)}
+.sd-mb h2{line-height:1.1}
+.sd-mb-lead{max-width:36rem;margin:0 auto 22px;color:#c8c3bd;font-size:16px;line-height:1.65}
+.sd-mb-trust{list-style:none;margin:0 auto 40px;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+.sd-mb-trust li{display:inline-flex;align-items:center;gap:8px;margin:0;padding:9px 14px;border-radius:999px;border:1px solid rgba(201,138,39,.4);background:rgba(255,255,255,.05);color:#f5eedf;font:600 13px/1 'Inter',sans-serif}
+.sd-mb-trust li b{color:#E9B865;font-weight:900}
+.sd-mb-trust svg{width:15px;height:15px;color:#E9B865;flex:0 0 auto}
+.sd-mb-privacy{margin:22px 0 0;color:#a8a29e;font-size:12.5px}
+.sd-pl-form{border:1px solid rgba(201,138,39,.35);box-shadow:0 30px 80px rgba(0,0,0,.45)!important}
+.sd-pl-next,.sd-pl-submit{min-height:56px;border-radius:12px;font-size:15px;letter-spacing:.04em;box-shadow:0 10px 24px rgba(11,58,29,.25)}
+.sd-pl-submit{background:#C98A27;color:#0d1f16}
+.sd-pl-submit:hover{background:#0B3A1D;color:#fff}
+.sd-pl-or{margin:14px 0 0;text-align:center;font-size:13.5px;color:#57534e}
+.sd-pl-or a{color:#0B3A1D;font-weight:800;text-decoration:underline;text-underline-offset:3px;text-decoration-color:#C98A27}
+.sd-chips{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+.sd-chips[hidden]{display:none}
+.sd-chips button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-height:66px;padding:10px 6px;border-radius:12px;border:1.5px solid #e7e5e4;background:#fafaf9;cursor:pointer;font-family:'Inter',sans-serif;transition:border-color .15s,background .15s,transform .15s}
+.sd-chips button b{font-size:16px;font-weight:900;color:#1c1917;line-height:1}
+.sd-chips button small{font-size:11px;font-weight:600;color:#78716c;line-height:1.2;text-align:center}
+.sd-chips button:hover{border-color:#C98A27;transform:translateY(-1px)}
+.sd-chips button[aria-pressed="true"]{border-color:#0B3A1D;background:#EAF2EC;box-shadow:inset 0 0 0 1px #0B3A1D}
+.sd-chips button[aria-pressed="true"] b{color:#0B3A1D}
+.sd-chips.is-err button{border-color:#fca5a5}
+.sd-chips-err{margin:8px 0 0;color:#b91c1c;font-size:12.5px;font-weight:700}
+.sd-chips-err[hidden]{display:none}
+.sd-sr{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;border:0!important}
+.sd-pl-promise{margin:16px 0 0;list-style:none;padding:0;display:grid;gap:10px}
+.sd-pl-promise li{display:flex;gap:10px;align-items:flex-start;margin:0;font-size:14px;line-height:1.45;color:#f5eedf}
+.sd-pl-promise svg{width:18px;height:18px;flex:0 0 auto;margin-top:1px;color:#0d1f16;background:#E9B865;border-radius:50%;padding:3px}
+.sd-pl-proof{margin:16px 0 0;padding:14px 16px;border-radius:12px;background:rgba(255,255,255,.06);border:1px solid rgba(245,238,223,.14)}
+.sd-pl-proof p{margin:0;font-size:13.5px;line-height:1.55;color:#f5eedf;font-style:italic}
+.sd-pl-proof span{display:block;margin-top:6px;font-size:12px;color:#E3A845;font-weight:700;font-style:normal}
+@media (max-width:640px){.sd-mb{padding:64px 0 72px}.sd-mb-trust{gap:8px;margin-bottom:28px}.sd-mb-trust li{font-size:12px;padding:8px 11px}.sd-chips{grid-template-columns:repeat(6,minmax(0,1fr))}.sd-chips button{grid-column:span 2}.sd-chips button:nth-child(n+4){grid-column:span 3}.sd-chips button{min-height:60px}}
 @media (max-width:640px){
   .sd-pl-form{padding:22px 18px 20px}
   .sd-pl-step{grid-template-columns:1fr}
@@ -1365,13 +1399,19 @@ if(typeof gtag!=='undefined')gtag('event','field_gallery_more');});})();
 </section>
 
         <!-- BOOKING FORM -->
-        <section id="master-booking" class="py-16 bg-stone-900 text-white">
+        <section id="master-booking" class="sd-mb text-white">
             <div class="sd-pl-wrap mx-auto px-4 text-center">
                 <span class="text-brand-accentGold uppercase font-black tracking-widest text-xs block mb-3">Your free itinerary</span>
                 <h2 class="text-3xl md:text-5xl font-serif font-black mb-4">Tell us about the trip you are dreaming of</h2>
-                <p class="text-stone-400 max-w-xl mx-auto mb-12 text-sm leading-relaxed">
-                    Three quick steps, about a minute. Your plan builds as you answer, then a real person in Nairobi sends your full itinerary and a straight price within 24 hours. No sales script and nothing to pay to ask.
+                <p class="sd-mb-lead">
+                    Three quick steps, about a minute. Your plan builds as you answer, then a real person in Nairobi sends your full itinerary and a straight price within 24 hours.
                 </p>
+                <ul class="sd-mb-trust" aria-label="Why guests trust us">
+                    <li><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.5l2.9 6.2 6.6.7-5 4.5 1.4 6.6L12 17.2 6.1 20.5l1.4-6.6-5-4.5 6.6-.7z"/></svg><b>4.9</b> on Google</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Reply within 2 hours</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Nothing to pay to ask</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>Price held for 30 days</li>
+                </ul>
 
                 <!-- SUCCESS MESSAGE -->
                 <div id="form-success" class="hidden bg-brand-green border border-brand-accentGold rounded-2xl p-10 max-w-2xl mx-auto mb-8 text-center">
@@ -1400,8 +1440,16 @@ if(typeof gtag!=='undefined')gtag('event','field_gallery_more');});})();
                             <p id="date-help" class="text-xs text-stone-500 mt-2">Tap to choose your arrival and departure dates</p>
                         </div>
                         <div>
-                            <label class="block text-xs font-black uppercase tracking-wider text-stone-400 mb-2">Who is coming?</label>
-                            <select name="group_size" required class="w-full p-4 border border-stone-200 rounded-lg text-sm bg-stone-50 text-stone-700 focus:outline-none focus:ring-2 focus:ring-brand-green transition">
+                            <label class="block text-xs font-black uppercase tracking-wider text-stone-400 mb-2" id="group-label" for="group-size">Who is coming?</label>
+                            <div class="sd-chips" role="group" aria-labelledby="group-label" hidden>
+                                <button type="button" data-v="1"><b>Just me</b><small>Solo</small></button>
+                                <button type="button" data-v="2"><b>2</b><small>Couple or pair</small></button>
+                                <button type="button" data-v="3"><b>3</b><small>Small group</small></button>
+                                <button type="button" data-v="4"><b>4</b><small>One vehicle</small></button>
+                                <button type="button" data-v="5+"><b>5+</b><small>Family or group</small></button>
+                            </div>
+                            <p class="sd-chips-err" hidden>Choose who is coming to continue</p>
+                            <select name="group_size" id="group-size" required class="w-full p-4 border border-stone-200 rounded-lg text-sm bg-stone-50 text-stone-700 focus:outline-none focus:ring-2 focus:ring-brand-green transition">
                             <option value="" disabled selected>Choose one</option>
                             <option value="1">Just me</option>
                             <option value="2">Two of us</option>
@@ -1491,10 +1539,11 @@ if(typeof gtag!=='undefined')gtag('event','field_gallery_more');});})();
                             <i class="fa-solid fa-arrow-right-long text-sm"></i>
                         </button>
                     </div>
+                    <p class="sd-pl-or">Rather talk it through? <a href="https://wa.me/254724491210?text=Hi%20Sundown%2C%20I%20would%20like%20help%20planning%20a%20private%20safari" target="_blank" rel="noopener" data-cta="form_whatsapp">Message us on WhatsApp</a></p>
                 </form>
                 <aside id="sd-pl-card" class="sd-pl-card" aria-live="polite" aria-label="Your plan"></aside>
                 </div>
-                <p class="text-xs text-stone-500 mt-6"><i class="fa-solid fa-lock mr-1"></i> Your details go straight to our team in Nairobi and are never shared. We reply within 2 hours during field hours.</p>
+                <p class="sd-mb-privacy"><i class="fa-solid fa-lock mr-1"></i> Your details go straight to our team in Nairobi and are never shared.</p>
             </div>
         </section>
 

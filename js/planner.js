@@ -97,7 +97,16 @@
     var n = nights();
     var hidTrip = form.elements.plan_trip, hidEst = form.elements.plan_estimate;
     if (!t) {
-      card.innerHTML = '<p class="sd-pl-card-kicker">Your plan</p><div class="sd-pl-empty"><p class="sd-pl-empty-h">Your safari builds here as you answer.</p><p>Pick your dates and who is coming, and we will match you to the right trip with a starting price.</p></div>';
+      card.innerHTML = '<p class="sd-pl-card-kicker">Your plan, free</p>' +
+        '<figure class="sd-pl-photo"><img src="/images/strip-lions-vehicle-600.jpg" alt="Lions a few metres from a Sundown Land Cruiser" width="600" height="450"><figcaption>Builds as you answer</figcaption></figure>' +
+        '<p class="sd-pl-empty-h" style="font-family:\'Playfair Display\',Georgia,serif;font-size:21px;font-weight:800;color:#fff;margin:0 0 4px">Here is what you get</p>' +
+        '<ul class="sd-pl-promise">' +
+        '<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>A day by day draft itinerary matched to your dates</span></li>' +
+        '<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>A straight price with park fees included</span></li>' +
+        '<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>Your price held for 30 days, no deposit to ask</span></li>' +
+        '<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>A real person in Nairobi replying within 2 hours</span></li>' +
+        '</ul>' +
+        '<div class="sd-pl-proof"><p>Thanks to him, I got to see the Big Five for the very first time.</p><span>Doreen L., on her guide Omar. Google review, rated 4.9 by 16 guests</span></div>';
       mini.hidden = true; hidTrip.value = ''; hidEst.value = '';
       return;
     }
@@ -176,6 +185,35 @@
     pctEl.classList.toggle('is-done', target >= 100);
   }
 
+  // ---------- group size as one tap chips (the select stays for the form post) ----------
+  var groupSel = form.elements.group_size;
+  var chips = form.querySelector('.sd-chips');
+  var chipErrEl = form.querySelector('.sd-chips-err');
+  function chipErr(on) {
+    if (!chips) return;
+    chips.classList.toggle('is-err', on);
+    if (chipErrEl) chipErrEl.hidden = !on;
+  }
+  function sync() {
+    if (!chips) return;
+    Array.prototype.forEach.call(chips.querySelectorAll('button'), function (b) {
+      b.setAttribute('aria-pressed', b.getAttribute('data-v') === groupSel.value ? 'true' : 'false');
+    });
+  }
+  if (chips && groupSel) {
+    chips.hidden = false;
+    groupSel.classList.add('sd-sr');
+    groupSel.setAttribute('tabindex', '-1');
+    groupSel.setAttribute('aria-hidden', 'true');
+    chips.addEventListener('click', function (e) {
+      var b = e.target.closest('button'); if (!b) return;
+      groupSel.value = b.getAttribute('data-v');
+      groupSel.dispatchEvent(new Event('change', { bubbles: true }));
+      sync(); chipErr(false); start();
+      track('form_group_pick', { group_size: groupSel.value });
+    });
+  }
+
   // ---------- steps ----------
   function show(i) {
     current = i;
@@ -184,6 +222,7 @@
     updateProgress();
     backBtn.hidden = i === 0;
     nextBtn.hidden = i === steps.length - 1;
+    if (i < steps.length - 1) nextBtn.textContent = 'Next: ' + STEP_TITLES[i + 1].toLowerCase();
     submitBtn.hidden = i !== steps.length - 1;
     if (i === steps.length - 1 && btnText.textContent.indexOf('Sending') === -1) btnText.textContent = 'Send me this plan';
     if (i > reached) { reached = i; track('form_step', { step: i + 1, step_name: STEP_TITLES[i] }); }
@@ -203,6 +242,7 @@
         }
         continue;
       }
+      if (f.name === 'group_size' && chips && !f.value) { chipErr(true); ok = false; break; }
       if (!f.checkValidity()) { f.reportValidity(); ok = false; break; }
     }
     return ok;
@@ -249,6 +289,7 @@
   }
 
   form.classList.add('is-stepped');
+  sync();
   progress.hidden = false;
   if (picked) {
     var opt = form.querySelector('select[name="budget_range"] option[data-usd-label="' + TIER_NAME[picked.tier] + '"]');
