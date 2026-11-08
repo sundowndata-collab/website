@@ -1115,151 +1115,201 @@ body{padding-top:0}
         </section>
 
         <!-- SAFARI GRID -->
-        <section id="grid-anchor" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-20">
-                <h2 class="text-3xl md:text-5xl font-serif font-black text-brand-green">Nine private journeys. One promise: it is yours alone.</h2>
-                <p class="text-stone-600 text-base mt-4 leading-relaxed">Choose your length. Choose your style. Every journey comes with your own Land Cruiser and a guide who knows this land by name, never shared with strangers, so every decision is yours. Travelling as a big family or group? We plan the vehicles around you.</p>
-                <div class="sd-fx-spot" data-fx-picker></div>
-            </div>
+        <section id="grid-anchor" class="sdg">
+<style>
+section#grid-anchor.sdg{background:#F9F6F1;padding:96px 0 88px!important}
+.sdg-wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.sdg-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px 48px;margin:0 0 30px}
+.sdg-head > div{max-width:680px}
+.sdg-label{display:block;color:#C98A27;font:800 12px/1 'Inter',sans-serif;letter-spacing:.3em;text-transform:uppercase;margin:0 0 16px}
+#grid-anchor h2.sdg-h2{font-family:'Playfair Display',Georgia,serif;font-weight:800;color:#0B3A1D;font-size:clamp(32px,4.2vw,50px)!important;line-height:1.08!important;letter-spacing:-.01em;margin:0 0 16px}
+.sdg-h2 em{font-style:italic;color:#C98A27;font-weight:700}
+.sdg-sub{margin:0;color:#57534e;font-size:17px;line-height:1.65}
+.sdg-fx{flex:0 0 auto}
+.sdg-fx .sd-fx-spot{margin:0}
+.sdg-fx .sd-fx-line{justify-content:flex-end;max-width:300px;text-align:right}
+.sdg-tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;padding:6px;margin:0 0 44px;background:#fff;border:1px solid #e7e0d2;border-radius:18px;box-shadow:0 10px 30px rgba(11,58,29,.06);position:sticky;top:84px;z-index:20}
+.sdg-tabs button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-height:62px;border:0;border-radius:13px;background:transparent;cursor:pointer;font-family:'Inter',sans-serif;transition:background .2s,color .2s}
+.sdg-tabs button b{font-size:15px;font-weight:800;color:#1c1917}
+.sdg-tabs button small{font-size:12px;font-weight:600;color:#78716c}
+.sdg-tabs button:hover{background:#F6F3EC}
+.sdg-tabs button[aria-selected="true"]{background:#0B3A1D;box-shadow:0 8px 20px rgba(11,58,29,.25)}
+.sdg-tabs button[aria-selected="true"] b{color:#fff}
+.sdg-tabs button[aria-selected="true"] small{color:#E9B865}
+.sdg-tabs button:focus-visible{outline:2px solid #C98A27;outline-offset:2px}
+.sdg-group{margin:0 0 56px;scroll-margin-top:170px}
+.sdg-group:last-child{margin-bottom:0}
+.sdg-group[hidden]{display:none}
+.sdg-ghead{display:flex;align-items:center;gap:16px;margin:0 0 22px;padding:0 0 16px;border-bottom:1px solid #e7e0d2}
+.sdg-gicon{width:46px;height:46px;border-radius:14px;display:flex;align-items:center;justify-content:center;background:#0B3A1D;color:#E9B865;font-size:17px;flex:0 0 auto}
+.sdg-ghead h3{margin:0;font-family:'Playfair Display',Georgia,serif;font-weight:800;font-size:26px;line-height:1.15;color:#0B3A1D}
+.sdg-ghead p{margin:3px 0 0;color:#78716c;font-size:14.5px}
+.sdg-swipe{display:none;margin-left:auto;color:#a8a29e;font:800 11px/1 'Inter',sans-serif;letter-spacing:.16em;text-transform:uppercase}
+.sdg-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.sdg-card{display:flex;flex-direction:column;background:#fff;border:1px solid #e7e0d2;border-radius:20px;overflow:hidden;text-decoration:none;color:inherit;box-shadow:0 2px 6px rgba(11,58,29,.04);transition:transform .25s,box-shadow .25s,border-color .25s}
+.sdg-card:hover{transform:translateY(-4px);box-shadow:0 24px 50px rgba(11,58,29,.14);border-color:#C98A27}
+.sdg-card.is-pop{border:2px solid #0B3A1D;box-shadow:0 18px 40px rgba(11,58,29,.14)}
+.sdg-img{position:relative;aspect-ratio:16/11;overflow:hidden;background:#e7e5e4}
+.sdg-img img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.sdg-card:hover .sdg-img img{transform:scale(1.05)}
+.sdg-img::after{content:'';position:absolute;inset:0 0 auto 0;height:40%;background:linear-gradient(to bottom,rgba(6,23,13,.35),rgba(6,23,13,0));pointer-events:none}
+.sdg-tier,.sdg-days,.sdg-pop{position:absolute;z-index:1;font:800 11px/1 'Inter',sans-serif;letter-spacing:.12em;text-transform:uppercase;padding:8px 11px;border-radius:999px}
+.sdg-tier{left:14px;top:14px;background:#fff;color:#0B3A1D;box-shadow:0 4px 12px rgba(0,0,0,.15)}
+.sdg-days{right:14px;top:14px;background:rgba(6,23,13,.7);color:#fff;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.sdg-pop{left:14px;bottom:14px;box-shadow:0 6px 16px rgba(0,0,0,.25);background:#C98A27;color:#0d1f16;display:inline-flex;gap:6px;align-items:center}
+.sdg-body{display:flex;flex-direction:column;flex:1;padding:22px 22px 20px}
+.sdg-body h3{margin:0 0 10px;font-family:'Playfair Display',Georgia,serif;font-weight:800;font-size:25px;line-height:1.15;color:#0B3A1D}
+.sdg-desc{margin:0 0 16px;color:#57534e;font-size:14.5px;line-height:1.6;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.sdg-inc{display:flex;gap:8px;align-items:flex-start;margin:0 0 18px;color:#0B3A1D;font:600 12.5px/1.45 'Inter',sans-serif}
+.sdg-inc svg{width:16px;height:16px;flex:0 0 auto;padding:2px;border-radius:50%;background:#0B3A1D;color:#fff;margin-top:1px}
+.sdg-foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:16px;border-top:1px solid #f0ebe1}
+.sdg-price{margin:0;display:flex;align-items:baseline;flex-wrap:wrap;gap:0 6px;color:#78716c}
+.sdg-price small{font-size:12.5px;font-weight:600}
+.sdg-price b{font-family:'Playfair Display',Georgia,serif;font-size:26px;font-weight:800;color:#0B3A1D;line-height:1}
+.sdg-go{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#0B3A1D;color:#fff;flex:0 0 auto;transition:background .2s,transform .2s}
+.sdg-go svg{width:18px;height:18px}
+.sdg-card:hover .sdg-go{background:#C98A27;color:#0d1f16;transform:translateX(3px)}
+.sdg-note{margin:44px 0 0;text-align:center;color:#57534e;font-size:15px}
+.sdg-note a{color:#0B3A1D;font-weight:800;text-decoration:underline;text-underline-offset:4px;text-decoration-color:#C98A27}
+@media (max-width:960px){.sdg-head{flex-direction:column;align-items:flex-start}.sdg-fx .sd-fx-line{justify-content:flex-start;text-align:left}}
+@media (max-width:767px){
+  section#grid-anchor.sdg{padding:64px 0 60px!important}
+  .sdg-wrap{padding:0 16px}
+  #grid-anchor h2.sdg-h2{font-size:32px!important}
+  .sdg-sub{font-size:16px}
+  .sdg-tabs{grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;padding:4px;top:68px;margin-bottom:30px;border-radius:16px}
+  .sdg-tabs button{min-height:56px;padding:6px 4px;border-radius:12px;text-align:center}
+  .sdg-tabs button b{font-size:13px;line-height:1.15}
+  .sdg-tabs button small{font-size:10.5px;line-height:1.2}
+  .sdg-ghead h3{font-size:22px}
+  .sdg-gicon{width:40px;height:40px;font-size:15px}
+  .sdg-swipe{display:inline}
+  .sdg-row{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -16px;padding:4px 16px 14px;scrollbar-width:none}
+  .sdg-row::-webkit-scrollbar{display:none}
+  .sdg-card{flex:0 0 84%;scroll-snap-align:start;scroll-margin-left:16px}
+  .sdg-body{padding:18px 18px 16px}
+  .sdg-body h3{font-size:22px}
+  .sdg-group{margin-bottom:40px}
+}
+</style>
+<div class="sdg-wrap">
+  <div class="sdg-head">
+    <div>
+      <span class="sdg-label">Our safaris</span>
+      <h2 class="sdg-h2">Nine private journeys. <em>One promise: it is yours alone.</em></h2>
+      <p class="sdg-sub">Your own Land Cruiser and a guide who knows this land by name, never shared with strangers. Pick a length, then a style. Travelling as a big family or group? We plan the vehicles around you.</p>
+    </div>
+    <div class="sdg-fx"><div class="sd-fx-spot" data-fx-picker></div></div>
+  </div>
+  <div class="sdg-tabs" role="tablist" aria-label="Filter safaris by length"><button type="button" role="tab" aria-selected="true" data-g="all"><b>All journeys</b><small>9 trips</small></button><button type="button" role="tab" aria-selected="false" data-g="3"><b>3 days</b><small>from <span data-usd="1500">$1,500</span></small></button><button type="button" role="tab" aria-selected="false" data-g="5"><b>5 days</b><small>from <span data-usd="2300">$2,300</span></small></button><button type="button" role="tab" aria-selected="false" data-g="7"><b>7 days</b><small>from <span data-usd="4900">$4,900</span></small></button></div>
+<div class="sdg-group" id="safaris-3-day" data-g="3">
+  <div class="sdg-ghead"><span class="sdg-gicon"><i class="fa-solid fa-hourglass-start" aria-hidden="true"></i></span><div><h3>3 day safaris</h3><p>Short escapes. Back in Nairobi before the weekend ends.</p></div><span class="sdg-swipe" aria-hidden="true">Swipe</span></div>
+  <div class="sdg-row">
+<a href="/trip/3-day-a-adventure-the-explorer.html" class="sdg-card">
+  <div class="sdg-img"><img src="/images/trip-explorer-card-600.jpg" srcset="/images/trip-explorer-card-600.jpg 600w, /images/trip-explorer-card-1200.jpg 1200w" sizes="(max-width: 767px) 84vw, 380px" alt="Open sided safari Land Rover ready for a game drive in Kenya, Sundown Safaris 3 Day Explorer private safari"  width="800" height="450" loading="lazy"><span class="sdg-tier">Adventure</span><span class="sdg-days">3 Days</span></div>
+  <div class="sdg-body">
+    <h3>The Explorer</h3>
+    <p class="sdg-desc">Three days, three sunrises and a lot of ground. Early starts, a bush lunch in the field and a guide who reads tracks like a book. You are back in Nairobi before the weekend ends, with stories that take a week to tell.</p>
+    <p class="sdg-inc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>All inclusive: private vehicle, guide, park fees and meals</p>
+    <div class="sdg-foot"><p class="sdg-price"><small>From</small><b data-usd="1500">$1,500</b><small>per person</small></p><span class="sdg-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+  </div>
+</a>
+<a href="/trip/3-day-b-classic-the-photographer.html" class="sdg-card">
+  <div class="sdg-img"><img src="/images/trip-photographer-card-600.jpg" srcset="/images/trip-photographer-card-600.jpg 600w, /images/trip-photographer-card-900.jpg 900w, /images/trip-photographer-card-1200.jpg 1200w" sizes="(max-width: 767px) 84vw, 380px" alt="A Sundown Safaris guest meeting a zebra up close, Photographer 3 day private safari"  width="800" height="500" loading="lazy"><span class="sdg-tier">Classic</span><span class="sdg-days">3 Days</span></div>
+  <div class="sdg-body">
+    <h3>The Photographer</h3>
+    <p class="sdg-desc">Your guide switches off the engine and stays as long as you need. No rushing, no engine shake, just you and the frame you have been chasing for years.</p>
+    <p class="sdg-inc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>All inclusive: private vehicle, guide, park fees and meals</p>
+    <div class="sdg-foot"><p class="sdg-price"><small>From</small><b data-usd="2800">$2,800</b><small>per person</small></p><span class="sdg-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+  </div>
+</a>
+<a href="/trip/3-day-c-luxury-lite-the-sundowner.html" class="sdg-card">
+  <div class="sdg-img"><img src="/images/trip-sundowner-card-600.jpg" srcset="/images/trip-sundowner-card-600.jpg 600w, /images/trip-sundowner-card-900.jpg 900w, /images/trip-sundowner-card-1200.jpg 1200w" sizes="(max-width: 767px) 84vw, 380px" alt="Sundowner drinks set beside a safari Land Cruiser at golden hour, Sundown Safaris Sundowner package"  width="800" height="450" loading="lazy"><span class="sdg-tier">Luxury Lite</span><span class="sdg-days">3 Days</span></div>
+  <div class="sdg-body">
+    <h3>The Sundowner</h3>
+    <p class="sdg-desc">Skip the road. Fly in, and your camp is waiting with a glass already poured. Three days of wildlife, then one flight home, with no dust and no long hours in a vehicle.</p>
+    <p class="sdg-inc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>All inclusive: private vehicle, guide, park fees and meals</p>
+    <div class="sdg-foot"><p class="sdg-price"><small>From</small><b data-usd="3400">$3,400</b><small>per person</small></p><span class="sdg-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+  </div>
+</a>
+  </div>
+</div>
+<div class="sdg-group" id="safaris-5-day" data-g="5">
+  <div class="sdg-ghead"><span class="sdg-gicon"><i class="fa-solid fa-hourglass-half" aria-hidden="true"></i></span><div><h3>5 day safaris</h3><p>The classic safari. Time for two regions or a deep Mara stay.</p></div><span class="sdg-swipe" aria-hidden="true">Swipe</span></div>
+  <div class="sdg-row">
+<a href="/trip/5-day-a-adventure-the-trailblazer.html" class="sdg-card">
+  <div class="sdg-img"><img src="/images/trip-trailblazer-card-600.jpg" srcset="/images/trip-trailblazer-card-600.jpg 600w, /images/trip-trailblazer-card-900.jpg 900w, /images/trip-trailblazer-card-1200.jpg 1200w" sizes="(max-width: 767px) 84vw, 380px" alt="Open safari Land Cruiser ready for an afternoon drive, Trailblazer 5 day private safari"  width="800" height="500" loading="lazy"><span class="sdg-tier">Adventure</span><span class="sdg-days">5 Days</span></div>
+  <div class="sdg-body">
+    <h3>The Trailblazer</h3>
+    <p class="sdg-desc">Start in Samburu among reticulated giraffe and Grevy's zebra, animals you will not see in the Mara. Then fly south to the Mara itself. Two very different Kenyas in five days.</p>
+    <p class="sdg-inc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>All inclusive: private vehicle, guide, park fees and meals</p>
+    <div class="sdg-foot"><p class="sdg-price"><small>From</small><b data-usd="2300">$2,300</b><small>per person</small></p><span class="sdg-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+  </div>
+</a>
+<a href="/trip/5-day-b-classic-the-dreamcatcher.html" class="sdg-card is-pop">
+  <div class="sdg-img"><img src="/images/trip-dreamcatcher-card-600.jpg" srcset="/images/trip-dreamcatcher-card-600.jpg 600w, /images/trip-dreamcatcher-card-900.jpg 900w, /images/trip-dreamcatcher-card-1200.jpg 1200w" sizes="(max-width: 767px) 84vw, 380px" alt="Male lion walking past a safari vehicle on a Sundown Safaris game drive, Dreamcatcher private safari"  width="800" height="450" loading="lazy"><span class="sdg-pop"><i class="fa-solid fa-star" aria-hidden="true"></i> Most popular</span><span class="sdg-tier">Classic</span><span class="sdg-days">5 Days</span></div>
+  <div class="sdg-body">
+    <h3>The Dreamcatcher</h3>
+    <p class="sdg-desc">Five days is when Kenya starts to open up. On day one your guide maps the pride territories. By day three you are spotting animals before he says a word.</p>
+    <p class="sdg-inc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>All inclusive: private vehicle, guide, park fees and meals</p>
+    <div class="sdg-foot"><p class="sdg-price"><small>From</small><b data-usd="3900">$3,900</b><small>per person</small></p><span class="sdg-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+  </div>
+</a>
+<a href="/trip/5-day-c-luxury-lite-the-horizon-chaser.html" class="sdg-card">
+  <div class="sdg-img"><img src="/images/trip-horizon-chaser-card-600.jpg" srcset="/images/trip-horizon-chaser-card-600.jpg 600w, /images/trip-horizon-chaser-card-900.jpg 900w, /images/trip-horizon-chaser-card-1200.jpg 1200w" sizes="(max-width: 767px) 84vw, 380px" alt="Land Cruiser in silhouette at sunset on the plains, Horizon Chaser 5 day private safari"  width="800" height="500" loading="lazy"><span class="sdg-tier">Luxury Lite</span><span class="sdg-days">5 Days</span></div>
+  <div class="sdg-body">
+    <h3>The Horizon Chaser</h3>
+    <p class="sdg-desc">Wake in the dark, then rise over the Mara as the sun breaks the horizon. One hour above the plains that guests talk about for years.</p>
+    <p class="sdg-inc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>All inclusive: private vehicle, guide, park fees and meals</p>
+    <div class="sdg-foot"><p class="sdg-price"><small>From</small><b data-usd="4800">$4,800</b><small>per person</small></p><span class="sdg-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+  </div>
+</a>
+  </div>
+</div>
+<div class="sdg-group" id="safaris-7-day" data-g="7">
+  <div class="sdg-ghead"><span class="sdg-gicon"><i class="fa-solid fa-hourglass" aria-hidden="true"></i></span><div><h3>7 day safaris</h3><p>The full story. A week to really know the land.</p></div><span class="sdg-swipe" aria-hidden="true">Swipe</span></div>
+  <div class="sdg-row">
+<a href="/trip/7-day-a-flagship-ultimate-kenya.html" class="sdg-card">
+  <div class="sdg-img"><img src="/images/trip-ultimate-kenya-card-600.jpg" srcset="/images/trip-ultimate-kenya-card-600.jpg 600w, /images/trip-ultimate-kenya-card-1200.jpg 1200w" sizes="(max-width: 767px) 84vw, 380px" alt="Lion resting below a snow capped Kilimanjaro in Amboseli, Ultimate Kenya 7 day circuit"  width="800" height="450" loading="lazy"><span class="sdg-tier">Flagship</span><span class="sdg-days">7 Days</span></div>
+  <div class="sdg-body">
+    <h3>Ultimate Kenya</h3>
+    <p class="sdg-desc">Big elephant herds with Kilimanjaro rising behind them, then four days in the Mara with the big cats. The whole of Kenya, with nothing left out.</p>
+    <p class="sdg-inc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>All inclusive: private vehicle, guide, park fees and meals</p>
+    <div class="sdg-foot"><p class="sdg-price"><small>From</small><b data-usd="5900">$5,900</b><small>per person</small></p><span class="sdg-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+  </div>
+</a>
+<a href="/trip/7-day-b-classic-the-voyager.html" class="sdg-card">
+  <div class="sdg-img"><img src="/images/trip-voyager-card-600.jpg" srcset="/images/trip-voyager-card-600.jpg 600w, /images/trip-voyager-card-900.jpg 900w, /images/trip-voyager-card-1200.jpg 1200w" sizes="(max-width: 767px) 84vw, 380px" alt="Sundown guide with guests beside the safari vehicle, Voyager 7 day private safari"  width="800" height="500" loading="lazy"><span class="sdg-tier">Classic</span><span class="sdg-days">7 Days</span></div>
+  <div class="sdg-body">
+    <h3>The Voyager</h3>
+    <p class="sdg-desc">Seven days is how long it takes to really know a place. By the end your guide can tell one lion from another, and you probably can too. The Mara at depth, not at speed.</p>
+    <p class="sdg-inc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>All inclusive: private vehicle, guide, park fees and meals</p>
+    <div class="sdg-foot"><p class="sdg-price"><small>From</small><b data-usd="4900">$4,900</b><small>per person</small></p><span class="sdg-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+  </div>
+</a>
+<a href="/trip/7-day-c-luxury-lite-the-constellation.html" class="sdg-card">
+  <div class="sdg-img"><img src="/images/trip-constellation-card-600.jpg" srcset="/images/trip-constellation-card-600.jpg 600w, /images/trip-constellation-card-900.jpg 900w, /images/trip-constellation-card-1200.jpg 1200w" sizes="(max-width: 767px) 84vw, 380px" alt="Sun setting behind the Land Cruiser after a game drive, Constellation 7 day private safari"  width="800" height="500" loading="lazy"><span class="sdg-tier">Luxury Lite</span><span class="sdg-days">7 Days</span></div>
+  <div class="sdg-body">
+    <h3>The Constellation</h3>
+    <p class="sdg-desc">Sleep on an open platform under the Milky Way, with an armed ranger nearby. You can hear the wilderness all around you. It is a night you will remember for the rest of your life.</p>
+    <p class="sdg-inc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>All inclusive: private vehicle, guide, park fees and meals</p>
+    <div class="sdg-foot"><p class="sdg-price"><small>From</small><b data-usd="6500">$6,500</b><small>per person</small></p><span class="sdg-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+  </div>
+</a>
+  </div>
+</div>
 
-            <!-- 3-Day -->
-            <div class="mb-20">
-                <div id="safaris-3-day" class="scroll-mt-28 text-sm font-black uppercase tracking-widest text-brand-accentGold mb-6 flex items-center gap-2.5 border-b border-stone-200 pb-3">
-                    <i class="fa-solid fa-hourglass-start text-base"></i> 3 Day Safaris<span class="sd-swipe" aria-hidden="true">Swipe <i class="fa-solid fa-arrows-left-right"></i></span>
-                </div>
-                <div class="grid md:grid-cols-3 gap-6">
-                    <a href="/trip/3-day-a-adventure-the-explorer.html" class="bg-white border border-stone-200 rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:border-brand-green transition duration-300 group flex flex-col">
-                        <div class="h-56 overflow-hidden relative bg-stone-200"><img src="/images/trip-explorer-card-600.jpg" srcset="/images/trip-explorer-card-600.jpg 600w, /images/trip-explorer-card-1200.jpg 1200w" sizes="(max-width: 767px) calc(100vw - 32px), 400px" alt="Open sided safari Land Rover ready for a game drive in Kenya, Sundown Safaris 3 Day Explorer private safari" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" width="800" height="450" loading="lazy"></div>
-                        <div class="p-6 flex-1 flex flex-col justify-between">
-                            <div>
-                                <span class="text-xs font-black uppercase tracking-widest text-stone-400 mb-2 block">Adventure, 3 Days</span>
-                                <h3 class="font-serif font-bold text-2xl text-brand-darkText">"The Explorer"</h3>
-                                <p class="text-lg font-black text-brand-green mt-2 mb-1">From <span data-usd="1500">$1,500</span> per person <span class="text-xs font-normal text-stone-400">all inclusive</span></p>
-                                <p class="text-sm text-stone-600 mt-1">Three days, three sunrises and a lot of ground. Early starts, a bush lunch in the field and a guide who reads tracks like a book. You are back in Nairobi before the weekend ends, with stories that take a week to tell.</p>
-                            </div>
-                            <span class="inline-block text-sm font-extrabold text-brand-green mt-5">See the itinerary and price</span>
-                        </div>
-                    </a>
-                    <a href="/trip/3-day-b-classic-the-photographer.html" class="bg-white border-2 border-brand-accentGold rounded-xl overflow-hidden shadow-md hover:shadow-xl transition duration-300 group flex flex-col">
-                        <div class="h-56 overflow-hidden relative bg-stone-200"><img src="/images/trip-photographer-card-600.jpg" srcset="/images/trip-photographer-card-600.jpg 600w, /images/trip-photographer-card-900.jpg 900w, /images/trip-photographer-card-1200.jpg 1200w" sizes="(max-width: 767px) calc(100vw - 32px), 400px" alt="A Sundown Safaris guest meeting a zebra up close, Photographer 3 day private safari" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" width="800" height="500" loading="lazy"></div>
-                        <div class="p-6 flex-1 flex flex-col justify-between">
-                            <div>
-                                <span class="text-xs font-black uppercase tracking-widest text-stone-400 mb-2 block">Classic, 3 Days</span>
-                                <h3 class="font-serif font-bold text-2xl text-brand-darkText">"The Photographer"</h3>
-                                <p class="text-lg font-black text-brand-accentGold mt-2 mb-1">From <span data-usd="2800">$2,800</span> per person <span class="text-xs font-normal text-stone-400">all inclusive</span></p>
-                                <p class="text-sm text-stone-600 mt-1">Your guide switches off the engine and stays as long as you need. No rushing, no engine shake, just you and the frame you have been chasing for years.</p>
-                            </div>
-                            <span class="inline-block text-sm font-extrabold text-brand-accentGold mt-5">See the itinerary and price</span>
-                        </div>
-                    </a>
-                    <a href="/trip/3-day-c-luxury-lite-the-sundowner.html" class="bg-white border border-stone-200 rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:border-brand-green transition duration-300 group flex flex-col">
-                        <div class="h-56 overflow-hidden relative bg-stone-200"><img src="/images/trip-sundowner-card-600.jpg" srcset="/images/trip-sundowner-card-600.jpg 600w, /images/trip-sundowner-card-900.jpg 900w, /images/trip-sundowner-card-1200.jpg 1200w" sizes="(max-width: 767px) calc(100vw - 32px), 400px" alt="Sundowner drinks set beside a safari Land Cruiser at golden hour, Sundown Safaris Sundowner package" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" width="800" height="450" loading="lazy"></div>
-                        <div class="p-6 flex-1 flex flex-col justify-between">
-                            <div>
-                                <span class="text-xs font-black uppercase tracking-widest text-stone-400 mb-2 block">Luxury Lite, 3 Days</span>
-                                <h3 class="font-serif font-bold text-2xl text-brand-darkText">"The Sundowner"</h3>
-                                <p class="text-lg font-black text-brand-green mt-2 mb-1">From <span data-usd="3400">$3,400</span> per person <span class="text-xs font-normal text-stone-400">all inclusive</span></p>
-                                <p class="text-sm text-stone-600 mt-1">Skip the road. Fly in, and your camp is waiting with a glass already poured. Three days of wildlife, then one flight home, with no dust and no long hours in a vehicle.</p>
-                            </div>
-                            <span class="inline-block text-sm font-extrabold text-brand-green mt-5">See the itinerary and price</span>
-                        </div>
-                    </a>
-                </div>
-            </div>
-
-            <!-- 5-Day -->
-            <div class="mb-20">
-                <div id="safaris-5-day" class="scroll-mt-28 text-sm font-black uppercase tracking-widest text-brand-accentGold mb-6 flex items-center gap-2.5 border-b border-stone-200 pb-3">
-                    <i class="fa-solid fa-hourglass-half text-base"></i> 5 Day Safaris<span class="sd-swipe" aria-hidden="true">Swipe <i class="fa-solid fa-arrows-left-right"></i></span>
-                </div>
-                <div class="grid md:grid-cols-3 gap-6">
-                    <a href="/trip/5-day-a-adventure-the-trailblazer.html" class="bg-white border border-stone-200 rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:border-brand-green transition duration-300 group flex flex-col">
-                        <div class="h-56 overflow-hidden relative bg-stone-200"><img src="/images/trip-trailblazer-card-600.jpg" srcset="/images/trip-trailblazer-card-600.jpg 600w, /images/trip-trailblazer-card-900.jpg 900w, /images/trip-trailblazer-card-1200.jpg 1200w" sizes="(max-width: 767px) calc(100vw - 32px), 400px" alt="Open safari Land Cruiser ready for an afternoon drive, Trailblazer 5 day private safari" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" width="800" height="500" loading="lazy"></div>
-                        <div class="p-6 flex-1 flex flex-col justify-between">
-                            <div>
-                                <span class="text-xs font-black uppercase tracking-widest text-stone-400 mb-2 block">Adventure, 5 Days</span>
-                                <h3 class="font-serif font-bold text-2xl text-brand-darkText">"The Trailblazer"</h3>
-                                <p class="text-lg font-black text-brand-green mt-2 mb-1">From <span data-usd="2300">$2,300</span> per person <span class="text-xs font-normal text-stone-400">all inclusive</span></p>
-                                <p class="text-sm text-stone-600 mt-1">Start in Samburu among reticulated giraffe and Grevy's zebra, animals you will not see in the Mara. Then fly south to the Mara itself. Two very different Kenyas in five days.</p>
-                            </div>
-                            <span class="inline-block text-sm font-extrabold text-brand-green mt-5">See the itinerary and price</span>
-                        </div>
-                    </a>
-                    <a href="/trip/5-day-b-classic-the-dreamcatcher.html" class="bg-white border-2 border-brand-green rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition duration-300 group flex flex-col relative">
-                        <div class="absolute top-4 left-4 z-10 bg-brand-green text-white text-xs font-black uppercase tracking-widest px-3 py-1.5 rounded-full flex items-center gap-1.5">
-                            <i class="fa-solid fa-star text-brand-accentGold text-xs"></i> Most Popular
-                        </div>
-                        <div class="h-56 overflow-hidden relative bg-stone-200"><img src="/images/trip-dreamcatcher-card-600.jpg" srcset="/images/trip-dreamcatcher-card-600.jpg 600w, /images/trip-dreamcatcher-card-900.jpg 900w, /images/trip-dreamcatcher-card-1200.jpg 1200w" sizes="(max-width: 767px) calc(100vw - 32px), 400px" alt="Male lion walking past a safari vehicle on a Sundown Safaris game drive, Dreamcatcher private safari" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" width="800" height="450" loading="lazy"></div>
-                        <div class="p-6 flex-1 flex flex-col justify-between">
-                            <div>
-                                <span class="text-xs font-black uppercase tracking-widest text-stone-400 mb-2 block">Classic, 5 Days</span>
-                                <h3 class="font-serif font-bold text-2xl text-brand-darkText">"The Dreamcatcher"</h3>
-                                <p class="text-lg font-black text-brand-green mt-2 mb-1">From <span data-usd="3900">$3,900</span> per person <span class="text-xs font-normal text-stone-400">all inclusive</span></p>
-                                <p class="text-sm text-stone-600 mt-1">Five days is when Kenya starts to open up. On day one your guide maps the pride territories. By day three you are spotting animals before he says a word.</p>
-                            </div>
-                            <span class="inline-block text-sm font-extrabold text-brand-green mt-5">See the itinerary and price</span>
-                        </div>
-                    </a>
-                    <a href="/trip/5-day-c-luxury-lite-the-horizon-chaser.html" class="bg-white border border-stone-200 rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:border-brand-green transition duration-300 group flex flex-col">
-                        <div class="h-56 overflow-hidden relative bg-stone-200"><img src="/images/trip-horizon-chaser-card-600.jpg" srcset="/images/trip-horizon-chaser-card-600.jpg 600w, /images/trip-horizon-chaser-card-900.jpg 900w, /images/trip-horizon-chaser-card-1200.jpg 1200w" sizes="(max-width: 767px) calc(100vw - 32px), 400px" alt="Land Cruiser in silhouette at sunset on the plains, Horizon Chaser 5 day private safari" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" width="800" height="500" loading="lazy"></div>
-                        <div class="p-6 flex-1 flex flex-col justify-between">
-                            <div>
-                                <span class="text-xs font-black uppercase tracking-widest text-stone-400 mb-2 block">Luxury Lite, 5 Days</span>
-                                <h3 class="font-serif font-bold text-2xl text-brand-darkText">"The Horizon Chaser"</h3>
-                                <p class="text-lg font-black text-brand-green mt-2 mb-1">From <span data-usd="4800">$4,800</span> per person <span class="text-xs font-normal text-stone-400">all inclusive</span></p>
-                                <p class="text-sm text-stone-600 mt-1">Wake in the dark, then rise over the Mara as the sun breaks the horizon. One hour above the plains that guests talk about for years.</p>
-                            </div>
-                            <span class="inline-block text-sm font-extrabold text-brand-green mt-5">See the itinerary and price</span>
-                        </div>
-                    </a>
-                </div>
-            </div>
-
-            <!-- 7-Day -->
-            <div>
-                <div id="safaris-7-day" class="scroll-mt-28 text-sm font-black uppercase tracking-widest text-brand-accentGold mb-6 flex items-center gap-2.5 border-b border-stone-200 pb-3">
-                    <i class="fa-solid fa-hourglass text-base"></i> 7 Day Safaris<span class="sd-swipe" aria-hidden="true">Swipe <i class="fa-solid fa-arrows-left-right"></i></span>
-                </div>
-                <div class="grid md:grid-cols-3 gap-6">
-                    <a href="/trip/7-day-a-flagship-ultimate-kenya.html" class="bg-white border border-stone-200 rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:border-brand-green transition duration-300 group flex flex-col">
-                        <div class="h-56 overflow-hidden relative bg-stone-200"><img src="/images/trip-ultimate-kenya-card-600.jpg" srcset="/images/trip-ultimate-kenya-card-600.jpg 600w, /images/trip-ultimate-kenya-card-1200.jpg 1200w" sizes="(max-width: 767px) calc(100vw - 32px), 400px" alt="Lion resting below a snow capped Kilimanjaro in Amboseli, Ultimate Kenya 7 day circuit" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" width="800" height="450" loading="lazy"></div>
-                        <div class="p-6 flex-1 flex flex-col justify-between">
-                            <div>
-                                <span class="text-xs font-black uppercase tracking-widest text-stone-400 mb-2 block">Flagship, 7 Days</span>
-                                <h3 class="font-serif font-bold text-2xl text-brand-darkText">"Ultimate Kenya"</h3>
-                                <p class="text-lg font-black text-brand-green mt-2 mb-1">From <span data-usd="5900">$5,900</span> per person <span class="text-xs font-normal text-stone-400">all inclusive</span></p>
-                                <p class="text-sm text-stone-600 mt-1">Big elephant herds with Kilimanjaro rising behind them, then four days in the Mara with the big cats. The whole of Kenya, with nothing left out.</p>
-                            </div>
-                            <span class="inline-block text-sm font-extrabold text-brand-green mt-5">See the itinerary and price</span>
-                        </div>
-                    </a>
-                    <a href="/trip/7-day-b-classic-the-voyager.html" class="bg-white border border-stone-200 rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:border-brand-green transition duration-300 group flex flex-col">
-                        <div class="h-56 overflow-hidden relative bg-stone-200"><img src="/images/trip-voyager-card-600.jpg" srcset="/images/trip-voyager-card-600.jpg 600w, /images/trip-voyager-card-900.jpg 900w, /images/trip-voyager-card-1200.jpg 1200w" sizes="(max-width: 767px) calc(100vw - 32px), 400px" alt="Sundown guide with guests beside the safari vehicle, Voyager 7 day private safari" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" width="800" height="500" loading="lazy"></div>
-                        <div class="p-6 flex-1 flex flex-col justify-between">
-                            <div>
-                                <span class="text-xs font-black uppercase tracking-widest text-stone-400 mb-2 block">Classic, 7 Days</span>
-                                <h3 class="font-serif font-bold text-2xl text-brand-darkText">"The Voyager"</h3>
-                                <p class="text-lg font-black text-brand-green mt-2 mb-1">From <span data-usd="4900">$4,900</span> per person <span class="text-xs font-normal text-stone-400">all inclusive</span></p>
-                                <p class="text-sm text-stone-600 mt-1">Seven days is how long it takes to really know a place. By the end your guide can tell one lion from another, and you probably can too. The Mara at depth, not at speed.</p>
-                            </div>
-                            <span class="inline-block text-sm font-extrabold text-brand-green mt-5">See the itinerary and price</span>
-                        </div>
-                    </a>
-                    <a href="/trip/7-day-c-luxury-lite-the-constellation.html" class="bg-white border border-stone-200 rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:border-brand-green transition duration-300 group flex flex-col">
-                        <div class="h-56 overflow-hidden relative bg-stone-200"><img src="/images/trip-constellation-card-600.jpg" srcset="/images/trip-constellation-card-600.jpg 600w, /images/trip-constellation-card-900.jpg 900w, /images/trip-constellation-card-1200.jpg 1200w" sizes="(max-width: 767px) calc(100vw - 32px), 400px" alt="Sun setting behind the Land Cruiser after a game drive, Constellation 7 day private safari" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" width="800" height="500" loading="lazy"></div>
-                        <div class="p-6 flex-1 flex flex-col justify-between">
-                            <div>
-                                <span class="text-xs font-black uppercase tracking-widest text-stone-400 mb-2 block">Luxury Lite, 7 Days</span>
-                                <h3 class="font-serif font-bold text-2xl text-brand-darkText">"The Constellation"</h3>
-                                <p class="text-lg font-black text-brand-green mt-2 mb-1">From <span data-usd="6500">$6,500</span> per person <span class="text-xs font-normal text-stone-400">all inclusive</span></p>
-                                <p class="text-sm text-stone-600 mt-1">Sleep on an open platform under the Milky Way, with an armed ranger nearby. You can hear the wilderness all around you. It is a night you will remember for the rest of your life.</p>
-                            </div>
-                            <span class="inline-block text-sm font-extrabold text-brand-green mt-5">See the itinerary and price</span>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </section>
+  <p class="sdg-note">Not sure which one fits? <a href="#master-booking" data-cta="grid_help">Tell us your dates and we will match you</a></p>
+</div>
+<script>
+(function(){var root=document.getElementById('grid-anchor');if(!root)return;var tabs=root.querySelectorAll('.sdg-tabs button'),groups=root.querySelectorAll('.sdg-group');
+function pick(g,scroll){tabs.forEach(function(t){t.setAttribute('aria-selected',t.getAttribute('data-g')===g?'true':'false')});groups.forEach(function(p){p.hidden=!(g==='all'||p.getAttribute('data-g')===g)});
+if(scroll){var t=root.querySelector('.sdg-tabs').getBoundingClientRect().top+window.scrollY-90;if(window.scrollY>t+40)window.scrollTo({top:t,behavior:'smooth'});}}
+tabs.forEach(function(t){t.addEventListener('click',function(){var g=t.getAttribute('data-g');pick(g,true);try{if(typeof gtag!=='undefined')gtag('event','safari_tab',{length:g})}catch(e){}})});
+function fromHash(){var m=/^#safaris-(\d)-day$/.exec(location.hash);if(m){pick(m[1],false);var el=document.getElementById('safaris-'+m[1]+'-day');if(el)setTimeout(function(){el.scrollIntoView({behavior:'smooth',block:'start'})},30);}}
+window.addEventListener('hashchange',fromHash);fromHash();})();
+</script>
+</section>
 
         <!-- ABOUT -->
         <section id="about-us-summary" class="sds">
