@@ -20,9 +20,14 @@ blockquote p:last-child{margin-bottom:0}
 .sd-footer-mark svg{width:1em;height:1em}
 .sd-footer-name{display:block;font-family:'Playfair Display',Georgia,serif;font-weight:900;font-size:24px;line-height:1;color:#fff}
 .sd-footer-sub{display:block;color:var(--sd-gold);font-weight:800;font-size:11px;letter-spacing:.3em;text-transform:uppercase;margin-top:4px}
+.sd-footer-roar{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:700;font-size:24px;line-height:1.1;color:#E9B865!important;margin:16px 0 0!important;letter-spacing:.01em}
 .sd-footer-tag{color:#d6d3d1!important;font-size:14px;line-height:1.55;margin:14px 0!important;max-width:320px}
 .sd-footer-contact{display:flex;flex-direction:column;gap:8px}
 .sd-footer-contact a{color:var(--sd-gold);font-weight:700;font-size:15px;display:inline-flex;align-items:center;gap:9px}
+.sd-footer-contact .sd-footer-social{display:flex;align-items:center;gap:10px;margin-top:6px}
+.sd-footer-contact .sd-footer-social a{width:40px;height:40px;padding:0;gap:0;border-radius:50%;border:1px solid rgba(201,138,39,.55);display:inline-flex;align-items:center;justify-content:center;color:var(--sd-gold,#C98A27);font-size:18px;transition:background .2s,color .2s,border-color .2s}
+.sd-footer-contact .sd-footer-social a:hover{background:var(--sd-gold,#C98A27);border-color:var(--sd-gold,#C98A27);color:#0d1f16}
+.sd-footer-contact .sd-footer-social a:focus-visible{outline:2px solid var(--sd-gold,#C98A27);outline-offset:3px}
 .sd-footer-contact a:hover{color:#fff}
 .sd-footer-links{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
 .sd-footer-links p{color:var(--sd-gold)!important;font-weight:900;font-size:12px;letter-spacing:.18em;text-transform:uppercase;margin:4px 0 12px!important}
