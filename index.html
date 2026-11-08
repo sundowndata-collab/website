@@ -814,6 +814,16 @@ body{padding-top:0}
 .sd-steps li.is-done button:focus-visible .sd-steps-dot{outline:2px solid #C98A27;outline-offset:2px}
 @keyframes sd-tick{0%{transform:scale(.6)}70%{transform:scale(1.12)}100%{transform:scale(1)}}
 #enquiry-form label.is-ok::after{content:'';display:inline-block;vertical-align:-3px;margin-left:8px;width:16px;height:16px;border-radius:50%;background:#0B3A1D url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E") center/10px no-repeat;animation:sd-tick .3s ease}
+/* Bolder questions and step circles */
+#enquiry-form label.block{color:#0B3A1D!important;font-size:13px!important;font-weight:900!important;letter-spacing:.08em!important;margin-bottom:10px!important}
+.sd-steps-dot{width:40px!important;height:40px!important;border:2.5px solid #a8a29e!important;color:#57534e!important;font-size:16px!important;font-weight:900!important}
+.sd-steps li+li::before{top:19px!important;height:3px!important;background:#d6d3d1!important}
+.sd-steps li.is-done+li::before{background:#0B3A1D!important}
+.sd-steps li.is-current::before{background:linear-gradient(90deg,#0B3A1D,#C98A27)!important}
+.sd-steps-t{font-size:13px!important;font-weight:800!important;color:#78716c!important}
+.sd-steps li.is-current .sd-steps-dot{background:#C98A27!important;border-color:#C98A27!important;color:#0d1f16!important;box-shadow:0 0 0 5px rgba(201,138,39,.22)!important}
+.sd-steps li.is-current .sd-steps-t,.sd-steps li.is-done .sd-steps-t{color:#0B3A1D!important}
+.sd-steps li.is-done .sd-steps-dot{border-color:#0B3A1D!important;background-size:18px!important;font-size:0!important}
 .sd-opts{display:grid;gap:8px}
 .sd-opts button{font-family:'Inter',sans-serif;cursor:pointer;border:1.5px solid #e7e5e4;background:#fafaf9;color:#1c1917;transition:border-color .15s,background .15s,transform .15s;text-align:left}
 .sd-opts button:hover{border-color:#C98A27;transform:translateY(-1px)}
