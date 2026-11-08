@@ -217,3 +217,10 @@ blockquote p:last-child{margin-bottom:0}
 
 /* 4.9 rating: the fifth star is filled to match the real score */
 .sd-star-90::before{background:linear-gradient(90deg,currentColor 0 50%,rgba(201,138,39,.3) 50% 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+
+/* Footer savanna scene */
+.sd-footer-scene{margin:0!important;padding:0!important;align-self:end;min-width:0}
+.sd-footer-scene svg{display:block;width:100%;height:auto;max-width:760px}
+.sd-footer-scene figcaption{margin:12px 0 0;font-family:'Playfair Display',Georgia,serif;font-style:italic;font-size:15px;line-height:1.5;color:#d6d3d1}
+@media (min-width:768px){.sd-footer-top .sd-footer-brand{grid-row:span 2}.sd-footer-scene{grid-column:2}}
+@media (max-width:767px){.sd-footer-scene figcaption{font-size:14px}}
