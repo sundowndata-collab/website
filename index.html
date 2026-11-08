@@ -1262,80 +1262,164 @@ body{padding-top:0}
         </section>
 
         <!-- ABOUT -->
-        <section id="about-us-summary" class="py-16 border-t border-stone-200" style="background:#0B3A1D;">
-            <div class="max-w-6xl mx-auto px-4">
+        <section id="about-us-summary" class="sds">
+<style>
+section#about-us-summary.sds{background:#0B3A1D;padding:104px 0 0!important;color:#fff;font-family:'Inter',system-ui,sans-serif;border-top:1px solid rgba(201,138,39,.2);overflow:hidden}
+.sds-wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.sds-head{text-align:center;max-width:820px;margin:0 auto 88px}
+.sds-label{display:block;color:#C98A27;font:800 12px/1 'Inter',sans-serif;letter-spacing:.3em;text-transform:uppercase;margin:0 0 18px}
+#about-us-summary h2.sds-h2{font-family:'Playfair Display',Georgia,serif;font-weight:800;font-size:clamp(34px,4.6vw,56px)!important;line-height:1.06!important;letter-spacing:-.015em;margin:0 0 20px!important;color:#fff}
+.sds-h2 em{font-style:italic;font-weight:700;color:#E9B865}
+.sds-sub{color:#c8c3bd;font-size:18px;line-height:1.65;margin:0 auto;max-width:640px}
+.sds-ch{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:72px;align-items:center;margin:0 0 104px;position:relative}
+.sds-ch.is-flip .sds-media{order:2}
+.sds-num{display:flex;align-items:center;gap:14px;margin:0 0 18px;color:#C98A27;font:800 12px/1 'Inter',sans-serif;letter-spacing:.24em;text-transform:uppercase}
+.sds-num b{font-family:'Playfair Display',Georgia,serif;font-size:44px;line-height:1;letter-spacing:0;color:transparent;-webkit-text-stroke:1.2px #C98A27;font-weight:800}
+.sds-num::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,rgba(201,138,39,.6),rgba(201,138,39,0));max-width:160px}
+.sds-ch h3{font-family:'Playfair Display',Georgia,serif;font-weight:800;font-size:clamp(26px,2.8vw,36px);line-height:1.15;color:#fff;margin:0 0 18px}
+.sds-ch p{color:#d6d3d1;font-size:17px;line-height:1.75;margin:0 0 16px}
+.sds-ch p:last-child{margin-bottom:0}
+.sds-ch p strong{color:#fff;font-weight:700}
+.sds-media{position:relative;margin:0;border-radius:22px;overflow:hidden;aspect-ratio:4/3;box-shadow:0 30px 70px rgba(0,0,0,.35);outline:1px solid rgba(201,138,39,.35);outline-offset:8px}
+.sds-media img{display:block;width:100%;height:100%;object-fit:cover}
+.sds-media figcaption{position:absolute;left:16px;bottom:16px;background:rgba(6,23,13,.72);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);color:#fff;font:700 12.5px/1 'Inter',sans-serif;padding:10px 14px;border-radius:999px}
+.sds-contrast{position:relative;border-radius:22px;padding:44px 40px;background:linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,.015));border:1px solid rgba(255,255,255,.12)}
+.sds-contrast ul{list-style:none;margin:0;padding:0;display:grid;gap:18px}
+.sds-contrast li{display:flex;align-items:center;gap:16px;margin:0;font-family:'Playfair Display',Georgia,serif;font-size:clamp(22px,2.4vw,30px);font-weight:700;color:#fff;line-height:1.2}
+.sds-contrast li span{flex:0 0 auto;width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(239,68,68,.12);border:1px solid rgba(248,113,113,.45);color:#fca5a5;font:800 18px/1 'Inter',sans-serif}
+.sds-contrast li s{text-decoration-color:rgba(248,113,113,.7);text-decoration-thickness:2px}
+.sds-contrast p{margin:26px 0 0;padding-top:22px;border-top:1px solid rgba(255,255,255,.12);color:#E9B865;font:700 15px/1.5 'Inter',sans-serif}
+.sds-pillars{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:0 0 72px}
+.sds-pillar{border-radius:20px;padding:30px 28px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);transition:border-color .2s,transform .2s}
+.sds-pillar:hover{border-color:rgba(201,138,39,.55);transform:translateY(-2px)}
+.sds-pillar.is-gold{background:rgba(201,138,39,.08);border-color:rgba(201,138,39,.4)}
+.sds-pi{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;background:rgba(201,138,39,.15);border:1px solid rgba(201,138,39,.5);color:#E9B865;font-size:19px;margin:0 0 18px}
+.sds-pillar h4{font-family:'Playfair Display',Georgia,serif;font-weight:800;font-size:21px;line-height:1.25;color:#fff;margin:0 0 10px}
+.sds-pillar p{margin:0;color:#c8c3bd;font-size:15px;line-height:1.7}
+.sds-intro4{max-width:640px;margin:0 0 32px}
+.sds-intro4 h3{margin-bottom:0}
+.sds-proof{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid rgba(255,255,255,.12);border-bottom:1px solid rgba(255,255,255,.12);margin:0 0 0}
+.sds-proof div{padding:30px 20px;text-align:center;border-left:1px solid rgba(255,255,255,.12)}
+.sds-proof div:first-child{border-left:0}
+.sds-proof b{display:block;font-family:'Playfair Display',Georgia,serif;font-weight:800;font-size:clamp(38px,4vw,52px);line-height:1;color:#E9B865}
+.sds-proof span{display:block;margin-top:10px;color:#d6d3d1;font:800 12px/1.35 'Inter',sans-serif;letter-spacing:.14em;text-transform:uppercase}
+.sds-close{position:relative;margin-top:96px;min-height:520px;display:flex;align-items:center;isolation:isolate}
+.sds-close img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.sds-close::before{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(6,23,13,.94) 0,rgba(6,23,13,.82) 45%,rgba(6,23,13,.35) 100%),linear-gradient(0deg,#06170D 0,rgba(6,23,13,0) 30%)}
+.sds-close .sds-wrap{width:100%}
+.sds-close blockquote{max-width:620px;margin:0!important;padding:0!important;border:0!important;background:none!important;font-family:'Playfair Display',Georgia,serif!important;font-style:italic!important;font-weight:600!important;font-size:clamp(24px,3vw,36px)!important;line-height:1.35!important;color:#fff!important}
+.sds-close blockquote::before{content:'';display:block;width:56px;height:3px;background:#C98A27;border-radius:3px;margin:0 0 26px}
+.sds-sign{margin:22px 0 0;color:#E9B865;font:800 12px/1.4 'Inter',sans-serif;letter-spacing:.2em;text-transform:uppercase}
+.sds-close .sd-creds{justify-content:flex-start;margin:28px 0 0}
+.sds-cta{display:inline-flex;align-items:center;gap:10px;margin:30px 0 0;background:#C98A27;color:#0d1f16;font:800 15px/1 'Inter',sans-serif;padding:17px 28px;border-radius:999px;text-decoration:none;box-shadow:0 12px 30px rgba(201,138,39,.35);transition:transform .15s,background .2s}
+.sds-cta:hover{background:#E9B865;transform:translateY(-1px)}
+.sds-cta svg{width:18px;height:18px}
+@media (max-width:960px){
+  .sds-ch{grid-template-columns:1fr;gap:32px;margin-bottom:72px}
+  .sds-ch.is-flip .sds-media{order:0}
+  .sds-pillars{grid-template-columns:1fr}
+  .sds-proof{grid-template-columns:1fr 1fr}
+  .sds-proof div:nth-child(3){border-left:0}
+  .sds-proof div:nth-child(n+3){border-top:1px solid rgba(255,255,255,.12)}
+}
+@media (max-width:767px){
+  section#about-us-summary.sds{padding-top:68px!important}
+  .sds-wrap{padding:0 16px}
+  .sds-head{margin-bottom:56px;text-align:left}
+  #about-us-summary h2.sds-h2{font-size:34px!important}
+  .sds-sub{font-size:16.5px}
+  .sds-ch{gap:24px;margin-bottom:60px}
+  .sds-ch p{font-size:16px;line-height:1.7}
+  .sds-media{border-radius:16px;outline-offset:5px}
+  .sds-num b{font-size:36px}
+  .sds-contrast{padding:28px 22px}
+  .sds-contrast li span{width:32px;height:32px;font-size:15px}
+  .sds-pillar{padding:24px 22px}
+  .sds-pillars{margin-bottom:48px}
+  .sds-proof div{padding:24px 12px}
+  .sds-close{margin-top:64px;min-height:0;padding:72px 0 64px}
+  .sds-close::before{background:linear-gradient(0deg,rgba(6,23,13,.96) 0,rgba(6,23,13,.82) 60%,rgba(6,23,13,.55) 100%)}
+  .sds-close .sd-creds{max-width:none}
+  .sds-cta{width:100%;justify-content:center}
+}
+</style>
+<div class="sds-wrap">
+  <header class="sds-head">
+    <span class="sds-label">Our story</span>
+    <h2 class="sds-h2">We started Sundown because <em>the best moment in Africa should belong to you</em></h2>
+    <p class="sds-sub">Three years of private safaris out of Nairobi taught us one thing. The magic is in the quiet, and the quiet is worth protecting.</p>
+  </header>
 
-                <!-- TOP LABEL -->
-                <div class="text-center mb-16">
-                    <span class="text-brand-accentGold uppercase font-black tracking-widest text-xs block mb-5">Our Story</span>
-                    <h2 class="text-3xl md:text-5xl font-serif font-black text-white mb-8 leading-tight max-w-3xl mx-auto">
-                        We started Sundown<br>
-                        <span class="text-brand-accentGold">because the best moment in Africa<br>should belong to you</span>
-                    </h2>
-                    <p class="text-stone-300 text-lg leading-relaxed max-w-2xl mx-auto">
-                        There is a moment in the Masai Mara that changes people. The sun slips below the acacia line. The air goes still. A lion breathes out twenty metres from your vehicle, and you feel it in your chest. You will remember it for the rest of your life.
-                    </p>
-                </div>
+  <article class="sds-ch">
+    <figure class="sds-media"><img src="/images/strip-lions-vehicle-1000.jpg" srcset="/images/strip-lions-vehicle-600.jpg 600w, /images/strip-lions-vehicle-1000.jpg 787w" sizes="(max-width:960px) 100vw, 540px" alt="Lions resting a few metres from a Sundown Land Cruiser in the Masai Mara" width="787" height="590" loading="lazy" decoding="async"><figcaption>Masai Mara</figcaption></figure>
+    <div>
+      <p class="sds-num"><b>01</b>The moment</p>
+      <h3>Twenty metres from a lion, and nobody else around</h3>
+      <p>There is a moment in the Masai Mara that changes people. The sun slips below the acacia line. The air goes still. A lion breathes out twenty metres from your vehicle, and you feel it in your chest.</p>
+      <p><strong>You will remember it for the rest of your life.</strong> That moment is the whole reason we exist.</p>
+    </div>
+  </article>
 
-                <!-- STORY GRID -->
-                <div class="grid md:grid-cols-2 gap-16 items-center mb-20">
-                    <div>
-                        <p class="text-stone-300 text-base leading-relaxed mb-6">
-                            For three years we have run private safaris out of Nairobi, and we have watched things change. More vehicles. Longer queues at every sighting. Guides who spend their day managing a schedule instead of reading the bush. The quiet that makes a sighting unforgettable was being crowded out.
-                        </p>
-                        <p class="text-stone-300 text-base leading-relaxed mb-6">
-                            So we built Sundown around one simple belief. The best wildlife moment of your life should not be shared with strangers on a different schedule. It should belong to you and the people you chose to bring.
-                        </p>
-                        <p class="text-stone-300 text-base leading-relaxed">
-                            That is why your vehicle and guide are never shared with strangers. Strangers cost you the silence, the best positions and the patience that turn a sighting into a memory. Whatever the size of your group, from a couple to a big family, we plan the vehicles around you and each one is still yours.
-                        </p>
-                    </div>
-                    <div class="grid grid-cols-2 gap-3">
-                    <figure class="sd-story-photo" style="grid-column:1 / -1;margin:0;border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,0.12);aspect-ratio:16 / 10;">
-                        <img src="/images/guest-zebra-wide-1200.jpg" srcset="/images/guest-zebra-wide-600.jpg 600w, /images/guest-zebra-wide-1200.jpg 1200w" sizes="(max-width: 767px) calc(100vw - 32px), 540px" alt="A smiling Sundown Safaris guest feeding zebras from a woven basket" loading="lazy" width="1200" height="750" style="width:100%;height:100%;object-fit:cover;display:block;">
-                    </figure>
-                        <div class="sd-stat"><span class="sd-stat-icon"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i></span><span class="sd-stat-num">3</span><span class="sd-stat-label">Years operating</span></div>
-                        <div class="sd-stat"><span class="sd-stat-icon"><i class="fa-solid fa-user-shield" aria-hidden="true"></i></span><span class="sd-stat-num">0</span><span class="sd-stat-label">Strangers in your vehicle</span></div>
-                        <div class="sd-stat"><span class="sd-stat-icon"><i class="fa-solid fa-route" aria-hidden="true"></i></span><span class="sd-stat-num">9</span><span class="sd-stat-label">Private journeys</span></div>
-                        <div class="sd-stat"><span class="sd-stat-icon"><i class="fa-solid fa-tree" aria-hidden="true"></i></span><span class="sd-stat-num">2</span><span class="sd-stat-label">Conservancy licences</span></div>
-                    </div>
-                </div>
+  <article class="sds-ch is-flip">
+    <div class="sds-contrast" aria-label="What changed on safari">
+      <ul>
+        <li><span aria-hidden="true">&times;</span><s>More vehicles</s></li>
+        <li><span aria-hidden="true">&times;</span><s>Longer queues at sightings</s></li>
+        <li><span aria-hidden="true">&times;</span><s>Guides watching the clock</s></li>
+      </ul>
+      <p>The quiet that makes a sighting unforgettable was being crowded out.</p>
+    </div>
+    <div>
+      <p class="sds-num"><b>02</b>What we saw</p>
+      <h3>Then the safari started to change</h3>
+      <p>Year after year we watched it happen. More vehicles at every sighting. Guides spending their day managing a schedule instead of reading the bush.</p>
+      <p>Guests were travelling halfway around the world, or across Kenya, only to share their once in a lifetime moment with a bus full of strangers on a different schedule.</p>
+    </div>
+  </article>
 
-                <!-- THREE PILLARS -->
-                <div class="grid sm:grid-cols-3 gap-6 mb-16">
-                    <div class="border border-white/10 rounded-2xl p-8" style="background:rgba(255,255,255,0.04);">
-                        <span class="sd-pillar-icon"><i class="fa-solid fa-binoculars" aria-hidden="true"></i></span>
-                        <h4 class="font-serif font-bold text-white text-xl mb-3">Your guide makes the difference</h4>
-                        <p class="text-stone-400 text-sm leading-relaxed">Our guides know these corridors like their own neighbourhood. They know which animal holds which territory, which families travel together, and the small signs that tell them where to be twenty minutes before anyone else arrives. You cannot get that from a map or a radio report.</p>
-                    </div>
-                    <div class="border border-brand-accentGold/30 rounded-2xl p-8" style="background:rgba(201,138,39,0.06);">
-                        <span class="sd-pillar-icon"><i class="fa-solid fa-map-location-dot" aria-hidden="true"></i></span>
-                        <h4 class="font-serif font-bold text-white text-xl mb-3">Places most visitors never see</h4>
-                        <p class="text-stone-400 text-sm leading-relaxed">We hold licences in the Mara North and Olare Motorogi conservancies. These private wilderness areas border the Masai Mara, and large group tours are not permitted. Night drives, off road driving and never more than three vehicles at a sighting. It feels completely different.</p>
-                    </div>
-                    <div class="border border-white/10 rounded-2xl p-8" style="background:rgba(255,255,255,0.04);">
-                        <span class="sd-pillar-icon"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i></span>
-                        <h4 class="font-serif font-bold text-white text-xl mb-3">Nothing hidden, everything checkable</h4>
-                        <p class="text-stone-400 text-sm leading-relaxed">We are KATO bonded and TRA licensed. Our vehicles are independently audited, and our guides carry Kenya Wildlife Service credentials. We name our guides, we describe our vehicles, and we tell you exactly what is included before you commit to anything.</p>
-                    </div>
-                </div>
+  <article class="sds-ch">
+    <figure class="sds-media"><img src="/images/guest-zebra-wide-1200.jpg" srcset="/images/guest-zebra-wide-600.jpg 600w, /images/guest-zebra-wide-1200.jpg 1200w" sizes="(max-width:960px) 100vw, 540px" alt="A smiling Sundown Safaris guest feeding zebras from a woven basket" width="1200" height="750" loading="lazy" decoding="async"><figcaption>A Sundown guest, on her own schedule</figcaption></figure>
+    <div>
+      <p class="sds-num"><b>03</b>What we built</p>
+      <h3>So we built Sundown around one simple belief</h3>
+      <p>The best wildlife moment of your life should not be shared with strangers. <strong>It should belong to you and the people you chose to bring.</strong></p>
+      <p>That is why your vehicle and guide are never shared. Whatever the size of your group, from a couple to a big family, we plan the vehicles around you and every one of them is still yours.</p>
+    </div>
+  </article>
 
-                <!-- BOTTOM QUOTE -->
-                <div class="text-center border-t border-white/10 pt-16">
-                    <p class="sd-quote sd-quote-big text-white max-w-3xl mx-auto mb-8">
-                        "We talk about what happens between you and the person sitting next to you in the jeep. That is the safari we are here to build."
-                    </p>
-                    <p class="text-stone-400 text-sm uppercase tracking-widest font-bold">The Sundown Safaris Team, Nairobi, Kenya</p>
-                    <ul class="sd-creds">
-                        <li><i class="fa-solid fa-shield-halved" aria-hidden="true"></i>KATO bonded</li>
-                        <li><i class="fa-solid fa-paw" aria-hidden="true"></i>KWS compliant</li>
-                        <li><i class="fa-solid fa-stamp" aria-hidden="true"></i>TRA licensed</li>
-                        <li><i class="fa-solid fa-location-dot" aria-hidden="true"></i>Nairobi based</li>
-                    </ul>
-                </div>
+  <div class="sds-intro4">
+    <p class="sds-num"><b>04</b>How we keep the promise</p>
+    <h3 style="font-family:'Playfair Display',Georgia,serif;font-weight:800;font-size:clamp(26px,2.8vw,36px);line-height:1.15;color:#fff">Three things we never compromise on</h3>
+  </div>
+  <div class="sds-pillars">
+    <div class="sds-pillar"><span class="sds-pi"><i class="fa-solid fa-binoculars" aria-hidden="true"></i></span><h4>Your guide makes the difference</h4><p>Our guides know these corridors like their own neighbourhood: which animal holds which territory, which families travel together, and where to be twenty minutes before anyone else arrives.</p></div>
+    <div class="sds-pillar is-gold"><span class="sds-pi"><i class="fa-solid fa-map-location-dot" aria-hidden="true"></i></span><h4>Places most visitors never see</h4><p>We hold licences in the Mara North and Olare Motorogi conservancies, where large group tours are not permitted. Night drives, off road tracking and never more than three vehicles at a sighting.</p></div>
+    <div class="sds-pillar"><span class="sds-pi"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i></span><h4>Nothing hidden, everything checkable</h4><p>We are KATO bonded and TRA licensed, and our guides carry Kenya Wildlife Service credentials. We name our guides, describe our vehicles and tell you exactly what is included before you commit.</p></div>
+  </div>
 
-            </div>
-        </section>
+  <div class="sds-proof">
+    <div><b>3</b><span>Years operating</span></div>
+    <div><b>0</b><span>Strangers in your vehicle</span></div>
+    <div><b>9</b><span>Private journeys</span></div>
+    <div><b>4.9</b><span>Rating on Google</span></div>
+  </div>
+</div>
+
+<div class="sds-close">
+  <img src="/images/trip-sundowner-1600.jpg" sizes="100vw" alt="" width="1600" height="842" loading="lazy" decoding="async" style="object-position:72% 50%">
+  <div class="sds-wrap">
+    <blockquote class="sd-quote">We talk about what happens between you and the person sitting next to you in the jeep. That is the safari we are here to build.</blockquote>
+    <p class="sds-sign">The Sundown Safaris team, Nairobi</p>
+    <ul class="sd-creds">
+      <li><i class="fa-solid fa-shield-halved" aria-hidden="true"></i>KATO bonded</li>
+      <li><i class="fa-solid fa-paw" aria-hidden="true"></i>KWS compliant</li>
+      <li><i class="fa-solid fa-stamp" aria-hidden="true"></i>TRA licensed</li>
+      <li><i class="fa-solid fa-location-dot" aria-hidden="true"></i>Nairobi based</li>
+    </ul>
+    <a class="sds-cta" href="#master-booking" data-cta="story_plan">Start your own story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  </div>
+</div>
+</section>
 
         <!-- FROM THE FIELD: real photos as social proof -->
         <section id="from-the-field" class="sd-field">
