@@ -4,6 +4,14 @@ A plain record of what changed on sundownsafari.com, why it changed, and how to 
 
 # 10 November 2026
 
+## Licence claims removed until the TRA licence is issued
+
+**Why.** The site and the proposal PDFs said KATO bonded and TRA licensed while the TRA licence is still in process, and KATO membership needs a TRA licence first. Lodges are already asking for the licence, so an unbacked claim was a credibility and legal risk. Every claim now says something true.
+
+**What changed.** Footer and team badges now read Registered company and Kenyan owned. The homepage trust bar reads Registered company, Sundown Capital Limited, Nairobi. The homepage trust card now introduces Sundown Capital Limited as a registered Kenyan company. Trip page trust cards read Registered Company, and the booking box line reads Registered Kenyan company, private vehicle and guide. Blog closing lines lead with Registered Kenyan company. The weekend getaway page uses Rated 4.9 on Google and Registered Kenyan Company instead. The proposal and receipt PDF footer now reads Sundown Capital Limited, trading as Sundown Safaris. Articles that advise readers to check KATO and TRA for any operator were left as they are.
+
+**When the licence arrives.** Switch the badges back to TRA licensed, and to KATO bonded only once the KATO bond is in place.
+
 ## The Explorer now from $1,700 and The Trailblazer from $2,600
 
 **Why.** A check against real 2026 and 2027 lodge contract rates showed both entry trips could not hold a healthy margin in peak season. At $1,500 and $2,300 the lodge budget left after park fees, vehicle and guide was about $51 and $64 per person a night in July to December, below the cheapest Mara lodge on any rate sheet. The new prices bring both trips back to roughly 30% margin while keeping them the cheapest way into each trip length.
