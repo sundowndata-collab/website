@@ -4,6 +4,12 @@ A plain record of what changed on sundownsafari.com, why it changed, and how to 
 
 # 10 November 2026
 
+## A new Safaris menu
+
+**Why.** The old dropdown was one long list mixing two fonts, with quote marks around trip names and repeated labels like 3 Day Adventure, so the names were hard to scan and the prices sat on some pages but not others.
+
+**What changed.** On desktop, Safaris now opens a three column panel, one column each for 3, 5 and 7 day safaris, each headed with its starting price. Every trip shows its name in Playfair, a one line description of its style and parks, and its from price in gold, with a small arrow on hover. A header reads Private safaris from Nairobi, and a footer asks Not sure which one fits? with a Plan my trip button. The phone menu uses the same names, descriptions and prices in a single list. The styles live in css/sd-safaris-menu.css, linked from all 64 pages with the menu, homepage included. Prices still follow the visitor's currency.
+
 ## Licence claims removed until the TRA licence is issued
 
 **Why.** The site and the proposal PDFs said KATO bonded and TRA licensed while the TRA licence is still in process, and KATO membership needs a TRA licence first. Lodges are already asking for the licence, so an unbacked claim was a credibility and legal risk. Every claim now says something true.
