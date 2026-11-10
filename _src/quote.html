@@ -614,6 +614,30 @@ function buildProposal(r,R){
  '<div style="margin-top:28px;height:300px;position:relative;border-radius:16px;overflow:hidden"><img class="ph" style="border-radius:0" crossorigin="anonymous" src="'+M.imgs[0]+'"><div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,58,29,0) 40%,rgba(11,58,29,.85) 100%)"></div><div class="sf" style="position:absolute;left:24px;bottom:20px;color:#fff;font-size:26px;font-weight:800">We cannot wait to show you '+a+'.</div></div></div>'+pageFoot(4,4)+'</div>';
  return p1+p2+p3+p4;
 }
+function stampURL(d){
+ var c=document.createElement('canvas');c.width=c.height=440;var x=c.getContext('2d'),cx=220,cy=220,col='#23388e';
+ x.strokeStyle=col;x.fillStyle=col;x.textAlign='center';x.textBaseline='middle';
+ function ring(r,w){x.beginPath();x.lineWidth=w;x.arc(cx,cy,r,0,Math.PI*2);x.stroke()}
+ ring(204,7);ring(190,2.5);ring(128,2.5);
+ function arc(str,r,top,font){x.font=font;var tot=0,ws=[];for(var i=0;i<str.length;i++){var w=x.measureText(str[i]).width+1.5;ws.push(w);tot+=w}
+  var a=(top?-Math.PI/2:Math.PI/2)+(top?-1:1)*tot/r/2;
+  for(var j=0;j<str.length;j++){var h=ws[j]/r/2;a+=top?h:-h;x.save();x.translate(cx+r*Math.cos(a),cy+r*Math.sin(a));x.rotate(top?a+Math.PI/2:a-Math.PI/2);x.fillText(str[j],0,0);x.restore();a+=top?h:-h}}
+ arc('SUNDOWN CAPITAL LIMITED',160,true,'800 27px Inter, Arial, sans-serif');
+ arc('WESTLANDS, NAIROBI, KENYA',160,false,'700 22px Inter, Arial, sans-serif');
+ x.font='900 22px Arial, sans-serif';x.fillText('★',cx-160,cy);x.fillText('★',cx+160,cy);
+ x.font='900 38px Inter, Arial, sans-serif';x.fillText('RECEIVED',cx,cy-52);
+ x.lineWidth=3;x.beginPath();x.moveTo(cx-112,cy-22);x.lineTo(cx+112,cy-22);x.moveTo(cx-112,cy+30);x.lineTo(cx+112,cy+30);x.stroke();
+ x.font='800 36px "Courier New", Courier, monospace';x.fillText(d,cx,cy+5);
+ x.font='800 19px Inter, Arial, sans-serif';x.fillText('SUNDOWN SAFARIS',cx,cy+58);
+ x.font='700 14px Inter, Arial, sans-serif';x.fillText('ACCOUNTS',cx,cy+82);
+ // worn ink texture
+ x.globalCompositeOperation='destination-out';
+ for(var k=0;k<2600;k++){x.globalAlpha=Math.random()*0.7;x.beginPath();x.arc(Math.random()*440,Math.random()*440,Math.random()*1.8,0,Math.PI*2);x.fill()}
+ for(var q=0;q<14;q++){x.globalAlpha=0.25+Math.random()*0.3;x.beginPath();x.arc(Math.random()*440,Math.random()*440,6+Math.random()*16,0,Math.PI*2);x.fill()}
+ x.globalAlpha=1;x.globalCompositeOperation='source-over';
+ return c.toDataURL('image/png');
+}
+function stampDate(){var d=new Date();return String(d.getDate()).padStart(2,'0')+' '+['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'][d.getMonth()]+' '+d.getFullYear()}
 function buildReceipt(r,R){
  var M=MEDIA[r.L.id],name=esc($('cName').value.trim()),contact=esc($('cContact').value.trim()),out=addDays(r.checkin,r.nights);
  var paid=parseFloat($('pAmt').value)||0,bal=Math.max(0,r.totPrice-paid),pd=$('pDate').value||new Date().toISOString().slice(0,10);
@@ -628,7 +652,7 @@ function buildReceipt(r,R){
  '<div style="margin:18px 0;background:#0B3A1D;color:#fff;border-radius:16px;padding:20px 24px;display:flex;justify-content:space-between;align-items:center"><div><div class="ey" style="color:#E9B865;margin:0">Amount received</div><div style="color:#cfe3d4;font-size:12px;margin-top:4px">'+esc($('pMethod').value)+($('pRef').value.trim()?', reference '+esc($('pRef').value.trim()):'')+'</div></div><div class="sf" style="font-size:34px;font-weight:800">'+kes(paid)+'</div></div>'+
  '<table class="tb">'+line('Balance due',bal?kes(bal):'Paid in full',1)+'</table>'+
  '<div style="display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:22px"><div><div class="ey">Included in your trip</div><ul class="ck">'+incl(r).map(function(x){return '<li>'+esc(x)+'</li>'}).join('')+'</ul></div>'+
- '<div><div class="ey">Thank you</div><p style="margin:0;color:#3f3a35">Your payment is received with thanks. We will send your booking confirmation and your guide’s details before you travel.</p><p style="margin:14px 0 0;font-family:\'Playfair Display\',Georgia,serif;font-size:20px;color:#0B3A1D">Baraka</p><p style="margin:0;font-size:12px;color:#6b6560">Sundown Safaris, +254 724 491 210</p></div></div></div>'+pageFoot(1,1)+'</div>';
+ '<div><div class="ey">Thank you</div><p style="margin:0;color:#3f3a35">Your payment is received with thanks. We will send your booking confirmation and your guide’s details before you travel.</p><p style="margin:14px 0 0;font-family:\'Playfair Display\',Georgia,serif;font-size:20px;color:#0B3A1D">Baraka</p><p style="margin:0;font-size:12px;color:#6b6560">Sundown Safaris, +254 724 491 210</p><img src="'+stampURL(stampDate())+'" alt="" style="width:180px;height:180px;margin:10px 0 0 40px;transform:rotate(-9deg);opacity:.92"></div></div></div>'+pageFoot(1,1)+'</div>';
 }
 function loadLib(){return new Promise(function(res,rej){if(window.html2pdf)return res();var s=document.createElement('script');s.src='https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js';s.onload=res;s.onerror=function(){rej(new Error('Could not load the PDF tool. Check your connection.'))};document.head.appendChild(s)})}
 function genPdf(){
