@@ -161,6 +161,8 @@ tr.tot td{font-weight:800;border-top:2px solid var(--g);border-bottom:0;color:va
  .mbar b{font-family:'Playfair Display',Georgia,serif;font-size:20px;color:var(--g)}
  .mbar span{display:block;font-size:12px;color:var(--gold);font-weight:700}
 }
+.btn[disabled]{opacity:.45;cursor:not-allowed}
+#docStage{position:fixed;left:-10000px;top:0;width:794px}
 footer{text-align:center;font-size:12px;color:var(--muted);padding:10px 20px 30px}
 </style>
 </head>
@@ -239,6 +241,29 @@ footer{text-align:center;font-size:12px;color:var(--muted);padding:10px 20px 30p
    <div><label for="roundTo">Round prices up to (KES)</label><input type="number" id="roundTo" min="1" value="500" inputmode="numeric"></div>
    <div><label for="pickup">Pickup area</label><input type="text" id="pickup" placeholder="Keleshwa"></div>
   </div>
+ </div>
+ <div class="card" id="docCard">
+  <div class="step"><span class="num">6</span><div><h2>Client document</h2><p>A branded PDF, ready to send with no editing</p></div></div>
+  <div class="seg" id="dtype"><button type="button" data-v="proposal" class="on">Proposal</button><button type="button" data-v="receipt">Payment receipt</button></div>
+  <div class="grid2" style="margin-top:12px">
+   <div><label for="cName">Client name</label><input type="text" id="cName" placeholder="Priya Shah"></div>
+   <div><label for="cContact">Client phone or email (optional)</label><input type="text" id="cContact" placeholder="+254 7xx xxx xxx"></div>
+  </div>
+  <div id="rcptFields" hidden>
+   <div class="grid2" style="margin-top:12px">
+    <div><label for="pAmt">Amount received (KES)</label><input type="number" id="pAmt" min="0" inputmode="numeric"></div>
+    <div><label for="pDate">Date received</label><input type="date" id="pDate"></div>
+   </div>
+   <div class="grid2" style="margin-top:12px">
+    <div><label for="pMethod">Paid by</label><select id="pMethod"><option>M-Pesa</option><option>Bank transfer</option><option>Card</option><option>Cash</option></select></div>
+    <div><label for="pRef">Payment reference</label><input type="text" id="pRef" placeholder="M-Pesa code or bank ref"></div>
+   </div>
+  </div>
+  <div id="propFields">
+   <div style="margin-top:12px"><label for="terms">Booking terms on the proposal (optional)</label><input type="text" id="terms" placeholder="Leave empty to show only the price hold note"></div>
+  </div>
+  <label class="toggle" for="okCheck" style="margin-top:14px"><div><b>Everything is confirmed</b><span>Lodge availability, rates, dates and guest details are correct</span></div><span class="sw"><input type="checkbox" id="okCheck"><i></i></span></label>
+  <div class="acts"><button class="btn" type="button" id="genPdf" disabled>Download PDF</button><span class="hint" id="pdfMsg" style="align-self:center;margin:0"></span></div>
  </div>
 </div>
 
@@ -325,6 +350,7 @@ var PARKS = {
 };
 
 
+var LAST=null;
 var AREA={mara:'Masai Mara',naivasha:'Lake Naivasha',samburu:'Samburu'};
 var $=function(id){return document.getElementById(id)};
 function num(id){var v=parseFloat($(id).value);return isNaN(v)?0:v}
@@ -427,10 +453,12 @@ function calc(){
  }
  $('wa').value=t;
  $('openwa').href='https://wa.me/?text='+encodeURIComponent(t);
+ LAST={L:L,P:P,groups:groups,totCost:totCost,totPrice:totPrice,checkin:checkin,nights:nights,total:total,fx:fx,tent:tent,xl:xl,vDays:vDays,pDays:pDays,alerts:alerts};
+ if(typeof docState==='function')docState();
  try{localStorage.setItem('sdq',JSON.stringify(state()))}catch(e){}
 }
 
-var FIELDS=['lodge','checkin','nights','nCit','nRes','nNr','sCit','sRes','sNr','vDays','vRate','vCount','pDays','margin','fx','roundTo','pickup'];
+var FIELDS=['cName','cContact','terms','lodge','checkin','nights','nCit','nRes','nNr','sCit','sRes','sNr','vDays','vRate','vCount','pDays','margin','fx','roundTo','pickup'];
 function state(){var s={mode:MODE,tent:$('tent').checked,x:[]};FIELDS.forEach(function(f){s[f]=$(f).value});document.querySelectorAll('.xrow').forEach(function(r){s.x.push([r.querySelector('.xl').value,r.querySelector('.xa').value,r.querySelector('.xm').value])});return s}
 function addExtra(l,a,mo){var d=document.createElement('div');d.className='xrow';d.innerHTML='<input class="xl" placeholder="Balloon flight" aria-label="Extra"><input class="xa" type="number" min="0" placeholder="KES" inputmode="numeric" aria-label="Cost in KES"><select class="xm" aria-label="Per person or group"><option value="pp">per person</option><option value="all">for group</option></select><button type="button" aria-label="Remove">✕</button>';d.querySelector('.xl').value=l||'';d.querySelector('.xa').value=a||'';d.querySelector('.xm').value=mo||'pp';d.querySelector('button').onclick=function(){d.remove();calc()};d.addEventListener('input',calc);d.addEventListener('change',calc);$('extras').appendChild(d)}
 // lodge cards
@@ -451,7 +479,124 @@ if(!$('lodge').value)$('lodge').value=LODGES[0].id;
 if(!$('checkin').value){var d=new Date();d.setDate(d.getDate()+((6-d.getDay()+7)%7||7));$('checkin').value=d.toISOString().slice(0,10)}
 fetch('/api/fx').then(function(r){return r.json()}).then(function(j){if(j&&j.rates&&j.rates.KES){$('fxnote').textContent='Live KES '+j.rates.KES.toFixed(2)+' per USD';var man=false;try{man=!!localStorage.getItem('sdq_fx_manual')}catch(e){}if(!man){$('fx').value=j.rates.KES.toFixed(2);calc()}}}).catch(function(){});
 $('fx').addEventListener('input',function(){try{localStorage.setItem('sdq_fx_manual','1')}catch(e){}});
+// ---------------- CLIENT DOCUMENTS ----------------
+var IMG='https://www.sundownsafari.com/images/lodges/';
+var MEDIA={
+ 'mara-simba':{imgs:[1,2,3,4,5].map(function(i){return IMG+'mara-simba-'+i+'.jpg'}),
+  desc:'Mara Simba Lodge sits on the banks of the Talek River, a short drive from the Masai Mara National Reserve. Rooms are solid cottages with wooden floors and views over the water, where hippos and elephants often come down to drink. Meals are served in the riverside dining room, and the pool is there for the warm afternoons between game drives.',
+  hi:['Riverside cottages on the Talek River','A short drive into the Masai Mara','Swimming pool, bar and riverside dining','Full board, with your meals taken care of']},
+ 'naivasha-simba':{imgs:[1,2,3,4,5].map(function(i){return IMG+'naivasha-simba-'+i+'.jpg'}),
+  desc:'Lake Naivasha Simba Lodge stands in green acacia gardens on the shores of Lake Naivasha. Rooms are bright and spacious, the dining hall looks out over the lawns, and evenings end around the campfire. Giraffe, zebra and hippo are never far away, and Hell’s Gate and Crescent Island are close by.',
+  hi:['Acacia gardens on the shores of the lake','Evening campfire and swimming pool','Close to Hell’s Gate and Crescent Island','Full board, with your meals taken care of']},
+ 'samburu-simba':{imgs:[1,2,3,4,5].map(function(i){return IMG+'samburu-simba-'+i+'.jpg'}),
+  desc:'Samburu Simba Lodge looks out over the wide plains and hills of Samburu, home of the rare northern species you will not see in the Mara. Rooms open onto big views, the lounge is warm and welcoming in the evenings, and the pool overlooks the bush.',
+  hi:['Wide views over the Samburu plains','Home of Grevy’s zebra, reticulated giraffe and gerenuk','Pool with a view over the bush','Full board, with your meals taken care of']}
+};
+var DTYPE='proposal';
+function docState(){
+ var ok=$('okCheck').checked, name=$('cName').value.trim(), r=LAST, bad=r&&r.alerts.some(function(a){return a[0]==='bad'});
+ var why='';
+ if(!r||!r.total)why='Add guests first.';else if(bad)why='Fix the red warnings first.';else if(!name)why='Add the client name.';else if(DTYPE==='receipt'&&!(parseFloat($('pAmt').value)>0))why='Add the amount received.';else if(!ok)why='Tick the confirmation to unlock.';
+ $('genPdf').disabled=!!why;$('pdfMsg').textContent=why;
+}
+function ref(){var d=new Date();return 'SD'+String(d.getFullYear()).slice(2)+String(d.getMonth()+1).padStart(2,'0')+String(d.getDate()).padStart(2,'0')+'-'+Math.floor(100+Math.random()*900)}
+function days(r){
+ var a=AREA[r.L.park],pick=$('pickup').value.trim()||'Nairobi',n=r.nights,out=[],dd=function(i){return niceDate(addDays(r.checkin,i))};
+ if(r.L.park==='naivasha'){
+  out.push([dd(0),'Nairobi to Lake Naivasha','We collect you from '+pick+' in your private Land Cruiser and drive down into the Great Rift Valley, stopping at the viewpoint on the way. Lunch at the lodge and a relaxed afternoon by the lake.']);
+  for(var i=1;i<n;i++)out.push([dd(i),'Lake Naivasha at your pace','Your guide and vehicle are with you all day. Explore Hell’s Gate, take a boat out among the hippos or simply rest in the gardens.']);
+  out.push([dd(n),'Lake Naivasha to Nairobi','A slow breakfast, then the drive home to '+pick+'.']);
+ }else{
+  var first=r.L.park==='mara'?'We collect you from '+pick+' early in your private Land Cruiser and drive west, stopping at the Great Rift Valley viewpoint. Lunch at the lodge, then your first game drive as the afternoon light softens.':'We collect you from '+pick+' early in your private Land Cruiser and drive north past Mount Kenya. Lunch at the lodge, then your first game drive in the afternoon.';
+  out.push([dd(0),'Nairobi to '+a,first]);
+  for(var j=1;j<n;j++)out.push([dd(j),'A full day in '+a,'Morning and afternoon game drives at your own pace with your guide. The vehicle is yours, so you stay as long as you like at every sighting.']);
+  out.push([dd(n),a+' to Nairobi','An early game drive when the cats are most active, breakfast at the lodge, then the drive home to '+pick+' by evening.']);
+ }
+ return out;
+}
+function incl(r){
+ var a=['Private Land Cruiser with a professional driver guide for '+r.vDays+' day'+(r.vDays>1?'s':''),'Fuel and all road transfers from '+($('pickup').value.trim()||'Nairobi'),r.nights+' night'+(r.nights>1?'s':'')+' full board at '+r.L.name+(r.tent?' in the lodge tents':'')];
+ if(r.P.veh||r.P.nr[1])a.push(r.P.name+' park fees for '+r.pDays+' day'+(r.pDays>1?'s':''));
+ a.push('Bottled water on game drives');
+ r.xl.forEach(function(x){a.push(x.charAt(0).toUpperCase()+x.slice(1))});
+ return a;
+}
+var NOTINC=['International flights and visas','Travel insurance','Drinks at the lodge','Tips for your guide and the lodge team','Personal expenses'];
+var LOGO='<svg viewBox="0 0 24 24" width="1em" height="1em"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M14.5 12H14c-2.8 0-5-2.2-5-5V5a2 2 0 0 1 2-2h2c1.5 0 2.8.8 3.4 2H19c1.7 0 3 1.3 3 3v10m-4-8h.01"/><path d="M14 10a4 4 0 0 0 4 4a4 4 0 0 1 4 4a2 2 0 0 1-4 0m-8-2v5"/><path d="M18 14a4 4 0 0 0-4 4v3H6v-2.6c0-1.1-.8-2.3-1.7-3C2.9 14.3 2 12.8 2 11c0-3.3 3.1-6 7-6m-7 6v7"/></g></svg>';
+var DCSS='.pg{width:794px;height:1123px;position:relative;overflow:hidden;background:#fff;font-family:Inter,Arial,sans-serif;color:#1c1917;font-size:13px;line-height:1.55}'+
+'.pg *{box-sizing:border-box}.sf{font-family:"Playfair Display",Georgia,serif}'+
+'.lg{display:flex;align-items:center;gap:10px}.lg .m{width:40px;height:40px;border-radius:50%;border:2px solid #C98A27;display:flex;align-items:center;justify-content:center;font-size:22px;color:#E9B865;background:#14532D}.lg b{display:block;font-family:"Playfair Display",Georgia,serif;font-size:19px;letter-spacing:.06em;line-height:1}.lg small{display:block;font-size:9px;letter-spacing:.42em;color:#E9B865;font-weight:700;margin-top:4px}'+
+'.ft{position:absolute;left:0;right:0;bottom:0;height:62px;background:#0B3A1D;color:#cfe3d4;display:flex;align-items:center;justify-content:space-between;padding:0 48px;font-size:11px}.ft b{color:#E9B865}'+
+'.in{padding:48px 48px 0}.ey{font-size:10.5px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:#C98A27;margin:0 0 6px}'+
+'.h2{font-family:"Playfair Display",Georgia,serif;font-size:28px;color:#0B3A1D;margin:0 0 12px;line-height:1.15}'+
+'.ph{width:100%;height:100%;object-fit:cover;display:block;border-radius:12px}'+
+'.tl{margin:0;padding:0;list-style:none}.tl li{display:flex;gap:14px;padding:10px 0;border-bottom:1px solid #EFE8DA}.tl .d{flex:0 0 120px;font-weight:800;color:#0B3A1D;font-size:12px}.tl .d span{display:block;font-weight:600;color:#6b6560;font-size:11px}.tl b{display:block;color:#0B3A1D;font-size:13.5px;margin-bottom:2px}'+
+'.ck{margin:0;padding:0;list-style:none}.ck li{padding:5px 0 5px 22px;position:relative}.ck li:before{content:"";position:absolute;left:0;top:9px;width:12px;height:12px;border-radius:50%;background:#0B3A1D}.ck.x li:before{background:#d6d0c4}'+
+'.tb{width:100%;border-collapse:collapse}.tb td,.tb th{padding:11px 0;border-bottom:1px solid #EFE8DA;text-align:left}.tb th{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#6b6560}.tb .r{text-align:right}';
+function pageFoot(n,of){return '<div class="ft"><span><b>Sundown Safaris</b> &nbsp;Sundown Capital Limited, Westlands, Nairobi. KATO bonded</span><span>bookings@sundownsafari.com &nbsp; +254 724 491 210 &nbsp; www.sundownsafari.com &nbsp; '+n+'/'+of+'</span></div>'}
+function buildProposal(r,R){
+ var M=MEDIA[r.L.id],name=esc($('cName').value.trim()),a=AREA[r.L.park],out=addDays(r.checkin,r.nights),today=new Date().toISOString().slice(0,10);
+ var gl=r.groups.map(function(g){return g.n+' '+(g.n>1?LABELS[g.c]:LABEL[g.c])}).join(', ');
+ var p1='<div class="pg"><div style="position:absolute;inset:0 0 auto 0;height:700px"><img class="ph" style="border-radius:0" crossorigin="anonymous" src="'+M.imgs[0]+'"><div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,58,29,.55) 0%,rgba(11,58,29,0) 35%,rgba(11,58,29,.15) 60%,rgba(11,58,29,.95) 100%)"></div></div>'+
+ '<div style="position:absolute;top:44px;left:48px;color:#fff" class="lg"><span class="m">'+LOGO+'</span><span><b>SUNDOWN</b><small>SAFARIS</small></span></div>'+
+ '<div style="position:absolute;top:50px;right:48px;color:#fff;font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:700">Safari proposal</div>'+
+ '<div style="position:absolute;left:48px;right:48px;top:470px;color:#fff"><div class="ey" style="color:#E9B865">Prepared for '+name+'</div><div class="sf" style="font-size:52px;line-height:1.05;font-weight:800">Your '+a+'<br>safari</div><div style="font-size:16px;margin-top:10px;color:#e7f0e9">'+esc(r.L.name)+', '+shortDate(r.checkin)+' to '+shortDate(out)+' '+out.slice(0,4)+'</div></div>'+
+ '<div style="position:absolute;left:48px;right:48px;top:740px;display:grid;grid-template-columns:repeat(4,1fr);gap:12px">'+
+ [['Dates',shortDate(r.checkin)+' to '+shortDate(out)],['Nights',r.nights+' night'+(r.nights>1?'s':'')],['Guests',r.total+' adult'+(r.total>1?'s':'')],['Your vehicle','Private Land Cruiser']].map(function(x){return '<div style="background:#F6F2EA;border-radius:12px;padding:14px"><div class="ey" style="margin:0 0 4px">'+x[0]+'</div><div style="font-weight:800;color:#0B3A1D;font-size:14px">'+x[1]+'</div></div>'}).join('')+'</div>'+
+ '<div style="position:absolute;left:48px;right:48px;top:850px;display:flex;gap:28px;align-items:flex-start"><div style="flex:1"><div class="ey">A note from us</div><p style="margin:0;font-size:14px;color:#3f3a35">Thank you for planning your safari with Sundown. This proposal brings together your lodge, your day by day plan and one clear price, so you know exactly what to expect from the moment we collect you.</p></div><div style="flex:0 0 200px;font-size:12px;color:#6b6560"><div><b style="color:#0B3A1D">Reference</b><br>'+R+'</div><div style="margin-top:8px"><b style="color:#0B3A1D">Issued</b><br>'+niceDate(today)+'</div></div></div>'+pageFoot(1,4)+'</div>';
+ var p2='<div class="pg"><div class="in"><div class="ey">Where you will stay</div><div class="h2">'+esc(r.L.name)+'</div><p style="margin:0 0 16px;font-size:13.5px;color:#3f3a35">'+M.desc+'</p>'+
+ '<div style="display:grid;grid-template-columns:1.3fr 1fr;grid-template-rows:170px 170px;gap:10px;margin-bottom:16px"><div style="grid-row:span 2"><img class="ph" crossorigin="anonymous" src="'+M.imgs[1]+'"></div><div><img class="ph" crossorigin="anonymous" src="'+M.imgs[2]+'"></div><div><img class="ph" crossorigin="anonymous" src="'+M.imgs[3]+'"></div></div>'+
+ '<ul class="ck" style="display:grid;grid-template-columns:1fr 1fr;gap:0 20px;margin-bottom:18px">'+M.hi.map(function(h){return '<li>'+h+'</li>'}).join('')+'</ul>'+
+ '<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;height:230px"><img class="ph" crossorigin="anonymous" src="'+M.imgs[4]+'"><img class="ph" crossorigin="anonymous" src="'+M.imgs[0]+'"></div></div>'+pageFoot(2,4)+'</div>';
+ var p3='<div class="pg"><div class="in"><div class="ey">Your journey</div><div class="h2">Day by day</div><ul class="tl">'+days(r).map(function(d,i){return '<li><div class="d">Day '+(i+1)+'<span>'+d[0]+'</span></div><div><b>'+d[1]+'</b>'+d[2]+'</div></li>'}).join('')+'</ul>'+
+ '<div style="display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:24px"><div><div class="ey">Included</div><ul class="ck">'+incl(r).map(function(x){return '<li>'+esc(x)+'</li>'}).join('')+'</ul></div><div><div class="ey">Not included</div><ul class="ck x">'+NOTINC.map(function(x){return '<li>'+x+'</li>'}).join('')+'</ul></div></div></div>'+pageFoot(3,4)+'</div>';
+ var rows=r.groups.map(function(g){return '<tr><td><b style="color:#0B3A1D">'+g.n+' '+(g.n>1?LABELS[g.c]:LABEL[g.c])+'</b><br><span style="color:#6b6560;font-size:12px">'+(g.room==='single'?'Own room':'Sharing a room')+'</span></td><td class="r">'+kes(g.price)+'</td><td class="r"><b style="color:#0B3A1D">'+kes(g.price*g.n)+'</b></td></tr>'}).join('');
+ var terms=$('terms').value.trim();
+ var p4='<div class="pg"><div class="in"><div class="ey">Your investment</div><div class="h2">One clear price, all inclusive</div>'+
+ '<table class="tb"><tr><th>Guests</th><th class="r">Per person</th><th class="r">Subtotal</th></tr>'+rows+'</table>'+
+ '<div style="margin:16px 0 22px;background:#0B3A1D;color:#fff;border-radius:16px;padding:20px 24px;display:flex;justify-content:space-between;align-items:center"><div><div class="ey" style="color:#E9B865;margin:0">Total for '+(r.total===2?'the two of you':'all '+r.total+' guests')+'</div><div style="color:#cfe3d4;font-size:12px;margin-top:4px">'+gl+'. About '+usd(r.totPrice/r.fx)+'</div></div><div class="sf" style="font-size:34px;font-weight:800;color:#fff">'+kes(r.totPrice)+'</div></div>'+
+ '<div style="margin-top:6px;padding-top:6px;display:grid;grid-template-columns:1.2fr 1fr;gap:28px"><div><div class="ey">Good to know</div><p style="margin:0;color:#3f3a35">'+(terms?esc(terms)+' ':'')+'Prices are held for 7 days and are subject to availability at the time of booking. Park fees are set by the reserve and are included at today’s rates.</p></div>'+
+ '<div><div class="ey">Ready to go?</div><p style="margin:0;color:#3f3a35">Reply on WhatsApp or email and we will confirm your rooms straight away.</p><p style="margin:12px 0 0;font-family:\'Playfair Display\',Georgia,serif;font-size:20px;color:#0B3A1D">Baraka</p><p style="margin:0;font-size:12px;color:#6b6560">Sundown Safaris, +254 724 491 210</p></div></div>'+
+ '<div style="margin-top:28px;height:300px;position:relative;border-radius:16px;overflow:hidden"><img class="ph" style="border-radius:0" crossorigin="anonymous" src="'+M.imgs[0]+'"><div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,58,29,0) 40%,rgba(11,58,29,.85) 100%)"></div><div class="sf" style="position:absolute;left:24px;bottom:20px;color:#fff;font-size:26px;font-weight:800">We cannot wait to show you '+a+'.</div></div></div>'+pageFoot(4,4)+'</div>';
+ return p1+p2+p3+p4;
+}
+function buildReceipt(r,R){
+ var M=MEDIA[r.L.id],name=esc($('cName').value.trim()),contact=esc($('cContact').value.trim()),out=addDays(r.checkin,r.nights);
+ var paid=parseFloat($('pAmt').value)||0,bal=Math.max(0,r.totPrice-paid),pd=$('pDate').value||new Date().toISOString().slice(0,10);
+ var line=function(k,v,b){return '<tr><td style="color:#6b6560">'+k+'</td><td class="r"'+(b?' style="font-weight:800;color:#0B3A1D"':'')+'>'+v+'</td></tr>'};
+ return '<div class="pg"><div style="height:210px;position:relative"><img class="ph" style="border-radius:0" crossorigin="anonymous" src="'+M.imgs[0]+'"><div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,58,29,.95) 0%,rgba(11,58,29,.6) 60%,rgba(11,58,29,.25) 100%)"></div>'+
+ '<div style="position:absolute;top:40px;left:48px;color:#fff" class="lg"><span class="m">'+LOGO+'</span><span><b>SUNDOWN</b><small>SAFARIS</small></span></div>'+
+ '<div style="position:absolute;left:48px;bottom:34px;color:#fff"><div class="sf" style="font-size:36px;font-weight:800">Payment receipt</div></div>'+
+ '<div style="position:absolute;right:48px;bottom:36px;color:#e7f0e9;text-align:right;font-size:12px">Receipt '+R+'<br>'+niceDate(pd)+'</div></div>'+
+ '<div class="in" style="padding-top:34px"><div style="display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-bottom:22px"><div><div class="ey">Received from</div><div style="font-size:18px;font-weight:800;color:#0B3A1D">'+name+'</div>'+(contact?'<div style="color:#6b6560">'+contact+'</div>':'')+'</div>'+
+ '<div><div class="ey">For</div><div style="font-weight:800;color:#0B3A1D">'+AREA[r.L.park]+' safari, '+esc(r.L.name)+'</div><div style="color:#6b6560">'+niceDate(r.checkin)+' to '+niceDate(out)+', '+r.nights+' night'+(r.nights>1?'s':'')+', '+r.total+' guest'+(r.total>1?'s':'')+'</div></div></div>'+
+ '<table class="tb">'+r.groups.map(function(g){return line(g.n+' '+(g.n>1?LABELS[g.c]:LABEL[g.c])+(g.room==='single'?', own room':', sharing')+' at '+kes(g.price),kes(g.price*g.n))}).join('')+line('Trip total',kes(r.totPrice),1)+'</table>'+
+ '<div style="margin:18px 0;background:#0B3A1D;color:#fff;border-radius:16px;padding:20px 24px;display:flex;justify-content:space-between;align-items:center"><div><div class="ey" style="color:#E9B865;margin:0">Amount received</div><div style="color:#cfe3d4;font-size:12px;margin-top:4px">'+esc($('pMethod').value)+($('pRef').value.trim()?', reference '+esc($('pRef').value.trim()):'')+'</div></div><div class="sf" style="font-size:34px;font-weight:800">'+kes(paid)+'</div></div>'+
+ '<table class="tb">'+line('Balance due',bal?kes(bal):'Paid in full',1)+'</table>'+
+ '<div style="display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:22px"><div><div class="ey">Included in your trip</div><ul class="ck">'+incl(r).map(function(x){return '<li>'+esc(x)+'</li>'}).join('')+'</ul></div>'+
+ '<div><div class="ey">Thank you</div><p style="margin:0;color:#3f3a35">Your payment is received with thanks. We will send your booking confirmation and your guide’s details before you travel.</p><p style="margin:14px 0 0;font-family:\'Playfair Display\',Georgia,serif;font-size:20px;color:#0B3A1D">Baraka</p><p style="margin:0;font-size:12px;color:#6b6560">Sundown Safaris, +254 724 491 210</p></div></div></div>'+pageFoot(1,1)+'</div>';
+}
+function loadLib(){return new Promise(function(res,rej){if(window.html2pdf)return res();var s=document.createElement('script');s.src='https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js';s.onload=res;s.onerror=function(){rej(new Error('Could not load the PDF tool. Check your connection.'))};document.head.appendChild(s)})}
+function genPdf(){
+ var r=LAST;if(!r)return;var R=ref();
+ var html='<div class="docwrap" style="width:794px;background:#fff"><style>'+DCSS+'</style>'+(DTYPE==='receipt'?buildReceipt(r,R):buildProposal(r,R))+'</div>';
+ var st=$('docStage');st.innerHTML=html;
+ $('genPdf').disabled=true;$('pdfMsg').textContent='Building your PDF...';
+ var imgs=[].slice.call(st.querySelectorAll('img'));
+ Promise.all(imgs.map(function(im){return im.complete?Promise.resolve():new Promise(function(ok){im.onload=ok;im.onerror=ok})})).then(function(){return document.fonts?document.fonts.ready:null}).then(loadLib).then(function(){
+  var fname='Sundown '+(DTYPE==='receipt'?'receipt':'proposal')+' '+$('cName').value.trim().replace(/[^A-Za-z0-9 ]/g,'')+' '+r.checkin+'.pdf';
+  return html2pdf().set({margin:0,filename:fname,image:{type:'jpeg',quality:0.92},html2canvas:{scale:2,useCORS:true,backgroundColor:'#ffffff',scrollX:0,scrollY:0},jsPDF:{unit:'px',format:[794,1123],orientation:'portrait',hotfixes:['px_scaling']}}).from(st.firstElementChild).save();
+ }).then(function(){$('pdfMsg').textContent='Downloaded. Reference '+R;st.innerHTML='';docState()}).catch(function(e){$('pdfMsg').textContent=e.message||'Something went wrong, try again.';docState()});
+}
+document.querySelectorAll('#dtype button').forEach(function(b){b.onclick=function(){DTYPE=b.dataset.v;document.querySelectorAll('#dtype button').forEach(function(x){x.classList.toggle('on',x===b)});$('rcptFields').hidden=DTYPE!=='receipt';$('propFields').hidden=DTYPE==='receipt';$('genPdf').textContent=DTYPE==='receipt'?'Download receipt PDF':'Download proposal PDF';docState()}});
+['okCheck','cName','pAmt'].forEach(function(id){$(id).addEventListener('input',docState);$(id).addEventListener('change',docState)});
+$('genPdf').textContent='Download proposal PDF';
+$('genPdf').onclick=genPdf;
+
+document.querySelector('main').addEventListener('input',function(e){if(!e.target.closest('#docCard')){$('okCheck').checked=false}},true);
+document.querySelector('main').addEventListener('click',function(e){if(e.target.closest('button')&&!e.target.closest('#docCard')&&!e.target.closest('.tabs')&&!e.target.closest('.acts')){$('okCheck').checked=false;docState()}},true);
 calc();
 </script>
+<div id="docStage" aria-hidden="true"></div>
 </body>
 </html>
