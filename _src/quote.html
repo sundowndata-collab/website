@@ -69,6 +69,7 @@ input:focus,select:focus{outline:2px solid var(--gold);outline-offset:0;border-c
 .lodge small{display:block;font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
 .lodge b{display:block;font-family:'Playfair Display',Georgia,serif;font-size:17px;color:var(--g);margin:4px 0 6px;line-height:1.2}
 .lodge span{font-size:12px;color:var(--muted)}
+.quickx{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 10px}.quickx:empty{display:none}.quickx small{width:100%;font-size:12px;color:var(--muted);font-weight:600}.quickx button{border:1px solid var(--line);background:var(--sand);border-radius:999px;padding:6px 11px;font:600 12px Inter,sans-serif;color:var(--g);cursor:pointer}.quickx button:hover{border-color:var(--g2);background:#fff}
 .lodge.on{border-color:var(--g);background:#fff;box-shadow:0 0 0 3px rgba(201,138,39,.25)}
 .lodge.on:after{content:"";position:absolute;top:12px;right:12px;width:20px;height:20px;border-radius:50%;background:var(--g) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23E9B865' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E") center/12px no-repeat}
 
@@ -263,6 +264,7 @@ footer{text-align:center;font-size:12px;color:var(--muted);padding:10px 20px 30p
 
  <div class="card">
   <div class="step"><span class="num">4</span><div><h2>Extras</h2><p>Balloon, bush dinner, flights or transfers, at your cost in KES</p></div></div>
+  <div id="quickx" class="quickx"></div>
   <div id="extras"></div>
   <button class="btn ghost" type="button" id="addx">+ Add an extra</button>
  </div>
@@ -415,19 +417,31 @@ var LODGES = [
   nr:[],
   res:[['2026-04-03','2026-04-05',22000,28000],['2026-01-01','2026-06-30',19000,26000],['2026-07-01','2026-09-30',25000,33000],
    ['2026-10-01','2026-12-22',19000,26000],['2026-12-24','2027-01-02',29000,37000]],
-  tentNr:0, tentRes:0}
+  tentNr:0, tentRes:0},
+ {id:'ol-tukai', name:'Ol Tukai Lodge', park:'amboseli', driverRoom:1500, resComm:0.10, xmasNr:0,
+  pitch:'inside Amboseli National Park, with Kilimanjaro rising over the swamps where the elephants feed',
+  note:'Ol Tukai 2027 contract. Visitor rates are net USD per person, Easter (USD 30) and festive (USD 42) supplements already added to those dates. Resident rates are rack, 10% commission. Driver room rate not given, KES 1,500 assumed. Half board is USD 9 less per person. Payment 60 days before arrival without credit. Cancellation 20% up to 61 days, 50% from 60 to 31 days, 100% inside 30 days. Sign and return the contract within 30 days.',
+  nr:[['2027-01-03','2027-03-25',252,168],['2027-03-26','2027-03-29',282,198],['2027-03-30','2027-03-31',252,168],
+   ['2027-04-01','2027-05-31',231,154],['2027-06-01','2027-10-31',329,219],['2027-11-01','2027-12-23',252,168],
+   ['2027-12-24','2028-01-02',371,261]],
+  res:[['2027-01-03','2027-03-25',27000,36000],['2027-03-26','2027-03-29',33750,45000],['2027-03-30','2027-03-31',27000,36000],
+   ['2027-04-01','2027-05-31',20250,27000],['2027-06-01','2027-10-31',33750,45000],['2027-11-01','2027-12-23',27000,36000],
+   ['2027-12-24','2028-01-02',33750,45000]],
+  tentNr:0, tentRes:0, minFestive:'Christmas supplement needs a minimum 3 night stay.',
+  x:[['Masai village visit',50,'pp'],['Champagne breakfast on the lawns',50,'pp'],['Sundowner at the lodge',40,'pp'],['Bird and nature walk',30,'pp'],['Night game drive, min 4',250,'all'],['Bush breakfast, min 7',60,'pp'],['Bush dinner, min 7',60,'pp'],['Cultural dance for the group',200,'all'],['Lunch box',30,'pp'],['Birthday cake 1 kg',40,'all']]}
 ];
 var XMAS_NR = 35; // USD per adult per night, 24 Dec to 1 Jan, non residents
 // Park fees per adult per day. Mara: masaimara.travel, Jan to Jun and Jul to Dec rates. Samburu: samburureserve.com, 2026.
 var PARKS = {
  mara:{name:'Masai Mara National Reserve', cit:[1500,3000], res:[2500,5000], nr:[100,200], veh:1000, note:'Mara fees: citizens KES 1,500 or 3,000, residents KES 2,500 or 5,000, visitors USD 100 or 200 per day (January to June, July to December). Vehicle KES 1,000 per entry.'},
  samburu:{name:'Samburu National Reserve', cit:[800,800], res:[1600,1600], nr:[85,85], veh:1600, note:'Samburu fees: citizens KES 800, residents KES 1,600, visitors USD 85 per day. Vehicle KES 1,600 per entry.'},
+ amboseli:{name:'Amboseli National Park', cit:[1500,1500], res:[2025,2025], nr:[90,90], veh:0, note:'Amboseli fees from KWS, effective 1 October 2025: citizens KES 1,500, residents KES 2,025, visitors USD 90 per adult per day. Vehicle entry fee not loaded yet, add it as an extra if charged.'},
  naivasha:{name:'Lake Naivasha', cit:[0,0], res:[0,0], nr:[0,0], veh:0, note:'No park fee at Lake Naivasha. Add Hell’s Gate, Crescent Island or boat rides as extras.'}
 };
 
 
 var LAST=null;
-var AREA={mara:'Masai Mara',naivasha:'Lake Naivasha',samburu:'Samburu'};
+var AREA={mara:'Masai Mara',naivasha:'Lake Naivasha',samburu:'Samburu',amboseli:'Amboseli'};
 var $=function(id){return document.getElementById(id)};
 function num(id){var v=parseFloat($(id).value);return isNaN(v)?0:v}
 function ds(d){return d.toISOString().slice(0,10)}
@@ -536,6 +550,8 @@ function calc(){
  if(total)ch+='<span class="tc"><b>'+total+'</b> guest'+(total>1?'s':'')+'</span>';
  $('chips').innerHTML=ch;
  document.querySelectorAll('.lodge').forEach(function(b){b.classList.toggle('on',b.dataset.id===L.id)});
+ if($('quickx').dataset.l!==L.id){$('quickx').dataset.l=L.id;var qx=L.x||[];$('quickx').innerHTML=qx.length?'<small>Quick add from '+L.name+', lodge prices in USD converted at today\u2019s rate</small>'+qx.map(function(x,i){return '<button type="button" data-i="'+i+'">'+x[0]+', USD '+x[1]+(x[2]==='all'?' group':'')+'</button>'}).join(''):'';
+  $('quickx').querySelectorAll('button').forEach(function(b){b.onclick=function(){var x=qx[+b.dataset.i];addExtra(x[0],Math.ceil(x[1]*(num('fx')||129.5)/100)*100,x[2]);calc()}})}
  // WhatsApp
  var t='';
  if(checkin&&total){
@@ -565,7 +581,7 @@ function addExtra(l,a,mo){var d=document.createElement('div');d.className='xrow'
 LODGES.forEach(function(l){var o=document.createElement('option');o.value=l.id;o.textContent=l.name;$('lodge').appendChild(o);
  var b=document.createElement('button');b.type='button';b.className='lodge';b.dataset.id=l.id;b.innerHTML='<small>'+AREA[l.park]+'</small><b>'+l.name+'</b><span>Driver '+kes(l.driverRoom)+' a night'+(l.tentNr?', tents available':'')+'</span>';
  b.onclick=function(){$('lodge').value=l.id;calc()};$('lodges').appendChild(b)});
-(function(){var h='';LODGES.forEach(function(l){h+='<p><b>'+l.name+'</b><br><span class="muted">Visitors '+(l.nr.length?shortDate(l.nr[0][0])+' '+l.nr[0][0].slice(0,4)+' to '+shortDate(l.nr[l.nr.length-1][1])+' '+l.nr[l.nr.length-1][1].slice(0,4):'not loaded')+'. Residents '+shortDate(l.res[0][0])+' '+l.res[0][0].slice(0,4)+' to '+shortDate(l.res[l.res.length-1][1])+' '+l.res[l.res.length-1][1].slice(0,4)+'. Commission '+Math.round(l.resComm*100)+'% on resident adults.</span></p>'});h+='<p class="hint">Visitor rates are net USD per person, inclusive of taxes, plus a USD 35 Christmas supplement per visitor per night from 24 December to 1 January. Resident rates are card rates per room. Source: Simba Lodges contracts 2026 and 2027.</p>';$('ratelist').innerHTML=h})();
+(function(){var h='';LODGES.forEach(function(l){h+='<p><b>'+l.name+'</b><br><span class="muted">Visitors '+(l.nr.length?shortDate(l.nr[0][0])+' '+l.nr[0][0].slice(0,4)+' to '+shortDate(l.nr[l.nr.length-1][1])+' '+l.nr[l.nr.length-1][1].slice(0,4):'not loaded')+'. Residents '+shortDate(l.res[0][0])+' '+l.res[0][0].slice(0,4)+' to '+shortDate(l.res[l.res.length-1][1])+' '+l.res[l.res.length-1][1].slice(0,4)+'. Commission '+Math.round(l.resComm*100)+'% on resident adults.</span></p>'});h+='<p class="hint">Visitor rates are net USD per person, inclusive of taxes, plus a USD 35 Christmas supplement per visitor per night from 24 December to 1 January. Resident rates are card rates per room. Sources: Simba Lodges contracts 2026 and 2027, Muthu Hotels rates, Ol Tukai Lodge contract 2027.</p>';$('ratelist').innerHTML=h})();
 // steppers
 document.querySelectorAll('[data-step]').forEach(function(b){b.onclick=function(){var p=b.dataset.step.split(':'),el=$(p[0]),mn=parseFloat(el.min||'0');el.value=Math.max(isNaN(mn)?0:mn,(parseFloat(el.value)||0)+parseFloat(p[1]));el.dispatchEvent(new Event('input',{bubbles:true}))}});
 document.querySelectorAll('#mode button').forEach(function(b){b.onclick=function(){MODE=b.dataset.v;document.querySelectorAll('#mode button').forEach(function(x){x.classList.toggle('on',x===b)});calc()}});
@@ -598,6 +614,9 @@ MEDIA['muthu-mara-river']={stock:1,imgs:['strip-lions-vehicle-1000','strip-lion-
 MEDIA['muthu-naivasha']={stock:1,imgs:['strip-hippos-1000','strip-giraffes-1000','strip-zebra-herd-1000','field-hippos-1000','strip-sunset-1000'].map(function(n){return 'https://www.sundownsafari.com/images/'+n+'.jpg'}),
   desc:'Muthu Lake Naivasha Country Club sits in old colonial gardens on the shores of Lake Naivasha, with lawns running down to the water. It is an easy, relaxed base for boat rides among the hippos, Crescent Island and Hell\u2019s Gate.',
   hi:['Gardens on the shores of Lake Naivasha','Close to Crescent Island and Hell\u2019s Gate','Swimming pool and lakeside lawns','Full board, with your meals taken care of']};
+MEDIA['ol-tukai']={stock:1,imgs:['guest-zebra-wide-1200','field-land-cruiser-1000','strip-zebra-herd-1000','field-guide-guests-1000','strip-sunset-1000'].map(function(n){return 'https://www.sundownsafari.com/images/'+n+'.jpg'}),
+  desc:'Ol Tukai Lodge sits inside Amboseli National Park, in a grove of yellow fever trees with Kilimanjaro rising behind it. The park is famous for its big tusked elephant herds, which feed in the swamps right in front of the lodge. Rooms are comfortable cottages, meals are served in the main lodge, and the pool looks out towards the mountain.',
+  hi:['Inside Amboseli National Park','Views of Kilimanjaro on clear mornings','Famous for its big elephant herds','Full board, with your meals taken care of']};
 var DTYPE='proposal';
 function docState(){
  var ok=$('okCheck').checked, name=$('cName').value.trim(), r=LAST, bad=r&&r.alerts.some(function(a){return a[0]==='bad'});
@@ -615,7 +634,7 @@ function days(r){
   for(var i=1;i<n;i++)out.push([dd(i),'Lake Naivasha at your pace','Your guide and vehicle are with you all day. Explore Hell’s Gate, take a boat out among the hippos or simply rest in the gardens.']);
   out.push([dd(n),'Lake Naivasha to Nairobi','A slow breakfast, then the drive home to '+pick+'.']);
  }else{
-  var first=r.L.park==='mara'?'We collect you from '+pick+' early in your private Land Cruiser and drive west, stopping at the Great Rift Valley viewpoint. Lunch at the lodge, then your first game drive as the afternoon light softens.':'We collect you from '+pick+' early in your private Land Cruiser and drive north past Mount Kenya. Lunch at the lodge, then your first game drive in the afternoon.';
+  var first=r.L.park==='amboseli'?'We collect you from '+pick+' early in your private Land Cruiser and drive south towards the Tanzanian border, with Kilimanjaro growing on the horizon. Lunch at the lodge, then your first game drive among the elephant herds.':r.L.park==='mara'?'We collect you from '+pick+' early in your private Land Cruiser and drive west, stopping at the Great Rift Valley viewpoint. Lunch at the lodge, then your first game drive as the afternoon light softens.':'We collect you from '+pick+' early in your private Land Cruiser and drive north past Mount Kenya. Lunch at the lodge, then your first game drive in the afternoon.';
   out.push([dd(0),'Nairobi to '+a,first]);
   for(var j=1;j<n;j++)out.push([dd(j),'A full day in '+a,'Morning and afternoon game drives at your own pace with your guide. The vehicle is yours, so you stay as long as you like at every sighting.']);
   out.push([dd(n),a+' to Nairobi','An early game drive when the cats are most active, breakfast at the lodge, then the drive home to '+pick+' by evening.']);
@@ -805,10 +824,10 @@ function renderLog(){
 }
 ['fMonth','fStatus','fText'].forEach(function(id){$(id).addEventListener('input',renderLog)});
 // website price check
-var TRIPS=[['The Explorer',3,1500,[['mara',2]],''],['The Photographer',3,2800,[['mara',2]],''],['The Sundowner',3,3400,[['mara',2]],'Flights not in the estimate'],['The Trailblazer',5,2300,[['samburu',2],['mara',2]],''],['The Dreamcatcher',5,3900,[['mara',4]],'Conservancy fees not in the estimate'],['The Horizon Chaser',5,4800,[['mara',4]],'Balloon not in the estimate'],['Ultimate Kenya',7,5900,[['mara',6]],'Amboseli priced as Mara'],['The Voyager',7,4900,[['mara',6]],''],['The Constellation',7,6500,[['mara',6]],'Star bed night not in the estimate'],['The Long Lens',7,4900,[['mara',6]],'']];
+var TRIPS=[['The Explorer',3,1500,[['mara',2]],''],['The Photographer',3,2800,[['mara',2]],''],['The Sundowner',3,3400,[['mara',2]],'Flights not in the estimate'],['The Trailblazer',5,2300,[['samburu',2],['mara',2]],''],['The Dreamcatcher',5,3900,[['mara',4]],'Conservancy fees not in the estimate'],['The Horizon Chaser',5,4800,[['mara',4]],'Balloon not in the estimate'],['Ultimate Kenya',7,5900,[['amboseli',2],['mara',4]],''],['The Voyager',7,4900,[['mara',6]],''],['The Constellation',7,6500,[['mara',6]],'Star bed night not in the estimate'],['The Long Lens',7,4900,[['mara',6]],'']];
 function priceCheck(){
- var start={low:'2027-05-10',mid:'2026-11-16',peak:'2027-08-09'}[$('pcSeason').value],fx=num('fx')||129.5,vr=num('vRate')||28000;
- var lodgeOf={mara:LODGES.filter(function(l){return l.id==='mara-simba'})[0],samburu:LODGES.filter(function(l){return l.id==='samburu-simba'})[0]};
+ var start={low:'2027-05-10',mid:'2027-11-15',peak:'2027-08-09'}[$('pcSeason').value],fx=num('fx')||129.5,vr=num('vRate')||28000;
+ var lodgeOf={mara:LODGES.filter(function(l){return l.id==='mara-simba'})[0],samburu:LODGES.filter(function(l){return l.id==='samburu-simba'})[0],amboseli:LODGES.filter(function(l){return l.id==='ol-tukai'})[0]};
  var h='<tr><th>Trip</th><th class="n">Published from</th><th class="n">Estimated cost</th><th class="n">Margin</th><th>Note</th></tr>';
  TRIPS.forEach(function(t){
   var d=0,usdC=0,miss=false;
