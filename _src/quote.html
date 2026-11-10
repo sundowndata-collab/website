@@ -164,6 +164,31 @@ tr.tot td{font-weight:800;border-top:2px solid var(--g);border-bottom:0;color:va
 .btn[disabled]{opacity:.45;cursor:not-allowed}
 #docStage{position:fixed;left:-10000px;top:0;width:794px}
 .rbar{display:flex;height:12px;border-radius:999px;overflow:hidden;background:var(--sand2);margin-bottom:8px}.rbar i{display:block;height:100%}.rev li{gap:10px}.rev .who{flex:1}.sw2{width:12px;height:12px;border-radius:4px;flex:0 0 auto;align-self:center}.ey2{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin:14px 0 4px}
+[hidden]{display:none!important}
+body.team .owner-only{display:none!important}
+.views{display:flex;gap:4px;margin-left:8px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:999px;padding:4px}
+.views button{border:0;background:transparent;color:#e7f0e9;font-weight:700;font-size:13px;padding:7px 14px;border-radius:999px;cursor:pointer}
+.views button.on{background:#C98A27;color:#0B3A1D}
+@media(max-width:640px){.views button{padding:6px 10px;font-size:12px}.chip{display:none}}
+.logwrap{max-width:1240px;margin:-48px auto 0;padding:0 20px 80px;position:relative;z-index:3}
+@media(max-width:980px){.logwrap{padding:0 12px 80px}}
+.lk{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin-bottom:16px}
+@media(max-width:900px){.lk{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.lk div{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px 16px;box-shadow:0 10px 30px rgba(11,58,29,.06)}
+.lk small{display:block;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+.lk b{font-family:'Playfair Display',Georgia,serif;font-size:24px;color:var(--g)}
+.lk span{display:block;font-size:12px;color:var(--muted)}
+.lt{width:100%;border-collapse:collapse;font-size:13.5px}
+.lt th{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-align:left;padding:8px 6px;border-bottom:2px solid var(--line)}
+.lt td{padding:10px 6px;border-bottom:1px solid var(--line);vertical-align:middle}
+.lt td.n,.lt th.n{text-align:right;white-space:nowrap}
+.lt select{min-height:36px;padding:6px 8px;border-radius:999px;font-size:12.5px;font-weight:700;width:auto}
+.st-Quoted{background:#f3eee4}.st-Sent{background:#fff4e5}.st-Won{background:#dff3e6}.st-Deposit{background:#e6f0ff}.st-Paid{background:#0B3A1D;color:#fff}.st-Lost{background:#fdecea}
+.lt .lnk{border:0;background:none;color:var(--g);font-weight:800;cursor:pointer;text-decoration:underline;text-decoration-color:var(--gold);padding:0}
+.tblwrap{overflow-x:auto}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.filters select,.filters input{width:auto;min-height:40px}
+.pc-ok{color:#14532D;font-weight:800}.pc-low{color:#b45309;font-weight:800}.pc-bad{color:#b42318;font-weight:800}
 footer{text-align:center;font-size:12px;color:var(--muted);padding:10px 20px 30px}
 </style>
 </head>
@@ -173,7 +198,7 @@ footer{text-align:center;font-size:12px;color:var(--muted);padding:10px 20px 30p
   <span class="mark"><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M14.5 12H14c-2.8 0-5-2.2-5-5V5a2 2 0 0 1 2-2h2c1.5 0 2.8.8 3.4 2H19c1.7 0 3 1.3 3 3v10m-4-8h.01"/><path d="M14 10a4 4 0 0 0 4 4a4 4 0 0 1 4 4a2 2 0 0 1-4 0m-8-2v5"/><path d="M18 14a4 4 0 0 0-4 4v3H6v-2.6c0-1.1-.8-2.3-1.7-3C2.9 14.3 2 12.8 2 11c0-3.3 3.1-6 7-6m-7 6v7"/></g></svg></span>
   <span class="words"><b>SUNDOWN</b><small>Safaris</small></span>
  </a>
- <div class="desk"><b>Quote desk</b>Team only</div>
+ <nav class="views" aria-label="Views"><button type="button" data-view="desk" class="on">Quote desk</button><button type="button" data-view="log">Quote log</button></nav>
  <div class="chip"><span class="dot"></span><span id="fxnote">KES 129.50 per USD</span></div>
 </div></div>
 
@@ -232,12 +257,12 @@ footer{text-align:center;font-size:12px;color:var(--muted);padding:10px 20px 30p
 
  <div class="card">
   <div class="step"><span class="num">5</span><div><h2>Pricing</h2><p>Your margin and how resident rooms are sold</p></div></div>
-  <div class="grid2" style="margin-bottom:12px">
+  <div class="grid2 owner-only" style="margin-bottom:12px">
    <div><label for="margin">Margin on price (%)</label><input type="number" id="margin" min="0" max="80" value="20" inputmode="decimal"></div>
    <div><label for="fx">KES per USD</label><input type="number" id="fx" step="0.01" value="129.5" inputmode="decimal"></div>
   </div>
-  <span class="lbl">Resident rooms</span>
-  <div class="seg" id="mode"><button type="button" data-v="card" class="on">Card rate, keep the 15% commission</button><button type="button" data-v="margin">Add my margin on rooms too</button></div>
+  <span class="lbl owner-only">Resident rooms</span>
+  <div class="seg owner-only" id="mode"><button type="button" data-v="card" class="on">Card rate, keep the 15% commission</button><button type="button" data-v="margin">Add my margin on rooms too</button></div>
   <div class="grid2" style="margin-top:12px">
    <div><label for="roundTo">Round prices up to (KES)</label><input type="number" id="roundTo" min="1" value="500" inputmode="numeric"></div>
    <div><label for="pickup">Pickup area</label><input type="text" id="pickup" placeholder="Keleshwa"></div>
@@ -273,15 +298,15 @@ footer{text-align:center;font-size:12px;color:var(--muted);padding:10px 20px 30p
   <small>Total to client</small>
   <div class="amt" id="kTotal">KES 0</div>
   <div class="usd" id="kTotalUsd"></div>
-  <div class="kpis"><div class="kpi"><span>Your cost</span><b id="kCost">KES 0</b></div><div class="kpi pr"><span>Your profit</span><b id="kProfit">KES 0</b></div></div>
-  <div class="bar" title="Profit as a share of the price"><i id="kBar"></i></div>
-  <div class="usd" style="margin-top:6px;position:relative;z-index:1" id="kPct"></div>
+  <div class="kpis owner-only"><div class="kpi"><span>Your cost</span><b id="kCost">KES 0</b></div><div class="kpi pr"><span>Your profit</span><b id="kProfit">KES 0</b></div></div>
+  <div class="bar owner-only" title="Profit as a share of the price"><i id="kBar"></i></div>
+  <div class="usd owner-only" style="margin-top:6px;position:relative;z-index:1" id="kPct"></div>
  </div>
  <div class="card">
   <div id="alerts"></div>
   <ul class="per" id="prices"></ul>
  </div>
- <div class="card">
+ <div class="card owner-only">
   <div class="step" style="margin-bottom:10px"><span class="num" style="background:#C98A27;color:#0B3A1D">%</span><div><h2>Your revenue streams</h2><p>Where your <b id="revTotal">KES 0</b> comes from</p></div></div>
   <div class="rbar" id="revBar"></div>
   <ul class="per rev" id="revList"></ul>
@@ -289,11 +314,11 @@ footer{text-align:center;font-size:12px;color:var(--muted);padding:10px 20px 30p
   <table id="revFlow"></table>
  </div>
  <div class="card">
-  <div class="tabs" role="tablist"><button type="button" class="on" data-tab="wa">WhatsApp quote</button><button type="button" data-tab="bd">Breakdown</button><button type="button" data-tab="rt">Rates</button></div>
+  <div class="tabs" role="tablist"><button type="button" class="on" data-tab="wa">WhatsApp quote</button><button type="button" data-tab="bd" class="owner-only">Breakdown</button><button type="button" data-tab="rt">Rates</button></div>
   <div class="pane on" id="p-wa">
    <div class="chat"><div class="bubble"><textarea id="wa" aria-label="WhatsApp quote"></textarea></div></div>
    <div class="acts">
-    <button class="btn" type="button" id="copy">Copy quote</button>
+    <button class="btn" type="button" id="copy">Copy quote</button><button class="btn ghost" type="button" id="saveLog">Save to log</button>
     <a class="btn green" id="openwa" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 448 512" aria-hidden="true"><path fill="currentColor" d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6z"/></svg>Open in WhatsApp</a>
     <span class="hint" id="copied" style="align-self:center;margin:0"></span>
    </div>
@@ -303,10 +328,27 @@ footer{text-align:center;font-size:12px;color:var(--muted);padding:10px 20px 30p
  </div>
 </aside>
 </main>
+<section class="logwrap" id="logView" hidden>
+ <div class="lk" id="logKpis"></div>
+ <div class="card">
+  <div class="step"><span class="num">&#9776;</span><div><h2>Quote log</h2><p id="logSub">Every quote and receipt you save or download</p></div></div>
+  <div class="filters"><select id="fMonth" aria-label="Month"></select><select id="fStatus" aria-label="Status"><option value="">All statuses</option><option>Quoted</option><option>Sent</option><option>Won</option><option>Deposit paid</option><option>Paid</option><option>Lost</option></select><input id="fText" type="search" placeholder="Search client or lodge" aria-label="Search"></div>
+  <div class="tblwrap"><table class="lt" id="logTable"></table></div>
+  <p class="hint" id="logMsg"></p>
+ </div>
+ <div class="card owner-only">
+  <div class="step"><span class="num">$</span><div><h2>Website price check</h2><p>Your published from prices against today’s loaded rates, for 2 visitors sharing</p></div></div>
+  <div class="filters"><select id="pcSeason" aria-label="Season"><option value="low">Low season, May</option><option value="mid" selected>Shoulder, late November</option><option value="peak">Peak, August</option></select></div>
+  <div class="tblwrap"><table class="lt" id="pcTable"></table></div>
+  <p class="hint">Estimate per person: Simba lodge visitor rates, park fees for every day, vehicle at your day rate and the driver room, all split between 2 guests. Margin is what is left of the published price. Below 15% is marked red.</p>
+ </div>
+</section>
 <div class="mbar"><div><small>Total to client</small><b id="mTotal">KES 0</b><span id="mPer"></span></div><a class="btn" href="#summary">View quote</a></div>
 <footer>Sundown Safaris quote desk. Rates are net and confidential, do not share this page.</footer>
 
 <script>
+/*ROLE*/
+if(typeof SD_ROLE==='undefined'){var SD_USER='local',SD_ROLE='owner'}
 // ---------------- RATE DATA ----------------
 // Non resident: USD per person per night, full board, net of commission, inclusive of all taxes.
 //   d = per person sharing a double, s = single room per person.
@@ -466,7 +508,7 @@ function calc(){
  $('kPct').textContent=totPrice?'Profit is '+Math.round(pct*100)+'% of the price':'';
  $('mTotal').textContent=kes(totPrice);
  $('mPer').textContent=groups.length?'From '+kes(Math.min.apply(null,groups.map(function(g){return g.price})))+' per person':'';
- $('prices').innerHTML=groups.map(function(g){return '<li><div class="who"><b>'+g.n+' '+(g.n>1?LABELS[g.c]:LABEL[g.c])+'</b><span>'+(g.room==='single'?'Own room':'Sharing a room')+', cost '+kes(g.cost)+' each</span></div><div class="px"><b>'+kes(g.price)+'</b><span>per person, '+usd(g.price/fx)+'</span></div></li>'}).join('')||'<li class="muted">Add guests to see prices</li>';
+ $('prices').innerHTML=groups.map(function(g){return '<li><div class="who"><b>'+g.n+' '+(g.n>1?LABELS[g.c]:LABEL[g.c])+'</b><span>'+(g.room==='single'?'Own room':'Sharing a room')+(SD_ROLE==='owner'?', cost '+kes(g.cost)+' each':'')+'</span></div><div class="px"><b>'+kes(g.price)+'</b><span>per person, '+usd(g.price/fx)+'</span></div></li>'}).join('')||'<li class="muted">Add guests to see prices</li>';
  var bh='';
  groups.forEach(function(g){bh+='<tr><td><b>'+L.name+'</b><br><span class="muted">'+nights+' night'+(nights>1?'s':'')+', '+g.n+' '+(g.n>1?LABELS[g.c]:LABEL[g.c])+(g.room==='single'?' in own rooms':' sharing')+(g.c!=='nr'?', card '+kes(g.lodgeCard*g.n)+' less '+Math.round(L.resComm*100)+'%':', net USD rate')+(tent?', tents':'')+'</span></td><td class="n">'+kes(g.lodgeNet*g.n)+'</td></tr>'});
  groups.forEach(function(g){if(g.park)bh+='<tr><td><b>Park fees</b><br><span class="muted">'+pDays+' days, '+g.n+' '+(g.n>1?LABELS[g.c]:LABEL[g.c])+'</span></td><td class="n">'+kes(g.park*g.n)+'</td></tr>'});
@@ -499,7 +541,7 @@ function calc(){
  }
  $('wa').value=t;
  $('openwa').href='https://wa.me/?text='+encodeURIComponent(t);
- LAST={L:L,P:P,groups:groups,totCost:totCost,totPrice:totPrice,checkin:checkin,nights:nights,total:total,fx:fx,tent:tent,xl:xl,vDays:vDays,pDays:pDays,alerts:alerts};
+ LAST={ST:ST,profit:profit,L:L,P:P,groups:groups,totCost:totCost,totPrice:totPrice,checkin:checkin,nights:nights,total:total,fx:fx,tent:tent,xl:xl,vDays:vDays,pDays:pDays,alerts:alerts};
  if(typeof docState==='function')docState();
  try{localStorage.setItem('sdq',JSON.stringify(state()))}catch(e){}
 }
@@ -664,7 +706,9 @@ function genPdf(){
  Promise.all(imgs.map(function(im){return im.complete?Promise.resolve():new Promise(function(ok){im.onload=ok;im.onerror=ok})})).then(function(){return document.fonts?document.fonts.ready:null}).then(loadLib).then(function(){
   var fname='Sundown '+(DTYPE==='receipt'?'receipt':'proposal')+' '+$('cName').value.trim().replace(/[^A-Za-z0-9 ]/g,'')+' '+r.checkin+'.pdf';
   return html2pdf().set({margin:0,filename:fname,image:{type:'jpeg',quality:0.92},html2canvas:{scale:2,useCORS:true,backgroundColor:'#ffffff',scrollX:0,scrollY:0},jsPDF:{unit:'px',format:[794,1123],orientation:'portrait',hotfixes:['px_scaling']}}).from(st.firstElementChild).save();
- }).then(function(){$('pdfMsg').textContent='Downloaded. Reference '+R;st.innerHTML='';docState()}).catch(function(e){$('pdfMsg').textContent=e.message||'Something went wrong, try again.';docState()});
+ }).then(function(){var paid=parseFloat($('pAmt').value)||0,ex=DTYPE==='receipt'?{paid:paid,payMethod:$('pMethod').value,payRef:$('pRef').value.trim(),payDate:$('pDate').value}:null;
+  var stt=DTYPE==='receipt'?(paid>=r.totPrice?'Paid':'Deposit paid'):'Sent';st.innerHTML='';
+  return saveQuote(R,stt,DTYPE,ex).then(function(){$('pdfMsg').textContent='Downloaded and saved to the log. Reference '+R},function(){$('pdfMsg').textContent='Downloaded. Reference '+R+'. Could not save to the log.'})}).then(function(){docState()}).catch(function(e){$('pdfMsg').textContent=e.message||'Something went wrong, try again.';docState()});
 }
 document.querySelectorAll('#dtype button').forEach(function(b){b.onclick=function(){DTYPE=b.dataset.v;document.querySelectorAll('#dtype button').forEach(function(x){x.classList.toggle('on',x===b)});$('rcptFields').hidden=DTYPE!=='receipt';$('propFields').hidden=DTYPE==='receipt';$('genPdf').textContent=DTYPE==='receipt'?'Download receipt PDF':'Download proposal PDF';docState()}});
 ['okCheck','cName','pAmt'].forEach(function(id){$(id).addEventListener('input',docState);$(id).addEventListener('change',docState)});
@@ -673,6 +717,92 @@ $('genPdf').onclick=genPdf;
 
 document.querySelector('main').addEventListener('input',function(e){if(!e.target.closest('#docCard')){$('okCheck').checked=false}},true);
 document.querySelector('main').addEventListener('click',function(e){if(e.target.closest('button')&&!e.target.closest('#docCard')&&!e.target.closest('.tabs')&&!e.target.closest('.acts')){$('okCheck').checked=false;docState()}},true);
+// ---------------- ROLE, QUOTE LOG, PRICE CHECK ----------------
+if(SD_ROLE!=='owner'){document.body.classList.add('team');$('margin').value=20;MODE='card'}
+var LOGQ=[];
+function apiLog(method,body){return fetch('/api/log',{method:method,headers:body?{'content-type':'application/json'}:{},body:body?JSON.stringify(body):undefined,credentials:'same-origin'}).then(function(r){if(!r.ok)throw new Error('Log error '+r.status);return r.json()})}
+function record(ref,status,doc,extra){
+ var r=LAST;if(!r)return null;
+ var rec={ref:ref,status:status,doc:doc,client:{name:$('cName').value.trim(),contact:$('cContact').value.trim()},
+  lodge:r.L.name,lodgeId:r.L.id,area:AREA[r.L.park],checkin:r.checkin,nights:r.nights,out:addDays(r.checkin,r.nights),
+  guests:{cit:num('nCit'),res:num('nRes'),nr:num('nNr')},total:r.total,totPrice:r.totPrice,fx:r.fx,
+  perPerson:r.groups.map(function(g){return {c:g.c,room:g.room,n:g.n,price:g.price}}),state:state()};
+ if(SD_ROLE==='owner'){rec.totCost=Math.round(r.totCost);rec.profit=Math.round(r.profit);rec.commission=Math.round(r.ST.com);rec.streams=r.ST}
+ if(extra)for(var k in extra)rec[k]=extra[k];
+ return rec;
+}
+function saveQuote(ref,status,doc,extra){
+ var rec=record(ref,status,doc,extra);if(!rec)return Promise.resolve();
+ if(SD_USER==='local')return Promise.resolve();
+ return apiLog('POST',{action:'save',quote:rec}).then(function(){LOGQ=[]});
+}
+$('saveLog').onclick=function(){
+ if(!LAST||!LAST.total){$('copied').textContent='Add guests first';return}
+ if(!$('cName').value.trim()){$('copied').textContent='Add the client name in step 6 first';$('cName').focus();return}
+ var R=ref();$('saveLog').disabled=true;
+ saveQuote(R,'Quoted','whatsapp').then(function(){$('copied').textContent='Saved to the log as '+R}).catch(function(e){$('copied').textContent=e.message}).then(function(){$('saveLog').disabled=false});
+};
+// views
+function showView(v){
+ document.querySelectorAll('.views button').forEach(function(b){b.classList.toggle('on',b.dataset.view===v)});
+ $('logView').hidden=v!=='log';document.querySelector('main').hidden=v==='log';document.querySelector('.mbar').style.display=v==='log'?'none':'';
+ $('chips').style.display=v==='log'?'none':'';
+ document.querySelector('.hero h1').innerHTML=v==='log'?'Your quotes and <em>bookings</em>':'Price a safari in <em>under two minutes</em>';
+ document.querySelector('.hero p').textContent=v==='log'?'Every quote, proposal and receipt in one place. Update the status as clients reply and watch your pipeline grow.':'Pick the lodge and dates, add the guests, and send a polished quote on WhatsApp. Net rates, park fees, commission and your margin are all handled for you.';
+ if(v==='log'){loadLog();priceCheck()}
+ window.scrollTo(0,0);
+}
+document.querySelectorAll('.views button').forEach(function(b){b.onclick=function(){showView(b.dataset.view)}});
+var STS=['Quoted','Sent','Won','Deposit paid','Paid','Lost'],WON=['Won','Deposit paid','Paid'],OPEN=['Quoted','Sent'];
+function loadLog(){
+ $('logMsg').textContent='Loading...';
+ apiLog('GET').then(function(j){LOGQ=j.quotes||[];buildMonths();renderLog();$('logMsg').textContent=LOGQ.length?'':'No quotes yet. Use Save to log, or download a proposal or receipt, and it appears here.'}).catch(function(e){$('logMsg').textContent=SD_USER==='local'?'The log works on the live desk.':e.message});
+}
+function buildMonths(){var ms={},cur=$('fMonth').value;LOGQ.forEach(function(q){ms[(q.createdAt||'').slice(0,7)]=1});var now=new Date().toISOString().slice(0,7);ms[now]=1;
+ var h='<option value="">All months</option>';Object.keys(ms).sort().reverse().forEach(function(m){var d=new Date(m+'-01T00:00:00Z');h+='<option value="'+m+'">'+d.toLocaleDateString('en-GB',{month:'long',year:'numeric',timeZone:'UTC'})+'</option>'});
+ $('fMonth').innerHTML=h;$('fMonth').value=cur||now;}
+function renderLog(){
+ var m=$('fMonth').value,st=$('fStatus').value,tx=$('fText').value.trim().toLowerCase(),own=SD_ROLE==='owner';
+ var inMonth=LOGQ.filter(function(q){return !m||(q.createdAt||'').slice(0,7)===m});
+ var rows=inMonth.filter(function(q){return (!st||q.status===st)&&(!tx||((q.client&&q.client.name||'')+' '+q.lodge).toLowerCase().indexOf(tx)>=0)});
+ var won=inMonth.filter(function(q){return WON.indexOf(q.status)>=0}),open=inMonth.filter(function(q){return OPEN.indexOf(q.status)>=0}),lost=inMonth.filter(function(q){return q.status==='Lost'});
+ var sum=function(a,k){return a.reduce(function(t,q){return t+(q[k]||0)},0)};
+ var decided=won.length+lost.length;
+ var k=[['Quotes',inMonth.length,m?'this month':'all time'],['Open pipeline',kes(sum(open,'totPrice')),open.length+' waiting on the client'],['Won',kes(sum(won,'totPrice')),won.length+' booking'+(won.length===1?'':'s')],['Conversion',decided?Math.round(won.length/decided*100)+'%':'n/a','won of decided quotes']];
+ if(own)k.push(['Profit won',kes(sum(won,'profit')),'of which commission '+kes(sum(won,'commission'))]);
+ $('logKpis').innerHTML=k.map(function(x){return '<div><small>'+x[0]+'</small><b>'+x[1]+'</b><span>'+x[2]+'</span></div>'}).join('');
+ $('logKpis').style.gridTemplateColumns=own?'':'repeat(4,minmax(0,1fr))';
+ var h='<tr><th>Date</th><th>Client</th><th>Trip</th><th class="n">Value</th>'+(own?'<th class="n">Profit</th><th>By</th>':'')+'<th>Status</th><th></th></tr>';
+ rows.forEach(function(q){var c=q.client||{};
+  h+='<tr><td>'+shortDate((q.createdAt||'').slice(0,10))+'<br><span class="muted" style="font-size:11px">'+esc(q.ref)+'</span></td><td><b>'+esc(c.name||'No name')+'</b><br><span class="muted" style="font-size:12px">'+esc(c.contact||'')+'</span></td><td>'+esc(q.lodge)+'<br><span class="muted" style="font-size:12px">'+shortDate(q.checkin)+', '+q.nights+' night'+(q.nights>1?'s':'')+', '+q.total+' guest'+(q.total>1?'s':'')+'</span></td><td class="n"><b>'+kes(q.totPrice)+'</b>'+(q.paid?'<br><span class="muted" style="font-size:12px">paid '+kes(q.paid)+'</span>':'')+'</td>'+(own?'<td class="n">'+kes(q.profit||0)+'</td><td>'+esc(q.user||'')+'</td>':'')+
+  '<td><select data-ref="'+esc(q.ref)+'" class="st-'+q.status.split(' ')[0]+'">'+STS.map(function(s){return '<option'+(s===q.status?' selected':'')+'>'+s+'</option>'}).join('')+'</select></td><td><button class="lnk" type="button" data-open="'+esc(q.ref)+'">Open</button></td></tr>'});
+ if(!rows.length)h+='<tr><td colspan="8" class="muted">Nothing here for these filters.</td></tr>';
+ $('logTable').innerHTML=h;
+ $('logTable').querySelectorAll('select').forEach(function(sel){sel.onchange=function(){var r=sel.dataset.ref,v=sel.value;sel.className='st-'+v.split(' ')[0];sel.disabled=true;
+  apiLog('POST',{action:'status',ref:r,status:v}).then(function(j){LOGQ=LOGQ.map(function(q){return q.ref===r?j.quote:q});renderLog()}).catch(function(e){$('logMsg').textContent=e.message;sel.disabled=false})}});
+ $('logTable').querySelectorAll('[data-open]').forEach(function(b){b.onclick=function(){var q=LOGQ.filter(function(x){return x.ref===b.dataset.open})[0];if(!q||!q.state)return;var s=q.state;
+  FIELDS.forEach(function(f){if(s[f]!=null)$(f).value=s[f]});$('tent').checked=!!s.tent;MODE=SD_ROLE==='owner'?(s.mode||'card'):'card';document.querySelectorAll('#mode button').forEach(function(x){x.classList.toggle('on',x.dataset.v===MODE)});
+  $('extras').innerHTML='';(s.x||[]).forEach(function(x){addExtra(x[0],x[1],x[2])});$('okCheck').checked=false;showView('desk');calc()}});
+}
+['fMonth','fStatus','fText'].forEach(function(id){$(id).addEventListener('input',renderLog)});
+// website price check
+var TRIPS=[['The Explorer',3,1500,[['mara',2]],''],['The Photographer',3,2800,[['mara',2]],''],['The Sundowner',3,3400,[['mara',2]],'Flights not in the estimate'],['The Trailblazer',5,2300,[['samburu',2],['mara',2]],''],['The Dreamcatcher',5,3900,[['mara',4]],'Conservancy fees not in the estimate'],['The Horizon Chaser',5,4800,[['mara',4]],'Balloon not in the estimate'],['Ultimate Kenya',7,5900,[['mara',6]],'Amboseli priced as Mara'],['The Voyager',7,4900,[['mara',6]],''],['The Constellation',7,6500,[['mara',6]],'Star bed night not in the estimate'],['The Long Lens',7,4900,[['mara',6]],'']];
+function priceCheck(){
+ var start={low:'2027-05-10',mid:'2026-11-16',peak:'2027-08-09'}[$('pcSeason').value],fx=num('fx')||129.5,vr=num('vRate')||28000;
+ var lodgeOf={mara:LODGES.filter(function(l){return l.id==='mara-simba'})[0],samburu:LODGES.filter(function(l){return l.id==='samburu-simba'})[0]};
+ var h='<tr><th>Trip</th><th class="n">Published from</th><th class="n">Estimated cost</th><th class="n">Margin</th><th>Note</th></tr>';
+ TRIPS.forEach(function(t){
+  var d=0,usdC=0,miss=false;
+  t[3].forEach(function(seg,si){var L=lodgeOf[seg[0]],P=PARKS[seg[0]];
+   for(var i=0;i<seg[1];i++){var dt=addDays(start,d+i),r=find(L.nr,dt);if(!r){miss=true;continue}usdC+=r[3]+(isXmas(dt)?L.xmasNr||0:0)}
+   var pdays=seg[1]+(si===t[3].length-1?1:0);for(var j=0;j<pdays;j++){var dp=addDays(start,d+j);usdC+=P.nr[halfIdx(dp)]+P.veh/fx/2}
+   d+=seg[1];});
+  usdC+=(t[1]*vr/2+(t[1]-1)*1500/2)/fx;
+  var mg=(t[2]-usdC)/t[2],cls=mg<0.15?'pc-bad':mg<0.22?'pc-low':'pc-ok';
+  h+='<tr><td><b>'+t[0]+'</b><br><span class="muted" style="font-size:12px">'+t[1]+' days</span></td><td class="n">'+usd(t[2])+'</td><td class="n">'+(miss?'rate missing':usd(usdC))+'</td><td class="n '+cls+'">'+(miss?'':Math.round(mg*100)+'%')+'</td><td class="muted" style="font-size:12px">'+t[4]+'</td></tr>'});
+ $('pcTable').innerHTML=h;
+}
+$('pcSeason').addEventListener('change',priceCheck);
 calc();
 </script>
 <div id="docStage" aria-hidden="true"></div>

@@ -1,0 +1,7 @@
+{
+  "private": true,
+  "description": "Sundown Safaris website. Static pages plus a few Vercel functions in /api.",
+  "dependencies": {
+    "@vercel/blob": "^2.9.0"
+  }
+}
