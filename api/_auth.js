@@ -12,18 +12,23 @@ function same(a, b) {
   return diff === 0;
 }
 
-// Returns 'owner', 'team' or null
+// Display names: QUOTE_OWNER_NAME for the owner (default Baraka).
+// Team entries can carry a name as a third part: "username:password:Display Name".
+function nice(u){return u.charAt(0).toUpperCase()+u.slice(1)}
+// Returns {role, name} or null
 export function check(u, p) {
   u = String(u || '').trim().toLowerCase(); p = String(p || '');
   if (!u || !p) return null;
   const ownerPass = process.env.QUOTE_PASSWORD || '';
   const ownerUser = (process.env.QUOTE_USER || 'sundown').toLowerCase();
-  if (ownerPass && same(u, ownerUser) && same(p, ownerPass)) return 'owner';
+  if (ownerPass && same(u, ownerUser) && same(p, ownerPass)) return { role: 'owner', name: (process.env.QUOTE_OWNER_NAME || 'Baraka').trim() };
   const team = (process.env.QUOTE_TEAM || '').split(',').map(s => s.trim()).filter(Boolean);
   for (const entry of team) {
-    const j = entry.indexOf(':');
-    if (j < 1) continue;
-    if (same(u, entry.slice(0, j).toLowerCase()) && same(p, entry.slice(j + 1))) return 'team';
+    const parts = entry.split(':');
+    if (parts.length < 2 || !parts[0]) continue;
+    const name = parts.length > 2 ? parts.pop().trim() : '';
+    const pass = parts.slice(1).join(':');
+    if (same(u, parts[0].toLowerCase()) && same(p, pass)) return { role: 'team', name: name || nice(u) };
   }
   return null;
 }
@@ -45,9 +50,9 @@ async function sign(data) {
   return b64u(new Uint8Array(await crypto.subtle.sign('HMAC', key, enc.encode(data))));
 }
 
-export async function makeCookie(user, role, days) {
+export async function makeCookie(user, role, name, days) {
   const exp = Date.now() + days * 864e5;
-  const body = b64u(enc.encode(JSON.stringify({ u: user, r: role, e: exp })));
+  const body = b64u(enc.encode(JSON.stringify({ u: user, r: role, n: name, e: exp })));
   const tok = body + '.' + (await sign(body));
   return COOKIE + '=' + tok + '; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=' + Math.round(days * 86400);
 }
@@ -69,7 +74,7 @@ export async function who(request) {
   let d;
   try { d = JSON.parse(fromB64u(body)); } catch (e) { return null; }
   if (!d || !d.u || !d.e || d.e < Date.now()) return null;
-  return { user: d.u, role: d.r === 'owner' ? 'owner' : 'team' };
+  return { user: d.u, role: d.r === 'owner' ? 'owner' : 'team', name: d.n || (d.u.charAt(0).toUpperCase() + d.u.slice(1)) };
 }
 
 export function deny() {

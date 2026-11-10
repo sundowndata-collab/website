@@ -8,6 +8,6 @@ const HEAD = { 'content-type': 'text/html; charset=utf-8', 'cache-control': 'pri
 export default async function handler(request) {
   const u = await who(request);
   if (!u) return new Response(LOGIN, { status: 200, headers: HEAD });
-  const page = PAGE.replace('/*ROLE*/', 'var SD_USER=' + JSON.stringify(u.user) + ',SD_ROLE=' + JSON.stringify(u.role) + ';');
+  const page = PAGE.replace('/*ROLE*/', 'var SD_USER=' + JSON.stringify(u.user) + ',SD_ROLE=' + JSON.stringify(u.role) + ',SD_NAME=' + JSON.stringify(u.name) + ';');
   return new Response(page, { headers: HEAD });
 }

@@ -36,6 +36,8 @@ button{font:inherit}
 .hero{background:linear-gradient(180deg,var(--g) 0%,#0e4524 100%);color:#fff;overflow:hidden;position:relative}
 .hero-in{max-width:1240px;margin:0 auto;padding:22px 20px 70px;position:relative;z-index:2}
 .hero h1{font-family:'Playfair Display',Georgia,serif;font-size:clamp(24px,3.4vw,34px);margin:0 0 6px;line-height:1.15}
+.hero .greet{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold2);margin-bottom:8px}
+.hero .greet:before{content:"";width:22px;height:1.5px;background:var(--gold2)}
 .hero h1 em{color:var(--gold2);font-style:italic}
 .hero p{margin:0;color:#cfe3d4;max-width:640px;font-size:14px}
 .trip-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
@@ -213,6 +215,7 @@ footer{text-align:center;font-size:12px;color:var(--muted);padding:10px 20px 30p
 
 <section class="hero">
  <div class="hero-in">
+  <span class="greet" id="greet"></span>
   <h1>Price a safari in <em>under two minutes</em></h1>
   <p>Pick the lodge and dates, add the guests, and send a polished quote on WhatsApp. Net rates, park fees, commission and your margin are all handled for you.</p>
   <div class="trip-chips" id="chips"></div>
@@ -357,7 +360,7 @@ footer{text-align:center;font-size:12px;color:var(--muted);padding:10px 20px 30p
 
 <script>
 /*ROLE*/
-if(typeof SD_ROLE==='undefined'){var SD_USER='local',SD_ROLE='owner'}
+if(typeof SD_ROLE==='undefined'){var SD_USER='local',SD_ROLE='owner',SD_NAME='Baraka'}
 // ---------------- RATE DATA ----------------
 // Non resident: USD per person per night, full board, net of commission, inclusive of all taxes.
 //   d = per person sharing a double, s = single room per person.
@@ -729,7 +732,14 @@ document.querySelector('main').addEventListener('click',function(e){if(e.target.
 // ---------------- ROLE, QUOTE LOG, PRICE CHECK ----------------
 if(SD_ROLE!=='owner'){document.body.classList.add('team');$('margin').value=20;MODE='card'}
 var LOGQ=[];
-$('meName').textContent=SD_USER;$('meAv').textContent=(SD_USER||'S').charAt(0);$('meRole').textContent=SD_ROLE==='owner'?'Owner':'Team';
+$('meName').textContent=SD_NAME||SD_USER;$('meAv').textContent=(SD_NAME||SD_USER||'S').charAt(0);
+function dayPart(){var h=+new Date().toLocaleString('en-GB',{timeZone:'Africa/Nairobi',hour:'2-digit',hour12:false});return h<5?'night':h<12?'morning':h<17?'afternoon':h<21?'evening':'night'}
+var GREET={morning:['Habari ya asubuhi','Good morning','Fresh day, fresh leads. Price the trip, send the quote on WhatsApp and get ahead before the client checks anyone else.'],
+ afternoon:['Habari ya mchana','Good afternoon','Leads are warm right now. Pick the lodge, add the guests and send a polished quote while they are still deciding.'],
+ evening:['Habari ya jioni','Good evening','A quote sent tonight is the first one they read tomorrow. Price it, send it and close the day strong.'],
+ night:['Usiku mwema','Working late','Burning the midnight oil. Everything is right where you left it, rates, quotes and the log.']};
+function heroDesk(){var g=GREET[dayPart()],n=(SD_NAME||'').replace(/[<>&"]/g,'');$('greet').textContent=g[0];document.querySelector('.hero h1').innerHTML=g[1]+(n?', <em>'+n+'</em>':'')+(dayPart()==='night'?'?':'');document.querySelector('.hero p').textContent=g[2]}
+heroDesk();setInterval(function(){if($('logView').hidden)heroDesk()},600000);$('meRole').textContent=SD_ROLE==='owner'?'Owner':'Team';
 function apiLog(method,body){return fetch('/api/log',{method:method,headers:body?{'content-type':'application/json'}:{},body:body?JSON.stringify(body):undefined,credentials:'same-origin'}).then(function(r){if(r.status===401&&SD_USER!=='local'){location.href='/desk';throw new Error('Signed out')}if(!r.ok)throw new Error('Log error '+r.status);return r.json()})}
 function record(ref,status,doc,extra){
  var r=LAST;if(!r)return null;
@@ -757,8 +767,7 @@ function showView(v){
  document.querySelectorAll('.views button').forEach(function(b){b.classList.toggle('on',b.dataset.view===v)});
  $('logView').hidden=v!=='log';document.querySelector('main').hidden=v==='log';document.querySelector('.mbar').style.display=v==='log'?'none':'';
  $('chips').style.display=v==='log'?'none':'';
- document.querySelector('.hero h1').innerHTML=v==='log'?'Your quotes and <em>bookings</em>':'Price a safari in <em>under two minutes</em>';
- document.querySelector('.hero p').textContent=v==='log'?'Every quote, proposal and receipt in one place. Update the status as clients reply and watch your pipeline grow.':'Pick the lodge and dates, add the guests, and send a polished quote on WhatsApp. Net rates, park fees, commission and your margin are all handled for you.';
+ if(v==='log'){$('greet').textContent=GREET[dayPart()][0];document.querySelector('.hero h1').innerHTML='Your quotes and <em>bookings</em>';document.querySelector('.hero p').textContent='Every quote, proposal and receipt in one place. Update the status as clients reply and watch your pipeline grow.'}else heroDesk();
  if(v==='log'){loadLog();priceCheck()}
  window.scrollTo(0,0);
 }

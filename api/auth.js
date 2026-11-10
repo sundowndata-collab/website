@@ -17,11 +17,11 @@ export default async function handler(request) {
   let b = {};
   try { b = await request.json(); } catch (e) { return new Response(JSON.stringify({ error: 'Bad request' }), { status: 400, headers: H }); }
   const user = String(b.user || '').trim().toLowerCase();
-  const role = check(user, b.pass);
-  if (!role) {
+  const ok = check(user, b.pass);
+  if (!ok) {
     await new Promise(r => setTimeout(r, 700));
     return new Response(JSON.stringify({ error: 'That username and password do not match. Try again.' }), { status: 401, headers: H });
   }
-  const cookie = await makeCookie(user, role, b.remember ? 30 : 0.5);
-  return new Response(JSON.stringify({ ok: true, user, role }), { status: 200, headers: { ...H, 'set-cookie': cookie } });
+  const cookie = await makeCookie(user, ok.role, ok.name, b.remember ? 30 : 0.5);
+  return new Response(JSON.stringify({ ok: true, user, role: ok.role, name: ok.name }), { status: 200, headers: { ...H, 'set-cookie': cookie } });
 }

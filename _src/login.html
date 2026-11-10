@@ -43,6 +43,7 @@ body{font-family:Inter,system-ui,sans-serif;color:var(--ink);background:var(--sa
 .card{width:100%;max-width:400px}
 .hello{font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
 h1{font-family:"Playfair Display",serif;font-size:40px;line-height:1.1;color:var(--g);margin-top:10px;font-weight:800}
+h1 em{color:var(--gold);font-style:italic}
 .lead{color:var(--muted);font-size:15px;line-height:1.55;margin-top:10px}
 .note{display:none;align-items:flex-start;gap:10px;margin-top:22px;padding:12px 14px;border-radius:12px;font-size:13.5px;line-height:1.45}
 .note.show{display:flex}
@@ -113,7 +114,7 @@ button.go:disabled{opacity:.75;cursor:wait;transform:none}
   <div class="card" id="card">
    <span class="hello" id="hello">Karibu tena</span>
    <h1 id="title">Welcome back</h1>
-   <p class="lead">Sign in to price trips, send proposals and track every booking.</p>
+   <p class="lead" id="lead">Sign in to price trips, send proposals and track every booking.</p>
 
    <div class="note out" id="outNote" role="status">
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
@@ -161,9 +162,16 @@ button.go:disabled{opacity:.75;cursor:wait;transform:none}
 (function(){
  var $=function(i){return document.getElementById(i)};
  var h=new Date(new Date().toLocaleString('en-US',{timeZone:'Africa/Nairobi'})).getHours();
- $('hello').textContent=h<12?'Habari ya asubuhi':h<17?'Habari ya mchana':'Habari ya jioni';
+ var part=h<5?'night':h<12?'morning':h<17?'afternoon':h<21?'evening':'night';
+ var sw={morning:'Habari ya asubuhi',afternoon:'Habari ya mchana',evening:'Habari ya jioni',night:'Usiku mwema'}[part];
+ var en={morning:'Good morning',afternoon:'Good afternoon',evening:'Good evening',night:'Working late'}[part];
+ var lead={morning:'Fresh day, fresh leads. Sign in and get the first quotes out early.',afternoon:'Leads are warm right now. Sign in and turn them into bookings.',evening:'A quote sent tonight is the first one they read tomorrow. Sign in to close the day strong.',night:'Burning the midnight oil. Sign in and everything is right where you left it.'}[part];
+ var nm='';try{nm=localStorage.getItem('sdq_name')||''}catch(e){}
+ $('hello').textContent=sw;
+ $('title').innerHTML=nm?en+', <em>'+nm.replace(/[<>&"]/g,'')+'</em>':(part==='night'?'Working late?':en);
+ $('lead').textContent=lead;
  var q=new URLSearchParams(location.search);
- if(q.has('out')){$('outNote').classList.add('show');$('title').textContent='Until next time';history.replaceState(null,'','/desk')}
+ if(q.has('out')){$('outNote').classList.add('show');$('title').innerHTML=nm?'Until next time, <em>'+nm.replace(/[<>&"]/g,'')+'</em>':'Until next time';history.replaceState(null,'','/desk')}
  try{var last=localStorage.getItem('sdq_user');if(last){$('user').value=last;$('pass').focus()}else{$('user').focus()}}catch(e){$('user').focus()}
  $('eye').onclick=function(){var p=$('pass'),show=p.type==='password';p.type=show?'text':'password';$('eyeOn').style.display=show?'none':'';$('eyeOff').style.display=show?'':'none';this.setAttribute('aria-label',show?'Hide password':'Show password');p.focus()};
  $('pass').addEventListener('keyup',function(e){if(e.getModifierState)$('caps').classList.toggle('on',e.getModifierState('CapsLock'))});
@@ -178,7 +186,7 @@ button.go:disabled{opacity:.75;cursor:wait;transform:none}
   fetch('/api/auth',{method:'POST',headers:{'content-type':'application/json'},credentials:'same-origin',body:JSON.stringify({user:u,pass:p,remember:$('remember').checked})})
    .then(function(r){return r.json().then(function(j){return {ok:r.ok,j:j}})})
    .then(function(x){
-    if(x.ok){try{localStorage.setItem('sdq_user',u)}catch(e){}$('goText').textContent='Opening the desk';location.replace('/desk');return}
+    if(x.ok){try{localStorage.setItem('sdq_user',u);if(x.j.name)localStorage.setItem('sdq_name',x.j.name)}catch(e){}$('goText').textContent=x.j.name?'Karibu, '+x.j.name:'Opening the desk';location.replace('/desk');return}
     fail(x.j&&x.j.error||'Something went wrong. Try again.');b.disabled=false;b.classList.remove('busy');$('goText').textContent='Sign in';
    })
    .catch(function(){fail('No connection. Check your internet and try again.');b.disabled=false;b.classList.remove('busy');$('goText').textContent='Sign in'});
