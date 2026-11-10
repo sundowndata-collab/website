@@ -9,10 +9,11 @@ function same(a, b) {
 }
 
 export function who(request) {
-  const auth = request.headers.get('authorization') || '';
+  const h = request.headers;
+  const auth = (typeof h.get === 'function' ? h.get('authorization') : h.authorization) || '';
   if (!auth.startsWith('Basic ')) return null;
   let decoded = '';
-  try { decoded = atob(auth.slice(6)); } catch (e) { return null; }
+  try { decoded = typeof atob === 'function' ? atob(auth.slice(6)) : Buffer.from(auth.slice(6), 'base64').toString(); } catch (e) { return null; }
   const i = decoded.indexOf(':');
   if (i < 0) return null;
   const u = decoded.slice(0, i), p = decoded.slice(i + 1);

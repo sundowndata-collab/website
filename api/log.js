@@ -22,7 +22,7 @@ function forRole(q, u) {
   return rest;
 }
 
-export default async function handler(request) {
+async function handler(request) {
   const u = who(request);
   if (!u) return deny();
 
@@ -76,3 +76,7 @@ export default async function handler(request) {
   }
   return json({ error: 'Method not allowed' }, 405);
 }
+
+// Web standard handlers for the Node runtime
+export const GET = handler;
+export const POST = handler;
