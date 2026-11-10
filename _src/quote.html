@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Sundown Quote Calculator</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+<style>
+:root{--g:#0B3A1D;--g2:#14532D;--gold:#C98A27;--sand:#F6F2EA;--line:#E7E0D2;--ink:#1c1917;--muted:#6b6560;--bad:#b42318}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,system-ui,sans-serif;background:var(--sand);color:var(--ink);font-size:15px;line-height:1.45}
+header{background:var(--g);color:#fff;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px;position:sticky;top:0;z-index:5}
+header h1{font-family:'Playfair Display',Georgia,serif;font-size:20px;margin:0}
+header small{color:#E9B865;font-weight:600;letter-spacing:.08em;text-transform:uppercase;font-size:11px}
+.wrap{max-width:1180px;margin:0 auto;padding:18px;display:grid;grid-template-columns:minmax(0,430px) minmax(0,1fr);gap:18px;align-items:start}
+@media(max-width:900px){.wrap{grid-template-columns:1fr;padding:12px}}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px;margin-bottom:16px}
+.card h2{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin:0 0 12px;font-weight:800}
+label{display:block;font-size:12px;font-weight:700;color:var(--g);margin:0 0 4px}
+input,select{width:100%;padding:10px 11px;border:1px solid #d6d0c4;border-radius:10px;font:inherit;background:#fff;color:var(--ink)}
+input:focus,select:focus{outline:2px solid var(--gold);border-color:var(--gold)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
+.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:10px}
+.f{margin-bottom:10px}
+.hint{font-size:12px;color:var(--muted);margin:4px 0 0}
+.chk{display:flex;gap:8px;align-items:center;font-weight:600;font-size:14px;margin:6px 0}
+.chk input{width:auto}
+.seg{display:flex;gap:6px;flex-wrap:wrap}
+.seg button{flex:1;min-width:120px;padding:9px 10px;border:1px solid #d6d0c4;background:#fff;border-radius:10px;font:inherit;font-size:13px;font-weight:600;cursor:pointer;color:var(--g)}
+.seg button.on{background:var(--g);color:#fff;border-color:var(--g)}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+td.n,th.n{text-align:right;white-space:nowrap}
+tr.tot td{font-weight:800;border-top:2px solid var(--g)}
+.big{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-bottom:14px}
+@media(max-width:560px){.big{grid-template-columns:1fr}}
+.kpi{background:var(--sand);border-radius:12px;padding:12px}
+.kpi small{display:block;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.kpi b{font-size:20px;color:var(--g)}
+.kpi.gold{background:var(--g);color:#fff}.kpi.gold b{color:#E9B865}.kpi.gold small{color:#cfe3d4}
+.warn{background:#fff4e5;border:1px solid #f5c88a;color:#7a4b00;border-radius:12px;padding:10px 12px;font-size:13px;margin-bottom:12px}
+.warn.bad{background:#fdecea;border-color:#f1a7a1;color:var(--bad)}
+textarea{width:100%;min-height:260px;border:1px solid #d6d0c4;border-radius:12px;padding:12px;font:14px/1.5 Inter,system-ui,sans-serif;resize:vertical}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:#0d1f16;border:0;border-radius:999px;padding:11px 18px;font:inherit;font-weight:800;cursor:pointer}
+.btn.ghost{background:#fff;border:1px solid var(--line);color:var(--g)}
+.xrow{display:grid;grid-template-columns:1.6fr 1fr .9fr auto;gap:6px;margin-bottom:6px}
+.xrow button{border:0;background:#f3eee4;border-radius:8px;padding:0 10px;cursor:pointer;font-weight:800;color:var(--muted)}
+.muted{color:var(--muted)}
+.rates td{font-size:13px}
+</style>
+</head>
+<body>
+<header><div><small>Sundown Safaris internal</small><h1>Quote calculator</h1></div><span class="muted" style="color:#cfe3d4;font-size:12px" id="fxnote"></span></header>
+<div class="wrap">
+<div>
+  <div class="card">
+    <h2>Trip</h2>
+    <div class="f"><label for="lodge">Lodge</label><select id="lodge"></select></div>
+    <div class="row">
+      <div><label for="checkin">Check in</label><input type="date" id="checkin"></div>
+      <div><label for="nights">Nights</label><input type="number" id="nights" min="1" value="1"></div>
+    </div>
+    <p class="hint" id="lodgenote"></p>
+  </div>
+
+  <div class="card">
+    <h2>Guests (adults)</h2>
+    <div class="row3">
+      <div><label for="nCit">Kenyan citizens</label><input type="number" id="nCit" min="0" value="0"></div>
+      <div><label for="nRes">Residents</label><input type="number" id="nRes" min="0" value="0"></div>
+      <div><label for="nNr">Visitors</label><input type="number" id="nNr" min="0" value="2"></div>
+    </div>
+    <label>Of those, how many want their own single room</label>
+    <div class="row3">
+      <div><input type="number" id="sCit" min="0" value="0" aria-label="Citizens in single rooms"></div>
+      <div><input type="number" id="sRes" min="0" value="0" aria-label="Residents in single rooms"></div>
+      <div><input type="number" id="sNr" min="0" value="0" aria-label="Visitors in single rooms"></div>
+    </div>
+    <p class="hint">Everyone else shares a double or twin. Residents need a work permit or residence ID at check in. Children are not handled here, add them as extras.</p>
+    <label class="chk"><input type="checkbox" id="tent"> Upgrade to the lodge's tents</label>
+  </div>
+
+  <div class="card">
+    <h2>Vehicle and park</h2>
+    <div class="row">
+      <div><label for="vDays">Vehicle days</label><input type="number" id="vDays" min="0" value="2"></div>
+      <div><label for="vRate">Rate per day (KES)</label><input type="number" id="vRate" min="0" value="28000"></div>
+    </div>
+    <div class="row">
+      <div><label for="vCount">Vehicles</label><input type="number" id="vCount" min="1" value="1"></div>
+      <div><label for="pDays">Park days</label><input type="number" id="pDays" min="0" value="2"></div>
+    </div>
+    <p class="hint" id="parknote"></p>
+  </div>
+
+  <div class="card">
+    <h2>Extras</h2>
+    <div id="extras"></div>
+    <button class="btn ghost" type="button" id="addx">Add an extra</button>
+    <p class="hint">Balloon, bush dinner, flights, transfers. Enter your cost in KES, per person or for the whole group.</p>
+  </div>
+
+  <div class="card">
+    <h2>Pricing</h2>
+    <div class="row">
+      <div><label for="margin">Margin on price (%)</label><input type="number" id="margin" min="0" max="80" value="20"></div>
+      <div><label for="fx">KES per USD</label><input type="number" id="fx" step="0.01" value="129.5"></div>
+    </div>
+    <label>Resident room pricing</label>
+    <div class="seg" id="mode">
+      <button type="button" data-v="card" class="on">Sell rooms at card rate, keep commission</button>
+      <button type="button" data-v="margin">Add margin on rooms too</button>
+    </div>
+    <div class="row" style="margin-top:10px">
+      <div><label for="roundTo">Round prices up to (KES)</label><input type="number" id="roundTo" min="1" value="500"></div>
+      <div><label for="pickup">Pickup area (for the quote)</label><input type="text" id="pickup" placeholder="Keleshwa"></div>
+    </div>
+  </div>
+</div>
+
+<div>
+  <div class="card">
+    <h2>Result</h2>
+    <div id="alerts"></div>
+    <div class="big">
+      <div class="kpi gold"><small>Total to client</small><b id="kTotal">KES 0</b><div id="kTotalUsd" style="font-size:12px;color:#cfe3d4"></div></div>
+      <div class="kpi"><small>Your cost</small><b id="kCost">KES 0</b></div>
+      <div class="kpi"><small>Your profit</small><b id="kProfit">KES 0</b><div id="kPct" class="muted" style="font-size:12px"></div></div>
+    </div>
+    <table id="prices"></table>
+  </div>
+
+  <div class="card">
+    <h2>Cost breakdown</h2>
+    <table id="breakdown"></table>
+  </div>
+
+  <div class="card">
+    <h2>WhatsApp quote</h2>
+    <textarea id="wa"></textarea>
+    <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">
+      <button class="btn" type="button" id="copy">Copy quote</button>
+      <span class="hint" id="copied"></span>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Rates loaded</h2>
+    <div id="ratelist"></div>
+  </div>
+</div>
+</div>
+
+<script>
+// ---------------- RATE DATA ----------------
+// Non resident: USD per person per night, full board, net of commission, inclusive of all taxes.
+//   d = per person sharing a double, s = single room per person.
+// Resident: KES per ROOM per night, full board, card rate. Commission is taken off to get your cost.
+// Source: Simba Lodges contract agreements 2026 and 2027, resident rates July to December 2026 and festive 2026.
+var LODGES = [
+ {id:'mara-simba', name:'Mara Simba Lodge', park:'mara', driverRoom:1500, resComm:0.15,
+  pitch:'on the banks of the Talek River, with solid rooms looking over the water',
+  nr:[
+   ['2025-12-16','2026-03-31',221,126],['2026-04-01','2026-05-31',75,75],['2026-06-01','2026-06-30',245,140],
+   ['2026-07-01','2026-10-31',420,240],['2026-11-01','2026-12-15',184,105],
+   ['2026-12-16','2027-03-31',247,141],['2027-04-01','2027-05-31',90,90],['2027-06-01','2027-06-30',272,155],
+   ['2027-07-01','2027-10-31',447,255],['2027-11-01','2027-12-15',210,120]],
+  res:[
+   ['2026-07-01','2026-07-20',29000,37000],['2026-07-21','2026-08-20',45000,66000],['2026-08-21','2026-08-31',29000,37000],
+   ['2026-09-01','2026-12-23',20000,26000],['2026-12-24','2026-12-26',25000,40000],['2026-12-27','2026-12-30',22000,30000],
+   ['2026-12-31','2027-01-01',25000,40000]],
+  tentNr:50, tentRes:4000},
+ {id:'naivasha-simba', name:'Lake Naivasha Simba Lodge', park:'naivasha', driverRoom:1000, resComm:0.15,
+  pitch:'on the shores of Lake Naivasha, with gardens where giraffe and zebra wander',
+  nr:[
+   ['2025-12-16','2026-03-31',228,130],['2026-04-01','2026-05-31',184,105],['2026-06-01','2026-06-30',245,140],
+   ['2026-07-01','2026-10-31',385,220],['2026-11-01','2026-12-15',228,130],
+   ['2026-12-16','2027-03-31',245,140],['2027-04-01','2027-05-31',202,115],['2027-06-01','2027-06-30',245,140],
+   ['2027-07-01','2027-10-31',412,235],['2027-11-01','2027-12-15',245,140]],
+  res:[
+   ['2026-07-01','2026-08-15',29500,38000],['2026-08-16','2026-08-31',32000,42000],['2026-09-01','2026-10-15',27000,33000],
+   ['2026-10-16','2026-10-31',27000,35500],['2026-11-01','2026-12-23',22000,30000],['2026-12-24','2026-12-26',26000,41000],
+   ['2026-12-27','2026-12-30',23000,33000],['2026-12-31','2027-01-01',26000,41000]],
+  tentNr:0, tentRes:0, minFestive:'Minimum 2 nights over 24 to 26 December.'},
+ {id:'samburu-simba', name:'Samburu Simba Lodge', park:'samburu', driverRoom:1500, resComm:0.15,
+  pitch:'in Samburu, home of the rare northern species you will not see in the Mara',
+  nr:[
+   ['2025-12-16','2026-03-31',167,95],['2026-04-01','2026-06-30',75,75],['2026-07-01','2026-10-31',202,115],
+   ['2026-11-01','2026-12-15',167,95],
+   ['2026-12-16','2027-03-31',167,95],['2027-04-01','2027-06-30',75,75],['2027-07-01','2027-10-31',202,115],
+   ['2027-11-01','2027-12-15',167,95]],
+  res:[
+   ['2026-07-01','2026-07-31',19000,27500],['2026-08-01','2026-08-31',16000,22000],['2026-09-01','2026-12-23',15000,20500],
+   ['2026-12-24','2026-12-26',20000,28000],['2026-12-27','2026-12-30',16000,22000],['2026-12-31','2027-01-01',20000,28000]],
+  tentNr:0, tentRes:0}
+];
+var XMAS_NR = 35; // USD per adult per night, 24 Dec to 1 Jan, non residents
+// Park fees per adult per day. Mara: masaimara.travel, Jan to Jun and Jul to Dec rates. Samburu: samburureserve.com, 2026.
+var PARKS = {
+ mara:{name:'Masai Mara National Reserve', cit:[1500,3000], res:[2500,5000], nr:[100,200], veh:1000, note:'Mara fees: citizens KES 1,500 or 3,000, residents KES 2,500 or 5,000, visitors USD 100 or 200 per day (January to June, July to December). Vehicle KES 1,000 per entry.'},
+ samburu:{name:'Samburu National Reserve', cit:[800,800], res:[1600,1600], nr:[85,85], veh:1600, note:'Samburu fees: citizens KES 800, residents KES 1,600, visitors USD 85 per day. Vehicle KES 1,600 per entry.'},
+ naivasha:{name:'Lake Naivasha', cit:[0,0], res:[0,0], nr:[0,0], veh:0, note:'No park fee at Lake Naivasha. Add Hell’s Gate, Crescent Island or boat rides as extras.'}
+};
+
+// ---------------- HELPERS ----------------
+var $=function(id){return document.getElementById(id)};
+function num(id){var v=parseFloat($(id).value);return isNaN(v)?0:v}
+function ds(d){return d.toISOString().slice(0,10)}
+function addDays(s,n){var d=new Date(s+'T00:00:00Z');d.setUTCDate(d.getUTCDate()+n);return ds(d)}
+function find(rows,date){for(var i=0;i<rows.length;i++){if(date>=rows[i][0]&&date<=rows[i][1])return rows[i]}return null}
+function kes(v){return 'KES '+Math.round(v).toLocaleString('en-US')}
+function usd(v){return 'USD '+Math.round(v).toLocaleString('en-US')}
+function niceDate(s){var d=new Date(s+'T00:00:00Z');return d.toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long',timeZone:'UTC'})}
+function shortDate(s){var d=new Date(s+'T00:00:00Z');return d.toLocaleDateString('en-GB',{day:'numeric',month:'long',timeZone:'UTC'})}
+function isXmas(date){var md=date.slice(5);return md>='12-24'||md<='01-01'}
+function halfIdx(date){return parseInt(date.slice(5,7),10)<=6?0:1}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+
+var MODE='card';
+var LABEL={cit:'Kenyan citizen',res:'resident',nr:'visitor'};
+var LABELS={cit:'Kenyan citizens',res:'residents',nr:'visitors'};
+
+// ---------------- CALCULATION ----------------
+function calc(){
+ var L=LODGES.filter(function(x){return x.id===$('lodge').value})[0];
+ var P=PARKS[L.park];
+ var checkin=$('checkin').value, nights=Math.max(1,num('nights')), fx=num('fx')||129.5;
+ var m=Math.min(0.8,Math.max(0,num('margin')/100)), roundTo=Math.max(1,num('roundTo'));
+ var tent=$('tent').checked;
+ var alerts=[];
+ var cats=['cit','res','nr'];
+ var cnt={cit:num('nCit'),res:num('nRes'),nr:num('nNr')};
+ var sgl={cit:Math.min(num('sCit'),cnt.cit),res:Math.min(num('sRes'),cnt.res),nr:Math.min(num('sNr'),cnt.nr)};
+ var total=cnt.cit+cnt.res+cnt.nr;
+ if(!checkin){alerts.push(['bad','Pick a check in date.']);}
+ if(total<1){alerts.push(['bad','Add at least one guest.']);}
+ var sharers=total-sgl.cit-sgl.res-sgl.nr;
+ if(sharers%2===1)alerts.push(['','An odd number of guests are sharing, so one double room has one person. Move someone to a single room or check the room setup.']);
+ if(tent&&!L.tentNr&&!L.tentRes)alerts.push(['','This lodge has no tent supplement on its card. Tent upgrade ignored.']);
+ if(L.minFestive&&checkin){for(var q=0;q<nights;q++){var dq=addDays(checkin,q);if(dq.slice(5)>='12-24'&&dq.slice(5)<='12-26'&&nights<2){alerts.push(['',L.minFestive]);break}}}
+
+ // groups: category x room type
+ var groups=[];
+ cats.forEach(function(c){var s=sgl[c],d=cnt[c]-s;if(d>0)groups.push({c:c,room:'double',n:d});if(s>0)groups.push({c:c,room:'single',n:s})});
+
+ // lodge cost per person per group
+ var missing={};
+ groups.forEach(function(g){
+  g.lodgeNet=0;g.lodgeCard=0;
+  if(!checkin)return;
+  for(var i=0;i<nights;i++){
+   var date=addDays(checkin,i);
+   if(g.c==='nr'){
+    var r=find(L.nr,date);
+    if(!r){missing['Visitor rate for '+shortDate(date)]=1;continue}
+    var pp=(g.room==='single'?r[2]:r[3]);
+    if(isXmas(date))pp+=XMAS_NR;
+    if(tent&&L.tentNr)pp+=L.tentNr;
+    g.lodgeNet+=pp*fx;g.lodgeCard+=pp*fx;
+   }else{
+    var rr=find(L.res,date);
+    if(!rr){missing['Resident rate for '+shortDate(date)]=1;continue}
+    var card=(g.room==='single'?rr[2]:rr[3]/2);
+    var net=card*(1-L.resComm);
+    if(tent&&L.tentRes){net+=L.tentRes;card+=L.tentRes}
+    g.lodgeNet+=net;g.lodgeCard+=card;
+   }
+  }
+ });
+ Object.keys(missing).forEach(function(k){alerts.push(['bad','No '+k+' at '+L.name+'. Load the rate card for these dates before quoting.'])});
+
+ // park fees per person
+ var pDays=Math.max(0,num('pDays'));
+ groups.forEach(function(g){
+  g.park=0;if(!checkin)return;
+  for(var j=0;j<pDays;j++){var dt=addDays(checkin,j),h=halfIdx(dt);
+   g.park+= g.c==='nr'? P.nr[h]*fx : P[g.c][h];}
+ });
+
+ // shared costs
+ var vCount=Math.max(1,num('vCount')), vDays=Math.max(0,num('vDays')), vRate=num('vRate');
+ var shared=[];
+ shared.push(['Vehicle, guide and fuel ('+vDays+' days x '+kes(vRate)+(vCount>1?' x '+vCount+' vehicles':'')+')',vDays*vRate*vCount]);
+ shared.push(['Driver room and meals ('+nights+' nights x '+kes(L.driverRoom)+(vCount>1?' x '+vCount:'')+')',nights*L.driverRoom*vCount]);
+ if(P.veh&&pDays)shared.push(['Vehicle gate fee ('+pDays+' days x '+kes(P.veh)+(vCount>1?' x '+vCount:'')+')',pDays*P.veh*vCount]);
+ var xper=0;
+ document.querySelectorAll('.xrow').forEach(function(r){
+  var lab=r.querySelector('.xl').value||'Extra',amt=parseFloat(r.querySelector('.xa').value)||0,mode=r.querySelector('.xm').value;
+  if(!amt)return;
+  if(mode==='pp'){xper+=amt;shared.push([lab+' ('+kes(amt)+' per person)',amt*total])}
+  else shared.push([lab,amt]);
+ });
+ var sharedTotal=shared.reduce(function(a,b){return a+b[1]},0);
+ var sharedPP= total? sharedTotal/total : 0;
+
+ // pricing per group
+ var totCost=0,totPrice=0;
+ groups.forEach(function(g){
+  g.cost=g.lodgeNet+g.park+sharedPP;
+  var other=g.park+sharedPP;
+  var raw;
+  if(g.c!=='nr'&&MODE==='card') raw=g.lodgeCard+other/(1-m);
+  else raw=g.cost/(1-m);
+  g.price=Math.ceil(raw/roundTo)*roundTo;
+  totCost+=g.cost*g.n;totPrice+=g.price*g.n;
+ });
+ var profit=totPrice-totCost;
+
+ // ---------- render ----------
+ $('alerts').innerHTML=alerts.map(function(a){return '<div class="warn '+a[0]+'">'+esc(a[1])+'</div>'}).join('');
+ $('kTotal').textContent=kes(totPrice);$('kTotalUsd').textContent=usd(totPrice/fx);
+ $('kCost').textContent=kes(totCost);$('kProfit').textContent=kes(profit);
+ $('kPct').textContent=totPrice?Math.round(profit/totPrice*100)+'% of the price':'';
+ var ph='<tr><th>Guests</th><th class="n">Cost each</th><th class="n">Price each</th><th class="n">USD each</th><th class="n">Subtotal</th></tr>';
+ groups.forEach(function(g){ph+='<tr><td>'+g.n+' '+(g.n>1?LABELS[g.c]:LABEL[g.c])+(g.room==='single'?', own room':', sharing')+'</td><td class="n">'+kes(g.cost)+'</td><td class="n"><b>'+kes(g.price)+'</b></td><td class="n">'+usd(g.price/fx)+'</td><td class="n">'+kes(g.price*g.n)+'</td></tr>'});
+ ph+='<tr class="tot"><td>Total</td><td class="n">'+kes(totCost)+'</td><td></td><td class="n">'+usd(totPrice/fx)+'</td><td class="n">'+kes(totPrice)+'</td></tr>';
+ $('prices').innerHTML=ph;
+
+ var bh='<tr><th>Item</th><th class="n">Your cost</th></tr>';
+ groups.forEach(function(g){
+  bh+='<tr><td>'+L.name+', '+nights+' night'+(nights>1?'s':'')+', '+g.n+' '+(g.n>1?LABELS[g.c]:LABEL[g.c])+(g.room==='single'?' in single rooms':' sharing')+(g.c!=='nr'?' (card '+kes(g.lodgeCard*g.n)+', less '+Math.round(L.resComm*100)+'% commission)':' (net USD rate)')+(tent&&(L.tentNr||L.tentRes)?', tents':'')+'</td><td class="n">'+kes(g.lodgeNet*g.n)+'</td></tr>';
+ });
+ groups.forEach(function(g){if(g.park)bh+='<tr><td>Park fees, '+pDays+' days, '+g.n+' '+(g.n>1?LABELS[g.c]:LABEL[g.c])+'</td><td class="n">'+kes(g.park*g.n)+'</td></tr>'});
+ shared.forEach(function(s){bh+='<tr><td>'+esc(s[0])+'</td><td class="n">'+kes(s[1])+'</td></tr>'});
+ bh+='<tr class="tot"><td>Total cost</td><td class="n">'+kes(totCost)+'</td></tr>';
+ $('breakdown').innerHTML=bh;
+ $('lodgenote').textContent='Rooms from 12 noon, checkout by 10am. Driver room '+kes(L.driverRoom)+' a night.'+(L.minFestive?' '+L.minFestive:'');
+ $('parknote').textContent=P.note;
+
+ // WhatsApp quote
+ var t='';
+ if(checkin&&total){
+  var out=addDays(checkin,nights), pick=$('pickup').value.trim()||'Nairobi';
+  t+='Here is your '+(L.park==='mara'?'Masai Mara':L.park==='samburu'?'Samburu':'Lake Naivasha')+' safari, '+niceDate(checkin)+' to '+niceDate(out)+'.\n\n';
+  t+=L.name+' sits '+L.pitch+'.\n\n';
+  t+='The plan\n';
+  t+='Day 1, pickup from '+pick+' in the morning in your own Land Cruiser with your guide, lunch at the lodge and an afternoon game drive.\n';
+  if(nights>1)t+='Days 2 to '+nights+', full days on safari with your guide, at your own pace.\n';
+  t+='Last day, an early game drive or a relaxed breakfast, then the drive home to '+pick+'.\n\n';
+  t+='Included\nPrivate Land Cruiser and guide, fuel, '+nights+' night'+(nights>1?'s':'')+' full board'+(tent&&(L.tentNr||L.tentRes)?' in the lodge tents':'')+(P.veh||P.nr[1]?', park fees':'')+' and bottled water';
+  var xl=[];document.querySelectorAll('.xrow').forEach(function(r){var v=r.querySelector('.xl').value;if(v&&parseFloat(r.querySelector('.xa').value))xl.push(v.toLowerCase())});
+  if(xl.length)t+=', plus '+xl.join(', ');
+  t+='.\n\nPrice\n';
+  if(groups.length===1){t+=kes(groups[0].price)+' per person\n'}else groups.forEach(function(g){t+=kes(g.price)+' per person for '+(g.n>1?'the '+g.n+' '+LABELS[g.c]:'the '+LABEL[g.c])+(g.room==='single'?' in their own room':'')+'\n'});
+  if(groups.length>1||total>1)t+=kes(totPrice)+' in total for '+(total===2?'the two of you':'all '+total+' of you')+'\n';
+  t+='\nShall I go ahead and hold it for you?';
+ }
+ $('wa').value=t;
+ try{localStorage.setItem('sdq',JSON.stringify(state()))}catch(e){}
+}
+
+// ---------------- UI ----------------
+var FIELDS=['lodge','checkin','nights','nCit','nRes','nNr','sCit','sRes','sNr','vDays','vRate','vCount','pDays','margin','fx','roundTo','pickup'];
+function state(){var s={mode:MODE,tent:$('tent').checked,x:[]};FIELDS.forEach(function(f){s[f]=$(f).value});document.querySelectorAll('.xrow').forEach(function(r){s.x.push([r.querySelector('.xl').value,r.querySelector('.xa').value,r.querySelector('.xm').value])});return s}
+function addExtra(l,a,mo){var d=document.createElement('div');d.className='xrow';d.innerHTML='<input class="xl" placeholder="Balloon flight"><input class="xa" type="number" min="0" placeholder="KES"><select class="xm"><option value="pp">per person</option><option value="all">for group</option></select><button type="button" aria-label="Remove">x</button>';d.querySelector('.xl').value=l||'';d.querySelector('.xa').value=a||'';d.querySelector('.xm').value=mo||'pp';d.querySelector('button').onclick=function(){d.remove();calc()};d.addEventListener('input',calc);d.addEventListener('change',calc);$('extras').appendChild(d)}
+LODGES.forEach(function(l){var o=document.createElement('option');o.value=l.id;o.textContent=l.name;$('lodge').appendChild(o)});
+// rate list
+(function(){var h='';LODGES.forEach(function(l){h+='<p style="margin:10px 0 4px"><b>'+l.name+'</b> <span class="muted">visitor rates '+l.nr[0][0]+' to '+l.nr[l.nr.length-1][1]+', resident rates '+l.res[0][0]+' to '+l.res[l.res.length-1][1]+', commission '+Math.round(l.resComm*100)+'% on resident adults</span></p>'});h+='<p class="hint">Visitor rates are net USD per person, inclusive of taxes. Christmas supplement USD 35 per visitor per night from 24 December to 1 January. Resident rates are card rates per room. Source: Simba Lodges contracts 2026 and 2027.</p>';$('ratelist').innerHTML=h})();
+document.querySelectorAll('#mode button').forEach(function(b){b.onclick=function(){MODE=b.dataset.v;document.querySelectorAll('#mode button').forEach(function(x){x.classList.toggle('on',x===b)});calc()}});
+$('addx').onclick=function(){addExtra();};
+$('nights').addEventListener('input',function(){var n=Math.max(1,num('nights'));$('vDays').value=n+1;$('pDays').value=n+1;});
+document.querySelectorAll('input,select').forEach(function(el){el.addEventListener('input',calc);el.addEventListener('change',calc)});
+$('copy').onclick=function(){var t=$('wa');t.select();try{navigator.clipboard.writeText(t.value).then(function(){$('copied').textContent='Copied'})}catch(e){document.execCommand('copy');$('copied').textContent='Copied'}};
+// restore
+try{var s=JSON.parse(localStorage.getItem('sdq')||'null');if(s){FIELDS.forEach(function(f){if(s[f]!=null)$(f).value=s[f]});$('tent').checked=!!s.tent;MODE=s.mode||'card';document.querySelectorAll('#mode button').forEach(function(x){x.classList.toggle('on',x.dataset.v===MODE)});(s.x||[]).forEach(function(x){addExtra(x[0],x[1],x[2])})}}catch(e){}
+if(!$('checkin').value){var d=new Date();d.setDate(d.getDate()+((6-d.getDay()+7)%7||7));$('checkin').value=d.toISOString().slice(0,10)}
+// live KES rate
+fetch('/api/fx').then(function(r){return r.json()}).then(function(j){if(j&&j.rates&&j.rates.KES){$('fxnote').textContent='Live rate today: KES '+j.rates.KES.toFixed(2)+' per USD';if(!localStorage.getItem('sdq_fx_manual')){$('fx').value=j.rates.KES.toFixed(2);calc()}}}).catch(function(){});
+$('fx').addEventListener('input',function(){try{localStorage.setItem('sdq_fx_manual','1')}catch(e){}});
+calc();
+</script>
+</body>
+</html>

@@ -95,5 +95,11 @@
       "destination": "/blog/luxury-safari-lodges-in-kenya-wild-beauty-meets-ultimate-comfort.html",
       "permanent": true
     }
+  ],
+  "rewrites": [
+    {
+      "source": "/quote",
+      "destination": "/api/quote"
+    }
   ]
 }
