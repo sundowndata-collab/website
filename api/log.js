@@ -23,7 +23,7 @@ function forRole(q, u) {
 }
 
 async function handler(request) {
-  const u = who(request);
+  const u = await who(request);
   if (!u) return deny();
 
   if (request.method === 'GET') {

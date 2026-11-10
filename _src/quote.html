@@ -166,6 +166,14 @@ tr.tot td{font-weight:800;border-top:2px solid var(--g);border-bottom:0;color:va
 .rbar{display:flex;height:12px;border-radius:999px;overflow:hidden;background:var(--sand2);margin-bottom:8px}.rbar i{display:block;height:100%}.rev li{gap:10px}.rev .who{flex:1}.sw2{width:12px;height:12px;border-radius:4px;flex:0 0 auto;align-self:center}.ey2{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin:14px 0 4px}
 [hidden]{display:none!important}
 body.team .owner-only{display:none!important}
+.me{display:flex;align-items:center;gap:10px;padding-left:12px;border-left:1px solid rgba(255,255,255,.16)}
+.me .av{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--gold);color:var(--g);font-weight:800;font-size:14px;text-transform:uppercase}
+.me .nm b{display:block;font-size:13px;color:#fff;text-transform:capitalize;line-height:1.1}
+.me .nm small{display:block;font-size:11px;color:var(--gold2);font-weight:600}
+.me .out{display:flex;align-items:center;gap:6px;color:#e7f0e9;text-decoration:none;font-size:12.5px;font-weight:600;padding:8px 11px;border-radius:999px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.06)}
+.me .out:hover{background:rgba(255,255,255,.14);color:#fff}
+@media(max-width:900px){.me .nm{display:none}}
+@media(max-width:640px){.me .out span{display:none}.me{padding-left:8px;gap:6px;margin-left:auto;border-left:0}}
 .views{display:flex;gap:4px;margin-left:8px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:999px;padding:4px}
 .views button{border:0;background:transparent;color:#e7f0e9;font-weight:700;font-size:13px;padding:7px 14px;border-radius:999px;cursor:pointer}
 .views button.on{background:#C98A27;color:#0B3A1D}
@@ -200,6 +208,7 @@ footer{text-align:center;font-size:12px;color:var(--muted);padding:10px 20px 30p
  </a>
  <nav class="views" aria-label="Views"><button type="button" data-view="desk" class="on">Quote desk</button><button type="button" data-view="log">Quote log</button></nav>
  <div class="chip"><span class="dot"></span><span id="fxnote">KES 129.50 per USD</span></div>
+ <div class="me"><span class="av" id="meAv">S</span><span class="nm"><b id="meName">Sundown</b><small id="meRole">Owner</small></span><a class="out" href="/api/auth?out=1" title="Log out"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg><span>Log out</span></a></div>
 </div></div>
 
 <section class="hero">
@@ -720,7 +729,8 @@ document.querySelector('main').addEventListener('click',function(e){if(e.target.
 // ---------------- ROLE, QUOTE LOG, PRICE CHECK ----------------
 if(SD_ROLE!=='owner'){document.body.classList.add('team');$('margin').value=20;MODE='card'}
 var LOGQ=[];
-function apiLog(method,body){return fetch('/api/log',{method:method,headers:body?{'content-type':'application/json'}:{},body:body?JSON.stringify(body):undefined,credentials:'same-origin'}).then(function(r){if(!r.ok)throw new Error('Log error '+r.status);return r.json()})}
+$('meName').textContent=SD_USER;$('meAv').textContent=(SD_USER||'S').charAt(0);$('meRole').textContent=SD_ROLE==='owner'?'Owner':'Team';
+function apiLog(method,body){return fetch('/api/log',{method:method,headers:body?{'content-type':'application/json'}:{},body:body?JSON.stringify(body):undefined,credentials:'same-origin'}).then(function(r){if(r.status===401&&SD_USER!=='local'){location.href='/desk';throw new Error('Signed out')}if(!r.ok)throw new Error('Log error '+r.status);return r.json()})}
 function record(ref,status,doc,extra){
  var r=LAST;if(!r)return null;
  var rec={ref:ref,status:status,doc:doc,client:{name:$('cName').value.trim(),contact:$('cContact').value.trim()},
