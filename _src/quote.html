@@ -163,6 +163,7 @@ tr.tot td{font-weight:800;border-top:2px solid var(--g);border-bottom:0;color:va
 }
 .btn[disabled]{opacity:.45;cursor:not-allowed}
 #docStage{position:fixed;left:-10000px;top:0;width:794px}
+.rbar{display:flex;height:12px;border-radius:999px;overflow:hidden;background:var(--sand2);margin-bottom:8px}.rbar i{display:block;height:100%}.rev li{gap:10px}.rev .who{flex:1}.sw2{width:12px;height:12px;border-radius:4px;flex:0 0 auto;align-self:center}.ey2{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin:14px 0 4px}
 footer{text-align:center;font-size:12px;color:var(--muted);padding:10px 20px 30px}
 </style>
 </head>
@@ -279,6 +280,13 @@ footer{text-align:center;font-size:12px;color:var(--muted);padding:10px 20px 30p
  <div class="card">
   <div id="alerts"></div>
   <ul class="per" id="prices"></ul>
+ </div>
+ <div class="card">
+  <div class="step" style="margin-bottom:10px"><span class="num" style="background:#C98A27;color:#0B3A1D">%</span><div><h2>Your revenue streams</h2><p>Where your <b id="revTotal">KES 0</b> comes from</p></div></div>
+  <div class="rbar" id="revBar"></div>
+  <ul class="per rev" id="revList"></ul>
+  <div class="ey2">Where the client’s money goes</div>
+  <table id="revFlow"></table>
  </div>
  <div class="card">
   <div class="tabs" role="tablist"><button type="button" class="on" data-tab="wa">WhatsApp quote</button><button type="button" data-tab="bd">Breakdown</button><button type="button" data-tab="rt">Rates</button></div>
@@ -401,16 +409,39 @@ function calc(){
  var pDays=Math.max(0,num('pDays'));
  groups.forEach(function(g){g.park=0;if(!checkin)return;for(var j=0;j<pDays;j++){var dt=addDays(checkin,j),h=halfIdx(dt);g.park+=g.c==='nr'?P.nr[h]*fx:P[g.c][h]}});
  var vCount=Math.max(1,num('vCount')),vDays=Math.max(0,num('vDays')),vRate=num('vRate'),shared=[];
- shared.push(['Vehicle, guide and fuel',vDays+' days at '+kes(vRate)+(vCount>1?', '+vCount+' vehicles':''),vDays*vRate*vCount]);
- shared.push(['Driver room and meals',nights+' nights at '+kes(L.driverRoom)+(vCount>1?', '+vCount+' drivers':''),nights*L.driverRoom*vCount]);
- if(P.veh&&pDays)shared.push(['Vehicle gate fee',pDays+' days at '+kes(P.veh),pDays*P.veh*vCount]);
+ shared.push(['Vehicle, guide and fuel',vDays+' days at '+kes(vRate)+(vCount>1?', '+vCount+' vehicles':''),vDays*vRate*vCount,'veh']);
+ shared.push(['Driver room and meals',nights+' nights at '+kes(L.driverRoom)+(vCount>1?', '+vCount+' drivers':''),nights*L.driverRoom*vCount,'drv']);
+ if(P.veh&&pDays)shared.push(['Vehicle gate fee',pDays+' days at '+kes(P.veh),pDays*P.veh*vCount,'park']);
  var xl=[];
  document.querySelectorAll('.xrow').forEach(function(r){var lab=r.querySelector('.xl').value||'Extra',amt=parseFloat(r.querySelector('.xa').value)||0,mo=r.querySelector('.xm').value;if(!amt)return;xl.push(lab.toLowerCase());
-  if(mo==='pp')shared.push([lab,kes(amt)+' per person',amt*total]);else shared.push([lab,'for the group',amt]);});
+  if(mo==='pp')shared.push([lab,kes(amt)+' per person',amt*total,'x']);else shared.push([lab,'for the group',amt,'x']);});
  var sharedTotal=shared.reduce(function(a,b){return a+b[2]},0),sharedPP=total?sharedTotal/total:0;
  var totCost=0,totPrice=0;
  groups.forEach(function(g){g.cost=g.lodgeNet+g.park+sharedPP;var other=g.park+sharedPP;var raw=(g.c!=='nr'&&MODE==='card')?g.lodgeCard+other/(1-m):g.cost/(1-m);g.price=Math.ceil(raw/roundTo)*roundTo;totCost+=g.cost*g.n;totPrice+=g.price*g.n});
  var profit=totPrice-totCost,pct=totPrice?profit/totPrice:0;
+ // revenue streams: what Sundown earns from each part of the trip
+ var mk=m/(1-m),ST={com:0,lodge:0,veh:0,park:0,drv:0,x:0,rnd:0},PAY={lodge:0,park:0,veh:0,drv:0,x:0};
+ groups.forEach(function(g){
+  var raw=0;
+  if(g.c!=='nr'&&MODE==='card'){ST.com+=(g.lodgeCard-g.lodgeNet)*g.n;raw+=g.lodgeCard}
+  else{ST.lodge+=g.lodgeNet*mk*g.n;raw+=g.lodgeNet*(1+mk)}
+  ST.park+=g.park*mk*g.n;raw+=g.park*(1+mk);
+  PAY.lodge+=g.lodgeNet*g.n;PAY.park+=g.park*g.n;
+  shared.forEach(function(it){var pp=total?it[2]/total:0;ST[it[3]]+=pp*mk*g.n;raw+=pp*(1+mk)});
+  ST.rnd+=(g.price-raw)*g.n;
+ });
+ shared.forEach(function(it){PAY[it[3]]+=it[2]});
+ var SL=[['com','Lodge commission','The lodge\u2019s '+Math.round(L.resComm*100)+'% on resident card rates','#C98A27'],['lodge','Margin on lodge stays','Your margin on net lodge rates','#E9B865'],['veh','Margin on vehicle and guide','Your margin on the Land Cruiser, guide and fuel','#0B3A1D'],['park','Margin on park fees','Your margin on reserve and gate fees','#3d7a52'],['drv','Margin on driver room','Your margin on the guide\u2019s lodge room','#8fb59a'],['x','Margin on extras','Balloon, dinners and other extras','#b07a2a'],['rnd','Price rounding','Extra from rounding prices up','#c9c0ad']];
+ var sh='',bar='';
+ SL.forEach(function(x){var v=ST[x[0]];if(Math.abs(v)<1)return;var w=profit>0?v/profit*100:0;bar+='<i style="width:'+Math.max(0,w)+'%;background:'+x[3]+'" title="'+x[1]+'"></i>';
+  sh+='<li><span class="sw2" style="background:'+x[3]+'"></span><div class="who"><b>'+x[1]+'</b><span>'+x[2]+'</span></div><div class="px"><b>'+kes(v)+'</b><span>'+Math.round(w)+'% of your revenue</span></div></li>'});
+ $('revBar').innerHTML=bar;$('revList').innerHTML=sh||'<li class="muted">Add guests to see your revenue</li>';
+ $('revTotal').textContent=kes(profit);
+ var PL=[['lodge',L.name],['park','Park and gate fees'],['veh','Vehicle, guide and fuel'],['drv','Driver room and meals'],['x','Extras']];
+ var fh='<tr><td>Client pays</td><td class="n">'+kes(totPrice)+'</td></tr>';
+ PL.forEach(function(x){if(PAY[x[0]]>0.5)fh+='<tr><td><span class="muted">Paid out to</span> '+x[1]+'</td><td class="n">'+kes(PAY[x[0]])+'</td></tr>'});
+ fh+='<tr class="tot"><td>Sundown keeps</td><td class="n">'+kes(profit)+'</td></tr>';
+ $('revFlow').innerHTML=fh;
 
  // render summary
  $('alerts').innerHTML=alerts.map(function(a){return '<div class="warn '+a[0]+'">'+esc(a[1])+'</div>'}).join('');
