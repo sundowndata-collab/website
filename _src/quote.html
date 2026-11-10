@@ -69,6 +69,19 @@ input:focus,select:focus{outline:2px solid var(--gold);outline-offset:0;border-c
 .lodge small{display:block;font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
 .lodge b{display:block;font-family:'Playfair Display',Georgia,serif;font-size:17px;color:var(--g);margin:4px 0 6px;line-height:1.2}
 .lodge span{font-size:12px;color:var(--muted)}
+@media(max-width:640px){.top-in{gap:8px;padding:10px 14px}.brand .words{display:none}.me .av{width:30px;height:30px}.me .out{padding:7px 9px}}
+.stopshead{margin:14px 0 6px;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+.stoprow{display:grid;grid-template-columns:30px minmax(0,1fr) 150px 38px;gap:10px;align-items:center;padding:10px;border:1px solid var(--line);border-radius:14px;background:var(--sand);margin-bottom:8px}
+.stoprow .snum{width:28px;height:28px;border-radius:50%;background:var(--g);color:var(--gold2);display:grid;place-items:center;font-weight:800;font-size:13px}
+.stoprow select{width:100%}.stoprow .sd{display:block;font-size:12px;color:var(--muted);margin-top:4px}
+.stoprow .srm{border:0;background:#fff;border-radius:10px;height:38px;cursor:pointer;color:var(--muted)}.stoprow .srm:hover{color:var(--bad)}
+@media(max-width:640px){.stoprow{grid-template-columns:28px minmax(0,1fr) 38px}.stoprow .stepper{grid-column:2/3}}
+.cash{margin-top:12px;padding:12px 14px;border-radius:12px;background:#eef5f0;border:1px solid #d6e8dc;font-size:13px;line-height:1.45}.cash:empty{display:none}.cash b{display:block;color:var(--g2);margin-bottom:2px}.cash span{color:#3a4a3f}
+.per.alt li .px,.per.pins li .px{display:flex;flex-direction:column;align-items:flex-end;gap:2px}.per.alt .lnk[disabled]{opacity:.4;cursor:default}
+.todo-l{list-style:none;margin:0;padding:0}.todo-l li{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}.todo-l li:last-child{border-bottom:0}
+.todo-l .tg{font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:5px 9px;border-radius:999px;white-space:nowrap}.tg.fu{background:#fdf0dc;color:#8a5a12}.tg.hot{background:#fdecea;color:#b42318}.tg.bal{background:#e9f3ec;color:#14532D}.tg.trip{background:#e8eefb;color:#23388e}
+.todo-l .tw b{display:block;font-size:14px}.todo-l .tw span{display:block;font-size:12.5px;color:var(--muted)}.todo-l .ta{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}.todo-l .ta .btn{padding:8px 12px;font-size:12.5px}
+@media(max-width:640px){.todo-l li{grid-template-columns:1fr}.todo-l .ta{justify-content:flex-start}}
 .quickx{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 10px}.quickx:empty{display:none}.quickx small{width:100%;font-size:12px;color:var(--muted);font-weight:600}.quickx button{border:1px solid var(--line);background:var(--sand);border-radius:999px;padding:6px 11px;font:600 12px Inter,sans-serif;color:var(--g);cursor:pointer}.quickx button:hover{border-color:var(--g2);background:#fff}
 .lodge.on{border-color:var(--g);background:#fff;box-shadow:0 0 0 3px rgba(201,138,39,.25)}
 .lodge.on:after{content:"";position:absolute;top:12px;right:12px;width:20px;height:20px;border-radius:50%;background:var(--g) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23E9B865' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E") center/12px no-repeat}
@@ -195,7 +208,7 @@ body.team .owner-only{display:none!important}
 .lt td.n,.lt th.n{text-align:right;white-space:nowrap}
 .lt select{min-height:36px;padding:6px 8px;border-radius:999px;font-size:12.5px;font-weight:700;width:auto}
 .st-Quoted{background:#f3eee4}.st-Sent{background:#fff4e5}.st-Won{background:#dff3e6}.st-Deposit{background:#e6f0ff}.st-Paid{background:#0B3A1D;color:#fff}.st-Lost{background:#fdecea}
-.lt .lnk{border:0;background:none;color:var(--g);font-weight:800;cursor:pointer;text-decoration:underline;text-decoration-color:var(--gold);padding:0}
+.lt .lnk,.lnk{border:0;background:none;color:var(--g);font-weight:800;cursor:pointer;text-decoration:underline;text-decoration-color:var(--gold);padding:0}
 .tblwrap{overflow-x:auto}
 .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
 .filters select,.filters input{width:auto;min-height:40px}
@@ -227,13 +240,17 @@ footer{text-align:center;font-size:12px;color:var(--muted);padding:10px 20px 30p
 <main class="wrap">
 <div>
  <div class="card">
-  <div class="step"><span class="num">1</span><div><h2>Lodge and dates</h2><p>Rates load automatically for the season</p></div></div>
+  <div class="step"><span class="num">1</span><div><h2>Route, lodges and dates</h2><p>Pick the first lodge, then add more parks for a multi park safari. Rates load for every night</p></div></div>
   <div class="lodges" id="lodges"></div>
   <select id="lodge" hidden></select>
   <div class="grid2">
    <div><label for="checkin">Check in</label><input type="date" id="checkin"></div>
    <div><label for="nights">Nights</label><div class="stepper"><button type="button" data-step="nights:-1" aria-label="Fewer nights">−</button><input type="number" id="nights" min="1" value="1" inputmode="numeric"><button type="button" data-step="nights:1" aria-label="More nights">+</button></div></div>
   </div>
+  <p class="hint" id="firstDates" style="margin-top:8px"></p>
+  <div class="stopshead" id="stopsHead" hidden>Then continue to</div>
+  <div id="stops"></div>
+  <button class="btn ghost" type="button" id="addStop" style="margin-top:10px">+ Add another park</button>
   <p class="hint" id="lodgenote"></p>
  </div>
 
@@ -319,6 +336,15 @@ footer{text-align:center;font-size:12px;color:var(--muted);padding:10px 20px 30p
  <div class="card">
   <div id="alerts"></div>
   <ul class="per" id="prices"></ul>
+  <div class="cash" id="cash"></div>
+ </div>
+ <div class="card" id="optCard">
+  <div class="step" style="margin-bottom:10px"><span class="num" style="background:#E9B865;color:#0B3A1D">&#8644;</span><div><h2>Options for the client</h2><p>The same trip at other lodges. Pin up to 3 and send them in one message</p></div></div>
+  <ul class="per alt" id="alts"></ul>
+  <div class="acts" style="margin-top:10px"><button class="btn ghost" type="button" id="pinOpt">Pin this as an option</button><span class="hint" id="optMsg" style="align-self:center;margin:0"></span></div>
+  <div class="ey2" id="pinsHead" hidden>Pinned options <button type="button" class="lnk" id="clearPins" style="margin-left:6px">Clear all</button></div>
+  <ul class="per pins" id="pins"></ul>
+  <div class="acts"><button class="btn" type="button" id="sendOpts" disabled>Write the options message</button></div>
  </div>
  <div class="card owner-only">
   <div class="step" style="margin-bottom:10px"><span class="num" style="background:#C98A27;color:#0B3A1D">%</span><div><h2>Your revenue streams</h2><p>Where your <b id="revTotal">KES 0</b> comes from</p></div></div>
@@ -330,6 +356,7 @@ footer{text-align:center;font-size:12px;color:var(--muted);padding:10px 20px 30p
  <div class="card">
   <div class="tabs" role="tablist"><button type="button" class="on" data-tab="wa">WhatsApp quote</button><button type="button" data-tab="bd" class="owner-only">Breakdown</button><button type="button" data-tab="rt">Rates</button></div>
   <div class="pane on" id="p-wa">
+   <p class="hint" id="waMode" style="margin:0 0 8px"></p>
    <div class="chat"><div class="bubble"><textarea id="wa" aria-label="WhatsApp quote"></textarea></div></div>
    <div class="acts">
     <button class="btn" type="button" id="copy">Copy quote</button><button class="btn ghost" type="button" id="saveLog">Save to log</button>
@@ -344,6 +371,10 @@ footer{text-align:center;font-size:12px;color:var(--muted);padding:10px 20px 30p
 </main>
 <section class="logwrap" id="logView" hidden>
  <div class="lk" id="logKpis"></div>
+ <div class="card todo" id="todoCard" hidden>
+  <div class="step"><span class="num" style="background:#C98A27;color:#0B3A1D">!</span><div><h2>Do this today</h2><p id="todoSub">Follow ups, balances and trips coming up, most urgent first</p></div></div>
+  <ul class="todo-l" id="todo"></ul>
+ </div>
  <div class="card">
   <div class="step"><span class="num">&#9776;</span><div><h2>Quote log</h2><p id="logSub">Every quote and receipt you save or download</p></div></div>
   <div class="filters"><select id="fMonth" aria-label="Month"></select><select id="fStatus" aria-label="Status"><option value="">All statuses</option><option>Quoted</option><option>Sent</option><option>Won</option><option>Deposit paid</option><option>Paid</option><option>Lost</option></select><input id="fText" type="search" placeholder="Search client or lodge" aria-label="Search"></div>
@@ -369,7 +400,7 @@ if(typeof SD_ROLE==='undefined'){var SD_USER='local',SD_ROLE='owner',SD_NAME='Ba
 // Resident: KES per ROOM per night, full board, card rate. Commission is taken off to get your cost.
 // Source: Simba Lodges contract agreements 2026 and 2027, resident rates July to December 2026 and festive 2026.
 var LODGES = [
- {id:'mara-simba', name:'Mara Simba Lodge', park:'mara', driverRoom:1500, resComm:0.15, xmasNr:35,
+ {id:'mara-simba', name:'Mara Simba Lodge', park:'mara', driverRoom:1500, resComm:0.15, xmasNr:35, payDays:45,
   pitch:'on the banks of the Talek River, with solid rooms looking over the water',
   nr:[
    ['2025-12-16','2026-03-31',221,126],['2026-04-01','2026-05-31',75,75],['2026-06-01','2026-06-30',245,140],
@@ -392,8 +423,8 @@ var LODGES = [
    ['2026-07-01','2026-08-15',29500,38000],['2026-08-16','2026-08-31',32000,42000],['2026-09-01','2026-10-15',27000,33000],
    ['2026-10-16','2026-10-31',27000,35500],['2026-11-01','2026-12-23',22000,30000],['2026-12-24','2026-12-26',26000,41000],
    ['2026-12-27','2026-12-30',23000,33000],['2026-12-31','2027-01-01',26000,41000]],
-  tentNr:0, tentRes:0, minFestive:'Minimum 2 nights over 24 to 26 December.'},
- {id:'samburu-simba', name:'Samburu Simba Lodge', park:'samburu', driverRoom:1500, resComm:0.15, xmasNr:35,
+  tentNr:0, tentRes:0, minFestive:'Minimum 2 nights over 24 to 26 December.', minFestiveN:2, payDays:45},
+ {id:'samburu-simba', name:'Samburu Simba Lodge', park:'samburu', driverRoom:1500, resComm:0.15, xmasNr:35, payDays:45,
   pitch:'in Samburu, home of the rare northern species you will not see in the Mara',
   nr:[
    ['2025-12-16','2026-03-31',167,95],['2026-04-01','2026-06-30',75,75],['2026-07-01','2026-10-31',202,115],
@@ -427,7 +458,7 @@ var LODGES = [
   res:[['2027-01-03','2027-03-25',27000,36000],['2027-03-26','2027-03-29',33750,45000],['2027-03-30','2027-03-31',27000,36000],
    ['2027-04-01','2027-05-31',20250,27000],['2027-06-01','2027-10-31',33750,45000],['2027-11-01','2027-12-23',27000,36000],
    ['2027-12-24','2028-01-02',33750,45000]],
-  tentNr:0, tentRes:0, minFestive:'Christmas supplement needs a minimum 3 night stay.',
+  tentNr:0, tentRes:0, minFestive:'Christmas supplement needs a minimum 3 night stay.', minFestiveN:3, payDays:60,
   x:[['Masai village visit',50,'pp'],['Champagne breakfast on the lawns',50,'pp'],['Sundowner at the lodge',40,'pp'],['Bird and nature walk',30,'pp'],['Night game drive, min 4',250,'all'],['Bush breakfast, min 7',60,'pp'],['Bush dinner, min 7',60,'pp'],['Cultural dance for the group',200,'all'],['Lunch box',30,'pp'],['Birthday cake 1 kg',40,'all']]}
 ];
 var XMAS_NR = 35; // USD per adult per night, 24 Dec to 1 Jan, non residents
@@ -458,55 +489,74 @@ var MODE='card';
 var LABEL={cit:'Kenyan citizen',res:'resident',nr:'visitor'};
 var LABELS={cit:'Kenyan citizens',res:'residents',nr:'visitors'};
 
-function calc(){
- var L=LODGES.filter(function(x){return x.id===$('lodge').value})[0]||LODGES[0];
- var P=PARKS[L.park];
- var checkin=$('checkin').value, nights=Math.max(1,num('nights')), fx=num('fx')||129.5;
- var m=Math.min(0.8,Math.max(0,num('margin')/100)), roundTo=Math.max(1,num('roundTo'));
- var tent=$('tent').checked&&(L.tentNr||L.tentRes);
- var alerts=[], cats=['cit','res','nr'];
- var cnt={cit:num('nCit'),res:num('nRes'),nr:num('nNr')};
- var sgl={cit:Math.min(num('sCit'),cnt.cit),res:Math.min(num('sRes'),cnt.res),nr:Math.min(num('sNr'),cnt.nr)};
+function lodgeById(id){return LODGES.filter(function(x){return x.id===id})[0]||LODGES[0]}
+function moreStops(){var a=[];document.querySelectorAll('.stoprow').forEach(function(r){a.push([r.querySelector('.sl').value,Math.max(1,parseInt(r.querySelector('.sn').value,10)||1)])});return a}
+function readState(){
+ var S={lodge:$('lodge').value,checkin:$('checkin').value,nights:Math.max(1,num('nights')),fx:num('fx')||129.5,margin:num('margin'),roundTo:Math.max(1,num('roundTo')),tent:$('tent').checked,mode:MODE,
+  cnt:{cit:num('nCit'),res:num('nRes'),nr:num('nNr')},sgl:{cit:num('sCit'),res:num('sRes'),nr:num('sNr')},
+  vDays:Math.max(0,num('vDays')),vRate:num('vRate'),vCount:Math.max(1,num('vCount')),pDays:Math.max(0,num('pDays')),x:[]};
+ document.querySelectorAll('.xrow').forEach(function(r){S.x.push([r.querySelector('.xl').value||'Extra',parseFloat(r.querySelector('.xa').value)||0,r.querySelector('.xm').value])});
+ S.stops=[{id:S.lodge,nights:S.nights}].concat(moreStops().map(function(s){return {id:s[0],nights:s[1]}}));
+ return S;
+}
+function joinAnd(a){return a.length<2?(a[0]||''):a.slice(0,-1).join(', ')+' and '+a[a.length-1]}
+function uniq(a){var o=[];a.forEach(function(x){if(o.indexOf(x)<0)o.push(x)});return o}
+// Pure pricing engine: same state in, same quote out. Used for the live quote, the lodge options and the pinned options.
+function compute(S){
+ var fx=S.fx,m=Math.min(0.8,Math.max(0,S.margin/100)),roundTo=S.roundTo,checkin=S.checkin,MODEX=S.mode;
+ var alerts=[],cats=['cit','res','nr'],cnt=S.cnt;
+ var sgl={cit:Math.min(S.sgl.cit,cnt.cit),res:Math.min(S.sgl.res,cnt.res),nr:Math.min(S.sgl.nr,cnt.nr)};
  var total=cnt.cit+cnt.res+cnt.nr;
+ var off=0,stops=S.stops.map(function(s){var L=lodgeById(s.id),n=Math.max(1,s.nights||1),o={L:L,P:PARKS[L.park],nights:n,offset:off,checkin:checkin?addDays(checkin,off):''};off+=n;return o});
+ var nights=off,L0=stops[0].L,multi=stops.length>1;
  if(!checkin)alerts.push(['bad','Pick a check in date.']);
  if(total<1)alerts.push(['bad','Add at least one guest.']);
  var sharers=total-sgl.cit-sgl.res-sgl.nr;
  if(sharers%2===1)alerts.push(['','An odd number of guests are sharing, so one double has one person. Give someone their own room or check the setup.']);
- if($('tent').checked&&!(L.tentNr||L.tentRes))alerts.push(['','This lodge has no tent option on its card, so the upgrade is ignored.']);
- if(L.minFestive&&checkin&&nights<2){for(var q=0;q<nights;q++){var dq=addDays(checkin,q).slice(5);if(dq>='12-24'&&dq<='12-26'){alerts.push(['',L.minFestive]);break}}}
- if(L.note)alerts.push(['',L.note]);
+ var tentAny=false;
+ stops.forEach(function(st){st.tent=S.tent&&!!(st.L.tentNr||st.L.tentRes);if(st.tent)tentAny=true;
+  if(st.L.minFestive&&checkin&&st.nights<(st.L.minFestiveN||2)){for(var q=0;q<st.nights;q++){var dq=addDays(st.checkin,q).slice(5);if(dq>='12-24'&&dq<='12-26'){alerts.push(['',(multi?st.L.name+': ':'')+st.L.minFestive]);break}}}
+  if(st.L.note)alerts.push(['',(multi?st.L.name+': ':'')+st.L.note]);});
+ if(S.tent&&!tentAny)alerts.push(['','None of these lodges has a tent option on its card, so the upgrade is ignored.']);
  var groups=[];
  cats.forEach(function(c){var s=sgl[c],d=cnt[c]-s;if(d>0)groups.push({c:c,room:'double',n:d});if(s>0)groups.push({c:c,room:'single',n:s})});
  var missing={};
  groups.forEach(function(g){
-  g.lodgeNet=0;g.lodgeCard=0;if(!checkin)return;
-  for(var i=0;i<nights;i++){
-   var date=addDays(checkin,i);
-   if(g.c==='nr'){var r=find(L.nr,date);if(!r){missing['visitor rate for '+shortDate(date)]=1;continue}
-    var pp=(g.room==='single'?r[2]:r[3]);if(pp==null){missing['visitor '+(g.room==='single'?'single':'double')+' rate for '+shortDate(date)]=1;continue}if(isXmas(date))pp+=(L.xmasNr||0);if(tent&&L.tentNr)pp+=L.tentNr;g.lodgeNet+=pp*fx;g.lodgeCard+=pp*fx;}
-   else{var rr=find(L.res,date);if(!rr){missing['resident rate for '+shortDate(date)]=1;continue}
-    var card=(g.room==='single'?rr[2]:rr[3]/2),net=card*(1-L.resComm);if(tent&&L.tentRes){net+=L.tentRes;card+=L.tentRes}g.lodgeNet+=net;g.lodgeCard+=card;}
-  }
+  g.lodgeNet=0;g.lodgeCard=0;g.byStop=[];
+  stops.forEach(function(st){var L=st.L,net=0,cardT=0;
+   if(checkin)for(var i=0;i<st.nights;i++){
+    var date=addDays(st.checkin,i);
+    if(g.c==='nr'){var r=find(L.nr,date);if(!r){missing[L.name+'|visitor rate for '+shortDate(date)]=1;continue}
+     var pp=(g.room==='single'?r[2]:r[3]);if(pp==null){missing[L.name+'|visitor '+(g.room==='single'?'single':'double')+' rate for '+shortDate(date)]=1;continue}if(isXmas(date))pp+=(L.xmasNr||0);if(st.tent&&L.tentNr)pp+=L.tentNr;net+=pp*fx;cardT+=pp*fx;}
+    else{var rr=find(L.res,date);if(!rr){missing[L.name+'|resident rate for '+shortDate(date)]=1;continue}
+     var card=(g.room==='single'?rr[2]:rr[3]/2),nt=card*(1-L.resComm);if(st.tent&&L.tentRes){nt+=L.tentRes;card+=L.tentRes}net+=nt;cardT+=card;}
+   }
+   g.byStop.push({net:net,card:cardT});g.lodgeNet+=net;g.lodgeCard+=cardT;});
  });
- Object.keys(missing).forEach(function(k){alerts.push(['bad','No '+k+' at '+L.name+'. Load that rate card before quoting.'])});
- var pDays=Math.max(0,num('pDays'));
- groups.forEach(function(g){g.park=0;if(!checkin)return;for(var j=0;j<pDays;j++){var dt=addDays(checkin,j),h=halfIdx(dt);g.park+=g.c==='nr'?P.nr[h]*fx:P[g.c][h]}});
- var vCount=Math.max(1,num('vCount')),vDays=Math.max(0,num('vDays')),vRate=num('vRate'),shared=[];
+ var missStops={};
+ Object.keys(missing).forEach(function(k){var p=k.split('|');(missStops[p[0]]=missStops[p[0]]||[]).push(p[1])});
+ Object.keys(missStops).forEach(function(n){var l=missStops[n];alerts.push(['bad','No '+l.slice(0,3).join(', ')+(l.length>3?' and '+(l.length-3)+' more dates':'')+' at '+n+'. Load that rate card before quoting.'])});
+ // park days: each stop gets its own nights, the last stop takes what is left of the total
+ var pLeft=S.pDays;
+ stops.forEach(function(st,i){var want=i<stops.length-1?st.nights:pLeft;st.pDays=Math.max(0,Math.min(want,pLeft));pLeft-=st.pDays});
+ groups.forEach(function(g){g.park=0;if(!checkin)return;stops.forEach(function(st){for(var j=0;j<st.pDays;j++){var dt=addDays(checkin,st.offset+j),h=halfIdx(dt);g.park+=g.c==='nr'?st.P.nr[h]*fx:st.P[g.c][h]}})});
+ var vCount=S.vCount,vDays=S.vDays,vRate=S.vRate,shared=[];
  shared.push(['Vehicle, guide and fuel',vDays+' days at '+kes(vRate)+(vCount>1?', '+vCount+' vehicles':''),vDays*vRate*vCount,'veh']);
- shared.push(['Driver room and meals',nights+' nights at '+kes(L.driverRoom)+(vCount>1?', '+vCount+' drivers':''),nights*L.driverRoom*vCount,'drv']);
- if(P.veh&&pDays)shared.push(['Vehicle gate fee',pDays+' days at '+kes(P.veh),pDays*P.veh*vCount,'park']);
+ var drv=stops.reduce(function(a,st){return a+st.nights*st.L.driverRoom},0)*vCount;
+ shared.push(['Driver room and meals',multi?stops.map(function(st){return st.nights+' at '+kes(st.L.driverRoom)}).join(', ')+(vCount>1?', '+vCount+' drivers':''):nights+' nights at '+kes(L0.driverRoom)+(vCount>1?', '+vCount+' drivers':''),drv,'drv']);
+ var gate=0,gd=[];stops.forEach(function(st){if(st.P.veh&&st.pDays){gate+=st.P.veh*st.pDays*vCount;gd.push(st.pDays+' days at '+kes(st.P.veh))}});
+ if(gate)shared.push(['Vehicle gate fee',gd.join(', '),gate,'park']);
  var xl=[];
- document.querySelectorAll('.xrow').forEach(function(r){var lab=r.querySelector('.xl').value||'Extra',amt=parseFloat(r.querySelector('.xa').value)||0,mo=r.querySelector('.xm').value;if(!amt)return;xl.push(lab.toLowerCase());
+ S.x.forEach(function(x){var lab=x[0],amt=x[1],mo=x[2];if(!amt)return;xl.push(lab.toLowerCase());
   if(mo==='pp')shared.push([lab,kes(amt)+' per person',amt*total,'x']);else shared.push([lab,'for the group',amt,'x']);});
  var sharedTotal=shared.reduce(function(a,b){return a+b[2]},0),sharedPP=total?sharedTotal/total:0;
  var totCost=0,totPrice=0;
- groups.forEach(function(g){g.cost=g.lodgeNet+g.park+sharedPP;var other=g.park+sharedPP;var raw=(g.c!=='nr'&&MODE==='card')?g.lodgeCard+other/(1-m):g.cost/(1-m);g.price=Math.ceil(raw/roundTo)*roundTo;totCost+=g.cost*g.n;totPrice+=g.price*g.n});
+ groups.forEach(function(g){g.cost=g.lodgeNet+g.park+sharedPP;var other=g.park+sharedPP;var raw=(g.c!=='nr'&&MODEX==='card')?g.lodgeCard+other/(1-m):g.cost/(1-m);g.price=Math.ceil(raw/roundTo)*roundTo;totCost+=g.cost*g.n;totPrice+=g.price*g.n});
  var profit=totPrice-totCost,pct=totPrice?profit/totPrice:0;
- // revenue streams: what Sundown earns from each part of the trip
  var mk=m/(1-m),ST={com:0,lodge:0,veh:0,park:0,drv:0,x:0,rnd:0},PAY={lodge:0,park:0,veh:0,drv:0,x:0};
  groups.forEach(function(g){
   var raw=0;
-  if(g.c!=='nr'&&MODE==='card'){ST.com+=(g.lodgeCard-g.lodgeNet)*g.n;raw+=g.lodgeCard}
+  if(g.c!=='nr'&&MODEX==='card'){ST.com+=(g.lodgeCard-g.lodgeNet)*g.n;raw+=g.lodgeCard}
   else{ST.lodge+=g.lodgeNet*mk*g.n;raw+=g.lodgeNet*(1+mk)}
   ST.park+=g.park*mk*g.n;raw+=g.park*(1+mk);
   PAY.lodge+=g.lodgeNet*g.n;PAY.park+=g.park*g.n;
@@ -514,69 +564,167 @@ function calc(){
   ST.rnd+=(g.price-raw)*g.n;
  });
  shared.forEach(function(it){PAY[it[3]]+=it[2]});
- var SL=[['com','Lodge commission','The lodge\u2019s '+Math.round(L.resComm*100)+'% on resident card rates','#C98A27'],['lodge','Margin on lodge stays','Your margin on net lodge rates','#E9B865'],['veh','Margin on vehicle and guide','Your margin on the Land Cruiser, guide and fuel','#0B3A1D'],['park','Margin on park fees','Your margin on reserve and gate fees','#3d7a52'],['drv','Margin on driver room','Your margin on the guide\u2019s lodge room','#8fb59a'],['x','Margin on extras','Balloon, dinners and other extras','#b07a2a'],['rnd','Price rounding','Extra from rounding prices up','#c9c0ad']];
+ // cash plan: 50% deposit on confirmation, balance a week before the earliest lodge payment deadline
+ var payDays=Math.max.apply(null,stops.map(function(st){return st.L.payDays||30})),cash=null;
+ if(checkin&&totPrice){var today=new Date().toISOString().slice(0,10),lodgeDue=addDays(checkin,-payDays),balDue=addDays(lodgeDue,-7);
+  cash={deposit:Math.ceil(totPrice/2/roundTo)*roundTo,balDue:balDue,lodgeDue:lodgeDue,payDays:payDays,now:balDue<=today};cash.balance=totPrice-cash.deposit;}
+ return {ST:ST,profit:profit,pct:pct,L:L0,P:stops[0].P,stops:stops,multi:multi,groups:groups,shared:shared,PAY:PAY,totCost:totCost,totPrice:totPrice,checkin:checkin,nights:nights,total:total,fx:fx,tent:tentAny,xl:xl,vDays:vDays,pDays:S.pDays,alerts:alerts,cash:cash,m:m};
+}
+function areasOf(r){return uniq(r.stops.map(function(st){return AREA[st.L.park]}))}
+function routeText(r){return r.stops.map(function(st){return st.nights+' night'+(st.nights>1?'s':'')+' at '+st.L.name}).join(', then ')}
+function holdUntil(){return niceDate(addDays(new Date().toISOString().slice(0,10),7))}
+function waQuote(r){
+ if(!(r.checkin&&r.total))return '';
+ var t='',out=addDays(r.checkin,r.nights),pick=$('pickup').value.trim()||'Nairobi',areas=areasOf(r);
+ t+='Here is your '+joinAnd(areas)+' safari, '+niceDate(r.checkin)+' to '+niceDate(out)+'.\n\n';
+ if(!r.multi){
+  t+=r.L.name+' sits '+r.L.pitch+'.\n\nThe plan\n';
+  t+='Day 1, pickup from '+pick+' in the morning in your own Land Cruiser with your guide, lunch at the lodge and an afternoon game drive.\n';
+  if(r.nights>1)t+='Days 2 to '+r.nights+', full days on safari with your guide, at your own pace.\n';
+  t+='Last day, an early game drive or a relaxed breakfast, then the drive home to '+pick+'.\n\n';
+ }else{
+  t+='Where you stay\n';r.stops.forEach(function(st){t+=st.nights+' night'+(st.nights>1?'s':'')+' at '+st.L.name+', '+st.L.pitch+'.\n'});
+  t+='\nThe plan\n';days(r).forEach(function(d,i){t+='Day '+(i+1)+', '+d[1].replace(/^A /,'a ')+'.\n'});t+='\n';
+ }
+ var parks=r.stops.some(function(st){return st.P.veh||st.P.nr[1]});
+ t+='Included\nPrivate Land Cruiser and guide, fuel, '+r.nights+' night'+(r.nights>1?'s':'')+' full board'+(r.tent?' in the lodge tents':'')+(parks?', park fees':'')+' and bottled water'+(r.xl.length?', plus '+r.xl.join(', '):'')+'.\n\nPrice\n';
+ if(r.groups.length===1)t+=kes(r.groups[0].price)+' per person\n';
+ else r.groups.forEach(function(g){t+=kes(g.price)+' per person for '+(g.n>1?'the '+g.n+' '+LABELS[g.c]:'the '+LABEL[g.c])+(g.room==='single'?' in their own room':'')+'\n'});
+ if(r.total>1)t+=kes(r.totPrice)+' in total for '+(r.total===2?'the two of you':'all '+r.total+' of you')+'\n';
+ t+='\nThese rates are held for you until '+holdUntil()+'.\n\nShall I go ahead and hold it for you?';
+ return t;
+}
+var SL_DEF=[['com','Lodge commission','','#C98A27'],['lodge','Margin on lodge stays','Your margin on net lodge rates','#E9B865'],['veh','Margin on vehicle and guide','Your margin on the Land Cruiser, guide and fuel','#0B3A1D'],['park','Margin on park fees','Your margin on reserve and gate fees','#3d7a52'],['drv','Margin on driver room','Your margin on the guide’s lodge room','#8fb59a'],['x','Margin on extras','Balloon, dinners and other extras','#b07a2a'],['rnd','Price rounding','Extra from rounding prices up','#c9c0ad']];
+function render(r,S){
+ var L=r.L,fx=r.fx,profit=r.profit,pct=r.pct,groups=r.groups,ST=r.ST,PAY=r.PAY,total=r.total;
+ var coms=uniq(r.stops.map(function(st){return Math.round(st.L.resComm*100)+'%'}));
  var sh='',bar='';
- SL.forEach(function(x){var v=ST[x[0]];if(Math.abs(v)<1)return;var w=profit>0?v/profit*100:0;bar+='<i style="width:'+Math.max(0,w)+'%;background:'+x[3]+'" title="'+x[1]+'"></i>';
-  sh+='<li><span class="sw2" style="background:'+x[3]+'"></span><div class="who"><b>'+x[1]+'</b><span>'+x[2]+'</span></div><div class="px"><b>'+kes(v)+'</b><span>'+Math.round(w)+'% of your revenue</span></div></li>'});
+ SL_DEF.forEach(function(x){var v=ST[x[0]];if(Math.abs(v)<1)return;var w=profit>0?v/profit*100:0;var sub=x[0]==='com'?(r.multi?'The lodges’ '+coms.join(' and ')+' on resident card rates':'The lodge’s '+coms[0]+' on resident card rates'):x[2];bar+='<i style="width:'+Math.max(0,w)+'%;background:'+x[3]+'" title="'+x[1]+'"></i>';
+  sh+='<li><span class="sw2" style="background:'+x[3]+'"></span><div class="who"><b>'+x[1]+'</b><span>'+sub+'</span></div><div class="px"><b>'+kes(v)+'</b><span>'+Math.round(w)+'% of your revenue</span></div></li>'});
  $('revBar').innerHTML=bar;$('revList').innerHTML=sh||'<li class="muted">Add guests to see your revenue</li>';
  $('revTotal').textContent=kes(profit);
- var PL=[['lodge',L.name],['park','Park and gate fees'],['veh','Vehicle, guide and fuel'],['drv','Driver room and meals'],['x','Extras']];
- var fh='<tr><td>Client pays</td><td class="n">'+kes(totPrice)+'</td></tr>';
+ var PL=[['lodge',r.multi?'Lodges':L.name],['park','Park and gate fees'],['veh','Vehicle, guide and fuel'],['drv','Driver room and meals'],['x','Extras']];
+ var fh='<tr><td>Client pays</td><td class="n">'+kes(r.totPrice)+'</td></tr>';
  PL.forEach(function(x){if(PAY[x[0]]>0.5)fh+='<tr><td><span class="muted">Paid out to</span> '+x[1]+'</td><td class="n">'+kes(PAY[x[0]])+'</td></tr>'});
  fh+='<tr class="tot"><td>Sundown keeps</td><td class="n">'+kes(profit)+'</td></tr>';
  $('revFlow').innerHTML=fh;
-
- // render summary
- $('alerts').innerHTML=alerts.map(function(a){return '<div class="warn '+a[0]+'">'+esc(a[1])+'</div>'}).join('');
- $('kTotal').textContent=kes(totPrice);$('kTotalUsd').textContent='about '+usd(totPrice/fx);
- $('kCost').textContent=kes(totCost);$('kProfit').textContent=kes(profit);
- $('kBar').style.width=Math.max(0,Math.min(100,pct*100/0.4*1))+'%';
- $('kPct').textContent=totPrice?'Profit is '+Math.round(pct*100)+'% of the price':'';
- $('mTotal').textContent=kes(totPrice);
+ $('alerts').innerHTML=r.alerts.map(function(a){return '<div class="warn '+a[0]+'">'+esc(a[1])+'</div>'}).join('');
+ $('kTotal').textContent=kes(r.totPrice);$('kTotalUsd').textContent='about '+usd(r.totPrice/fx);
+ $('kCost').textContent=kes(r.totCost);$('kProfit').textContent=kes(profit);
+ $('kBar').style.width=Math.max(0,Math.min(100,pct*100/0.4))+'%';
+ $('kPct').textContent=r.totPrice?'Profit is '+Math.round(pct*100)+'% of the price':'';
+ $('mTotal').textContent=kes(r.totPrice);
  $('mPer').textContent=groups.length?'From '+kes(Math.min.apply(null,groups.map(function(g){return g.price})))+' per person':'';
  $('prices').innerHTML=groups.map(function(g){return '<li><div class="who"><b>'+g.n+' '+(g.n>1?LABELS[g.c]:LABEL[g.c])+'</b><span>'+(g.room==='single'?'Own room':'Sharing a room')+(SD_ROLE==='owner'?', cost '+kes(g.cost)+' each':'')+'</span></div><div class="px"><b>'+kes(g.price)+'</b><span>per person, '+usd(g.price/fx)+'</span></div></li>'}).join('')||'<li class="muted">Add guests to see prices</li>';
+ var c=r.cash;
+ $('cash').innerHTML=c?'<b>When the client says yes</b><span>'+(c.now?'Ask for the full '+kes(r.totPrice)+' to confirm. The trip is inside the lodge\u2019s '+c.payDays+' day payment window, so there is no time for a deposit and balance.':'Deposit '+kes(c.deposit)+' to confirm, then the balance of '+kes(c.balance)+' by '+niceDate(c.balDue)+', a week before the lodge payment is due on '+niceDate(c.lodgeDue)+'.')+'</span>':'';
  var bh='';
- groups.forEach(function(g){bh+='<tr><td><b>'+L.name+'</b><br><span class="muted">'+nights+' night'+(nights>1?'s':'')+', '+g.n+' '+(g.n>1?LABELS[g.c]:LABEL[g.c])+(g.room==='single'?' in own rooms':' sharing')+(g.c!=='nr'?', card '+kes(g.lodgeCard*g.n)+' less '+Math.round(L.resComm*100)+'%':', net USD rate')+(tent?', tents':'')+'</span></td><td class="n">'+kes(g.lodgeNet*g.n)+'</td></tr>'});
- groups.forEach(function(g){if(g.park)bh+='<tr><td><b>Park fees</b><br><span class="muted">'+pDays+' days, '+g.n+' '+(g.n>1?LABELS[g.c]:LABEL[g.c])+'</span></td><td class="n">'+kes(g.park*g.n)+'</td></tr>'});
- shared.forEach(function(s){bh+='<tr><td><b>'+esc(s[0])+'</b><br><span class="muted">'+esc(s[1])+'</span></td><td class="n">'+kes(s[2])+'</td></tr>'});
- bh+='<tr class="tot"><td>Total cost</td><td class="n">'+kes(totCost)+'</td></tr>';
+ r.stops.forEach(function(st,si){groups.forEach(function(g){var b=g.byStop[si];bh+='<tr><td><b>'+st.L.name+'</b><br><span class="muted">'+st.nights+' night'+(st.nights>1?'s':'')+', '+g.n+' '+(g.n>1?LABELS[g.c]:LABEL[g.c])+(g.room==='single'?' in own rooms':' sharing')+(g.c!=='nr'?', card '+kes(b.card*g.n)+' less '+Math.round(st.L.resComm*100)+'%':', net USD rate')+(st.tent?', tents':'')+'</span></td><td class="n">'+kes(b.net*g.n)+'</td></tr>'})});
+ groups.forEach(function(g){if(g.park)bh+='<tr><td><b>Park fees</b><br><span class="muted">'+r.stops.filter(function(st){return st.pDays}).map(function(st){return st.pDays+' days '+AREA[st.L.park]}).join(', ')+', '+g.n+' '+(g.n>1?LABELS[g.c]:LABEL[g.c])+'</span></td><td class="n">'+kes(g.park*g.n)+'</td></tr>'});
+ r.shared.forEach(function(s){bh+='<tr><td><b>'+esc(s[0])+'</b><br><span class="muted">'+esc(s[1])+'</span></td><td class="n">'+kes(s[2])+'</td></tr>'});
+ bh+='<tr class="tot"><td>Total cost</td><td class="n">'+kes(r.totCost)+'</td></tr>';
  $('breakdown').innerHTML=bh;
  $('lodgenote').textContent='Rooms from 12 noon, checkout by 10am. Driver room '+kes(L.driverRoom)+' a night.'+(L.minFestive?' '+L.minFestive:'');
- $('parknote').textContent=P.note;
- $('tentnote').textContent=L.tentNr||L.tentRes?'Visitors USD '+L.tentNr+', residents '+kes(L.tentRes)+' per person per night':'Not offered at this lodge';
- // chips
+ $('parknote').textContent=uniq(r.stops.map(function(st){return st.P.note})).join(' ');
+ $('tentnote').textContent=L.tentNr||L.tentRes?'Visitors USD '+L.tentNr+', residents '+kes(L.tentRes)+' per person per night':'Not offered at '+(r.multi?'the first lodge':'this lodge');
+ // stop rows: dates
+ document.querySelectorAll('.stoprow').forEach(function(row,i){var st=r.stops[i+1];if(st)row.querySelector('.sd').textContent=r.checkin?shortDate(st.checkin)+' to '+shortDate(addDays(st.checkin,st.nights)):''});
+ $('firstDates').textContent=r.checkin&&r.multi?'First stop, '+shortDate(r.checkin)+' to '+shortDate(addDays(r.checkin,r.stops[0].nights)):'';
  var ch='';
- if(checkin){ch+='<span class="tc"><b>'+AREA[L.park]+'</b> '+L.name+'</span><span class="tc">'+shortDate(checkin)+' to '+shortDate(addDays(checkin,nights))+'</span><span class="tc"><b>'+nights+'</b> night'+(nights>1?'s':'')+'</span>'}
+ if(r.checkin){ch+='<span class="tc"><b>'+joinAnd(areasOf(r))+'</b> '+(r.multi?r.stops.length+' lodges':L.name)+'</span><span class="tc">'+shortDate(r.checkin)+' to '+shortDate(addDays(r.checkin,r.nights))+'</span><span class="tc"><b>'+r.nights+'</b> night'+(r.nights>1?'s':'')+'</span>'}
  if(total)ch+='<span class="tc"><b>'+total+'</b> guest'+(total>1?'s':'')+'</span>';
  $('chips').innerHTML=ch;
  document.querySelectorAll('.lodge').forEach(function(b){b.classList.toggle('on',b.dataset.id===L.id)});
- if($('quickx').dataset.l!==L.id){$('quickx').dataset.l=L.id;var qx=L.x||[];$('quickx').innerHTML=qx.length?'<small>Quick add from '+L.name+', lodge prices in USD converted at today\u2019s rate</small>'+qx.map(function(x,i){return '<button type="button" data-i="'+i+'">'+x[0]+', USD '+x[1]+(x[2]==='all'?' group':'')+'</button>'}).join(''):'';
+ var key=r.stops.map(function(st){return st.L.id}).join(',');
+ if($('quickx').dataset.l!==key){$('quickx').dataset.l=key;var qx=[];r.stops.forEach(function(st){(st.L.x||[]).forEach(function(x){qx.push([x[0],x[1],x[2],st.L.name])})});
+  $('quickx').innerHTML=qx.length?'<small>Quick add from '+joinAnd(uniq(qx.map(function(x){return x[3]})))+', lodge prices in USD converted at today’s rate</small>'+qx.map(function(x,i){return '<button type="button" data-i="'+i+'">'+x[0]+', USD '+x[1]+(x[2]==='all'?' group':'')+'</button>'}).join(''):'';
   $('quickx').querySelectorAll('button').forEach(function(b){b.onclick=function(){var x=qx[+b.dataset.i];addExtra(x[0],Math.ceil(x[1]*(num('fx')||129.5)/100)*100,x[2]);calc()}})}
- // WhatsApp
- var t='';
- if(checkin&&total){
-  var out=addDays(checkin,nights),pick=$('pickup').value.trim()||'Nairobi';
-  t+='Here is your '+AREA[L.park]+' safari, '+niceDate(checkin)+' to '+niceDate(out)+'.\n\n';
-  t+=L.name+' sits '+L.pitch+'.\n\nThe plan\n';
-  t+='Day 1, pickup from '+pick+' in the morning in your own Land Cruiser with your guide, lunch at the lodge and an afternoon game drive.\n';
-  if(nights>1)t+='Days 2 to '+nights+', full days on safari with your guide, at your own pace.\n';
-  t+='Last day, an early game drive or a relaxed breakfast, then the drive home to '+pick+'.\n\n';
-  t+='Included\nPrivate Land Cruiser and guide, fuel, '+nights+' night'+(nights>1?'s':'')+' full board'+(tent?' in the lodge tents':'')+(P.veh||P.nr[1]?', park fees':'')+' and bottled water'+(xl.length?', plus '+xl.join(', '):'')+'.\n\nPrice\n';
-  if(groups.length===1)t+=kes(groups[0].price)+' per person\n';
-  else groups.forEach(function(g){t+=kes(g.price)+' per person for '+(g.n>1?'the '+g.n+' '+LABELS[g.c]:'the '+LABEL[g.c])+(g.room==='single'?' in their own room':'')+'\n'});
-  if(total>1)t+=kes(totPrice)+' in total for '+(total===2?'the two of you':'all '+total+' of you')+'\n';
-  t+='\nShall I go ahead and hold it for you?';
- }
- $('wa').value=t;
- $('openwa').href='https://wa.me/?text='+encodeURIComponent(t);
- LAST={ST:ST,profit:profit,L:L,P:P,groups:groups,totCost:totCost,totPrice:totPrice,checkin:checkin,nights:nights,total:total,fx:fx,tent:tent,xl:xl,vDays:vDays,pDays:pDays,alerts:alerts};
+ var t=waQuote(r);
+ $('wa').value=t;$('waMode').textContent='';
+ $('openwa').href=waLink($('cContact').value,t);
+ renderAlts(r,S);
+}
+function calc(){
+ var S=readState(),r=compute(S);
+ LAST=r;render(r,S);
  if(typeof docState==='function')docState();
  try{localStorage.setItem('sdq',JSON.stringify(state()))}catch(e){}
 }
+// phone to WhatsApp link: Kenyan 07 and 01 numbers become 254
+function waPhone(s){var d=String(s||'').replace(/[^0-9]/g,'');if(/^0[17]\d{8}$/.test(d))d='254'+d.slice(1);else if(/^[17]\d{8}$/.test(d))d='254'+d;return d.length>=10&&d.length<=15?d:''}
+function waLink(contact,text){var p=waPhone(contact);return 'https://wa.me/'+(p||'')+'?text='+encodeURIComponent(text)}
+// ---------------- LODGE OPTIONS ----------------
+var PINS=[];try{PINS=JSON.parse(localStorage.getItem('sdq_pins')||'[]')}catch(e){PINS=[]}
+function savePins(){try{localStorage.setItem('sdq_pins',JSON.stringify(PINS))}catch(e){}}
+function renderAlts(r,S){
+ var own=SD_ROLE==='owner',h='',base=r.groups.length?Math.min.apply(null,r.groups.map(function(g){return g.price})):0;
+ if(r.total&&r.checkin){
+  S.stops.forEach(function(sp,si){var cur=lodgeById(sp.id);
+   LODGES.forEach(function(alt){if(alt.park!==cur.park||alt.id===cur.id)return;
+    var S2=JSON.parse(JSON.stringify(S));S2.stops[si].id=alt.id;if(si===0)S2.lodge=alt.id;var r2=compute(S2);
+    var bad=r2.alerts.some(function(a){return a[0]==='bad'}),pp=r2.groups.length?Math.min.apply(null,r2.groups.map(function(g){return g.price})):0,dif=pp-base;
+    h+='<li><div class="who"><b>'+alt.name+'</b><span>'+(r.multi?'Instead of '+cur.name+', ':'')+(bad?'rates not loaded for these dates':(dif===0?'same price':kes(Math.abs(dif))+(dif>0?' more':' less')+' per person')+(own&&!bad?', profit '+kes(r2.profit):''))+'</span></div>'+
+     '<div class="px">'+(bad?'':'<b>'+kes(r2.totPrice)+'</b><span>from '+kes(pp)+' pp</span>')+'<button type="button" class="lnk" data-swap="'+si+':'+alt.id+'"'+(bad?' disabled':'')+'>Switch</button></div></li>'});
+  });
+ }
+ $('alts').innerHTML=h||'<li class="muted">'+(r.total&&r.checkin?'No other loaded lodges in '+joinAnd(areasOf(r))+' yet. More appear here as rate cards come in.':'Add dates and guests to compare lodges.')+'</li>';
+ $('alts').querySelectorAll('[data-swap]').forEach(function(b){b.onclick=function(){var p=b.dataset.swap.split(':'),si=+p[0];if(si===0)$('lodge').value=p[1];else document.querySelectorAll('.stoprow')[si-1].querySelector('.sl').value=p[1];calc()}});
+ renderPins();
+}
+function pinSummary(r){return {route:routeText(r),areas:joinAnd(areasOf(r)),lodges:r.stops.map(function(st){return st.L.name}),pitch:r.stops.map(function(st){return st.L.name+', '+st.L.pitch}),pitchOnly:r.stops.length===1?r.L.pitch:'',checkin:r.checkin,nights:r.nights,total:r.total,totPrice:r.totPrice,profit:r.profit,
+ per:r.groups.map(function(g){return {c:g.c,room:g.room,n:g.n,price:g.price}}),tent:r.tent}}
+function renderPins(){
+ var own=SD_ROLE==='owner';
+ $('pins').innerHTML=PINS.map(function(p,i){return '<li><div class="who"><b>Option '+(i+1)+', '+esc(p.sum.lodges.join(' + '))+'</b><span>'+shortDate(p.sum.checkin)+', '+p.sum.nights+' nights, '+p.sum.total+' guests'+(own?', profit '+kes(p.sum.profit):'')+'</span></div><div class="px"><b>'+kes(p.sum.totPrice)+'</b><span><button type="button" class="lnk" data-load="'+i+'">Load</button> <button type="button" class="lnk" data-unpin="'+i+'">Remove</button></span></div></li>'}).join('');
+ $('pinsHead').hidden=!PINS.length;$('sendOpts').disabled=PINS.length<2;$('pinOpt').disabled=PINS.length>=3||!(LAST&&LAST.total&&!LAST.alerts.some(function(a){return a[0]==='bad'}));
+ $('pins').querySelectorAll('[data-unpin]').forEach(function(b){b.onclick=function(){PINS.splice(+b.dataset.unpin,1);savePins();renderPins()}});
+ $('pins').querySelectorAll('[data-load]').forEach(function(b){b.onclick=function(){applyState(PINS[+b.dataset.load].state)}});
+}
+function optionsMessage(){
+ var a=PINS.map(function(p){return p.sum}),first=a[0],sameDates=a.every(function(s){return s.checkin===first.checkin&&s.nights===first.nights}),sameGuests=a.every(function(s){return s.total===first.total});
+ var t='Here are '+(a.length===2?'two':'three')+' ways to do your '+first.areas+' safari'+(sameDates?', '+niceDate(first.checkin)+' to '+niceDate(addDays(first.checkin,first.nights)):'')+(sameGuests?', for '+(first.total===2?'the two of you':first.total===1?'you':'all '+first.total+' of you'):'')+'.\n\n';
+ a.forEach(function(s,i){
+  t+='Option '+(i+1)+', '+s.lodges.join(' and ')+'\n';
+  if(s.lodges.length===1&&s.pitchOnly)t+=s.pitchOnly.charAt(0).toUpperCase()+s.pitchOnly.slice(1)+'.\n';else s.pitch.forEach(function(p){t+=p+'.\n'});
+  if(!sameDates)t+=niceDate(s.checkin)+' to '+niceDate(addDays(s.checkin,s.nights))+'.\n';
+  var pp=Math.min.apply(null,s.per.map(function(g){return g.price}));
+  t+=(s.per.length===1?kes(pp)+' per person':'From '+kes(pp)+' per person')+(s.total>1?', '+kes(s.totPrice)+' in total':'')+'\n\n';
+ });
+ t+='Every option includes your private Land Cruiser and guide, fuel, full board, park fees and bottled water.\n\nWhich one feels right for you? These rates are held until '+holdUntil()+'.';
+ return t;
+}
 
 var FIELDS=['cName','cContact','terms','lodge','checkin','nights','nCit','nRes','nNr','sCit','sRes','sNr','vDays','vRate','vCount','pDays','margin','fx','roundTo','pickup'];
-function state(){var s={mode:MODE,tent:$('tent').checked,x:[]};FIELDS.forEach(function(f){s[f]=$(f).value});document.querySelectorAll('.xrow').forEach(function(r){s.x.push([r.querySelector('.xl').value,r.querySelector('.xa').value,r.querySelector('.xm').value])});return s}
+function state(){var s={mode:MODE,tent:$('tent').checked,x:[],more:moreStops()};FIELDS.forEach(function(f){s[f]=$(f).value});document.querySelectorAll('.xrow').forEach(function(r){s.x.push([r.querySelector('.xl').value,r.querySelector('.xa').value,r.querySelector('.xm').value])});return s}
 function addExtra(l,a,mo){var d=document.createElement('div');d.className='xrow';d.innerHTML='<input class="xl" placeholder="Balloon flight" aria-label="Extra"><input class="xa" type="number" min="0" placeholder="KES" inputmode="numeric" aria-label="Cost in KES"><select class="xm" aria-label="Per person or group"><option value="pp">per person</option><option value="all">for group</option></select><button type="button" aria-label="Remove">✕</button>';d.querySelector('.xl').value=l||'';d.querySelector('.xa').value=a||'';d.querySelector('.xm').value=mo||'pp';d.querySelector('button').onclick=function(){d.remove();calc()};d.addEventListener('input',calc);d.addEventListener('change',calc);$('extras').appendChild(d)}
+function applyState(s){
+ FIELDS.forEach(function(f){if(s[f]!=null&&s[f]!=='')$(f).value=s[f]});$('tent').checked=!!s.tent;
+ MODE=SD_ROLE==='owner'?(s.mode||'card'):'card';document.querySelectorAll('#mode button').forEach(function(x){x.classList.toggle('on',x.dataset.v===MODE)});
+ $('extras').innerHTML='';(s.x||[]).forEach(function(x){addExtra(x[0],x[1],x[2])});
+ $('stops').innerHTML='';(s.more||[]).forEach(function(m){addStop(m[0],m[1])});
+ if($('okCheck'))$('okCheck').checked=false;calc();
+}
+// multi park stops
+function lodgeOptions(sel){var h='';Object.keys(AREA).forEach(function(k){var ls=LODGES.filter(function(l){return l.park===k});if(!ls.length)return;h+='<optgroup label="'+AREA[k]+'">'+ls.map(function(l){return '<option value="'+l.id+'"'+(l.id===sel?' selected':'')+'>'+l.name+'</option>'}).join('')+'</optgroup>'});return h}
+function totalNights(){return Math.max(1,num('nights'))+moreStops().reduce(function(a,b){return a+b[1]},0)}
+function syncDays(){var n=totalNights();$('vDays').value=n+1;$('pDays').value=n+1}
+function addStop(id,n){
+ var used=[$('lodge').value].concat(moreStops().map(function(x){return x[0]}));
+ if(!id){var lastPark=lodgeById(used[used.length-1]).park,pick=LODGES.filter(function(l){return l.park!==lastPark})[0]||LODGES[0];id=pick.id}
+ var d=document.createElement('div');d.className='stoprow';
+ d.innerHTML='<span class="snum"></span><div class="sl-w"><select class="sl" aria-label="Lodge for this stop">'+lodgeOptions(id)+'</select><span class="sd"></span></div><div class="stepper sm"><button type="button" class="sdec" aria-label="Fewer nights">−</button><input class="sn" type="number" min="1" value="'+(n||2)+'" inputmode="numeric" aria-label="Nights"><button type="button" class="sinc" aria-label="More nights">+</button></div><button type="button" class="srm" aria-label="Remove this stop">✕</button>';
+ var inp=d.querySelector('.sn');
+ d.querySelector('.sdec').onclick=function(){inp.value=Math.max(1,(parseInt(inp.value,10)||1)-1);syncDays();calc()};
+ d.querySelector('.sinc').onclick=function(){inp.value=(parseInt(inp.value,10)||1)+1;syncDays();calc()};
+ inp.addEventListener('input',function(){syncDays();calc()});d.querySelector('.sl').addEventListener('change',calc);
+ d.querySelector('.srm').onclick=function(){d.remove();numberStops();syncDays();calc()};
+ $('stops').appendChild(d);numberStops();
+}
+function numberStops(){document.querySelectorAll('.stoprow').forEach(function(r,i){r.querySelector('.snum').textContent=i+2});$('addStop').disabled=document.querySelectorAll('.stoprow').length>=3;$('stopsHead').hidden=!document.querySelectorAll('.stoprow').length}
+$('addStop').onclick=function(){addStop();syncDays();calc()};
+$('pinOpt').onclick=function(){if(!LAST||PINS.length>=3)return;PINS.push({state:state(),sum:pinSummary(LAST)});savePins();renderPins();$('optMsg').textContent='Pinned as option '+PINS.length+'. Change the lodge or dates and pin again.'};
+$('sendOpts').onclick=function(){var t=optionsMessage();$('wa').value=t;$('openwa').href=waLink($('cContact').value,t);$('waMode').textContent='Showing the options message. Change anything on the trip to go back to the single quote.';document.querySelector('.tabs button[data-tab="wa"]').click();$('wa').scrollIntoView({behavior:'smooth',block:'center'})};
+$('clearPins').onclick=function(){PINS=[];savePins();renderPins();$('optMsg').textContent=''};
 // lodge cards
 LODGES.forEach(function(l){var o=document.createElement('option');o.value=l.id;o.textContent=l.name;$('lodge').appendChild(o);
  var b=document.createElement('button');b.type='button';b.className='lodge';b.dataset.id=l.id;b.innerHTML='<small>'+AREA[l.park]+'</small><b>'+l.name+'</b><span>Driver '+kes(l.driverRoom)+' a night'+(l.tentNr?', tents available':'')+'</span>';
@@ -587,10 +735,10 @@ document.querySelectorAll('[data-step]').forEach(function(b){b.onclick=function(
 document.querySelectorAll('#mode button').forEach(function(b){b.onclick=function(){MODE=b.dataset.v;document.querySelectorAll('#mode button').forEach(function(x){x.classList.toggle('on',x===b)});calc()}});
 document.querySelectorAll('.tabs button').forEach(function(b){b.onclick=function(){document.querySelectorAll('.tabs button').forEach(function(x){x.classList.toggle('on',x===b)});document.querySelectorAll('.pane').forEach(function(p){p.classList.toggle('on',p.id==='p-'+b.dataset.tab)})}});
 $('addx').onclick=function(){addExtra()};
-$('nights').addEventListener('input',function(){var n=Math.max(1,num('nights'));$('vDays').value=n+1;$('pDays').value=n+1});
+$('nights').addEventListener('input',syncDays);
 document.querySelectorAll('input,select').forEach(function(el){el.addEventListener('input',calc);el.addEventListener('change',calc)});
 $('copy').onclick=function(){var t=$('wa');var done=function(){$('copied').textContent='Copied, paste it into the chat'};if(navigator.clipboard){navigator.clipboard.writeText(t.value).then(done,function(){t.select();document.execCommand('copy');done()})}else{t.select();document.execCommand('copy');done()}};
-try{var s=JSON.parse(localStorage.getItem('sdq')||'null');if(s){FIELDS.forEach(function(f){if(s[f]!=null&&s[f]!=='')$(f).value=s[f]});$('tent').checked=!!s.tent;MODE=s.mode||'card';document.querySelectorAll('#mode button').forEach(function(x){x.classList.toggle('on',x.dataset.v===MODE)});(s.x||[]).forEach(function(x){addExtra(x[0],x[1],x[2])})}}catch(e){}
+try{var s=JSON.parse(localStorage.getItem('sdq')||'null');if(s){FIELDS.forEach(function(f){if(s[f]!=null&&s[f]!=='')$(f).value=s[f]});$('tent').checked=!!s.tent;MODE=s.mode||'card';document.querySelectorAll('#mode button').forEach(function(x){x.classList.toggle('on',x.dataset.v===MODE)});(s.x||[]).forEach(function(x){addExtra(x[0],x[1],x[2])});(s.more||[]).forEach(function(m){if(LODGES.some(function(l){return l.id===m[0]}))addStop(m[0],m[1])})}}catch(e){}
 if(!$('lodge').value)$('lodge').value=LODGES[0].id;
 if(!$('checkin').value){var d=new Date();d.setDate(d.getDate()+((6-d.getDay()+7)%7||7));$('checkin').value=d.toISOString().slice(0,10)}
 fetch('/api/fx').then(function(r){return r.json()}).then(function(j){if(j&&j.rates&&j.rates.KES){$('fxnote').textContent='Live KES '+j.rates.KES.toFixed(2)+' per USD';var man=false;try{man=!!localStorage.getItem('sdq_fx_manual')}catch(e){}if(!man){$('fx').value=j.rates.KES.toFixed(2);calc()}}}).catch(function(){});
@@ -623,27 +771,36 @@ function docState(){
  var why='';
  if(!r||!r.total)why='Add guests first.';else if(bad)why='Fix the red warnings first.';else if(!name)why='Add the client name.';else if(DTYPE==='receipt'&&!(parseFloat($('pAmt').value)>0))why='Add the amount received.';else if(!ok)why='Tick the confirmation to unlock.';
  if(!why&&r&&MEDIA[r.L.id]&&MEDIA[r.L.id].stock)why='';
- var stockNote=(r&&MEDIA[r.L.id]&&MEDIA[r.L.id].stock)?' No lodge photos yet, the PDF uses Sundown safari photos.':'';
+ var stockNote=(r&&r.stops&&r.stops.some(function(st){return MEDIA[st.L.id]&&MEDIA[st.L.id].stock}))?' No lodge photos yet, the PDF uses Sundown safari photos.':'';
  $('genPdf').disabled=!!why;$('pdfMsg').textContent=why+stockNote;
 }
+var CUR=null;
+// one reference per client trip, so the quote, proposal and receipt update the same log entry
+function curRef(){var n=$('cName').value.trim().toLowerCase();if(CUR&&CUR.name===n)return CUR.ref;CUR={ref:ref(),name:n};return CUR.ref}
 function ref(){var d=new Date();return 'SD'+String(d.getFullYear()).slice(2)+String(d.getMonth()+1).padStart(2,'0')+String(d.getDate()).padStart(2,'0')+'-'+Math.floor(100+Math.random()*900)}
+var ARRIVE={
+ mara:'We collect you from PICK early in your private Land Cruiser and drive west, stopping at the Great Rift Valley viewpoint. Lunch at the lodge, then your first game drive as the afternoon light softens.',
+ samburu:'We collect you from PICK early in your private Land Cruiser and drive north past Mount Kenya. Lunch at the lodge, then your first game drive in the afternoon.',
+ amboseli:'We collect you from PICK early in your private Land Cruiser and drive south towards the Tanzanian border, with Kilimanjaro growing on the horizon. Lunch at the lodge, then your first game drive among the elephant herds.',
+ naivasha:'We collect you from PICK in your private Land Cruiser and drive down into the Great Rift Valley, stopping at the viewpoint on the way. Lunch at the lodge and a relaxed afternoon by the lake.'};
 function days(r){
- var a=AREA[r.L.park],pick=$('pickup').value.trim()||'Nairobi',n=r.nights,out=[],dd=function(i){return niceDate(addDays(r.checkin,i))};
- if(r.L.park==='naivasha'){
-  out.push([dd(0),'Nairobi to Lake Naivasha','We collect you from '+pick+' in your private Land Cruiser and drive down into the Great Rift Valley, stopping at the viewpoint on the way. Lunch at the lodge and a relaxed afternoon by the lake.']);
-  for(var i=1;i<n;i++)out.push([dd(i),'Lake Naivasha at your pace','Your guide and vehicle are with you all day. Explore Hell’s Gate, take a boat out among the hippos or simply rest in the gardens.']);
-  out.push([dd(n),'Lake Naivasha to Nairobi','A slow breakfast, then the drive home to '+pick+'.']);
- }else{
-  var first=r.L.park==='amboseli'?'We collect you from '+pick+' early in your private Land Cruiser and drive south towards the Tanzanian border, with Kilimanjaro growing on the horizon. Lunch at the lodge, then your first game drive among the elephant herds.':r.L.park==='mara'?'We collect you from '+pick+' early in your private Land Cruiser and drive west, stopping at the Great Rift Valley viewpoint. Lunch at the lodge, then your first game drive as the afternoon light softens.':'We collect you from '+pick+' early in your private Land Cruiser and drive north past Mount Kenya. Lunch at the lodge, then your first game drive in the afternoon.';
-  out.push([dd(0),'Nairobi to '+a,first]);
-  for(var j=1;j<n;j++)out.push([dd(j),'A full day in '+a,'Morning and afternoon game drives at your own pace with your guide. The vehicle is yours, so you stay as long as you like at every sighting.']);
-  out.push([dd(n),a+' to Nairobi','An early game drive when the cats are most active, breakfast at the lodge, then the drive home to '+pick+' by evening.']);
- }
+ var pick=$('pickup').value.trim()||'Nairobi',out=[],day=0,dd=function(i){return niceDate(addDays(r.checkin,i))};
+ r.stops.forEach(function(st,si){
+  var k=st.L.park,a=AREA[k];
+  if(si===0)out.push([dd(day),'Nairobi to '+a,ARRIVE[k].replace('PICK',pick)]);
+  else{var pk=r.stops[si-1].L.park,pa=AREA[pk];
+   out.push([dd(day),pa+' to '+a,(pk==='naivasha'?'Breakfast by the lake':'An early game drive in '+pa+' and breakfast at the lodge')+', then on the road to '+a+' with your guide. '+(k==='naivasha'?'Lunch at the lodge and a relaxed afternoon by the lake.':'Lunch at the lodge, then an afternoon game drive in '+a+'.')])}
+  for(var j=1;j<st.nights;j++)out.push(k==='naivasha'?[dd(day+j),'Lake Naivasha at your pace','Your guide and vehicle are with you all day. Explore Hell’s Gate, take a boat out among the hippos or simply rest in the gardens.']:[dd(day+j),'A full day in '+a,'Morning and afternoon game drives at your own pace with your guide. The vehicle is yours, so you stay as long as you like at every sighting.']);
+  day+=st.nights;
+ });
+ var lk=r.stops[r.stops.length-1].L.park,la=AREA[lk];
+ out.push([dd(day),la+' to Nairobi',lk==='naivasha'?'A slow breakfast, then the drive home to '+pick+'.':'An early game drive when the animals are most active, breakfast at the lodge, then the drive home to '+pick+' by evening.']);
  return out;
 }
 function incl(r){
- var a=['Private Land Cruiser with a professional driver guide for '+r.vDays+' day'+(r.vDays>1?'s':''),'Fuel and all road transfers from '+($('pickup').value.trim()||'Nairobi'),r.nights+' night'+(r.nights>1?'s':'')+' full board at '+r.L.name+(r.tent?' in the lodge tents':'')];
- if(r.P.veh||r.P.nr[1])a.push(r.P.name+' park fees for '+r.pDays+' day'+(r.pDays>1?'s':''));
+ var a=['Private Land Cruiser with a professional driver guide for '+r.vDays+' day'+(r.vDays>1?'s':''),'Fuel and all road transfers from '+($('pickup').value.trim()||'Nairobi')];
+ r.stops.forEach(function(st){a.push(st.nights+' night'+(st.nights>1?'s':'')+' full board at '+st.L.name+(st.tent?' in the lodge tents':''))});
+ r.stops.forEach(function(st){if(st.pDays&&(st.P.veh||st.P.nr[1]))a.push(st.P.name+' park fees for '+st.pDays+' day'+(st.pDays>1?'s':''))});
  a.push('Bottled water on game drives');
  r.xl.forEach(function(x){a.push(x.charAt(0).toUpperCase()+x.slice(1))});
  return a;
@@ -657,26 +814,26 @@ var DCSS='.pg{width:794px;height:1123px;position:relative;overflow:hidden;backgr
 '.in{padding:48px 48px 0}.ey{font-size:10.5px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:#C98A27;margin:0 0 6px}'+
 '.h2{font-family:"Playfair Display",Georgia,serif;font-size:28px;color:#0B3A1D;margin:0 0 12px;line-height:1.15}'+
 '.ph{width:100%;height:100%;object-fit:cover;display:block;border-radius:12px}'+
-'.tl{margin:0;padding:0;list-style:none}.tl li{display:flex;gap:14px;padding:10px 0;border-bottom:1px solid #EFE8DA}.tl .d{flex:0 0 120px;font-weight:800;color:#0B3A1D;font-size:12px}.tl .d span{display:block;font-weight:600;color:#6b6560;font-size:11px}.tl b{display:block;color:#0B3A1D;font-size:13.5px;margin-bottom:2px}'+
+'.tl.tight li{padding:6px 0;font-size:12px}.tl{margin:0;padding:0;list-style:none}.tl li{display:flex;gap:14px;padding:10px 0;border-bottom:1px solid #EFE8DA}.tl .d{flex:0 0 120px;font-weight:800;color:#0B3A1D;font-size:12px}.tl .d span{display:block;font-weight:600;color:#6b6560;font-size:11px}.tl b{display:block;color:#0B3A1D;font-size:13.5px;margin-bottom:2px}'+
 '.ck{margin:0;padding:0;list-style:none}.ck li{padding:5px 0 5px 22px;position:relative}.ck li:before{content:"";position:absolute;left:0;top:9px;width:12px;height:12px;border-radius:50%;background:#0B3A1D}.ck.x li:before{background:#d6d0c4}'+
 '.tb{width:100%;border-collapse:collapse}.tb td,.tb th{padding:11px 0;border-bottom:1px solid #EFE8DA;text-align:left}.tb th{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#6b6560}.tb .r{text-align:right}';
 function pageFoot(n,of){return '<div class="ft"><span><b>Sundown Safaris</b> &nbsp;Sundown Capital Limited, Westlands, Nairobi. KATO bonded</span><span>bookings@sundownsafari.com &nbsp; +254 724 491 210 &nbsp; www.sundownsafari.com &nbsp; '+n+'/'+of+'</span></div>'}
 function buildProposal(r,R){
- var M=MEDIA[r.L.id],name=esc($('cName').value.trim()),a=AREA[r.L.park],out=addDays(r.checkin,r.nights),today=new Date().toISOString().slice(0,10);
+ var M=MEDIA[r.L.id],name=esc($('cName').value.trim()),a=joinAnd(areasOf(r)),out=addDays(r.checkin,r.nights),today=new Date().toISOString().slice(0,10),SL=uniq(r.stops.map(function(st){return st.L.id})),NP=3+SL.length,dl=days(r),tight=dl.length>8;
  var gl=r.groups.map(function(g){return g.n+' '+(g.n>1?LABELS[g.c]:LABEL[g.c])}).join(', ');
  var p1='<div class="pg"><div style="position:absolute;inset:0 0 auto 0;height:700px"><img class="ph" style="border-radius:0" crossorigin="anonymous" src="'+M.imgs[0]+'"><div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,58,29,.55) 0%,rgba(11,58,29,0) 35%,rgba(11,58,29,.15) 60%,rgba(11,58,29,.95) 100%)"></div></div>'+
  '<div style="position:absolute;top:44px;left:48px;color:#fff" class="lg"><span class="m">'+LOGO+'</span><span><b>SUNDOWN</b><small>SAFARIS</small></span></div>'+
  '<div style="position:absolute;top:50px;right:48px;color:#fff;font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:700">Safari proposal</div>'+
- '<div style="position:absolute;left:48px;right:48px;top:470px;color:#fff"><div class="ey" style="color:#E9B865">Prepared for '+name+'</div><div class="sf" style="font-size:52px;line-height:1.05;font-weight:800">Your '+a+'<br>safari</div><div style="font-size:16px;margin-top:10px;color:#e7f0e9">'+esc(r.L.name)+', '+shortDate(r.checkin)+' to '+shortDate(out)+' '+out.slice(0,4)+'</div></div>'+
+ '<div style="position:absolute;left:48px;right:48px;top:470px;color:#fff"><div class="ey" style="color:#E9B865">Prepared for '+name+'</div><div class="sf" style="font-size:'+(a.length>22?40:52)+'px;line-height:1.05;font-weight:800">Your '+a+'<br>safari</div><div style="font-size:16px;margin-top:10px;color:#e7f0e9">'+esc(joinAnd(r.stops.map(function(st){return st.L.name}).filter(function(v,i,x){return x.indexOf(v)===i})))+', '+shortDate(r.checkin)+' to '+shortDate(out)+' '+out.slice(0,4)+'</div></div>'+
  '<div style="position:absolute;left:48px;right:48px;top:740px;display:grid;grid-template-columns:repeat(4,1fr);gap:12px">'+
  [['Dates',shortDate(r.checkin)+' to '+shortDate(out)],['Nights',r.nights+' night'+(r.nights>1?'s':'')],['Guests',r.total+' adult'+(r.total>1?'s':'')],['Your vehicle','Private Land Cruiser']].map(function(x){return '<div style="background:#F6F2EA;border-radius:12px;padding:14px"><div class="ey" style="margin:0 0 4px">'+x[0]+'</div><div style="font-weight:800;color:#0B3A1D;font-size:14px">'+x[1]+'</div></div>'}).join('')+'</div>'+
- '<div style="position:absolute;left:48px;right:48px;top:850px;display:flex;gap:28px;align-items:flex-start"><div style="flex:1"><div class="ey">A note from us</div><p style="margin:0;font-size:14px;color:#3f3a35">Thank you for planning your safari with Sundown. This proposal brings together your lodge, your day by day plan and one clear price, so you know exactly what to expect from the moment we collect you.</p></div><div style="flex:0 0 200px;font-size:12px;color:#6b6560"><div><b style="color:#0B3A1D">Reference</b><br>'+R+'</div><div style="margin-top:8px"><b style="color:#0B3A1D">Issued</b><br>'+niceDate(today)+' '+today.slice(0,4)+'</div></div></div>'+pageFoot(1,4)+'</div>';
- var p2='<div class="pg"><div class="in"><div class="ey">Where you will stay</div><div class="h2">'+esc(r.L.name)+'</div><p style="margin:0 0 16px;font-size:13.5px;color:#3f3a35">'+M.desc+'</p>'+
+ '<div style="position:absolute;left:48px;right:48px;top:850px;display:flex;gap:28px;align-items:flex-start"><div style="flex:1"><div class="ey">A note from us</div><p style="margin:0;font-size:14px;color:#3f3a35">Thank you for planning your safari with Sundown. This proposal brings together '+(SL.length>1?'your lodges':'your lodge')+', your day by day plan and one clear price, so you know exactly what to expect from the moment we collect you.</p></div><div style="flex:0 0 200px;font-size:12px;color:#6b6560"><div><b style="color:#0B3A1D">Reference</b><br>'+R+'</div><div style="margin-top:8px"><b style="color:#0B3A1D">Issued</b><br>'+niceDate(today)+' '+today.slice(0,4)+'</div></div></div>'+pageFoot(1,NP)+'</div>';
+ var p2=SL.map(function(id,li){var LL=lodgeById(id),M=MEDIA[id],stn=r.stops.filter(function(st){return st.L.id===id}).reduce(function(x,st){return x+st.nights},0);return '<div class="pg"><div class="in"><div class="ey">Where you will stay'+(SL.length>1?', '+AREA[LL.park]+', '+stn+' night'+(stn>1?'s':''):'')+'</div><div class="h2">'+esc(LL.name)+'</div><p style="margin:0 0 16px;font-size:13.5px;color:#3f3a35">'+M.desc+'</p>'+
  '<div style="display:grid;grid-template-columns:1.3fr 1fr;grid-template-rows:170px 170px;gap:10px;margin-bottom:16px"><div style="grid-row:span 2"><img class="ph" crossorigin="anonymous" src="'+M.imgs[1]+'"></div><div><img class="ph" crossorigin="anonymous" src="'+M.imgs[2]+'"></div><div><img class="ph" crossorigin="anonymous" src="'+M.imgs[3]+'"></div></div>'+
  '<ul class="ck" style="display:grid;grid-template-columns:1fr 1fr;gap:0 20px;margin-bottom:18px">'+M.hi.map(function(h){return '<li>'+h+'</li>'}).join('')+'</ul>'+
- '<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;height:230px"><img class="ph" crossorigin="anonymous" src="'+M.imgs[4]+'"><img class="ph" crossorigin="anonymous" src="'+M.imgs[0]+'"></div></div>'+pageFoot(2,4)+'</div>';
- var p3='<div class="pg"><div class="in"><div class="ey">Your journey</div><div class="h2">Day by day</div><ul class="tl">'+days(r).map(function(d,i){return '<li><div class="d">Day '+(i+1)+'<span>'+d[0]+'</span></div><div><b>'+d[1]+'</b>'+d[2]+'</div></li>'}).join('')+'</ul>'+
- '<div style="display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:24px"><div><div class="ey">Included</div><ul class="ck">'+incl(r).map(function(x){return '<li>'+esc(x)+'</li>'}).join('')+'</ul></div><div><div class="ey">Not included</div><ul class="ck x">'+NOTINC.map(function(x){return '<li>'+x+'</li>'}).join('')+'</ul></div></div></div>'+pageFoot(3,4)+'</div>';
+ '<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;height:230px"><img class="ph" crossorigin="anonymous" src="'+M.imgs[4]+'"><img class="ph" crossorigin="anonymous" src="'+M.imgs[0]+'"></div></div>'+pageFoot(2+li,NP)+'</div>'}).join('');
+ var p3='<div class="pg"><div class="in"><div class="ey">Your journey</div><div class="h2">Day by day</div><ul class="tl'+(tight?' tight':'')+'">'+dl.map(function(d,i){return '<li><div class="d">Day '+(i+1)+'<span>'+d[0]+'</span></div><div><b>'+d[1]+'</b>'+d[2]+'</div></li>'}).join('')+'</ul>'+
+ '<div style="display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:24px"><div><div class="ey">Included</div><ul class="ck">'+incl(r).map(function(x){return '<li>'+esc(x)+'</li>'}).join('')+'</ul></div><div><div class="ey">Not included</div><ul class="ck x">'+NOTINC.map(function(x){return '<li>'+x+'</li>'}).join('')+'</ul></div></div></div>'+pageFoot(NP-1,NP)+'</div>';
  var rows=r.groups.map(function(g){return '<tr><td><b style="color:#0B3A1D">'+g.n+' '+(g.n>1?LABELS[g.c]:LABEL[g.c])+'</b><br><span style="color:#6b6560;font-size:12px">'+(g.room==='single'?'Own room':'Sharing a room')+'</span></td><td class="r">'+kes(g.price)+'</td><td class="r"><b style="color:#0B3A1D">'+kes(g.price*g.n)+'</b></td></tr>'}).join('');
  var terms=$('terms').value.trim();
  var p4='<div class="pg"><div class="in"><div class="ey">Your investment</div><div class="h2">One clear price, all inclusive</div>'+
@@ -684,7 +841,7 @@ function buildProposal(r,R){
  '<div style="margin:16px 0 22px;background:#0B3A1D;color:#fff;border-radius:16px;padding:20px 24px;display:flex;justify-content:space-between;align-items:center"><div><div class="ey" style="color:#E9B865;margin:0">Total for '+(r.total===2?'the two of you':'all '+r.total+' guests')+'</div><div style="color:#cfe3d4;font-size:12px;margin-top:4px">'+gl+'. About '+usd(r.totPrice/r.fx)+'</div></div><div class="sf" style="font-size:34px;font-weight:800;color:#fff">'+kes(r.totPrice)+'</div></div>'+
  '<div style="margin-top:6px;padding-top:6px;display:grid;grid-template-columns:1.2fr 1fr;gap:28px"><div><div class="ey">Good to know</div><p style="margin:0;color:#3f3a35">'+(terms?esc(terms)+' ':'')+'Prices are held for 7 days and are subject to availability at the time of booking. Park fees are set by the reserve and are included at today’s rates.</p></div>'+
  '<div><div class="ey">Ready to go?</div><p style="margin:0;color:#3f3a35">Reply on WhatsApp or email and we will confirm your rooms straight away.</p><p style="margin:12px 0 0;font-family:\'Playfair Display\',Georgia,serif;font-size:20px;color:#0B3A1D">Baraka</p><p style="margin:0;font-size:12px;color:#6b6560">Sundown Safaris, +254 724 491 210</p></div></div>'+
- '<div style="margin-top:28px;height:300px;position:relative;border-radius:16px;overflow:hidden"><img class="ph" style="border-radius:0" crossorigin="anonymous" src="'+M.imgs[0]+'"><div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,58,29,0) 40%,rgba(11,58,29,.85) 100%)"></div><div class="sf" style="position:absolute;left:24px;bottom:20px;color:#fff;font-size:26px;font-weight:800">We cannot wait to show you '+a+'.</div></div></div>'+pageFoot(4,4)+'</div>';
+ '<div style="margin-top:28px;height:300px;position:relative;border-radius:16px;overflow:hidden"><img class="ph" style="border-radius:0" crossorigin="anonymous" src="'+M.imgs[0]+'"><div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,58,29,0) 40%,rgba(11,58,29,.85) 100%)"></div><div class="sf" style="position:absolute;left:24px;bottom:20px;color:#fff;font-size:26px;font-weight:800">We cannot wait to show you '+a+'.</div></div></div>'+pageFoot(NP,NP)+'</div>';
  return p1+p2+p3+p4;
 }
 function stampURL(d){
@@ -720,16 +877,16 @@ function buildReceipt(r,R){
  '<div style="position:absolute;left:48px;bottom:34px;color:#fff"><div class="sf" style="font-size:36px;font-weight:800">Payment receipt</div></div>'+
  '<div style="position:absolute;right:48px;bottom:36px;color:#e7f0e9;text-align:right;font-size:12px">Receipt '+R+'<br>'+niceDate(pd)+'</div></div>'+
  '<div class="in" style="padding-top:34px"><div style="display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-bottom:22px"><div><div class="ey">Received from</div><div style="font-size:18px;font-weight:800;color:#0B3A1D">'+name+'</div>'+(contact?'<div style="color:#6b6560">'+contact+'</div>':'')+'</div>'+
- '<div><div class="ey">For</div><div style="font-weight:800;color:#0B3A1D">'+AREA[r.L.park]+' safari, '+esc(r.L.name)+'</div><div style="color:#6b6560">'+niceDate(r.checkin)+' to '+niceDate(out)+', '+r.nights+' night'+(r.nights>1?'s':'')+', '+r.total+' guest'+(r.total>1?'s':'')+'</div></div></div>'+
+ '<div><div class="ey">For</div><div style="font-weight:800;color:#0B3A1D">'+joinAnd(areasOf(r))+' safari, '+esc(r.stops.map(function(st){return st.L.name}).join(' and '))+'</div><div style="color:#6b6560">'+niceDate(r.checkin)+' to '+niceDate(out)+', '+r.nights+' night'+(r.nights>1?'s':'')+', '+r.total+' guest'+(r.total>1?'s':'')+'</div></div></div>'+
  '<table class="tb">'+r.groups.map(function(g){return line(g.n+' '+(g.n>1?LABELS[g.c]:LABEL[g.c])+(g.room==='single'?', own room':', sharing')+' at '+kes(g.price),kes(g.price*g.n))}).join('')+line('Trip total',kes(r.totPrice),1)+'</table>'+
  '<div style="margin:18px 0;background:#0B3A1D;color:#fff;border-radius:16px;padding:20px 24px;display:flex;justify-content:space-between;align-items:center"><div><div class="ey" style="color:#E9B865;margin:0">Amount received</div><div style="color:#cfe3d4;font-size:12px;margin-top:4px">'+esc($('pMethod').value)+($('pRef').value.trim()?', reference '+esc($('pRef').value.trim()):'')+'</div></div><div class="sf" style="font-size:34px;font-weight:800">'+kes(paid)+'</div></div>'+
- '<table class="tb">'+line('Balance due',bal?kes(bal):'Paid in full',1)+'</table>'+
+ '<table class="tb">'+line(bal&&r.cash&&!r.cash.now?'Balance due by '+niceDate(r.cash.balDue):'Balance due',bal?kes(bal):'Paid in full',1)+'</table>'+
  '<div style="display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:22px"><div><div class="ey">Included in your trip</div><ul class="ck">'+incl(r).map(function(x){return '<li>'+esc(x)+'</li>'}).join('')+'</ul></div>'+
  '<div><div class="ey">Thank you</div><p style="margin:0;color:#3f3a35">Your payment is received with thanks. We will send your booking confirmation and your guide’s details before you travel.</p><p style="margin:14px 0 0;font-family:\'Playfair Display\',Georgia,serif;font-size:20px;color:#0B3A1D">Baraka</p><p style="margin:0;font-size:12px;color:#6b6560">Sundown Safaris, +254 724 491 210</p><img src="'+stampURL(stampDate())+'" alt="" style="width:180px;height:180px;margin:10px 0 0 40px;transform:rotate(-9deg);opacity:.92"></div></div></div>'+pageFoot(1,1)+'</div>';
 }
 function loadLib(){return new Promise(function(res,rej){if(window.html2pdf)return res();var s=document.createElement('script');s.src='https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js';s.onload=res;s.onerror=function(){rej(new Error('Could not load the PDF tool. Check your connection.'))};document.head.appendChild(s)})}
 function genPdf(){
- var r=LAST;if(!r)return;var R=ref();
+ var r=LAST;if(!r)return;var R=curRef();
  var html='<div class="docwrap" style="width:794px;background:#fff"><style>'+DCSS+'</style>'+(DTYPE==='receipt'?buildReceipt(r,R):buildProposal(r,R))+'</div>';
  var st=$('docStage');st.innerHTML=html;
  $('genPdf').disabled=true;$('pdfMsg').textContent='Building your PDF...';
@@ -763,9 +920,10 @@ function apiLog(method,body){return fetch('/api/log',{method:method,headers:body
 function record(ref,status,doc,extra){
  var r=LAST;if(!r)return null;
  var rec={ref:ref,status:status,doc:doc,client:{name:$('cName').value.trim(),contact:$('cContact').value.trim()},
-  lodge:r.L.name,lodgeId:r.L.id,area:AREA[r.L.park],checkin:r.checkin,nights:r.nights,out:addDays(r.checkin,r.nights),
+  lodge:r.stops.map(function(st){return st.L.name}).join(' + '),lodgeId:r.L.id,area:joinAnd(areasOf(r)),checkin:r.checkin,nights:r.nights,out:addDays(r.checkin,r.nights),
   guests:{cit:num('nCit'),res:num('nRes'),nr:num('nNr')},total:r.total,totPrice:r.totPrice,fx:r.fx,
   perPerson:r.groups.map(function(g){return {c:g.c,room:g.room,n:g.n,price:g.price}}),state:state()};
+ if(r.cash)rec.balDue=r.cash.now?new Date().toISOString().slice(0,10):r.cash.balDue;
  if(SD_ROLE==='owner'){rec.totCost=Math.round(r.totCost);rec.profit=Math.round(r.profit);rec.commission=Math.round(r.ST.com);rec.streams=r.ST}
  if(extra)for(var k in extra)rec[k]=extra[k];
  return rec;
@@ -778,7 +936,7 @@ function saveQuote(ref,status,doc,extra){
 $('saveLog').onclick=function(){
  if(!LAST||!LAST.total){$('copied').textContent='Add guests first';return}
  if(!$('cName').value.trim()){$('copied').textContent='Add the client name in step 6 first';$('cName').focus();return}
- var R=ref();$('saveLog').disabled=true;
+ var R=curRef();$('saveLog').disabled=true;
  saveQuote(R,'Quoted','whatsapp').then(function(){$('copied').textContent='Saved to the log as '+R}).catch(function(e){$('copied').textContent=e.message}).then(function(){$('saveLog').disabled=false});
 };
 // views
@@ -816,13 +974,40 @@ function renderLog(){
   '<td><select data-ref="'+esc(q.ref)+'" class="st-'+q.status.split(' ')[0]+'">'+STS.map(function(s){return '<option'+(s===q.status?' selected':'')+'>'+s+'</option>'}).join('')+'</select></td><td><button class="lnk" type="button" data-open="'+esc(q.ref)+'">Open</button></td></tr>'});
  if(!rows.length)h+='<tr><td colspan="8" class="muted">Nothing here for these filters.</td></tr>';
  $('logTable').innerHTML=h;
+ renderTodo();
  $('logTable').querySelectorAll('select').forEach(function(sel){sel.onchange=function(){var r=sel.dataset.ref,v=sel.value;sel.className='st-'+v.split(' ')[0];sel.disabled=true;
   apiLog('POST',{action:'status',ref:r,status:v}).then(function(j){LOGQ=LOGQ.map(function(q){return q.ref===r?j.quote:q});renderLog()}).catch(function(e){$('logMsg').textContent=e.message;sel.disabled=false})}});
  $('logTable').querySelectorAll('[data-open]').forEach(function(b){b.onclick=function(){var q=LOGQ.filter(function(x){return x.ref===b.dataset.open})[0];if(!q||!q.state)return;var s=q.state;
-  FIELDS.forEach(function(f){if(s[f]!=null)$(f).value=s[f]});$('tent').checked=!!s.tent;MODE=SD_ROLE==='owner'?(s.mode||'card'):'card';document.querySelectorAll('#mode button').forEach(function(x){x.classList.toggle('on',x.dataset.v===MODE)});
-  $('extras').innerHTML='';(s.x||[]).forEach(function(x){addExtra(x[0],x[1],x[2])});$('okCheck').checked=false;showView('desk');calc()}});
+  CUR={ref:q.ref,name:((q.client&&q.client.name)||'').trim().toLowerCase()};showView('desk');applyState(s)}});
 }
 ['fMonth','fStatus','fText'].forEach(function(id){$(id).addEventListener('input',renderLog)});
+// ---------------- FOLLOW UP CENTRE ----------------
+function daysBetween(a,b){return Math.round((new Date(b.slice(0,10)+'T00:00:00Z')-new Date(a.slice(0,10)+'T00:00:00Z'))/864e5)}
+function firstName(q){return ((q.client&&q.client.name)||'').trim().split(/\s+/)[0]||'there'}
+function fuText(q,age){var n=firstName(q),trip=(q.area||'safari')+' safari',when=shortDate(q.checkin)+' to '+shortDate(q.out||addDays(q.checkin,q.nights));
+ if(age<5)return 'Hi '+n+', just checking in on your '+trip+' for '+when+'. Happy to adjust anything, the dates, the lodge or the number of nights. Shall I hold the rooms for you?';
+ if(age<10)return 'Hi '+n+', rooms for your '+trip+' on '+when+' are filling up and I would love to secure them for you before they go. Would you like me to hold them while you decide?';
+ return 'Hi '+n+', I do not want to keep messaging if the timing is not right. Should I keep your '+trip+' for '+when+' open, or close it for now? Either is completely fine.'}
+function balText(q,bal){return 'Hi '+firstName(q)+', I hope you are well and getting excited for the '+(q.area||'safari')+'. A gentle reminder that the balance of '+kes(bal)+' is due by '+niceDate(q.balDue||addDays(q.checkin,-37))+' so we can settle the lodge in good time. M-Pesa or bank transfer both work. Thank you!'}
+function tripText(q,dl){return 'Hi '+firstName(q)+', only '+dl+' day'+(dl===1?'':'s')+' to go! Your guide will collect you from your pickup point on '+niceDate(q.checkin)+'. I will share their name and number the day before. Anything you need before then, just shout.'}
+function renderTodo(){
+ var today=new Date().toISOString().slice(0,10),items=[];
+ LOGQ.forEach(function(q){if(!q.checkin)return;var dl=daysBetween(today,q.checkin);if(dl<0)return;
+  if(OPEN.indexOf(q.status)>=0){var age=daysBetween(q.updatedAt||q.createdAt||today,today);if(age>=2)items.push({q:q,tag:age>=5?'hot':'fu',lab:age>=10?'Last nudge':'Follow up',score:100+Math.min(age,30)-Math.min(dl,60)/10,info:(q.status==='Sent'?'Proposal sent ':'Quoted ')+age+' days ago, travels in '+dl+' days',text:fuText(q,age),bump:1})}
+  else if(q.status==='Deposit paid'||q.status==='Won'){var bal=Math.max(0,(q.totPrice||0)-(q.paid||0)),bd=q.balDue||addDays(q.checkin,-37),bdl=daysBetween(today,bd);
+   if(bal>0&&bdl<=14)items.push({q:q,tag:'bal',lab:bdl<0?'Balance late':'Balance due',score:200-bdl,info:kes(bal)+' due '+(bdl<0?Math.abs(bdl)+' days ago':bdl===0?'today':'in '+bdl+' days, by '+shortDate(bd)),text:balText(q,bal)})}
+  if(WON.indexOf(q.status)>=0&&dl<=7)items.push({q:q,tag:'trip',lab:'Trip soon',score:150-dl,info:'Travels '+(dl===0?'today':'in '+dl+' day'+(dl===1?'':'s'))+', '+shortDate(q.checkin)+'. Send guide details',text:tripText(q,dl)});
+ });
+ items.sort(function(a,b){return b.score-a.score});
+ $('todoCard').hidden=!items.length;
+ $('todoSub').textContent=items.length+' thing'+(items.length===1?'':'s')+' to do, most urgent first. Each message is written for you, tap to send it on WhatsApp';
+ $('todo').innerHTML=items.slice(0,12).map(function(it,i){var c=it.q.client||{},ph=waPhone(c.contact);
+  return '<li><span class="tg '+it.tag+'">'+it.lab+'</span><div class="tw"><b>'+esc(c.name||'No name')+', '+esc(it.q.lodge)+'</b><span>'+esc(it.info)+(ph?'':', no phone saved so copy the message')+'</span></div><div class="ta">'+(ph?'<a class="btn green" target="_blank" rel="noopener" data-todo="'+i+'" href="'+waLink(c.contact,it.text)+'">Send on WhatsApp</a>':'')+'<button type="button" class="btn ghost" data-copy="'+i+'">Copy</button></div></li>'}).join('');
+ $('todo').querySelectorAll('[data-copy]').forEach(function(b){b.onclick=function(){var it=items[+b.dataset.copy];if(navigator.clipboard)navigator.clipboard.writeText(it.text);b.textContent='Copied';if(it.bump)bumpQuote(it.q)}});
+ $('todo').querySelectorAll('[data-todo]').forEach(function(a){a.addEventListener('click',function(){var it=items[+a.dataset.todo];if(it.bump)bumpQuote(it.q)})});
+}
+// a follow up resets the clock, so the quote drops off today's list
+function bumpQuote(q){if(SD_USER==='local')return;apiLog('POST',{action:'status',ref:q.ref,status:'Sent'}).then(function(j){LOGQ=LOGQ.map(function(x){return x.ref===q.ref?j.quote:x});renderLog()}).catch(function(){})}
 // website price check
 var TRIPS=[['The Explorer',3,1700,[['mara',2]],''],['The Photographer',3,2800,[['mara',2]],''],['The Sundowner',3,3400,[['mara',2]],'Flights not in the estimate'],['The Trailblazer',5,2600,[['samburu',2],['mara',2]],''],['The Dreamcatcher',5,3900,[['mara',4]],'Conservancy fees not in the estimate'],['The Horizon Chaser',5,4800,[['mara',4]],'Balloon not in the estimate'],['Ultimate Kenya',7,5900,[['amboseli',2],['mara',4]],''],['The Voyager',7,4900,[['mara',6]],''],['The Constellation',7,6500,[['mara',6]],'Star bed night not in the estimate'],['The Long Lens',7,4900,[['mara',6]],'']];
 function priceCheck(){
