@@ -2,6 +2,16 @@
 
 A plain record of what changed on sundownsafari.com, why it changed, and how to check it. Newest work first.
 
+# 10 November 2026
+
+## The Explorer now from $1,700 and The Trailblazer from $2,600
+
+**Why.** A check against real 2026 and 2027 lodge contract rates showed both entry trips could not hold a healthy margin in peak season. At $1,500 and $2,300 the lodge budget left after park fees, vehicle and guide was about $51 and $64 per person a night in July to December, below the cheapest Mara lodge on any rate sheet. The new prices bring both trips back to roughly 30% margin while keeping them the cheapest way into each trip length.
+
+**What changed.** The Explorer moved from $1,500 to $1,700 and The Trailblazer from $2,300 to $2,600, everywhere the price shows: trip page titles, descriptions, social tags, structured data offers, hero and booking prices, the Safaris menu and footer on every page, homepage cards and offer list, the photography hub, the planner, the cost estimator and the price tables in the cost guide and the private safari guide. Local currency figures follow automatically, since they are worked out from the USD price. The budget option of $1,500 to $2,500 on the enquiry form was left as it is, because it is a budget band, not a trip price.
+
+**How to check.** Open the Explorer and Trailblazer pages and the Safaris menu, and confirm $1,700 and $2,600. In Search Console, request indexing for both trip pages so Google shows the new prices in results.
+
 # 1 November 2026
 
 ## Cost estimator at the top of the Kenya safari cost guide

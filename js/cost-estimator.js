@@ -21,10 +21,10 @@
   if (!root) return;
 
   var TRIPS = [
-    { id: 'explorer', slug: '3-day-a-adventure-the-explorer', name: 'The Explorer', tier: 'a', len: 3, usd: 1500, parks: 'Masai Mara and conservancy land', hook: 'Active tracking on foot and off the main roads' },
+    { id: 'explorer', slug: '3-day-a-adventure-the-explorer', name: 'The Explorer', tier: 'a', len: 3, usd: 1700, parks: 'Masai Mara and conservancy land', hook: 'Active tracking on foot and off the main roads' },
     { id: 'photographer', slug: '3-day-b-classic-the-photographer', name: 'The Photographer', tier: 'b', len: 3, usd: 2800, parks: 'Masai Mara', hook: 'Low angle camera mounts and golden hour positioning' },
     { id: 'sundowner', slug: '3-day-c-luxury-lite-the-sundowner', name: 'The Sundowner', tier: 'c', len: 3, usd: 3400, parks: 'Mara North, fly in', hook: 'No long road transfer, conservancy routes and a luxury tented camp' },
-    { id: 'trailblazer', slug: '5-day-a-adventure-the-trailblazer', name: 'The Trailblazer', tier: 'a', len: 5, usd: 2300, parks: 'Samburu and Masai Mara', hook: 'Grevy’s zebra and the northern species, then the Mara' },
+    { id: 'trailblazer', slug: '5-day-a-adventure-the-trailblazer', name: 'The Trailblazer', tier: 'a', len: 5, usd: 2600, parks: 'Samburu and Masai Mara', hook: 'Grevy’s zebra and the northern species, then the Mara' },
     { id: 'dreamcatcher', slug: '5-day-b-classic-the-dreamcatcher', name: 'The Dreamcatcher', tier: 'b', len: 5, usd: 3900, parks: 'Masai Mara and a private conservancy', hook: 'Big cat tracking and river crossings' },
     { id: 'horizon-chaser', slug: '5-day-c-luxury-lite-the-horizon-chaser', name: 'The Horizon Chaser', tier: 'c', len: 5, usd: 4800, parks: 'Masai Mara and a private conservancy', hook: 'A dawn balloon flight and luxury glamping' },
     { id: 'ultimate-kenya', slug: '7-day-a-flagship-ultimate-kenya', name: 'Ultimate Kenya', tier: 'a', len: 7, usd: 5900, parks: 'Amboseli and Masai Mara', hook: 'Elephants under Kilimanjaro, then the Mara. Built for a first safari' },

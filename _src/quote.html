@@ -824,7 +824,7 @@ function renderLog(){
 }
 ['fMonth','fStatus','fText'].forEach(function(id){$(id).addEventListener('input',renderLog)});
 // website price check
-var TRIPS=[['The Explorer',3,1500,[['mara',2]],''],['The Photographer',3,2800,[['mara',2]],''],['The Sundowner',3,3400,[['mara',2]],'Flights not in the estimate'],['The Trailblazer',5,2300,[['samburu',2],['mara',2]],''],['The Dreamcatcher',5,3900,[['mara',4]],'Conservancy fees not in the estimate'],['The Horizon Chaser',5,4800,[['mara',4]],'Balloon not in the estimate'],['Ultimate Kenya',7,5900,[['amboseli',2],['mara',4]],''],['The Voyager',7,4900,[['mara',6]],''],['The Constellation',7,6500,[['mara',6]],'Star bed night not in the estimate'],['The Long Lens',7,4900,[['mara',6]],'']];
+var TRIPS=[['The Explorer',3,1700,[['mara',2]],''],['The Photographer',3,2800,[['mara',2]],''],['The Sundowner',3,3400,[['mara',2]],'Flights not in the estimate'],['The Trailblazer',5,2600,[['samburu',2],['mara',2]],''],['The Dreamcatcher',5,3900,[['mara',4]],'Conservancy fees not in the estimate'],['The Horizon Chaser',5,4800,[['mara',4]],'Balloon not in the estimate'],['Ultimate Kenya',7,5900,[['amboseli',2],['mara',4]],''],['The Voyager',7,4900,[['mara',6]],''],['The Constellation',7,6500,[['mara',6]],'Star bed night not in the estimate'],['The Long Lens',7,4900,[['mara',6]],'']];
 function priceCheck(){
  var start={low:'2027-05-10',mid:'2027-11-15',peak:'2027-08-09'}[$('pcSeason').value],fx=num('fx')||129.5,vr=num('vRate')||28000;
  var lodgeOf={mara:LODGES.filter(function(l){return l.id==='mara-simba'})[0],samburu:LODGES.filter(function(l){return l.id==='samburu-simba'})[0],amboseli:LODGES.filter(function(l){return l.id==='ol-tukai'})[0]};
