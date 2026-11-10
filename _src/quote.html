@@ -313,7 +313,7 @@ footer{text-align:center;font-size:12px;color:var(--muted);padding:10px 20px 30p
 // Resident: KES per ROOM per night, full board, card rate. Commission is taken off to get your cost.
 // Source: Simba Lodges contract agreements 2026 and 2027, resident rates July to December 2026 and festive 2026.
 var LODGES = [
- {id:'mara-simba', name:'Mara Simba Lodge', park:'mara', driverRoom:1500, resComm:0.15,
+ {id:'mara-simba', name:'Mara Simba Lodge', park:'mara', driverRoom:1500, resComm:0.15, xmasNr:35,
   pitch:'on the banks of the Talek River, with solid rooms looking over the water',
   nr:[
    ['2025-12-16','2026-03-31',221,126],['2026-04-01','2026-05-31',75,75],['2026-06-01','2026-06-30',245,140],
@@ -325,7 +325,7 @@ var LODGES = [
    ['2026-09-01','2026-12-23',20000,26000],['2026-12-24','2026-12-26',25000,40000],['2026-12-27','2026-12-30',22000,30000],
    ['2026-12-31','2027-01-01',25000,40000]],
   tentNr:50, tentRes:4000},
- {id:'naivasha-simba', name:'Lake Naivasha Simba Lodge', park:'naivasha', driverRoom:1000, resComm:0.15,
+ {id:'naivasha-simba', name:'Lake Naivasha Simba Lodge', park:'naivasha', driverRoom:1000, resComm:0.15, xmasNr:35,
   pitch:'on the shores of Lake Naivasha, with gardens where giraffe and zebra wander',
   nr:[
    ['2025-12-16','2026-03-31',228,130],['2026-04-01','2026-05-31',184,105],['2026-06-01','2026-06-30',245,140],
@@ -337,7 +337,7 @@ var LODGES = [
    ['2026-10-16','2026-10-31',27000,35500],['2026-11-01','2026-12-23',22000,30000],['2026-12-24','2026-12-26',26000,41000],
    ['2026-12-27','2026-12-30',23000,33000],['2026-12-31','2027-01-01',26000,41000]],
   tentNr:0, tentRes:0, minFestive:'Minimum 2 nights over 24 to 26 December.'},
- {id:'samburu-simba', name:'Samburu Simba Lodge', park:'samburu', driverRoom:1500, resComm:0.15,
+ {id:'samburu-simba', name:'Samburu Simba Lodge', park:'samburu', driverRoom:1500, resComm:0.15, xmasNr:35,
   pitch:'in Samburu, home of the rare northern species you will not see in the Mara',
   nr:[
    ['2025-12-16','2026-03-31',167,95],['2026-04-01','2026-06-30',75,75],['2026-07-01','2026-10-31',202,115],
@@ -347,6 +347,20 @@ var LODGES = [
   res:[
    ['2026-07-01','2026-07-31',19000,27500],['2026-08-01','2026-08-31',16000,22000],['2026-09-01','2026-12-23',15000,20500],
    ['2026-12-24','2026-12-26',20000,28000],['2026-12-27','2026-12-30',16000,22000],['2026-12-31','2027-01-01',20000,28000]],
+  tentNr:0, tentRes:0},
+ {id:'muthu-mara-river', name:'Muthu Mara River Lodge', park:'mara', driverRoom:1500, resComm:0.10, xmasNr:0,
+  pitch:'in the Lemek Conservancy on the edge of the Masai Mara, a quiet private area away from the busy reserve roads',
+  note:'Lemek Conservancy fees are not included and not loaded yet. Add them as an extra. Driver room rate not confirmed, KES 1,500 assumed. Visitor rate is the USD 180 per double room quoted for November, single rate not given.',
+  nr:[['2026-10-01','2026-12-22',null,90]],
+  res:[['2026-04-03','2026-04-05',16500,21000],['2026-01-01','2026-06-30',16500,21000],['2026-07-01','2026-09-30',38500,46500],
+   ['2026-10-01','2026-12-22',16500,21000],['2026-12-24','2027-01-02',38500,46500]],
+  tentNr:0, tentRes:0},
+ {id:'muthu-naivasha', name:'Muthu Lake Naivasha Country Club', park:'naivasha', driverRoom:1000, resComm:0.10, xmasNr:0,
+  pitch:'in old colonial gardens on the shores of Lake Naivasha, with lawns running down to the water',
+  note:'Visitor rates not loaded yet. Driver room rate not confirmed, KES 1,000 assumed.',
+  nr:[],
+  res:[['2026-04-03','2026-04-05',22000,28000],['2026-01-01','2026-06-30',19000,26000],['2026-07-01','2026-09-30',25000,33000],
+   ['2026-10-01','2026-12-22',19000,26000],['2026-12-24','2027-01-02',29000,37000]],
   tentNr:0, tentRes:0}
 ];
 var XMAS_NR = 35; // USD per adult per night, 24 Dec to 1 Jan, non residents
@@ -392,6 +406,7 @@ function calc(){
  if(sharers%2===1)alerts.push(['','An odd number of guests are sharing, so one double has one person. Give someone their own room or check the setup.']);
  if($('tent').checked&&!(L.tentNr||L.tentRes))alerts.push(['','This lodge has no tent option on its card, so the upgrade is ignored.']);
  if(L.minFestive&&checkin&&nights<2){for(var q=0;q<nights;q++){var dq=addDays(checkin,q).slice(5);if(dq>='12-24'&&dq<='12-26'){alerts.push(['',L.minFestive]);break}}}
+ if(L.note)alerts.push(['',L.note]);
  var groups=[];
  cats.forEach(function(c){var s=sgl[c],d=cnt[c]-s;if(d>0)groups.push({c:c,room:'double',n:d});if(s>0)groups.push({c:c,room:'single',n:s})});
  var missing={};
@@ -400,7 +415,7 @@ function calc(){
   for(var i=0;i<nights;i++){
    var date=addDays(checkin,i);
    if(g.c==='nr'){var r=find(L.nr,date);if(!r){missing['visitor rate for '+shortDate(date)]=1;continue}
-    var pp=(g.room==='single'?r[2]:r[3]);if(isXmas(date))pp+=XMAS_NR;if(tent&&L.tentNr)pp+=L.tentNr;g.lodgeNet+=pp*fx;g.lodgeCard+=pp*fx;}
+    var pp=(g.room==='single'?r[2]:r[3]);if(pp==null){missing['visitor '+(g.room==='single'?'single':'double')+' rate for '+shortDate(date)]=1;continue}if(isXmas(date))pp+=(L.xmasNr||0);if(tent&&L.tentNr)pp+=L.tentNr;g.lodgeNet+=pp*fx;g.lodgeCard+=pp*fx;}
    else{var rr=find(L.res,date);if(!rr){missing['resident rate for '+shortDate(date)]=1;continue}
     var card=(g.room==='single'?rr[2]:rr[3]/2),net=card*(1-L.resComm);if(tent&&L.tentRes){net+=L.tentRes;card+=L.tentRes}g.lodgeNet+=net;g.lodgeCard+=card;}
   }
@@ -496,7 +511,7 @@ function addExtra(l,a,mo){var d=document.createElement('div');d.className='xrow'
 LODGES.forEach(function(l){var o=document.createElement('option');o.value=l.id;o.textContent=l.name;$('lodge').appendChild(o);
  var b=document.createElement('button');b.type='button';b.className='lodge';b.dataset.id=l.id;b.innerHTML='<small>'+AREA[l.park]+'</small><b>'+l.name+'</b><span>Driver '+kes(l.driverRoom)+' a night'+(l.tentNr?', tents available':'')+'</span>';
  b.onclick=function(){$('lodge').value=l.id;calc()};$('lodges').appendChild(b)});
-(function(){var h='';LODGES.forEach(function(l){h+='<p><b>'+l.name+'</b><br><span class="muted">Visitors '+shortDate(l.nr[0][0])+' '+l.nr[0][0].slice(0,4)+' to '+shortDate(l.nr[l.nr.length-1][1])+' '+l.nr[l.nr.length-1][1].slice(0,4)+'. Residents '+shortDate(l.res[0][0])+' '+l.res[0][0].slice(0,4)+' to '+shortDate(l.res[l.res.length-1][1])+' '+l.res[l.res.length-1][1].slice(0,4)+'. Commission '+Math.round(l.resComm*100)+'% on resident adults.</span></p>'});h+='<p class="hint">Visitor rates are net USD per person, inclusive of taxes, plus a USD 35 Christmas supplement per visitor per night from 24 December to 1 January. Resident rates are card rates per room. Source: Simba Lodges contracts 2026 and 2027.</p>';$('ratelist').innerHTML=h})();
+(function(){var h='';LODGES.forEach(function(l){h+='<p><b>'+l.name+'</b><br><span class="muted">Visitors '+(l.nr.length?shortDate(l.nr[0][0])+' '+l.nr[0][0].slice(0,4)+' to '+shortDate(l.nr[l.nr.length-1][1])+' '+l.nr[l.nr.length-1][1].slice(0,4):'not loaded')+'. Residents '+shortDate(l.res[0][0])+' '+l.res[0][0].slice(0,4)+' to '+shortDate(l.res[l.res.length-1][1])+' '+l.res[l.res.length-1][1].slice(0,4)+'. Commission '+Math.round(l.resComm*100)+'% on resident adults.</span></p>'});h+='<p class="hint">Visitor rates are net USD per person, inclusive of taxes, plus a USD 35 Christmas supplement per visitor per night from 24 December to 1 January. Resident rates are card rates per room. Source: Simba Lodges contracts 2026 and 2027.</p>';$('ratelist').innerHTML=h})();
 // steppers
 document.querySelectorAll('[data-step]').forEach(function(b){b.onclick=function(){var p=b.dataset.step.split(':'),el=$(p[0]),mn=parseFloat(el.min||'0');el.value=Math.max(isNaN(mn)?0:mn,(parseFloat(el.value)||0)+parseFloat(p[1]));el.dispatchEvent(new Event('input',{bubbles:true}))}});
 document.querySelectorAll('#mode button').forEach(function(b){b.onclick=function(){MODE=b.dataset.v;document.querySelectorAll('#mode button').forEach(function(x){x.classList.toggle('on',x===b)});calc()}});
@@ -523,12 +538,20 @@ var MEDIA={
   desc:'Samburu Simba Lodge looks out over the wide plains and hills of Samburu, home of the rare northern species you will not see in the Mara. Rooms open onto big views, the lounge is warm and welcoming in the evenings, and the pool overlooks the bush.',
   hi:['Wide views over the Samburu plains','Home of Grevy’s zebra, reticulated giraffe and gerenuk','Pool with a view over the bush','Full board, with your meals taken care of']}
 };
+MEDIA['muthu-mara-river']={stock:1,imgs:['strip-lions-vehicle-1000','strip-lion-1000','strip-mara-picnic-1000','strip-zebra-herd-1000','strip-sunset-1000'].map(function(n){return 'https://www.sundownsafari.com/images/'+n+'.jpg'}),
+  desc:'Muthu Mara River Lodge sits in the Lemek Conservancy on the northern edge of the Masai Mara. The conservancy is quiet and private, with far fewer vehicles than the main reserve, and the lodge looks out over the river and open plains. Rooms are comfortable garden view rooms, with full board dining at the lodge.',
+  hi:['Private conservancy, far fewer vehicles','On the northern edge of the Masai Mara','Garden view rooms','Full board, with your meals taken care of']};
+MEDIA['muthu-naivasha']={stock:1,imgs:['strip-hippos-1000','strip-giraffes-1000','strip-zebra-herd-1000','field-hippos-1000','strip-sunset-1000'].map(function(n){return 'https://www.sundownsafari.com/images/'+n+'.jpg'}),
+  desc:'Muthu Lake Naivasha Country Club sits in old colonial gardens on the shores of Lake Naivasha, with lawns running down to the water. It is an easy, relaxed base for boat rides among the hippos, Crescent Island and Hell\u2019s Gate.',
+  hi:['Gardens on the shores of Lake Naivasha','Close to Crescent Island and Hell\u2019s Gate','Swimming pool and lakeside lawns','Full board, with your meals taken care of']};
 var DTYPE='proposal';
 function docState(){
  var ok=$('okCheck').checked, name=$('cName').value.trim(), r=LAST, bad=r&&r.alerts.some(function(a){return a[0]==='bad'});
  var why='';
  if(!r||!r.total)why='Add guests first.';else if(bad)why='Fix the red warnings first.';else if(!name)why='Add the client name.';else if(DTYPE==='receipt'&&!(parseFloat($('pAmt').value)>0))why='Add the amount received.';else if(!ok)why='Tick the confirmation to unlock.';
- $('genPdf').disabled=!!why;$('pdfMsg').textContent=why;
+ if(!why&&r&&MEDIA[r.L.id]&&MEDIA[r.L.id].stock)why='';
+ var stockNote=(r&&MEDIA[r.L.id]&&MEDIA[r.L.id].stock)?' No lodge photos yet, the PDF uses Sundown safari photos.':'';
+ $('genPdf').disabled=!!why;$('pdfMsg').textContent=why+stockNote;
 }
 function ref(){var d=new Date();return 'SD'+String(d.getFullYear()).slice(2)+String(d.getMonth()+1).padStart(2,'0')+String(d.getDate()).padStart(2,'0')+'-'+Math.floor(100+Math.random()*900)}
 function days(r){
