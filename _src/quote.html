@@ -70,6 +70,7 @@ input:focus,select:focus{outline:2px solid var(--gold);outline-offset:0;border-c
 .lodge b{display:block;font-family:'Playfair Display',Georgia,serif;font-size:17px;color:var(--g);margin:4px 0 6px;line-height:1.2}
 .lodge span{font-size:12px;color:var(--muted)}
 @media(max-width:640px){.top-in{gap:8px;padding:10px 14px}.brand .words{display:none}.me .av{width:30px;height:30px}.me .out{padding:7px 9px}}
+@media(max-width:1440px){.chip{display:none}}.me .out{white-space:nowrap}.views button{padding:7px 12px}
 .stopshead{margin:14px 0 6px;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
 .stoprow{display:grid;grid-template-columns:30px minmax(0,1fr) 150px 38px;gap:10px;align-items:center;padding:10px;border:1px solid var(--line);border-radius:14px;background:var(--sand);margin-bottom:8px}
 .stoprow .snum{width:28px;height:28px;border-radius:50%;background:var(--g);color:var(--gold2);display:grid;place-items:center;font-weight:800;font-size:13px}
@@ -101,6 +102,12 @@ input:focus,select:focus{outline:2px solid var(--gold);outline-offset:0;border-c
 .trend{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;align-items:end}.tc2{text-align:center}.tc2 .bars{height:150px;display:flex;align-items:flex-end;justify-content:center;gap:4px;border-bottom:1px solid var(--line)}.tc2 .bars i{display:block;width:18px;border-radius:5px 5px 0 0;min-height:2px}.tc2 b{display:block;font-size:12px;margin-top:6px}.tc2 span{display:block;font-size:11px;color:var(--muted);min-height:14px}
 .rv{background:#14532D}.pf{background:#E9B865}.lg2{display:inline-block;width:10px;height:10px;border-radius:3px;margin:0 4px 0 10px;vertical-align:middle}
 .ms{display:grid;grid-template-columns:1fr 1fr;gap:10px}.ms div{background:var(--sand);border-radius:12px;padding:12px}.ms small{display:block;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}.ms b{font-size:18px;color:var(--g)}
+.lk.four{grid-template-columns:repeat(4,minmax(0,1fr));margin:0 0 12px}.lk.four div{box-shadow:none;background:var(--sand)}@media(max-width:640px){.lk.four{grid-template-columns:1fr 1fr}}
+.spform{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}@media(max-width:640px){.spform{grid-template-columns:1fr 1fr}}
+.lform .wide2{grid-column:span 2}.lform .wide4{grid-column:span 4}@media(max-width:900px){.lform .wide4,.lform .wide2{grid-column:span 2}}
+.supform{border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:14px;background:var(--sand)}
+.indesk{display:inline-block;font-size:10.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:2px 7px;border-radius:999px;background:#e9f3ec;color:var(--g2);vertical-align:middle;margin-left:4px}
+.flag{color:#8a5a12}.xdel{font-size:11px;color:var(--muted);margin-left:2px}
 .quickx{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 10px}.quickx:empty{display:none}.quickx small{width:100%;font-size:12px;color:var(--muted);font-weight:600}.quickx button{border:1px solid var(--line);background:var(--sand);border-radius:999px;padding:6px 11px;font:600 12px Inter,sans-serif;color:var(--g);cursor:pointer}.quickx button:hover{border-color:var(--g2);background:#fff}
 .lodge.on{border-color:var(--g);background:#fff;box-shadow:0 0 0 3px rgba(201,138,39,.25)}
 .lodge.on:after{content:"";position:absolute;top:12px;right:12px;width:20px;height:20px;border-radius:50%;background:var(--g) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23E9B865' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E") center/12px no-repeat}
@@ -241,7 +248,7 @@ footer{text-align:center;font-size:12px;color:var(--muted);padding:10px 20px 30p
   <span class="mark"><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M14.5 12H14c-2.8 0-5-2.2-5-5V5a2 2 0 0 1 2-2h2c1.5 0 2.8.8 3.4 2H19c1.7 0 3 1.3 3 3v10m-4-8h.01"/><path d="M14 10a4 4 0 0 0 4 4a4 4 0 0 1 4 4a2 2 0 0 1-4 0m-8-2v5"/><path d="M18 14a4 4 0 0 0-4 4v3H6v-2.6c0-1.1-.8-2.3-1.7-3C2.9 14.3 2 12.8 2 11c0-3.3 3.1-6 7-6m-7 6v7"/></g></svg></span>
   <span class="words"><b>SUNDOWN</b><small>Safaris</small></span>
  </a>
- <nav class="views" aria-label="Views"><button type="button" data-view="desk" class="on">Quote desk</button><button type="button" data-view="leads">Leads<i class="vbadge" id="leadBadge" hidden></i></button><button type="button" data-view="log">Quote log</button><button type="button" data-view="book">Bookings</button><button type="button" data-view="money" class="owner-only">Money</button><button type="button" data-view="dash" class="owner-only">Dashboard</button></nav>
+ <nav class="views" aria-label="Views"><button type="button" data-view="desk" class="on">Quote desk</button><button type="button" data-view="leads">Leads<i class="vbadge" id="leadBadge" hidden></i></button><button type="button" data-view="log">Quote log</button><button type="button" data-view="book">Bookings</button><button type="button" data-view="sup">Suppliers</button><button type="button" data-view="money" class="owner-only">Money</button><button type="button" data-view="dash" class="owner-only">Dashboard</button></nav>
  <div class="chip"><span class="dot"></span><span id="fxnote">KES 129.50 per USD</span></div>
  <div class="me"><span class="av" id="meAv">S</span><span class="nm"><b id="meName">Sundown</b><small id="meRole">Owner</small></span><a class="out" href="/api/auth?out=1" title="Log out"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg><span>Log out</span></a></div>
 </div></div>
@@ -436,6 +443,33 @@ footer{text-align:center;font-size:12px;color:var(--muted);padding:10px 20px 30p
   <div id="bookList"></div>
  </div>
 </section>
+<section class="logwrap" id="supView" hidden>
+ <div class="lk" id="supKpis"></div>
+ <div class="card">
+  <div class="step"><span class="num">&#9881;</span><div><h2>Suppliers and contracts</h2><p>Every lodge and partner, where each deal stands, the deadlines that matter and the terms you agreed</p></div></div>
+  <div class="filters"><select id="sFilter" aria-label="Filter"><option value="">All suppliers</option><option value="action">Needs action</option><option>To contact</option><option>Rates requested</option><option>Rates received</option><option>Contract to sign</option><option>Agreement needed</option><option>Signed</option><option>Declined</option></select><button class="btn ghost owner-only" type="button" id="supNew">+ Add a supplier</button><button class="btn owner-only" type="button" id="supSeed" hidden>Add the suppliers we already work with</button><span class="hint" id="supMsg" style="align-self:center;margin:0"></span></div>
+  <div class="supform owner-only" id="supForm" hidden>
+   <div class="lform">
+    <div><label for="sName">Name</label><input type="text" id="sName" placeholder="Sopa Lodges"></div>
+    <div><label for="sType">Type</label><select id="sType"><option>Lodge or camp</option><option>Ground partner</option><option>Transport</option><option>Activity</option><option>Other</option></select></div>
+    <div class="wide2"><label for="sArea">Properties or area</label><input type="text" id="sArea" placeholder="Mara, Amboseli, Samburu"></div>
+    <div><label for="sStatus">Status</label><select id="sStatus"><option>To contact</option><option>Rates requested</option><option>Rates received</option><option>Contract to sign</option><option>Agreement needed</option><option>Signed</option><option>Declined</option></select></div>
+    <div><label for="sContact">Contact person</label><input type="text" id="sContact"></div>
+    <div><label for="sEmail">Email</label><input type="text" id="sEmail" inputmode="email"></div>
+    <div><label for="sPhone">Phone</label><input type="text" id="sPhone" inputmode="tel"></div>
+    <div><label for="sReq">Rates asked on</label><input type="date" id="sReq"></div>
+    <div><label for="sSign">Sign contract by</label><input type="date" id="sSign"></div>
+    <div><label for="sValid">Rates valid until</label><input type="date" id="sValid"></div>
+    <div><label for="sComm">Commission</label><input type="text" id="sComm" placeholder="10% on resident rates"></div>
+    <div class="wide"><label for="sTerms">Payment and cancellation terms</label><input type="text" id="sTerms" placeholder="Full payment 60 days before arrival"></div>
+    <div><label class="check3" style="margin-top:28px"><input type="checkbox" id="sDesk"> Rates loaded in the desk</label></div>
+    <div class="wide4"><label for="sNotes">Notes</label><input type="text" id="sNotes" placeholder="Waiting on photos and the driver room rate"></div>
+   </div>
+   <div class="acts"><button class="btn" type="button" id="supSave">Add supplier</button><button class="btn ghost" type="button" id="supCancel">Cancel</button></div>
+  </div>
+  <div class="tblwrap"><table class="lt" id="supTable"></table></div>
+ </div>
+</section>
 <section class="logwrap owner-only" id="moneyView" hidden>
  <div class="lk" id="moneyKpis"></div>
  <div class="card"><div class="step"><span class="num">&#8595;</span><div><h2>Money in</h2><p>Client balances by due date. Record a payment when it lands</p></div></div><div class="tblwrap"><table class="lt" id="inTable"></table></div></div>
@@ -449,6 +483,10 @@ footer{text-align:center;font-size:12px;color:var(--muted);padding:10px 20px 30p
   <div>
    <div class="card"><div class="step"><span class="num">&#9733;</span><div><h2>Goal: USD 10,000 a month</h2><p>Revenue from bookings won this month. The marker shows where you should be today</p></div></div><div id="goal"></div></div>
    <div class="card"><div class="step"><span class="num">&#9673;</span><div><h2>Where bookings come from</h2><p>Leads, quotes and bookings by source for this period</p></div></div><div class="tblwrap"><table class="lt" id="srcTable"></table></div><p class="hint">Quotes only count towards a source when they start from a logged lead, so log every lead and use Quote it.</p></div>
+   <div class="card"><div class="step"><span class="num">&#36;</span><div><h2>Ad spend and return</h2><p>Log what each channel cost each month. The table above then shows cost per lead and cost per booking</p></div></div>
+    <div class="lk four" id="spendKpis"></div>
+    <div class="spform"><div><label for="mMonth">Month</label><input type="month" id="mMonth"></div><div><label for="mChan">Channel</label><select id="mChan"><option>Meta ads</option><option>Google ads</option><option>TikTok</option><option>Influencer</option><option>Other</option></select></div><div><label for="mAmt">Spent (KES)</label><input type="number" id="mAmt" min="0" inputmode="numeric" placeholder="30000"></div><div class="acts" style="margin:0;align-self:end"><button class="btn" type="button" id="mAdd">Save spend</button></div></div>
+    <p class="hint" id="mMsg"></p><ul class="per" id="spendList"></ul></div>
    <div class="card"><div class="step"><span class="num">&#8599;</span><div><h2>Last six months</h2><p><i class="lg2 rv"></i> Revenue won <i class="lg2 pf"></i> Profit</p></div></div><div class="trend" id="trend"></div></div>
   </div>
   <div class="card" id="dashSide"></div>
@@ -1053,9 +1091,10 @@ $('saveLog').onclick=function(){
  saveQuote(R,'Quoted','whatsapp').then(function(){$('copied').textContent='Saved to the log as '+R}).catch(function(e){$('copied').textContent=e.message}).then(function(){$('saveLog').disabled=false});
 };
 // views
-var VIEWS={desk:'main',leads:'#leadsView',log:'#logView',book:'#bookView',money:'#moneyView',dash:'#dashView'};
+var VIEWS={desk:'main',leads:'#leadsView',log:'#logView',book:'#bookView',sup:'#supView',money:'#moneyView',dash:'#dashView'};
 var VHERO={leads:['Your <em>leads</em>','Every enquiry in one place. Reply fast, quote it in one tap and see which channels bring paying clients.'],
  log:['Your quotes and <em>bookings</em>','Every quote, proposal and receipt in one place. Update the status as clients reply and watch your pipeline grow.'],
+ sup:['Suppliers and <em>contracts</em>','Every lodge and partner in one place, with the deadlines to sign, the rates still owed to you and the terms you agreed.'],
  book:['Trips <em>coming up</em>','Every confirmed safari and what is left to do before the guests are collected.'],
  money:['Money in and <em>money out</em>','What clients owe you, what you owe suppliers and how your cash looks for the next two months.'],
  dash:['How Sundown is <em>doing</em>','Leads, reply speed, bookings, revenue and profit, with your progress to USD 10,000 a month.']};
@@ -1065,7 +1104,7 @@ function showView(v){
  Object.keys(VIEWS).forEach(function(k){document.querySelector(VIEWS[k]).hidden=k!==v});
  document.querySelector('.mbar').style.display=v==='desk'?'':'none';$('chips').style.display=v==='desk'?'':'none';
  if(v==='desk')heroDesk();else{$('greet').textContent=GREET[dayPart()][0];document.querySelector('.hero h1').innerHTML=VHERO[v][0];document.querySelector('.hero p').textContent=VHERO[v][1]}
- var R={leads:renderLeads,log:function(){buildMonths();renderLog();priceCheck()},book:renderBookings,money:renderMoney,dash:renderDash}[v];
+ var R={sup:renderSuppliers,leads:renderLeads,log:function(){buildMonths();renderLog();priceCheck()},book:renderBookings,money:renderMoney,dash:renderDash}[v];
  if(v==='leads'&&!$('lIn').value)$('lIn').value=localNow();
  if(R){if(LOADED)R();loadAll(true).then(function(){R();badge()}).catch(function(e){if(v==='log')$('logMsg').textContent=SD_USER==='local'?'The log works on the live desk.':e.message})}
  try{history.replaceState(null,'','#'+v)}catch(e){}
@@ -1122,11 +1161,13 @@ function renderTodo(){
    if(bal>0&&bdl<=14)items.push({q:q,tag:'bal',lab:bdl<0?'Balance late':'Balance due',score:200-bdl,info:kes(bal)+' due '+(bdl<0?Math.abs(bdl)+' days ago':bdl===0?'today':'in '+bdl+' days, by '+shortDate(bd)),text:balText(q,bal)})}
   if(WON.indexOf(q.status)>=0&&dl<=7)items.push({q:q,tag:'trip',lab:'Trip soon',score:150-dl,info:'Travels '+(dl===0?'today':'in '+dl+' day'+(dl===1?'':'s'))+', '+shortDate(q.checkin)+'. Send guide details',text:tripText(q,dl)});
  });
+ if(OWN)SUPP.forEach(function(s){supFlags(s).forEach(function(f){if(f.hot||f.chase||/Sign within/.test(f.txt))items.push({sup:s,tag:f.hot?'hot':'fu',lab:f.chase?'Chase rates':/ign/.test(f.txt)?'Sign contract':/xpire/.test(f.txt)?'Rates expiring':'Supplier',score:f.score>250?250:f.score-20,info:f.txt,chase:f.chase})})});
  items.sort(function(a,b){return b.score-a.score});
  $('todoCard').hidden=!items.length;
  $('todoSub').textContent=items.length+' thing'+(items.length===1?'':'s')+' to do, most urgent first. Each message is written for you, tap to send it on WhatsApp';
- $('todo').innerHTML=items.slice(0,12).map(function(it,i){var c=it.q.client||{},ph=waPhone(c.contact);
+ $('todo').innerHTML=items.slice(0,14).map(function(it,i){if(it.sup)return '<li><span class="tg '+it.tag+'">'+it.lab+'</span><div class="tw"><b>'+esc(it.sup.name)+'</b><span>'+esc(it.info)+'</span></div><div class="ta">'+(it.chase?'<a class="btn ghost" href="'+chaseMail(it.sup)+'" data-chase2="'+it.sup.id+'">Email them</a>':'')+'<button type="button" class="btn ghost" onclick="showView(\'sup\')">Open</button></div></li>';var c=it.q.client||{},ph=waPhone(c.contact);
   return '<li><span class="tg '+it.tag+'">'+it.lab+'</span><div class="tw"><b>'+esc(c.name||'No name')+', '+esc(it.q.lodge)+'</b><span>'+esc(it.info)+(ph?'':', no phone saved so copy the message')+'</span></div><div class="ta">'+(ph?'<a class="btn green" target="_blank" rel="noopener" data-todo="'+i+'" href="'+waLink(c.contact,it.text)+'">Send on WhatsApp</a>':'')+'<button type="button" class="btn ghost" data-copy="'+i+'">Copy</button></div></li>'}).join('');
+ $('todo').querySelectorAll('[data-chase2]').forEach(function(a){a.addEventListener('click',function(){apiSave('supplier',{id:a.dataset.chase2,chasedAt:true}).then(renderTodo).catch(function(){})})});
  $('todo').querySelectorAll('[data-copy]').forEach(function(b){b.onclick=function(){var it=items[+b.dataset.copy];copyText(it.text);b.textContent='Copied';if(it.bump)bumpQuote(it.q)}});
  $('todo').querySelectorAll('[data-todo]').forEach(function(a){a.addEventListener('click',function(){var it=items[+a.dataset.todo];if(it.bump)bumpQuote(it.q)})});
 }
@@ -1157,7 +1198,7 @@ var OWN=SD_ROLE==='owner',TODAY=function(){return new Date().toISOString().slice
 function apiMis(method,body){return fetch('/api/mis',{method:method,headers:body?{'content-type':'application/json'}:{},body:body?JSON.stringify(body):undefined,credentials:'same-origin'}).then(function(r){if(r.status===401&&SD_USER!=='local'){location.href='/desk';throw new Error('Signed out')}return r.json().then(function(j){if(!r.ok)throw new Error(j.error||('Error '+r.status));return j})})}
 function loadAll(force){
  if(!force&&LOADED&&Date.now()-LOADED<60000)return Promise.resolve();
- return Promise.all([apiLog('GET').then(function(j){LOGQ=j.quotes||[]}),apiMis('GET').then(function(j){LEADS=j.leads||[]})]).then(function(){LOADED=Date.now()});
+ return Promise.all([apiLog('GET').then(function(j){LOGQ=j.quotes||[]}),apiMis('GET').then(function(j){LEADS=j.leads||[];SUPP=j.suppliers||[];SPEND=j.spend||[]})]).then(function(){LOADED=Date.now()});
 }
 function wonAt(q){if(q.wonAt)return q.wonAt;var h=(q.history||[]).filter(function(x){return WON.indexOf(x.status)>=0})[0];return h?h.at:(WON.indexOf(q.status)>=0?(q.updatedAt||q.createdAt):'')}
 function hrs(a,b){return (new Date(b)-new Date(a))/36e5}
@@ -1293,8 +1334,11 @@ function renderDash(){
  var src={};SOURCES.concat(['Not logged as a lead']).forEach(function(s){src[s]={l:0,q:0,b:0,rev:0}});
  leads.forEach(function(l){src[l.source||'Other'].l++});
  LOGQ.forEach(function(q){var l=q.leadId&&LEADS.filter(function(x){return x.id===q.leadId})[0],s=l?(l.source||'Other'):'Not logged as a lead';if(inR(q.createdAt,r))src[s].q++;if(WON.indexOf(q.status)>=0&&inR(wonAt(q),r)){src[s].b++;src[s].rev+=q.totPrice||0}});
- var sh='<tr><th>Source</th><th class="n">Leads</th><th class="n">Quotes</th><th class="n">Bookings</th><th class="n">Revenue</th></tr>';
- Object.keys(src).forEach(function(k){var x=src[k];if(x.l||x.q||x.b)sh+='<tr><td><b>'+k+'</b></td><td class="n">'+x.l+'</td><td class="n">'+x.q+'</td><td class="n">'+x.b+'</td><td class="n">'+kes(x.rev)+'</td></tr>'});
+ var sh='<tr><th>Source</th><th class="n">Leads</th><th class="n">Quotes</th><th class="n">Bookings</th><th class="n">Revenue</th><th class="n">Ad spend</th><th class="n">Per lead</th><th class="n">Per booking</th></tr>';
+ Object.keys(src).forEach(function(k){var x=src[k],sp=['Meta ads','Google ads','TikTok'].indexOf(k)>=0?spendIn(r,k):0;if(x.l||x.q||x.b||sp)sh+='<tr><td><b>'+k+'</b></td><td class="n">'+x.l+'</td><td class="n">'+x.q+'</td><td class="n">'+x.b+'</td><td class="n">'+kes(x.rev)+'</td><td class="n">'+(sp?kes(sp):'')+'</td><td class="n">'+(sp&&x.l?kes(sp/x.l):'')+'</td><td class="n">'+(sp?(x.b?kes(sp/x.b):'<span class="wait">no bookings</span>'):'')+'</td></tr>'});
+ var spT=spendIn(r),ldT=leads.length,bkT=won.length;
+ $('spendKpis').innerHTML=[['Ad spend',kes(spT),p==='week'?'whole month counted':'this period'],['Cost per lead',spT&&ldT?kes(spT/ldT):'n/a',ldT+' leads'],['Cost per booking',spT&&bkT?kes(spT/bkT):'n/a',bkT+' bookings'],['Revenue per KES 1',spT?'KES '+(Math.round(rev/spT*10)/10):'n/a',spT&&pro?'profit covers ads '+(Math.round(pro/spT*10)/10)+' times':'log spend to see this']].map(function(x){return '<div><small>'+x[0]+'</small><b>'+x[1]+'</b><span>'+x[2]+'</span></div>'}).join('');
+ renderSpend(r);
  $('srcTable').innerHTML=sh;
  // last six months
  var months=[],t=TODAY();for(var i=5;i>=0;i--){var d=new Date(Date.UTC(+t.slice(0,4),+t.slice(5,7)-1-i,1));months.push(d.toISOString().slice(0,7))}
@@ -1304,12 +1348,78 @@ function renderDash(){
  // money snapshot and trips
  var tdy=TODAY(),wonAll=LOGQ.filter(function(q){return WON.indexOf(q.status)>=0}),owed=wonAll.reduce(function(a,q){return a+Math.max(0,(q.totPrice||0)-(q.paid||0))},0),owe=0;wonAll.forEach(function(q){payLines(q).forEach(function(x){if(!x.paid)owe+=x.amt})});
  var soon=wonAll.filter(function(q){return q.checkin>=tdy&&q.checkin<=addDays(tdy,30)}).sort(function(a,b){return a.checkin.localeCompare(b.checkin)});
- $('dashSide').innerHTML='<div class="ms"><div><small>Clients owe you</small><b>'+kes(owed)+'</b></div><div><small>You owe suppliers</small><b>'+kes(owe)+'</b></div></div><div class="ey2">Trips in the next 30 days</div>'+(soon.length?'<ul class="per">'+soon.map(function(q){var ready=CHK.filter(function(k){return chkState(q,k[0])}).length;return '<li><div class="who"><b>'+esc((q.client&&q.client.name)||'')+'</b><span>'+esc(q.lodge)+'</span></div><div class="px"><b>'+shortDate(q.checkin)+'</b><span>'+ready+' of '+CHK.length+' ready</span></div></li>'}).join('')+'</ul>':'<p class="muted">No trips in the next 30 days.</p>');
+ var sact=SUPP.filter(function(x){return supFlags(x).length}).length;
+ $('dashSide').innerHTML=(sact?'<p class="warn" style="margin:0 0 12px">'+sact+' supplier'+(sact===1?' needs':'s need')+' action. <button type="button" class="lnk" onclick="showView(\'sup\')">Open suppliers</button></p>':'')+'<div class="ms"><div><small>Clients owe you</small><b>'+kes(owed)+'</b></div><div><small>You owe suppliers</small><b>'+kes(owe)+'</b></div></div><div class="ey2">Trips in the next 30 days</div>'+(soon.length?'<ul class="per">'+soon.map(function(q){var ready=CHK.filter(function(k){return chkState(q,k[0])}).length;return '<li><div class="who"><b>'+esc((q.client&&q.client.name)||'')+'</b><span>'+esc(q.lodge)+'</span></div><div class="px"><b>'+shortDate(q.checkin)+'</b><span>'+ready+' of '+CHK.length+' ready</span></div></li>'}).join('')+'</ul>':'<p class="muted">No trips in the next 30 days.</p>');
 }
 $('dPeriod').addEventListener('change',renderDash);
 
+// ---------- SUPPLIERS ----------
+var SUPP=[],SPEND=[],SSTS=['To contact','Rates requested','Rates received','Contract to sign','Agreement needed','Signed','Declined'],STYPES=['Lodge or camp','Ground partner','Transport','Activity','Other'],CHANS=['Meta ads','Google ads','TikTok','Influencer','Other'];
+var SEED=[
+ {name:'Simba Lodges',type:'Lodge or camp',area:'Mara Simba, Lake Naivasha Simba, Samburu Simba',status:'Rates received',commission:'15% on resident card rates',terms:'Festive: 50% deposit, balance 45 days before arrival, 100% cancellation inside 21 days',inDesk:true,notes:'2026 and 2027 visitor contracts and resident rates loaded in the desk'},
+ {name:'Muthu Hotels',type:'Lodge or camp',area:'Muthu Mara River Lodge, Muthu Lake Naivasha Country Club',contact:'Esther',status:'Rates received',commission:'10% on resident rates',inDesk:true,notes:'Still waiting on the Lemek Conservancy fee flyer, visitor rates and photos'},
+ {name:'Ol Tukai Lodge',type:'Lodge or camp',area:'Amboseli',contact:'Faith Cheruto',email:'reservations@oltukailodge.com',phone:'+254 721 363 163',status:'Contract to sign',signBy:'2026-12-10',validTo:'2028-01-02',commission:'Visitors net, 10% on resident rates',terms:'Full payment 60 days before arrival without credit. Cancellation 20% to 61 days, 50% from 60 to 31 days, 100% inside 30 days',inDesk:true,notes:'Sign and return within 30 days of the contract date. Ask for the driver room rate and photos'},
+ {name:'Ashnil Hotels',type:'Lodge or camp',area:'Ashnil Mara, Surana Mara, Ashnil Samburu, Surana Buffalo Springs, Ashnil Aruba',contact:'Ertons Makau',email:'reservations@ashnilhotels.com',phone:'+254 730 870 400',status:'Contract to sign',signBy:'2026-12-11',validTo:'2027-12-20',commission:'Net, visitors only',terms:'Full payment before confirmation. Peak needs a 40% non refundable deposit within 14 days. Peak cancellation 100% inside 15 days',inDesk:true,notes:'Signed copy needed before any booking, otherwise rack less 10%. Ask for resident rates, driver room rate and photos'},
+ {name:'Oloshaiki Camp',type:'Lodge or camp',area:'Masai Mara, Talek River',status:'Rates requested',requestedAt:'2026-11-10'},
+ {name:'Serena Hotels',type:'Lodge or camp',area:'Mara Serena, Amboseli Serena',status:'Rates requested',requestedAt:'2026-11-10'},
+ {name:'Sopa Lodges',type:'Lodge or camp',area:'Mara, Amboseli, Samburu, Nakuru and Naivasha',status:'Rates requested',requestedAt:'2026-11-10',notes:'Group and resident partner across five parks'},
+ {name:'Olive Bush Camp',type:'Lodge or camp',area:'Masai Mara',status:'Rates requested',requestedAt:'2026-11-10',notes:'Confirm the camp is open'},
+ {name:'Mara Trails Camp',type:'Lodge or camp',area:'Masai Mara',status:'To contact',notes:'Email bounced on 10 November. Find the right reservations address and resend'},
+ {name:'Madzo Safaris',type:'Ground partner',area:'Vehicles and guides',status:'Agreement needed',notes:'Write a one page partner agreement: rates, who is liable, vehicle standards, guides presenting as Sundown, peak season availability'}];
+function apiSave(kind,item){return apiMis('POST',{action:'save',kind:kind,item:item}).then(function(j){var a=kind==='supplier'?SUPP:SPEND,i=a.map(function(x){return x.id}).indexOf(j.item.id);if(i>=0)a[i]=j.item;else a.push(j.item);return j.item})}
+function supFlags(s){var t=TODAY(),f=[];
+ if(s.status==='Contract to sign'&&s.signBy){var d=daysBetween(t,s.signBy);f.push({hot:d<=7,txt:d<0?'Signing deadline passed '+Math.abs(d)+' days ago':'Sign within '+d+' day'+(d===1?'':'s')+', by '+shortDate(s.signBy),score:300-d})}
+ if(s.status==='Rates requested'&&s.requestedAt){var a=daysBetween(s.requestedAt,t),c=s.chasedAt?daysBetween(s.chasedAt.slice(0,10),t):99;if(a>=5&&c>=4)f.push({hot:a>=10,txt:'Asked '+a+' days ago with no rates yet',score:100+a,chase:1})}
+ if(s.validTo&&(s.status==='Signed'||s.status==='Rates received'||s.status==='Contract to sign')){var v=daysBetween(t,s.validTo);if(v<=60)f.push({hot:v<=21,txt:v<0?'Rates expired '+Math.abs(v)+' days ago':'Rates expire in '+v+' days, ask for next year',score:200-v})}
+ if(s.status==='Agreement needed')f.push({hot:false,txt:'No written agreement yet',score:90});
+ return f}
+function chaseMail(s){var sub='Following up, 2026 and 2027 contract rates for Sundown Safaris',b='Dear '+(s.contact||'Reservations Team')+',\n\nI hope you are well. I am following up on my email of '+(s.requestedAt?niceDate(s.requestedAt):'last week')+' asking for your 2026 and 2027 tour operator contract rates for '+(s.area||s.name)+'.\n\nWe have clients asking about December and early 2027, so your rates would help us offer your property straight away.\n\nThank you and warm regards,\n\nBrian Baraka\nSundown Safaris\nbookings@sundownsafari.com\n+254 724 491210';
+ return 'mailto:'+encodeURIComponent(s.email||'')+'?subject='+encodeURIComponent(sub)+'&body='+encodeURIComponent(b)}
+function renderSuppliers(){
+ var t=TODAY(),act=SUPP.filter(function(s){return s.status!=='Declined'});
+ var toSign=act.filter(function(s){return s.status==='Contract to sign'}),waiting=act.filter(function(s){return s.status==='Rates requested'}),signed=act.filter(function(s){return s.status==='Signed'}),exp=act.filter(function(s){return s.validTo&&daysBetween(t,s.validTo)<=60});
+ var ns=toSign.filter(function(s){return s.signBy}).sort(function(a,b){return a.signBy.localeCompare(b.signBy)})[0];
+ var old=waiting.filter(function(s){return s.requestedAt}).sort(function(a,b){return a.requestedAt.localeCompare(b.requestedAt)})[0];
+ $('supKpis').innerHTML=[['Contracts to sign',toSign.length,ns?'next by '+shortDate(ns.signBy):'none waiting',ns&&daysBetween(t,ns.signBy)<=7],['Waiting for rates',waiting.length,old?'oldest asked '+daysBetween(old.requestedAt,t)+' days ago':'none waiting',old&&daysBetween(old.requestedAt,t)>=10],['Signed partners',signed.length,act.filter(function(s){return s.inDesk}).length+' loaded in the desk'],['Rates expiring',exp.length,'in the next 60 days',exp.length>0],['All suppliers',act.length,SUPP.length-act.length+' declined']].map(function(x){return '<div'+(x[3]?' class="hot"':'')+'><small>'+x[0]+'</small><b>'+x[1]+'</b><span>'+x[2]+'</span></div>'}).join('');
+ $('supSeed').hidden=!(OWN&&!SUPP.length);
+ var f=$('sFilter').value,rows=SUPP.filter(function(s){return !f||(f==='action'?supFlags(s).length:s.status===f)}).sort(function(a,b){var fa=supFlags(a),fb=supFlags(b),sa=fa.length?Math.max.apply(null,fa.map(function(x){return x.score})):0,sb=fb.length?Math.max.apply(null,fb.map(function(x){return x.score})):0;return sb-sa||(a.name||'').localeCompare(b.name||'')});
+ var h='<tr><th>Supplier</th><th>Status</th><th>Dates and deadlines</th><th>Commission and terms</th><th>Contact</th><th></th></tr>';
+ rows.forEach(function(s){var fl=supFlags(s);
+  h+='<tr'+(fl.some(function(x){return x.hot})?' class="late"':'')+'><td><b>'+esc(s.name)+'</b>'+(s.inDesk?' <span class="indesk">In the desk</span>':'')+'<br><span class="muted" style="font-size:12px">'+esc(s.type||'')+(s.area?', '+esc(s.area):'')+'</span>'+(s.notes?'<br><span class="muted" style="font-size:12px">'+esc(s.notes)+'</span>':'')+'</td>'+
+  '<td>'+(OWN?'<select data-sid="'+s.id+'">'+SSTS.map(function(x){return '<option'+(x===s.status?' selected':'')+'>'+x+'</option>'}).join('')+'</select>':esc(s.status))+'</td>'+
+  '<td style="font-size:12.5px">'+[s.requestedAt?'Asked '+shortDate(s.requestedAt):'',s.signBy&&s.status==='Contract to sign'?'Sign by '+shortDate(s.signBy):'',s.signedAt?'Signed '+shortDate(s.signedAt):'',s.validTo?'Rates valid to '+shortDate(s.validTo)+' '+s.validTo.slice(0,4):''].filter(Boolean).join('<br>')+fl.map(function(x){return '<br><b class="'+(x.hot?'wait':'flag')+'">'+x.txt+'</b>'}).join('')+'</td>'+
+  '<td style="font-size:12.5px;max-width:280px">'+(s.commission?'<b>'+esc(s.commission)+'</b><br>':'')+esc(s.terms||'')+'</td>'+
+  '<td style="font-size:12.5px">'+esc(s.contact||'')+(s.email?'<br><a class="lnk" href="mailto:'+esc(s.email)+'">'+esc(s.email)+'</a>':'')+(s.phone?'<br>'+(waPhone(s.phone)?'<a class="lnk" target="_blank" rel="noopener" href="'+waLink(s.phone,'Hello, this is Brian from Sundown Safaris.')+'">'+esc(s.phone)+'</a>':esc(s.phone)):'')+'</td>'+
+  '<td class="acts2">'+(fl.some(function(x){return x.chase})?'<a class="lnk" data-chase="'+s.id+'" href="'+chaseMail(s)+'">Chase</a>':'')+(OWN?'<button type="button" class="lnk" data-edit="'+s.id+'">Edit</button>':'')+'</td></tr>'});
+ if(!rows.length)h+='<tr><td colspan="6" class="muted">'+(SUPP.length?'Nothing here for this filter.':'No suppliers yet.')+'</td></tr>';
+ $('supTable').innerHTML=h;
+ $('supTable').querySelectorAll('select[data-sid]').forEach(function(sel){sel.onchange=function(){var o={id:sel.dataset.sid,status:sel.value};if(sel.value==='Rates requested'){var s=SUPP.filter(function(x){return x.id===sel.dataset.sid})[0];if(s&&!s.requestedAt)o.requestedAt=TODAY()}apiSave('supplier',o).then(renderSuppliers).catch(function(e){$('supMsg').textContent=e.message})}});
+ $('supTable').querySelectorAll('[data-edit]').forEach(function(b){b.onclick=function(){editSupplier(SUPP.filter(function(x){return x.id===b.dataset.edit})[0])}});
+ $('supTable').querySelectorAll('[data-chase]').forEach(function(a){a.addEventListener('click',function(){apiSave('supplier',{id:a.dataset.chase,chasedAt:true}).then(renderSuppliers).catch(function(){})})});
+}
+var SF=['sName','sType','sArea','sStatus','sContact','sEmail','sPhone','sReq','sSign','sValid','sComm','sTerms','sNotes'],SK=['name','type','area','status','contact','email','phone','requestedAt','signBy','validTo','commission','terms','notes'];
+function editSupplier(s){s=s||{};$('supForm').hidden=false;$('supForm').dataset.id=s.id||'';SF.forEach(function(f,i){$(f).value=s[SK[i]]||(f==='sType'?'Lodge or camp':f==='sStatus'?'To contact':'')});$('sDesk').checked=!!s.inDesk;$('supSave').textContent=s.id?'Save changes':'Add supplier';$('sName').focus();$('supForm').scrollIntoView({behavior:'smooth',block:'center'})}
+$('supNew').onclick=function(){editSupplier(null)};
+$('supCancel').onclick=function(){$('supForm').hidden=true};
+$('supSave').onclick=function(){var o={};SF.forEach(function(f,i){o[SK[i]]=$(f).value.trim()});o.inDesk=$('sDesk').checked;if($('supForm').dataset.id)o.id=$('supForm').dataset.id;
+ if(!o.name){$('supMsg').textContent='Add the supplier name';return}
+ $('supSave').disabled=true;apiSave('supplier',o).then(function(){$('supForm').hidden=true;$('supMsg').textContent='Saved.';renderSuppliers()}).catch(function(e){$('supMsg').textContent=e.message}).then(function(){$('supSave').disabled=false})};
+$('supSeed').onclick=function(){$('supSeed').disabled=true;$('supMsg').textContent='Adding your suppliers...';SEED.reduce(function(p,s){return p.then(function(){return apiSave('supplier',s)})},Promise.resolve()).then(function(){$('supMsg').textContent='Added '+SEED.length+' suppliers. Check the dates and edit anything that has changed.';renderSuppliers()}).catch(function(e){$('supMsg').textContent=e.message;$('supSeed').disabled=false})};
+$('sFilter').addEventListener('input',renderSuppliers);
+// ---------- AD SPEND ----------
+function renderSpend(r){
+ var f=$('mMonth');if(!f.value)f.value=TODAY().slice(0,7);
+ var months=uniq(SPEND.map(function(x){return x.month})).sort().reverse().slice(0,6);
+ $('spendList').innerHTML=months.map(function(m){var it=SPEND.filter(function(x){return x.month===m}),d=new Date(m+'-01T00:00:00Z');return '<li><div class="who"><b>'+d.toLocaleDateString('en-GB',{month:'long',year:'numeric',timeZone:'UTC'})+'</b><span>'+it.map(function(x){return esc(x.channel)+' '+kes(x.amount)+' <button type="button" class="lnk xdel" data-del="'+x.id+'" title="Remove">remove</button>'}).join(', ')+'</span></div><div class="px"><b>'+kes(it.reduce(function(a,x){return a+x.amount},0))+'</b></div></li>'}).join('')||'<li class="muted">No ad spend logged yet. Add each channel once a month.</li>';
+ $('spendList').querySelectorAll('[data-del]').forEach(function(b){b.onclick=function(){apiMis('POST',{action:'delete',kind:'spend',item:{id:b.dataset.del}}).then(function(){SPEND=SPEND.filter(function(x){return x.id!==b.dataset.del});renderDash()})}});
+}
+$('mAdd').onclick=function(){var o={month:$('mMonth').value,channel:$('mChan').value,amount:$('mAmt').value};if(!o.month||!(parseInt(o.amount,10)>0)){$('mMsg').textContent='Add the month and the amount';return}
+ var ex=SPEND.filter(function(x){return x.month===o.month&&x.channel===o.channel})[0];if(ex)o.id=ex.id;
+ $('mAdd').disabled=true;apiSave('spend',o).then(function(){$('mAmt').value='';$('mMsg').textContent=ex?'Updated.':'Added.';renderDash()}).catch(function(e){$('mMsg').textContent=e.message}).then(function(){$('mAdd').disabled=false})};
+function spendIn(r,ch){var a=r[0].slice(0,7),b=r[1].slice(0,7);return SPEND.filter(function(x){return x.month>=a&&x.month<=b&&(!ch||x.channel===ch)}).reduce(function(s,x){return s+x.amount},0)}
+
 resetLeadForm();loadAll().then(badge).catch(function(){});setInterval(function(){if(document.visibilityState==='visible')loadAll(true).then(badge).catch(function(){})},300000);
-if(/^#(leads|log|book|money|dash)$/.test(location.hash))showView(location.hash.slice(1));
+if(/^#(leads|log|book|sup|money|dash)$/.test(location.hash))showView(location.hash.slice(1));
 calc();
 </script>
 <div id="docStage" aria-hidden="true"></div>
