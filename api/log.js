@@ -16,11 +16,16 @@ async function readQuote(pathname, fresh) {
   return await new Response(r.stream).json();
 }
 
+const WON = ['Won', 'Deposit paid', 'Paid'];
+const CHECKS = ['lodgeConfirmed', 'briefSent', 'guideSent', 'reviewAsked'];
 function forRole(q, u) {
   if (u.role === 'owner') return q;
-  const { totCost, profit, commission, streams, ...rest } = q;
+  const { totCost, profit, commission, streams, pay, paidOut, ...rest } = q;
   return rest;
 }
+const save = (path, rec) => put(path, JSON.stringify(rec), { access: 'private', addRandomSuffix: false, allowOverwrite: true, contentType: 'application/json' });
+function money(n) { n = Math.round(Number(n) || 0); return n > 0 && n < 1e9 ? n : 0; }
+function stamp(rec, now) { if (WON.includes(rec.status) && !rec.wonAt) rec.wonAt = now; }
 
 async function handler(request) {
   const u = await who(request);
@@ -49,6 +54,7 @@ async function handler(request) {
       const path = 'quotes/' + q.ref + '.json';
       const old = await readQuote(path, true).catch(() => null);
       const now = new Date().toISOString();
+      const addPayment = q.addPayment; delete q.addPayment; delete q.paid; delete q.payments; delete q.ops; delete q.paidOut;
       const rec = Object.assign({}, old || {}, q, {
         user: old ? old.user : u.user,
         createdAt: old ? old.createdAt : now,
@@ -56,7 +62,41 @@ async function handler(request) {
         status: STATUSES.includes(q.status) ? q.status : (old ? old.status : 'Quoted'),
         history: (old && old.history || []).concat([{ at: now, by: u.user, status: STATUSES.includes(q.status) ? q.status : 'Quoted', note: q.doc || 'saved' }])
       });
-      await put(path, JSON.stringify(rec), { access: 'private', addRandomSuffix: false, allowOverwrite: true, contentType: 'application/json' });
+      if (addPayment && money(addPayment.amt)) {
+        rec.payments = (rec.payments || []).concat([{ amt: money(addPayment.amt), date: String(addPayment.date || now).slice(0, 10), method: String(addPayment.method || '').slice(0, 40), ref: String(addPayment.ref || '').slice(0, 60), by: u.user }]);
+        rec.paid = rec.payments.reduce((a, p) => a + p.amt, 0);
+      }
+      stamp(rec, now);
+      await save(path, rec);
+      return json({ ok: true, quote: forRole(rec, u) });
+    }
+    if (['ops', 'payment', 'payout'].includes(body.action)) {
+      if (!REF.test(body.ref || '')) return json({ error: 'Bad request' }, 400);
+      const path = 'quotes/' + body.ref + '.json';
+      const rec = await readQuote(path, true).catch(() => null);
+      if (!rec) return json({ error: 'Not found' }, 404);
+      if (u.role !== 'owner' && (rec.user !== u.user || body.action === 'payout')) return json({ error: 'Not allowed' }, 403);
+      const now = new Date().toISOString();
+      if (body.action === 'ops') {
+        rec.ops = rec.ops || {};
+        CHECKS.forEach(k => { if (k in (body.ops || {})) rec.ops[k] = body.ops[k] ? now : null; });
+        if (typeof (body.ops || {}).notes === 'string') rec.ops.notes = body.ops.notes.slice(0, 2000);
+      }
+      if (body.action === 'payment') {
+        const p = body.payment || {};
+        if (!money(p.amt)) return json({ error: 'Bad amount' }, 400);
+        rec.payments = (rec.payments || []).concat([{ amt: money(p.amt), date: String(p.date || now).slice(0, 10), method: String(p.method || '').slice(0, 40), ref: String(p.ref || '').slice(0, 60), by: u.user }]);
+        rec.paid = rec.payments.reduce((a, x) => a + x.amt, 0);
+        if (rec.paid >= (rec.totPrice || 0)) rec.status = 'Paid'; else if (!WON.includes(rec.status) || rec.status === 'Won') rec.status = 'Deposit paid';
+        rec.history = (rec.history || []).concat([{ at: now, by: u.user, status: rec.status, note: 'payment ' + money(p.amt) }]);
+      }
+      if (body.action === 'payout') {
+        rec.paidOut = rec.paidOut || {};
+        rec.paidOut[String(body.key || '').slice(0, 80)] = body.paid ? now : null;
+      }
+      rec.updatedAt = now;
+      stamp(rec, now);
+      await save(path, rec);
       return json({ ok: true, quote: forRole(rec, u) });
     }
     if (body.action === 'status') {
@@ -69,7 +109,8 @@ async function handler(request) {
       rec.status = body.status;
       rec.updatedAt = now;
       rec.history = (rec.history || []).concat([{ at: now, by: u.user, status: body.status }]);
-      await put(path, JSON.stringify(rec), { access: 'private', addRandomSuffix: false, allowOverwrite: true, contentType: 'application/json' });
+      stamp(rec, now);
+      await save(path, rec);
       return json({ ok: true, quote: forRole(rec, u) });
     }
     return json({ error: 'Unknown action' }, 400);
