@@ -743,7 +743,7 @@ function render(r,S){
  var L=r.L,fx=r.fx,profit=r.profit,pct=r.pct,groups=r.groups,ST=r.ST,PAY=r.PAY,total=r.total;
  var coms=uniq(r.stops.map(function(st){return Math.round(st.L.resComm*100)+'%'}));
  var sh='',bar='';
- SL_DEF.forEach(function(x){var v=ST[x[0]];if(Math.abs(v)<1)return;var w=profit>0?v/profit*100:0;var sub=x[0]==='com'?(r.multi?'The lodges’ '+coms.join(' and ')+' on resident card rates':'The lodge’s '+coms[0]+' on resident card rates'):x[2];bar+='<i style="width:'+Math.max(0,w)+'%;background:'+x[3]+'" title="'+x[1]+'"></i>';
+ SL_DEF.forEach(function(x){var v=ST[x[0]];if(Math.abs(v)<1)return;var w=profit>0?v/profit*100:0;var cm=uniq(r.stops.filter(function(st){return st.L.resComm>0}).map(function(st){return Math.round(st.L.resComm*100)+'%'})),net=r.stops.some(function(st){return !(st.L.resComm>0)});var sub=x[0]==='com'?(cm.length?(r.multi?'The lodges’ '+cm.join(' and '):'The lodge’s '+cm[0])+' on resident card rates'+(net?', plus rack above contract rates':''):'Rack rate above your contract rate on resident rooms'):x[2];bar+='<i style="width:'+Math.max(0,w)+'%;background:'+x[3]+'" title="'+x[1]+'"></i>';
   sh+='<li><span class="sw2" style="background:'+x[3]+'"></span><div class="who"><b>'+x[1]+'</b><span>'+sub+'</span></div><div class="px"><b>'+kes(v)+'</b><span>'+Math.round(w)+'% of your revenue</span></div></li>'});
  $('revBar').innerHTML=bar;$('revList').innerHTML=sh||'<li class="muted">Add guests to see your revenue</li>';
  $('revTotal').textContent=kes(profit);
