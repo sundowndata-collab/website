@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sundown Safaris | Private Mara Weekends From Nairobi</title>
-<link rel="preload" as="image" href="/images/hero-sundown-sunset-1600.jpg" media="(min-width:701px)">
-<link rel="preload" as="image" href="/images/hero-sundown-sunset-m1200.jpg" media="(max-width:700px)">
+<link rel="preload" as="image" type="image/webp" href="/images/hero-sundown-sunset-1600.webp" media="(min-width:701px)">
+<link rel="preload" as="image" type="image/webp" href="/images/hero-sundown-sunset-m1200.webp" media="(max-width:700px)">
 <meta name="description" content="A private safari from Nairobi. Your own vehicle, your own pace, no shared convoy. Private vehicle, rated 4.9 on Google. Message us on WhatsApp to check weekend dates.">
 <link rel="canonical" href="https://www.sundownsafari.com/weekend-getaway">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -81,6 +81,7 @@ header{background:var(--safari-bg);padding:18px 0;border-bottom:1px solid rgba(1
 
 .hero{position:relative;min-height:64vh;display:flex;align-items:flex-end;background:linear-gradient(180deg, rgba(8,38,20,0.35) 0%, rgba(8,38,20,0.55) 55%, rgba(8,38,20,0.92) 100%), url('/images/hero-sundown-sunset-1600.jpg') center/cover no-repeat;}
 @media (max-width:700px){.hero{background-image:linear-gradient(180deg, rgba(8,38,20,0.55) 0%, rgba(8,38,20,0.72) 45%, rgba(8,38,20,0.95) 100%),url('/images/hero-sundown-sunset-m1200.jpg');background-position:center top}}
+@supports (background-image:image-set(url('x.webp') type('image/webp'))){.hero{background-image:linear-gradient(180deg, rgba(8,38,20,0.35) 0%, rgba(8,38,20,0.55) 55%, rgba(8,38,20,0.92) 100%),image-set(url('/images/hero-sundown-sunset-1600.webp') type('image/webp'),url('/images/hero-sundown-sunset-1600.jpg') type('image/jpeg'))}@media (max-width:700px){.hero{background-image:linear-gradient(180deg, rgba(8,38,20,0.55) 0%, rgba(8,38,20,0.72) 45%, rgba(8,38,20,0.95) 100%),image-set(url('/images/hero-sundown-sunset-m1200.webp') type('image/webp'),url('/images/hero-sundown-sunset-m1200.jpg') type('image/jpeg'))}}}
 .hero-festive{margin-top:14px;display:inline-block;background:rgba(201,138,39,0.18);border:1px solid rgba(201,138,39,0.55);color:#fff;font-size:14.5px;font-weight:600;padding:9px 14px;border-radius:8px;max-width:560px;line-height:1.45}
 .hero-festive b{color:#E9B865}
 /* Weekend picker, the hero centerpiece */
@@ -338,17 +339,17 @@ footer{text-align:center;padding:18px 20px;font-size:13px;color:#8a8a8a;}
     <p class="lead">A typical Sundown weekend. We shape the details around your dates and what you want to see.</p>
     <ol class="wk-days">
       <li>
-        <figure><img src="/images/field-land-cruiser-600.jpg" srcset="/images/field-land-cruiser-600.jpg 600w, /images/field-land-cruiser-1000.jpg 1000w" sizes="(max-width:760px) calc(100vw - 40px), 340px" alt="A Sundown Land Cruiser ready for the drive to the Mara" loading="lazy"></figure>
+        <figure><picture style="display:contents"><source type="image/webp" srcset="/images/field-land-cruiser-600.webp 600w, /images/field-land-cruiser-1000.webp 1000w" sizes="(max-width:760px) calc(100vw - 40px), 340px"><img src="/images/field-land-cruiser-600.jpg" srcset="/images/field-land-cruiser-600.jpg 600w, /images/field-land-cruiser-1000.jpg 1000w" sizes="(max-width:760px) calc(100vw - 40px), 340px" alt="A Sundown Land Cruiser ready for the drive to the Mara" loading="lazy"></picture></figure>
         <div class="wk-day-t"><span class="wk-day-n">Friday</span><h3>Out of Nairobi</h3>
         <p>Collected from your door early and down the Rift Valley escarpment. Into the Mara in time for an afternoon game drive and your first sundowner.</p></div>
       </li>
       <li>
-        <figure><img src="/images/field-lioness-walk-600.jpg" srcset="/images/field-lioness-walk-600.jpg 600w, /images/field-lioness-walk-1000.jpg 1000w" sizes="(max-width:760px) calc(100vw - 40px), 340px" alt="A lioness walking past in the Masai Mara" loading="lazy"></figure>
+        <figure><picture style="display:contents"><source type="image/webp" srcset="/images/field-lioness-walk-600.webp 600w, /images/field-lioness-walk-1000.webp 1000w" sizes="(max-width:760px) calc(100vw - 40px), 340px"><img src="/images/field-lioness-walk-600.jpg" srcset="/images/field-lioness-walk-600.jpg 600w, /images/field-lioness-walk-1000.jpg 1000w" sizes="(max-width:760px) calc(100vw - 40px), 340px" alt="A lioness walking past in the Masai Mara" loading="lazy"></picture></figure>
         <div class="wk-day-t"><span class="wk-day-n">Saturday</span><h3>A full day with the cats</h3>
         <p>Out at first light, when the lions are moving. A full day on conservancy tracks with your own guide, and nobody deciding when you leave a sighting.</p></div>
       </li>
       <li>
-        <figure><img src="/images/field-mara-picnic-600.jpg" srcset="/images/field-mara-picnic-600.jpg 600w, /images/field-mara-picnic-1000.jpg 1000w" sizes="(max-width:760px) calc(100vw - 40px), 340px" alt="A bush picnic set up in the Masai Mara" loading="lazy"></figure>
+        <figure><picture style="display:contents"><source type="image/webp" srcset="/images/field-mara-picnic-600.webp 600w, /images/field-mara-picnic-1000.webp 1000w" sizes="(max-width:760px) calc(100vw - 40px), 340px"><img src="/images/field-mara-picnic-600.jpg" srcset="/images/field-mara-picnic-600.jpg 600w, /images/field-mara-picnic-1000.jpg 1000w" sizes="(max-width:760px) calc(100vw - 40px), 340px" alt="A bush picnic set up in the Masai Mara" loading="lazy"></picture></figure>
         <div class="wk-day-t"><span class="wk-day-n">Sunday</span><h3>One last drive, then home</h3>
         <p>A final dawn drive and a slow breakfast, then the road back. Home in Nairobi by Sunday evening, before the Monday feeling sets in.</p></div>
       </li>
@@ -382,7 +383,7 @@ footer{text-align:center;padding:18px 20px;font-size:13px;color:#8a8a8a;}
       </div>
     </div>
     <div class="img-break">
-      <img src="/images/field-lions-road-1000.jpg" alt="Lions on a track in the Masai Mara, photographed from a Sundown vehicle" loading="lazy">
+      <picture style="display:contents"><source type="image/webp" srcset="/images/field-lions-road-1000.webp"><img src="/images/field-lions-road-1000.jpg" alt="Lions on a track in the Masai Mara, photographed from a Sundown vehicle" loading="lazy"></picture>
     </div>
   </div>
 </section>
@@ -449,7 +450,7 @@ footer{text-align:center;padding:18px 20px;font-size:13px;color:#8a8a8a;}
 
     <div class="review-grid">
       <div class="review-card">
-        <figure class="rc-photo"><img src="/images/field-mara-picnic-600.jpg" srcset="/images/field-mara-picnic-600.jpg 600w, /images/field-mara-picnic-1000.jpg 1000w" sizes="(max-width:760px) calc(100vw - 72px), 520px" alt="A bush picnic set up in the Masai Mara" loading="lazy"><figcaption>From our trips</figcaption></figure>
+        <figure class="rc-photo"><picture style="display:contents"><source type="image/webp" srcset="/images/field-mara-picnic-600.webp 600w, /images/field-mara-picnic-1000.webp 1000w" sizes="(max-width:760px) calc(100vw - 72px), 520px"><img src="/images/field-mara-picnic-600.jpg" srcset="/images/field-mara-picnic-600.jpg 600w, /images/field-mara-picnic-1000.jpg 1000w" sizes="(max-width:760px) calc(100vw - 72px), 520px" alt="A bush picnic set up in the Masai Mara" loading="lazy"></picture><figcaption>From our trips</figcaption></figure>
         <div class="rc-head">
           <div class="rc-avatar" style="background:#1A73E8;">I</div>
           <div>
@@ -461,7 +462,7 @@ footer{text-align:center;padding:18px 20px;font-size:13px;color:#8a8a8a;}
         <p>I had a great experience with this tour company from start to finish. Everything was well organized, and the team made the trip smooth and enjoyable. They were professional, friendly, and always willing to help whenever we had questions.</p>
       </div>
       <div class="review-card">
-        <figure class="rc-photo"><img src="/images/field-zebra-herd-600.jpg" srcset="/images/field-zebra-herd-600.jpg 600w, /images/field-zebra-herd-1000.jpg 1000w" sizes="(max-width:760px) calc(100vw - 72px), 520px" alt="A herd of zebra seen on a Sundown safari" loading="lazy"><figcaption>From our trips</figcaption></figure>
+        <figure class="rc-photo"><picture style="display:contents"><source type="image/webp" srcset="/images/field-zebra-herd-600.webp 600w, /images/field-zebra-herd-1000.webp 1000w" sizes="(max-width:760px) calc(100vw - 72px), 520px"><img src="/images/field-zebra-herd-600.jpg" srcset="/images/field-zebra-herd-600.jpg 600w, /images/field-zebra-herd-1000.jpg 1000w" sizes="(max-width:760px) calc(100vw - 72px), 520px" alt="A herd of zebra seen on a Sundown safari" loading="lazy"></picture><figcaption>From our trips</figcaption></figure>
         <div class="rc-head">
           <div class="rc-avatar" style="background:#D93025;">K</div>
           <div>
@@ -473,7 +474,7 @@ footer{text-align:center;padding:18px 20px;font-size:13px;color:#8a8a8a;}
         <p>Best moments of my life, made a lot of good memories. Definitely booking with you next time.</p>
       </div>
       <div class="review-card">
-        <figure class="rc-photo"><img src="/images/review-rhino-600.jpg" srcset="/images/review-rhino-600.jpg 600w, /images/review-rhino-860.jpg 860w" sizes="(max-width:760px) calc(100vw - 72px), 520px" alt="A rhino on the road, seen on a Sundown safari" loading="lazy"><figcaption>From our trips</figcaption></figure>
+        <figure class="rc-photo"><picture style="display:contents"><source type="image/webp" srcset="/images/review-rhino-600.webp 600w, /images/review-rhino-860.webp 860w" sizes="(max-width:760px) calc(100vw - 72px), 520px"><img src="/images/review-rhino-600.jpg" srcset="/images/review-rhino-600.jpg 600w, /images/review-rhino-860.jpg 860w" sizes="(max-width:760px) calc(100vw - 72px), 520px" alt="A rhino on the road, seen on a Sundown safari" loading="lazy"></picture><figcaption>From our trips</figcaption></figure>
         <div class="rc-head">
           <div class="rc-avatar" style="background:#188038;">P</div>
           <div>
@@ -489,7 +490,7 @@ footer{text-align:center;padding:18px 20px;font-size:13px;color:#8a8a8a;}
         </div>
       </div>
       <div class="review-card">
-        <figure class="rc-photo"><img src="/images/review-lioness-600.jpg" srcset="/images/review-lioness-600.jpg 600w, /images/review-lioness-720.jpg 720w" sizes="(max-width:760px) calc(100vw - 72px), 520px" alt="Two lionesses walking along a track, seen on a Sundown safari" walking past in the Masai Mara" loading="lazy"><figcaption>From our trips</figcaption></figure>
+        <figure class="rc-photo"><picture style="display:contents"><source type="image/webp" srcset="/images/review-lioness-600.webp 600w, /images/review-lioness-720.webp 720w" sizes="(max-width:760px) calc(100vw - 72px), 520px"><img src="/images/review-lioness-600.jpg" srcset="/images/review-lioness-600.jpg 600w, /images/review-lioness-720.jpg 720w" sizes="(max-width:760px) calc(100vw - 72px), 520px" alt="Two lionesses walking along a track, seen on a Sundown safari" walking past in the Masai Mara" loading="lazy"></picture><figcaption>From our trips</figcaption></figure>
         <div class="rc-head">
           <div class="rc-avatar" style="background:#8B2E00;">D</div>
           <div>
@@ -530,9 +531,9 @@ footer{text-align:center;padding:18px 20px;font-size:13px;color:#8a8a8a;}
 <section style="padding-top:0;">
   <div class="wrap">
     <div class="img-strip">
-      <div class="cell"><img src="/images/field-hippos-600.jpg" srcset="/images/field-hippos-600.jpg 600w, /images/field-hippos-1000.jpg 1000w" sizes="(max-width: 700px) calc(100vw - 32px), 400px" alt="A pod of hippos in the river, seen on a Sundown safari" loading="lazy"></div>
-      <div class="cell"><img src="/images/guest-zebra-wide-600.jpg" srcset="/images/guest-zebra-wide-600.jpg 600w, /images/guest-zebra-wide-1200.jpg 1200w" sizes="(max-width: 700px) calc(100vw - 40px), 360px" alt="A Sundown Safaris guest feeding a zebra from a woven basket" loading="lazy"></div>
-      <div class="cell"><img src="/images/sunset-landcruiser-wide-600.jpg" srcset="/images/sunset-landcruiser-wide-600.jpg 600w, /images/sunset-landcruiser-wide-1200.jpg 1200w" sizes="(max-width: 700px) calc(100vw - 40px), 360px" alt="Sundown Safaris Land Cruiser silhouetted against the sunset" loading="lazy"></div>
+      <div class="cell"><picture style="display:contents"><source type="image/webp" srcset="/images/field-hippos-600.webp 600w, /images/field-hippos-1000.webp 1000w" sizes="(max-width: 700px) calc(100vw - 32px), 400px"><img src="/images/field-hippos-600.jpg" srcset="/images/field-hippos-600.jpg 600w, /images/field-hippos-1000.jpg 1000w" sizes="(max-width: 700px) calc(100vw - 32px), 400px" alt="A pod of hippos in the river, seen on a Sundown safari" loading="lazy"></picture></div>
+      <div class="cell"><picture style="display:contents"><source type="image/webp" srcset="/images/guest-zebra-wide-600.webp 600w, /images/guest-zebra-wide-1200.webp 1200w" sizes="(max-width: 700px) calc(100vw - 40px), 360px"><img src="/images/guest-zebra-wide-600.jpg" srcset="/images/guest-zebra-wide-600.jpg 600w, /images/guest-zebra-wide-1200.jpg 1200w" sizes="(max-width: 700px) calc(100vw - 40px), 360px" alt="A Sundown Safaris guest feeding a zebra from a woven basket" loading="lazy"></picture></div>
+      <div class="cell"><picture style="display:contents"><source type="image/webp" srcset="/images/sunset-landcruiser-wide-600.webp 600w, /images/sunset-landcruiser-wide-1200.webp 1200w" sizes="(max-width: 700px) calc(100vw - 40px), 360px"><img src="/images/sunset-landcruiser-wide-600.jpg" srcset="/images/sunset-landcruiser-wide-600.jpg 600w, /images/sunset-landcruiser-wide-1200.jpg 1200w" sizes="(max-width: 700px) calc(100vw - 40px), 360px" alt="Sundown Safaris Land Cruiser silhouetted against the sunset" loading="lazy"></picture></div>
     </div>
   </div>
 </section>

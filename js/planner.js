@@ -106,7 +106,7 @@
     var hidTrip = form.elements.plan_trip, hidEst = form.elements.plan_estimate;
     if (!t) {
       card.innerHTML = '<p class="sd-pl-card-kicker">Your plan, free</p>' +
-        '<figure class="sd-pl-photo"><img src="/images/strip-lions-vehicle-600.jpg" alt="Lions a few metres from a Sundown Land Cruiser" width="600" height="450"><figcaption>Builds as you answer</figcaption></figure>' +
+        '<figure class="sd-pl-photo"><picture style="display:contents"><source type="image/webp" srcset="/images/strip-lions-vehicle-600.webp"><img src="/images/strip-lions-vehicle-600.jpg" alt="Lions a few metres from a Sundown Land Cruiser" width="600" height="450"></picture><figcaption>Builds as you answer</figcaption></figure>' +
         '<p class="sd-pl-empty-h" style="font-family:\'Playfair Display\',Georgia,serif;font-size:21px;font-weight:800;color:#fff;margin:0 0 4px">Here is what you get</p>' +
         '<ul class="sd-pl-promise">' +
         '<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>A day by day draft itinerary matched to your dates</span></li>' +

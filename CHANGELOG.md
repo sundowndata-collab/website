@@ -4,6 +4,14 @@ A plain record of what changed on sundownsafari.com, why it changed, and how to 
 
 # 12 November 2026
 
+## Photos now load in WebP, about a third lighter
+
+**Why.** Slow loading was the second problem in the Hong Kong recording. Photos are the heaviest thing on every page, and WebP carries the same picture in fewer bytes.
+
+**What changed.** 154 site photos now have a WebP copy next to the original, saving about 32 percent on average. Every photo tag on 64 pages, the quote desk login and the trip planner now offers the WebP first and keeps the JPEG as a fallback for older browsers. The homepage hero and the weekend page hero, including their preloads, now fetch WebP, and Unsplash images on the blog ask Unsplash for the best format. Social share images are unchanged because some apps still expect JPEG. A handful of photos where WebP saved under 5 percent stay as JPEG.
+
+**How to check.** Open the homepage in Chrome with DevTools, Network tab, filter by Img. Photos should show as webp.
+
 ## Local prices now show which dollar, and trip pages load faster
 
 **Why.** A Clarity recording showed a visitor in Hong Kong seeing The Voyager as "From $39,600". The figure was correct in Hong Kong dollars, but the plain $ sign made it read as US dollars, eight times the real price. The same session took 10 seconds to load, with the largest content showing at 6.7 seconds, and the visitor left after 11 seconds.
