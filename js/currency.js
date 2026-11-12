@@ -40,7 +40,7 @@
 
   function format(amount, code) {
     try {
-      return new Intl.NumberFormat('en', { style: 'currency', currency: code, currencyDisplay: 'narrowSymbol', maximumFractionDigits: 0 }).format(amount);
+      return new Intl.NumberFormat('en', { style: 'currency', currency: code, currencyDisplay: 'symbol', maximumFractionDigits: 0 }).format(amount);
     } catch (e) {
       return code + ' ' + Math.round(amount).toLocaleString('en');
     }

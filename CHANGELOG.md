@@ -2,6 +2,16 @@
 
 A plain record of what changed on sundownsafari.com, why it changed, and how to check it. Newest work first.
 
+# 12 November 2026
+
+## Local prices now show which dollar, and trip pages load faster
+
+**Why.** A Clarity recording showed a visitor in Hong Kong seeing The Voyager as "From $39,600". The figure was correct in Hong Kong dollars, but the plain $ sign made it read as US dollars, eight times the real price. The same session took 10 seconds to load, with the largest content showing at 6.7 seconds, and the visitor left after 11 seconds.
+
+**What changed.** Converted prices now use each currency's full symbol, so visitors see HK$, CA$, A$ and NZ$ instead of a bare $. US dollars, pounds, euros and shillings look the same as before. On every page the icon library and Google Fonts now load without holding up the first paint, and the WhatsApp tracking script waits until the page has drawn. Hero photos were recompressed, saving about 400 KB across the set, and trip pages gained a 1120 pixel hero size so laptops no longer download the 1400 pixel photo.
+
+**How to check.** In Clarity, filter recordings to visitors outside Kenya and the US and confirm the prices carry a currency code. Run PageSpeed on a trip page and compare the largest contentful paint with the 6.7 seconds seen before.
+
 # 10 November 2026
 
 ## A new Safaris menu

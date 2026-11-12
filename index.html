@@ -89,7 +89,7 @@
     <!-- Font Awesome: same preload→stylesheet swap pattern — icons appear after first
          paint without holding up the layout engine -->
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript></noscript>
 
     <!-- Inline styles: render immediately, no network round-trip -->
     <style>
@@ -2306,7 +2306,7 @@ window.sdfaqToggle = sdfaqToggle;
     if (stored() === null && window.sundownConsent && window.sundownConsent.needs) { show(); }
 })();
 </script>
-<script src="/js/whatsapp-tracking.js"></script>
+<script src="/js/whatsapp-tracking.js" defer></script>
 <script src="/js/currency.js" defer></script>
 <script src="/js/planner.js" defer></script>
 <script>
