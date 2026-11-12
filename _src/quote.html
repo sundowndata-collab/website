@@ -502,6 +502,7 @@ if(typeof SD_ROLE==='undefined'){var SD_USER='local',SD_ROLE='owner',SD_NAME='Ba
 // Non resident: USD per person per night, full board, net of commission, inclusive of all taxes.
 //   d = per person sharing a double, s = single room per person.
 // Resident: KES per ROOM per night, full board, card rate. Commission is taken off to get your cost.
+//   Rows with six values also give the contract rates: [start, end, card single, card double, net single, net double].
 // Source: Simba Lodges contract agreements 2026 and 2027, resident rates July to December 2026 and festive 2026.
 var LODGES = [
  {id:'mara-simba', name:'Mara Simba Lodge', park:'mara', driverRoom:1500, resComm:0.15, xmasNr:35, payDays:45,
@@ -594,7 +595,14 @@ var LODGES = [
   note:'Ashnil 2027 contract, net USD per person, full board, non residents only. Resident rates not given, ask Ashnil. Driver room rate not given, KES 1,500 assumed. Full payment before final confirmation, release 30 days in high, 15 low. Standard lodge rooms, the tent upgrade moves guests to deluxe tents. Club rooms are USD 50 more per person, add as an extra.',
   nr:[['2026-12-21','2027-03-31',203,135],['2027-04-01','2027-05-31',89,89],['2027-06-01','2027-12-20',203,135]],
   res:[], tentNr:30, tentRes:0,
-  x:[['Bush BBQ lunch or dinner',55,'pp'],['Mudanda Rock visit',50,'pp'],['Lugard Falls visit',40,'pp'],['Voi War Memorial Cemetery',40,'pp'],['Sundowner, 45 minute open bar',60,'pp'],['All inclusive drinks supplement',40,'pp'],['Voi SGR station transfer',50,'pp']]}
+  x:[['Bush BBQ lunch or dinner',55,'pp'],['Mudanda Rock visit',50,'pp'],['Lugard Falls visit',40,'pp'],['Voi War Memorial Cemetery',40,'pp'],['Sundowner, 45 minute open bar',60,'pp'],['All inclusive drinks supplement',40,'pp'],['Voi SGR station transfer',50,'pp']]},
+ {id:'olive-bush', name:'Olive Bush Camp', park:'mara', driverRoom:1500, resComm:0, xmasNr:0, payDays:30,
+  pitch:'inside the Masai Mara on the banks of the Mara River, with 15 luxury tents facing the water and the migration crossings close by',
+  note:'Olive Bush contract rates. Visitors net USD per person, 2026 and 2027, community fee included. Residents 2026 only, contract rates against rack. Game drives and park fees not included. 50% deposit, balance one month before arrival. Cancellation: 30% if more than 3 months out, inside 1 month 100% in peak and 50% otherwise. Tent upgrade is the deluxe tent, about USD 60 more, KES 6,000 for residents. Driver room rate not given, KES 1,500 assumed.',
+  nr:[['2026-11-01','2026-12-31',285,275],['2027-01-01','2027-02-28',310,290],['2027-03-01','2027-05-31',290,220],['2027-06-01','2027-06-30',310,290],['2027-07-01','2027-09-30',475,385],['2027-10-01','2027-12-31',310,290]],
+  res:[['2026-01-01','2026-02-28',30000,52000,24500,46000],['2026-03-01','2026-05-31',25500,46000,21000,37000],['2026-06-01','2026-06-30',30000,52000,24500,46000],['2026-07-01','2026-09-30',40500,72000,33000,60000],['2026-10-01','2026-12-31',30000,52000,24500,46000]],
+  tentNr:60, tentRes:6000,
+  x:[]}
 ];
 var XMAS_NR = 35; // USD per adult per night, 24 Dec to 1 Jan, non residents
 // Park fees per adult per day. Mara: masaimara.travel, Jan to Jun and Jul to Dec rates. Samburu: samburureserve.com, 2026.
@@ -665,7 +673,7 @@ function compute(S){
     if(g.c==='nr'){var r=find(L.nr,date);if(!r){missing[L.name+'|visitor rate for '+shortDate(date)]=1;continue}
      var pp=(g.room==='single'?r[2]:r[3]);if(pp==null){missing[L.name+'|visitor '+(g.room==='single'?'single':'double')+' rate for '+shortDate(date)]=1;continue}if(isXmas(date))pp+=(L.xmasNr||0);if(st.tent&&L.tentNr)pp+=L.tentNr;net+=pp*fx;cardT+=pp*fx;}
     else{var rr=find(L.res,date);if(!rr){missing[L.name+'|resident rate for '+shortDate(date)]=1;continue}
-     var card=(g.room==='single'?rr[2]:rr[3]/2),nt=card*(1-L.resComm);if(st.tent&&L.tentRes){nt+=L.tentRes;card+=L.tentRes}net+=nt;cardT+=card;}
+     var card=(g.room==='single'?rr[2]:rr[3]/2),nt=rr.length>=6?(g.room==='single'?rr[4]:rr[5]/2):card*(1-L.resComm);if(st.tent&&L.tentRes){nt+=L.tentRes;card+=L.tentRes}net+=nt;cardT+=card;}
    }
    g.byStop.push({net:net,card:cardT});g.lodgeNet+=net;g.lodgeCard+=cardT;});
  });
@@ -865,7 +873,7 @@ $('clearPins').onclick=function(){PINS=[];savePins();renderPins();$('optMsg').te
 LODGES.forEach(function(l){var o=document.createElement('option');o.value=l.id;o.textContent=l.name;$('lodge').appendChild(o);
  var b=document.createElement('button');b.type='button';b.className='lodge';b.dataset.id=l.id;b.innerHTML='<small>'+AREA[l.park]+'</small><b>'+l.name+'</b><span>Driver '+kes(l.driverRoom)+' a night'+(l.tentNr?', tents available':'')+'</span>';
  b.onclick=function(){$('lodge').value=l.id;calc()};$('lodges').appendChild(b)});
-(function(){var h='';LODGES.forEach(function(l){h+='<p><b>'+l.name+'</b><br><span class="muted">Visitors '+(l.nr.length?shortDate(l.nr[0][0])+' '+l.nr[0][0].slice(0,4)+' to '+shortDate(l.nr[l.nr.length-1][1])+' '+l.nr[l.nr.length-1][1].slice(0,4):'not loaded')+'. Residents '+(l.res.length?shortDate(l.res[0][0])+' '+l.res[0][0].slice(0,4)+' to '+shortDate(l.res[l.res.length-1][1])+' '+l.res[l.res.length-1][1].slice(0,4)+'. Commission '+Math.round(l.resComm*100)+'% on resident adults.':'not loaded, visitor rates only.')+'</span></p>'});h+='<p class="hint">Visitor rates are net USD per person, inclusive of taxes, plus a USD 35 Christmas supplement per visitor per night from 24 December to 1 January. Resident rates are card rates per room. Sources: Simba Lodges contracts 2026 and 2027, Muthu Hotels rates, Ol Tukai Lodge contract 2027, Ashnil Hotels contract 2027.</p>';$('ratelist').innerHTML=h})();
+(function(){var h='';LODGES.forEach(function(l){h+='<p><b>'+l.name+'</b><br><span class="muted">Visitors '+(l.nr.length?shortDate(l.nr[0][0])+' '+l.nr[0][0].slice(0,4)+' to '+shortDate(l.nr[l.nr.length-1][1])+' '+l.nr[l.nr.length-1][1].slice(0,4):'not loaded')+'. Residents '+(l.res.length?shortDate(l.res[0][0])+' '+l.res[0][0].slice(0,4)+' to '+shortDate(l.res[l.res.length-1][1])+' '+l.res[l.res.length-1][1].slice(0,4)+'. Commission '+Math.round(l.resComm*100)+'% on resident adults.':'not loaded, visitor rates only.')+'</span></p>'});h+='<p class="hint">Visitor rates are net USD per person, inclusive of taxes, plus a USD 35 Christmas supplement per visitor per night from 24 December to 1 January. Resident rates are card rates per room. Sources: Simba Lodges contracts 2026 and 2027, Muthu Hotels rates, Ol Tukai Lodge contract 2027, Ashnil Hotels contract 2027, Olive Bush Camp rates 2026 and 2027.</p>';$('ratelist').innerHTML=h})();
 // steppers
 document.querySelectorAll('[data-step]').forEach(function(b){b.onclick=function(){var p=b.dataset.step.split(':'),el=$(p[0]),mn=parseFloat(el.min||'0');el.value=Math.max(isNaN(mn)?0:mn,(parseFloat(el.value)||0)+parseFloat(p[1]));el.dispatchEvent(new Event('input',{bubbles:true}))}});
 document.querySelectorAll('#mode button').forEach(function(b){b.onclick=function(){MODE=b.dataset.v;document.querySelectorAll('#mode button').forEach(function(x){x.classList.toggle('on',x===b)});calc()}});
@@ -907,6 +915,7 @@ MEDIA['surana-mara']=stockM(['strip-sunset-1000','strip-lion-1000','field-hippos
 MEDIA['ashnil-samburu']=stockM(['field-land-cruiser-1000','strip-zebra-herd-1000','field-guide-guests-1000','guest-zebra-wide-1200','strip-sunset-1000'],'Ashnil Samburu Camp sits in Buffalo Springs, right beside the Samburu Reserve, with deluxe tents along the Ewaso Nyiro River. This is the north of Kenya, home of Grevy\u2019s zebra, reticulated giraffe and gerenuk that you will not see in the Mara, and elephants come to the river every afternoon.',['Deluxe tents on the Ewaso Nyiro River','Home of the rare northern species','Bush breakfasts and sundowners','Full board, with your meals taken care of']);
 MEDIA['surana-buffalo']=stockM(['strip-sunset-1000','guest-zebra-wide-1200','field-land-cruiser-1000','strip-zebra-herd-1000','field-guide-guests-1000'],'Surana Buffalo Springs brings luxury suites to the wild north, next to the Samburu Reserve. Evenings start with cocktails on the Ewaso Sky Deck and end with dinner under the stars, and the river below draws elephants and the rare northern species.',['Luxury suites in Buffalo Springs','Ewaso Sky Deck for sunset and stargazing','Dinner under the stars','Full board, with your meals taken care of']);
 MEDIA['ashnil-aruba']=stockM(['field-land-cruiser-1000','strip-zebra-herd-1000','guest-zebra-wide-1200','field-guide-guests-1000','strip-sunset-1000'],'Ashnil Aruba Lodge sits in Tsavo East beside the Aruba Dam, one of the park\u2019s busiest waterholes. Tsavo\u2019s famous red elephants come down to drink in front of the lodge, and Mudanda Rock and Lugard Falls are close by. Choose a standard lodge room or a deluxe tent.',['In Tsavo East beside the Aruba Dam','Red elephants at the waterhole','Close to Mudanda Rock and Lugard Falls','Full board, with your meals taken care of']);
+MEDIA['olive-bush']=stockM(['strip-lion-1000','field-hippos-1000','strip-lions-vehicle-1000','strip-mara-picnic-1000','strip-sunset-1000'],'Olive Bush Camp sits inside the Masai Mara on the banks of the Mara River, a short drive from the famous migration crossings. Its 15 luxury tents all face the river, furnished in mahogany, and evenings end with drinks around the bonfire. The camp is named after Olive, the legendary Mara leopard, mother to Bahati and Bella.',['Inside the Masai Mara on the Mara River','Every tent faces the river','Close to the migration crossings','Full board with soft drinks and packed lunches']);
 var DTYPE='proposal';
 function docState(){
  var ok=$('okCheck').checked, name=$('cName').value.trim(), r=LAST, bad=r&&r.alerts.some(function(a){return a[0]==='bad'});
@@ -1363,7 +1372,7 @@ var SEED=[
  {name:'Oloshaiki Camp',type:'Lodge or camp',area:'Masai Mara, Talek River',status:'Rates requested',requestedAt:'2026-11-10'},
  {name:'Serena Hotels',type:'Lodge or camp',area:'Mara Serena, Amboseli Serena',status:'Rates requested',requestedAt:'2026-11-10'},
  {name:'Sopa Lodges',type:'Lodge or camp',area:'Mara, Amboseli, Samburu, Nakuru and Naivasha',status:'Rates requested',requestedAt:'2026-11-10',notes:'Group and resident partner across five parks'},
- {name:'Olive Bush Camp',type:'Lodge or camp',area:'Masai Mara',status:'Rates requested',requestedAt:'2026-11-10',notes:'Confirm the camp is open'},
+ {name:'Olive Bush Camp',type:'Lodge or camp',area:'Masai Mara, on the Mara River',email:'reservations@olivebushcamp.com',phone:'+254 115 860 934',status:'Rates received',requestedAt:'2026-11-10',validTo:'2027-12-31',commission:'Net contract rates, visitors and residents',terms:'50% deposit to confirm, balance one month before arrival. Cancellation 30% if more than 3 months out, inside 1 month 100% in peak and 50% otherwise',inDesk:true,notes:'Ask for 2027 resident rates, the driver room rate and photos'},
  {name:'Mara Trails Camp',type:'Lodge or camp',area:'Masai Mara',status:'To contact',notes:'Email bounced on 10 November. Find the right reservations address and resend'},
  {name:'Madzo Safaris',type:'Ground partner',area:'Vehicles and guides',status:'Agreement needed',notes:'Write a one page partner agreement: rates, who is liable, vehicle standards, guides presenting as Sundown, peak season availability'}];
 function apiSave(kind,item){return apiMis('POST',{action:'save',kind:kind,item:item}).then(function(j){var a=kind==='supplier'?SUPP:SPEND,i=a.map(function(x){return x.id}).indexOf(j.item.id);if(i>=0)a[i]=j.item;else a.push(j.item);return j.item})}
