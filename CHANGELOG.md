@@ -2,6 +2,16 @@
 
 A plain record of what changed on sundownsafari.com, why it changed, and how to check it. Newest work first.
 
+# 23 November 2026
+
+## New field photos on every trip page
+
+**Why.** The "On safari with Sundown" strips reused the same few photos across ten pages. Hippos showed up on six trips and giraffes on four, so the pages felt alike. Baraka sent fresh photos from recent Mara trips and of a vehicle guests ride in.
+
+**What changed.** Four new photos, cropped to the strip's 4:3 shape with the phone watermark removed, in WebP and JPEG at 600 and 1000 pixels. Each trip page swaps one repeated photo for a new one, so the strip stays three across. A cheetah on The Photographer, The Sundowner and The Dreamcatcher. A lioness close up on The Constellation and The Long Lens. A zebra with a jackal on The Trailblazer and The Voyager. The vehicle cabin on The Explorer, The Horizon Chaser and Ultimate Kenya. Photos from Nairobi National Park, photos with other operators' vehicles, and photos that are not Sundown's own were left out.
+
+**How to check.** After the merge, open any trip page and scroll to On safari with Sundown. The strip images load from the live site address, so on a preview link they only appear once this is in production.
+
 # 12 November 2026
 
 ## Photos now load in WebP, about a third lighter
