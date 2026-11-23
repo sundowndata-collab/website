@@ -54,6 +54,19 @@
   TRIPS.forEach(function (t) { if (t.id === params.get('trip')) picked = t; });
 
   function val(name) { var el = form.elements[name]; return el ? el.value : ''; }
+  // Which Sundown page sent the visitor to this form, e.g. /trip/7-day-c-luxury-lite-the-constellation.html.
+  // Lets GA4 credit trip, blog and cost pages for leads that finish on the homepage.
+  function sdOrigin() {
+    try {
+      var r = document.referrer ? new URL(document.referrer) : null;
+      if (r && /(^|\.)sundownsafari\.com$/.test(r.hostname) && r.pathname !== location.pathname) return r.pathname;
+    } catch (e) {}
+    return '(entry)';
+  }
+  window.sdOrigin = sdOrigin;
+  var originField = form.elements.origin_page;
+  if (originField) originField.value = sdOrigin();
+
   function track(name, data) {
     try { if (typeof gtag !== 'undefined') gtag('event', name, data || {}); } catch (e) {}
     try { if (typeof clarity === 'function') clarity('event', name); } catch (e) {}
@@ -367,7 +380,7 @@
   }, true);
 
   var started = false;
-  function start() { if (!started) { started = true; track('form_start', { step: 1, step_name: STEP_TITLES[0] }); } }
+  function start() { if (!started) { started = true; track('enquiry_start', { step: 1, step_name: STEP_TITLES[0], trip: form.elements.plan_trip.value || 'none', origin_page: sdOrigin() }); } }
   form.addEventListener('focusin', start);
   form.addEventListener('change', function () { render(); updateProgress(); });
   form.addEventListener('input', function (e) { if (e.target === dp) render(); updateProgress(); });

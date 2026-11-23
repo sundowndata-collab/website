@@ -1695,6 +1695,7 @@ if(typeof gtag!=='undefined')gtag('event','field_gallery_more');});})();
                     <!-- Filled by the planner so the enquiry arrives with the trip and guide price -->
                     <input type="hidden" name="plan_trip" value="">
                     <input type="hidden" name="plan_estimate" value="">
+                    <input type="hidden" name="origin_page" value="">
 
                     <div class="sd-pl-mini" hidden></div>
 
@@ -1896,7 +1897,7 @@ if(typeof gtag!=='undefined')gtag('event','field_gallery_more');});})();
                         var sizeMap = { '1': 1, '2': 2, '3': 3, '4': 4, '5+': 5 };
                         var leadValue = (budgetMap[budgetRange] || 3000) * (sizeMap[groupSize] || 1);
                         if (typeof gtag !== 'undefined') {
-                            gtag('event', 'generate_lead', { event_category: 'enquiry', event_label: 'safari_enquiry_form', group_size: groupSize, budget_range: budgetRange, safari_priority: safariPriority, currency: 'USD', value: leadValue });
+                            gtag('event', 'generate_lead', { event_category: 'enquiry', event_label: 'safari_enquiry_form', trip: (form.elements.plan_trip && form.elements.plan_trip.value) || 'none', origin_page: (typeof sdOrigin === 'function' ? sdOrigin() : '(entry)'), group_size: groupSize, budget_range: budgetRange, safari_priority: safariPriority, currency: 'USD', value: leadValue });
                         }
                         if (typeof clarity === 'function') { clarity('event', 'generate_lead'); }
                         if (typeof fbq !== 'undefined') { fbq('track', 'Lead', { value: leadValue, currency: 'USD' }); }
