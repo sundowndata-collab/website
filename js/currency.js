@@ -136,7 +136,7 @@
     var code = (chosen && fx.rates[chosen]) ? chosen : (fx.rates[fx.currency] ? fx.currency : 'USD');
     addPickers(fx, code);
     render(fx, code);
-    if (code !== 'USD' && typeof gtag !== 'undefined') gtag('event', 'currency_shown', { currency: code, country: fx.country || '' });
+    if (code !== 'USD' && typeof gtag !== 'undefined') { var seen = false; try { seen = sessionStorage.getItem('sd_cur_shown') === code; sessionStorage.setItem('sd_cur_shown', code); } catch (e) {} if (!seen) gtag('event', 'currency_shown', { currency: code, country: fx.country || '' }); }
   }
 
   var cached = null;
