@@ -124,7 +124,7 @@
       ? '<p class="sd-pl-alt">Your answers also suit <a href="/trip/' + suggested.slug + '.html" target="_blank" rel="noopener">' + esc(suggested.name) + '</a>, from ' + money(suggested.usd) + '. We can quote both.</p>' : '';
     card.innerHTML =
       '<p class="sd-pl-card-kicker">' + (picked ? 'The trip you picked' : 'Your matched trip') + '</p>' +
-      '<figure class="sd-pl-photo"><img src="' + IMG.replace('%s', t.id) + '" alt="' + esc(t.name) + ' safari" width="600" height="375"><figcaption>' + esc(t.kind) + '</figcaption></figure>' +
+      '<figure class="sd-pl-photo"><img src="' + IMG.replace('%s', t.id === 'longlens' ? 'photographer' : t.id) + '" alt="' + esc(t.name) + ' safari" width="600" height="375"><figcaption>' + esc(t.kind) + '</figcaption></figure>' +
       '<h3 class="sd-pl-name">' + esc(t.name) + '</h3>' +
       (picked ? '' : '<p class="sd-pl-why">' + esc(reason(t)) + '</p>') +
       '<dl class="sd-pl-facts"><div><dt>Length</dt><dd>' + lenText + '</dd></div>' +
@@ -135,7 +135,7 @@
       alt +
       '<p class="sd-pl-note">A guide price. Your exact quote follows within 24 hours, based on your dates and group, and is invoiced in US dollars.</p>';
     mini.hidden = false;
-    mini.innerHTML = '<img src="' + IMG.replace('%s', t.id) + '" alt="" width="64" height="40"><span><b>' + esc(t.name) + '</b> from ' + money(t.usd) + ' per person</span>';
+    mini.innerHTML = '<img src="' + IMG.replace('%s', t.id === 'longlens' ? 'photographer' : t.id) + '" alt="" width="64" height="40"><span><b>' + esc(t.name) + '</b> from ' + money(t.usd) + ' per person</span>';
     hidTrip.value = t.name + ' (' + t.kind + ')' + (picked ? ', picked on the trip page' : ', matched by the planner');
     hidEst.value = 'From US$' + t.usd.toLocaleString('en') + ' per person' + (window.sdFx && window.sdFx.code !== 'USD' ? ', shown to guest as ' + money(t.usd) : '');
   }

@@ -2,6 +2,34 @@
 
 A plain record of what changed on sundownsafari.com, why it changed, and how to check it. Newest work first.
 
+# 27 November 2026
+
+## Safari Matcher on the homepage
+
+**Why.** Most visitors land not knowing which of the ten trips suits them, and that uncertainty is where they leave. The planner inside the enquiry form already matches a trip, but only after the visitor has started a form at the bottom of the page. The matcher catches them earlier, right under the trip grid, with no contact details asked.
+
+**What changed.** A new section under the trip grid asks four questions with one tap each: when, how long, what matters most and budget per person. It picks one trip and a backup using plain rules over the same trip data as the planner and the cost estimator, so every name, price and inclusion is the site's own. A short note explains why the trip fits and says so honestly when the match runs longer than asked or starts above the budget. Budget options and prices follow the visitor's currency. Two buttons follow: Send to us on WhatsApp, with the answers written into the message, and Email me the full plan, which opens the enquiry form with the trip already picked. The sticky bar steps aside while the matcher is on screen. Without JavaScript the section shows a line pointing to the planner and WhatsApp.
+
+**The AI note.** /api/match-note asks Claude to rewrite the explanation in a warmer voice. The browser only sends short answer codes, the trip facts live on the server, and any reply mentioning a price or a link is thrown away, so the AI cannot invent facts. Each of the 720 possible answer sets is cached for 30 days, so the model runs once per combination at most. It stays off until ANTHROPIC_API_KEY is added in Vercel, and until then the written note shows. ANTHROPIC_MODEL can override the default model.
+
+**Tracking.** matcher_start, matcher_complete (with trip, value, timing, length, priority and budget), matcher_whatsapp_click, matcher_form_click, matcher_trip_click and matcher_restart, in GA4 and Clarity. The WhatsApp button also fires whatsapp_click.
+
+**Also fixed.** The planner showed a broken photo for The Long Lens, because no Long Lens card image exists. It now uses The Photographer card, as the matcher does.
+
+**Files.** index.html, js/matcher.js (new), api/match-note.js (new), js/planner.js.
+
+**How to check.** Open the homepage on a phone, scroll past the trips and tap July to October, 7 days, Big cats, $4,000 to $6,000. It should match The Voyager from $4,900. Tap Email me the full plan and the form should open with The Voyager picked.
+
+## Built for AI assistants
+
+**Why.** In the week of 30 September the only key event GA4 recorded came from the AI Assistant channel. People increasingly ask ChatGPT, Claude and Perplexity which safari operator to use, and those tools recommend what they can read clearly.
+
+**What changed.** /llms.txt is a plain summary of Sundown, every trip with its starting price and parks, what is included, how booking works and the main planning guides. /llms-full.txt adds each trip's day by day outline and full inclusions, generated from the trip pages. robots.txt now names the main AI crawlers and allows them, and both text files are served as UTF-8.
+
+**When prices change.** Update llms.txt and llms-full.txt along with the trip pages, the planner, the estimator and the matcher.
+
+**How to check.** Open https://www.sundownsafari.com/llms.txt after deploying.
+
 # 12 November 2026
 
 ## Photos now load in WebP, about a third lighter

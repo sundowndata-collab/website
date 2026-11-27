@@ -1271,6 +1271,158 @@ window.addEventListener('hashchange',fromHash);fromHash();})();
 </script>
 </section>
 
+        <!-- SAFARI MATCHER: four taps to one trip, js/matcher.js -->
+        <section id="safari-matcher" class="sdm" aria-labelledby="sdm-title">
+<style>
+.sdm{background:#0B3A1D;color:#fff;padding:84px 0;scroll-margin-top:90px}
+.sdm-wrap{max-width:1080px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:56px;align-items:center}
+.sdm-label{display:block;color:#E9B865;font:800 12px/1 'Inter',sans-serif;letter-spacing:.3em;text-transform:uppercase;margin:0 0 16px}
+#safari-matcher h2.sdm-h2{font-family:'Playfair Display',Georgia,serif;font-weight:800;font-size:clamp(30px,3.8vw,44px)!important;line-height:1.1!important;margin:0 0 16px;color:#fff}
+.sdm-h2 em{font-style:italic;color:#E9B865;font-weight:700}
+.sdm-sub{margin:0 0 22px;color:rgba(255,255,255,.78);font-size:17px;line-height:1.65}
+.sdm-points{list-style:none;margin:0;padding:0;display:grid;gap:10px;color:rgba(255,255,255,.85);font-size:15px}
+.sdm-points li{display:flex;gap:10px;align-items:flex-start}
+.sdm-points svg{flex:0 0 18px;width:18px;height:18px;color:#E9B865;margin-top:2px}
+.sdm-box{background:#fff;color:#1c1917;border-radius:20px;box-shadow:0 30px 70px rgba(0,0,0,.35);padding:28px;min-height:420px;display:flex;flex-direction:column}
+.sdm-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 10px}
+.sdm-count{font:800 12px/1 'Inter',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#a8a29e;margin:0}
+.sdm-back{border:0;background:none;color:#0B3A1D;font:700 14px 'Inter',sans-serif;cursor:pointer;padding:6px 0}
+.sdm-back:hover{text-decoration:underline}
+.sdm-bar{height:5px;background:#EFEAE0;border-radius:9px;overflow:hidden;margin:0 0 22px}
+.sdm-bar span{display:block;height:100%;width:6%;background:#C98A27;border-radius:9px;transition:width .3s ease}
+.sdm-q{border:0;margin:0;padding:0;min-width:0;animation:sdm-in .25s ease}
+.sdm-q legend{font-family:'Playfair Display',Georgia,serif;font-weight:800;font-size:24px;line-height:1.25;color:#0B3A1D;margin:0 0 18px;padding:0}
+.sdm-opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.sdm-opts button{display:flex;flex-direction:column;align-items:flex-start;gap:3px;text-align:left;padding:14px 16px;min-height:64px;border:1.5px solid #E7E0D2;border-radius:14px;background:#FBF9F5;cursor:pointer;font-family:'Inter',sans-serif;transition:border-color .15s,background .15s,transform .15s}
+.sdm-opts button b{font-size:15px;font-weight:800;color:#1c1917}
+.sdm-opts button small{font-size:12.5px;font-weight:500;color:#78716c;line-height:1.35}
+.sdm-opts button:hover{border-color:#C98A27;background:#fff}
+.sdm-opts button:active{transform:scale(.98)}
+.sdm-opts button[aria-pressed="true"]{border-color:#0B3A1D;background:#EAF2EC}
+.sdm-opts button:focus-visible{outline:2px solid #C98A27;outline-offset:2px}
+.sdm-result{animation:sdm-in .3s ease}
+.sdm-r-photo{margin:0 0 16px;border-radius:14px;overflow:hidden;aspect-ratio:16/9;background:#EFEAE0}
+.sdm-r-photo img{display:block;width:100%;height:100%;object-fit:cover}
+.sdm-r-kind{margin:0 0 4px;color:#C98A27;font:800 12px/1.2 'Inter',sans-serif;letter-spacing:.14em;text-transform:uppercase}
+.sdm-r-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:4px 16px;margin:0 0 4px}
+a.sdm-r-name{font-family:'Playfair Display',Georgia,serif;font-weight:800;font-size:28px;line-height:1.15;color:#0B3A1D;text-decoration:none}
+a.sdm-r-name:hover{text-decoration:underline}
+.sdm-r-price{margin:0;color:#57534e;font-size:14px}
+.sdm-r-price b{color:#0B3A1D;font-size:18px;font-weight:800}
+.sdm-r-parks{margin:0 0 14px;color:#78716c;font-size:14px}
+.sdm-r-note{margin:0 0 14px;padding:14px 16px;background:#F9F6F1;border-left:3px solid #C98A27;border-radius:0 12px 12px 0;color:#292524;font-size:15.5px;line-height:1.6;transition:opacity .2s}
+.sdm-r-note.is-loading{opacity:.75}
+.sdm-r-alt{margin:0 0 18px;color:#57534e;font-size:14px}
+.sdm-r-alt a{color:#0B3A1D;font-weight:700}
+.sdm-ctas{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.sdm-ctas a{display:flex;align-items:center;justify-content:center;gap:8px;min-height:52px;padding:12px 14px;border-radius:12px;font:800 15px 'Inter',sans-serif;text-decoration:none;text-align:center;transition:filter .15s}
+.sdm-ctas a:hover{filter:brightness(1.06)}
+.sdm-wa{background:#1E9E54;color:#fff}
+.sdm-form{background:#C98A27;color:#fff}
+.sdm-small{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;margin:14px 0 0;font-size:13px;color:#78716c}
+.sdm-restart{border:0;background:none;color:#0B3A1D;font:700 13px 'Inter',sans-serif;cursor:pointer;padding:0;text-decoration:underline}
+.sdm-noscript{color:#57534e;font-size:15px;line-height:1.6}
+.sdm-noscript a{color:#0B3A1D;font-weight:800}
+.sdm:not(.is-live) .sdm-q,.sdm:not(.is-live) .sdm-top,.sdm:not(.is-live) .sdm-bar{display:none}
+.sdm.is-live .sdm-noscript{display:none}
+.sdm [hidden]{display:none!important}
+@keyframes sdm-in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.sdm-q,.sdm-result{animation:none}.sdm-bar span{transition:none}}
+@media (max-width:900px){
+  .sdm{padding:56px 0}
+  .sdm-wrap{grid-template-columns:1fr;gap:26px}
+  .sdm-points{display:none}
+  .sdm-sub{margin:0}
+}
+@media (max-width:480px){
+  .sdm-wrap{padding:0 14px}
+  .sdm-box{padding:20px 16px;min-height:0;border-radius:16px}
+  .sdm-q legend{font-size:21px}
+  .sdm-opts{gap:8px}
+  .sdm-opts button{padding:12px;min-height:58px}
+  .sdm-ctas{grid-template-columns:1fr}
+  a.sdm-r-name{font-size:24px}
+}
+</style>
+            <div class="sdm-wrap">
+                <div class="sdm-intro">
+                    <span class="sdm-label">Safari Matcher</span>
+                    <h2 id="sdm-title" class="sdm-h2">Not sure which safari <em>fits you?</em></h2>
+                    <p class="sdm-sub">Answer four quick questions and we will match you to one of our safaris, with a short note on why it suits you. No email needed.</p>
+                    <ul class="sdm-points">
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>Takes about 30 seconds</span></li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>Matched only to real trips at their real starting prices</span></li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>Send your match to a real person in Nairobi on WhatsApp</span></li>
+                    </ul>
+                </div>
+                <div class="sdm-box">
+                    <div class="sdm-top"><p class="sdm-count" aria-live="polite">Question 1 of 4</p><button type="button" class="sdm-back" hidden>Back</button></div>
+                    <div class="sdm-bar" aria-hidden="true"><span></span></div>
+
+                    <fieldset class="sdm-q" data-q="when">
+                        <legend>When are you thinking of going?</legend>
+                        <div class="sdm-opts">
+                            <button type="button" data-v="jf" aria-pressed="false"><b>Jan to Feb</b><small>Dry, quiet, great for cats</small></button>
+                            <button type="button" data-v="mm" aria-pressed="false"><b>Mar to May</b><small>Green season, lowest prices</small></button>
+                            <button type="button" data-v="jn" aria-pressed="false"><b>June</b><small>Herds arriving</small></button>
+                            <button type="button" data-v="jo" aria-pressed="false"><b>Jul to Oct</b><small>Migration and river crossings</small></button>
+                            <button type="button" data-v="nd" aria-pressed="false"><b>Nov to Dec</b><small>Short rains and holidays</small></button>
+                            <button type="button" data-v="unsure" aria-pressed="false"><b>Not sure yet</b><small>Help me choose</small></button>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="sdm-q" data-q="len" hidden>
+                        <legend>How long can you be on safari?</legend>
+                        <div class="sdm-opts">
+                            <button type="button" data-v="3" aria-pressed="false"><b>3 days</b><small>A short escape</small></button>
+                            <button type="button" data-v="5" aria-pressed="false"><b>5 days</b><small>The sweet spot</small></button>
+                            <button type="button" data-v="7" aria-pressed="false"><b>7 days</b><small>The full experience</small></button>
+                            <button type="button" data-v="unsure" aria-pressed="false"><b>Not sure</b><small>Suggest what fits</small></button>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="sdm-q" data-q="pri" hidden>
+                        <legend>What matters most to you?</legend>
+                        <div class="sdm-opts">
+                            <button type="button" data-v="cats" aria-pressed="false"><b>Big cats</b><small>Lions, leopards and the migration</small></button>
+                            <button type="button" data-v="first" aria-pressed="false"><b>See it all</b><small>My first safari</small></button>
+                            <button type="button" data-v="comfort" aria-pressed="false"><b>Comfort and romance</b><small>Honeymoon or a special trip</small></button>
+                            <button type="button" data-v="photo" aria-pressed="false"><b>Photography</b><small>Time and angles for the shot</small></button>
+                            <button type="button" data-v="family" aria-pressed="false"><b>Family</b><small>Travelling with children</small></button>
+                            <button type="button" data-v="value" aria-pressed="false"><b>Best value</b><small>The most for my money</small></button>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="sdm-q" data-q="budget" hidden>
+                        <legend>Roughly what would you spend per person?</legend>
+                        <div class="sdm-opts">
+                            <button type="button" data-v="b1" aria-pressed="false"><b data-usd-lo="0" data-usd-hi="2500">Under $2,500</b><small>Adventure</small></button>
+                            <button type="button" data-v="b2" aria-pressed="false"><b data-usd-lo="2500" data-usd-hi="4000">$2,500 to $4,000</b><small>Classic</small></button>
+                            <button type="button" data-v="b3" aria-pressed="false"><b data-usd-lo="4000" data-usd-hi="6000">$4,000 to $6,000</b><small>Luxury Lite</small></button>
+                            <button type="button" data-v="b4" aria-pressed="false"><b data-usd-lo="6000" data-usd-hi="0">$6,000 and up</b><small>The best of everything</small></button>
+                            <button type="button" data-v="unsure" aria-pressed="false" style="grid-column:1/-1"><b>Not sure yet</b><small>Show me the best fit</small></button>
+                        </div>
+                    </fieldset>
+
+                    <div class="sdm-result" hidden>
+                        <div class="sdm-r-photo"></div>
+                        <p class="sdm-r-kind"></p>
+                        <div class="sdm-r-head"><a class="sdm-r-name" href="#" tabindex="-1"></a><p class="sdm-r-price">From <b></b> per person</p></div>
+                        <p class="sdm-r-parks"></p>
+                        <p class="sdm-r-note" aria-live="polite"></p>
+                        <p class="sdm-r-alt"></p>
+                        <div class="sdm-ctas">
+                            <a class="sdm-wa" href="https://wa.me/254724491210" target="_blank" rel="noopener"><i class="fab fa-whatsapp" aria-hidden="true"></i> Send to us on WhatsApp</a>
+                            <a class="sdm-form" href="#master-booking">Email me the full plan</a>
+                        </div>
+                        <div class="sdm-small"><span>A starting price. Your exact quote follows within 24 hours.</span><button type="button" class="sdm-restart">Start again</button></div>
+                    </div>
+
+                    <p class="sdm-noscript">Tell us your dates, who is coming and your budget in the <a href="#master-booking">trip planner</a>, or <a href="https://wa.me/254724491210">message us on WhatsApp</a>, and we will match you to the right safari within 24 hours.</p>
+                </div>
+            </div>
+        </section>
+
         <!-- ABOUT -->
         <section id="about-us-summary" class="sds">
 <style>
@@ -2263,6 +2415,8 @@ window.sdfaqToggle = sdfaqToggle;
         if (band) bandIO.observe(band);
         if (faqCard) bandIO.observe(faqCard);
         var revBand = document.getElementById('reviews-cta-band'); if (revBand) bandIO.observe(revBand);
+        // The Safari Matcher has its own WhatsApp and plan buttons, so the bar steps aside there too
+        var mBox = document.querySelector('#safari-matcher .sdm-box'); if (mBox) bandIO.observe(mBox);
         if (desk.addEventListener) desk.addEventListener('change', update);
     } else { heroOn = false; }
     update();
@@ -2316,6 +2470,7 @@ window.sdfaqToggle = sdfaqToggle;
 <script src="/js/whatsapp-tracking.js" defer></script>
 <script src="/js/currency.js" defer></script>
 <script src="/js/planner.js" defer></script>
+<script src="/js/matcher.js" defer></script>
 <script>
 /* Header state and announcement rotation */
 (function(){
